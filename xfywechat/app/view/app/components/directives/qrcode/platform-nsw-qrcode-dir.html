@@ -1,0 +1,15 @@
+<div class="input-group nsw-dropdown">
+	<input type="text"  class="form-control" placeholder="{{displayItems.length?'':'无内容'}}" data-ng-model="displayText" ng-change="filter()" ng-click="displaySelect()" nsw-enter="select(displayItems[0])">
+	<div class="input-group-addon">
+		<div class="dropmenu" ng-class="dir==='up'?'dropup':'dropdown'">
+			<div class="dropdown-toggle glyphicon glyphicon-triangle-bottom" type="button"
+			        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  ng-click="displaySelect(true, true)">
+			</div>
+			<ul class="nsw-dropdown-menu dropdown-menu" ng-show="displayItems.length">
+				<li ng-repeat="item in displayItems" class="dropdown-item" ng-click="select(item)">
+					<a href="javascript:void(0)" ng-bind="item[display]"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

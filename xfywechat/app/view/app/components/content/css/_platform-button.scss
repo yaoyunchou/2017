@@ -1,0 +1,136 @@
+@charset "UTF-8";
+.nsw-btn {
+  display: inline-block;
+  padding-right: 20px;
+  height: 34px;
+  color: #fff;
+  border-radius: 2px;
+  margin-right: 20px;
+  text-align: left;
+  /*默认保存按钮*/
+  .nsw-btn-icon {
+	background: url("../images/main_sprit1.png") no-repeat -144px -24px;
+	height: 22px;
+	width: 30px;
+  }
+  .nsw-btn-save-icon {
+	@extend .nsw-btn-icon;
+	background-position: -159px -24px;
+
+  }
+  .nsw-btn-text {
+	display: inline-block;
+	vertical-align: top;
+	line-height: 25px;
+  }
+  .nsw-btn-cancal-icon {
+	@extend .nsw-btn-icon;
+	background-position: -368px -612px;
+  }
+  .nsw-btn-text-black {
+	color: #000000;
+  }
+  .glyphicon {
+	font-size: 18px;
+	color: #848484;
+	margin-right: 10px;
+  }
+  &[disabled] {
+	cursor: not-allowed;
+	&:hover {
+	  cursor: not-allowed;
+	  .glyphicon {
+		color: initial;
+	  }
+	}
+
+  }
+
+}
+
+.nsw-btn-lg {
+  padding: 6px 20px;
+}
+
+.nsw-btn.nsw-btn-md {
+  height: 26px;
+  .nsw-btn-text {
+	border-radius: 0 0 0 0;
+	line-height: 18px;
+  }
+  .nsw-btn-cancal-icon {
+	margin-top: -3px; /*为了避免删除ICON溢出*/
+  }
+}
+
+.nsw-search-btn {
+  padding: 1px 8px;
+  .nsw-btn-icon {
+	background: url("../images/main_sprit1.png") no-repeat -525px 4px;
+	height: 22px;
+	width: 15px;
+	float: left;
+
+  }
+  &:hover, &.on {
+	border: 1px solid #f08300;
+	.nsw-btn-icon {
+	  background-position: -525px -19px;
+	}
+	.nsw-btn-text {
+	  color: #f08300;
+	}
+  }
+  .nsw-btn-text {
+	display: inline-block;
+	vertical-align: top;
+  }
+}
+
+.btn-cancel {
+  &:hover {
+	cursor: pointer;
+	border: 1px solid #f08300;
+	.nsw-btn-cancal-icon {
+	  background-position: -391px -613px;
+	}
+  }
+}
+
+.btn-cancel {
+  &:hover {
+	cursor: pointer;
+	border: 1px solid $promise-color;
+	.nsw-btn-cancal-icon {
+	  background-position: -407px -613px;
+	}
+	.glyphicon {
+	  color: $promise-color;
+	}
+  }
+}
+
+.btn-forbid {
+  background-color: #f08300;
+  border: 1px solid #f08300;
+  font-size: 12px;
+  color: #FFFFFF;
+  margin-right: 0px;
+  span {
+	float: left;
+	margin-top: 8px;
+  }
+  .icon {
+	width: 18px;
+	height: 18px;
+	margin: 8px 11px 8px 20px;
+	background: url("../images/btn-forbid.png") no-repeat;
+	display: inline-block;
+  }
+  &:hover {
+	color: #FFFFFF;
+	cursor: pointer;
+	border: 1px solid #f08300;
+  }
+
+}

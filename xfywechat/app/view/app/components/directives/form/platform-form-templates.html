@@ -1,0 +1,134 @@
+<script type="text/ng-template" id="form-row.html">
+	<div class="nsw-form-row form-group">
+		%label%
+		%content%
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-required.html">
+	<span class="err nsw-form-required">*</span>
+</script>
+
+<script type="text/ng-template" id="form-maxLength-tip.html">
+	<span class="nsw-form-validate-tip">0/%maxLength%字符</span>
+</script>
+
+<script type="text/ng-template" id="form-label.html">
+	<label class="col-md-2 col-lg-2 col-sm-2 col-xs-2 control-label nsw-form-label">
+		%required%
+		%label%
+	</label>
+</script>
+
+<script type="text/ng-template" id="form-input.html">
+	<div class="%size%">
+		<input type="%type%" name = "%name%" placeholder="%placeholder%" class="form-control nsw-form-input" ng-change="onChange(data, '%model%', '%id%')"
+		       autocomplete="off" ng-model="%model%" title="{{ %model% }}"  %validators%>
+		%errors%
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-htmleditor.html">
+	<div class="%size%">
+		<div data-platform-ueditor name = "%name%" class="form-control nsw-form-input" ng-change="onChange(data, '%model%', '%id%')"
+		       ng-model="%model%" data-simple="%simple%" %validators%></div>
+		%errors%
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-textarea.html">
+	<div class="%size%">
+		<textarea name = "%name%" class="form-control nsw-form-input" ng-change="onChange(data, '%model%', '%id%')"
+		          ng-model="%model%" rows="%rows%" %validators%></textarea>
+		%errors%
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-select.html">
+	<div class="%size% ">
+
+		<select class="form-control nsw-form-input" ng-change="onChange(item, '%model%', '%id%')" ng-model="%model%"
+				data-ng-options="item.%key% as item.%display% for item in lookups['%lookup%']"></select>
+
+		<!--<select class="form-control nsw-form-input" ng-change="onChange(data, '%model%')" ng-model="%model%">
+			<option ng-repeat="option in lookups['%lookup%']" data-ng-value={{option.%key%}}>{{option.%display%}}</option>
+		</select>-->
+		%errors%
+	</div>
+	%validateTip%
+</script>
+
+<script type="text/ng-template" id="form-text.html">
+	<div class="%size%">
+		<textarea class="form-control ng-pristine nsw-form-textarea" rows="%rows%" ng-change="onChange(data, '%model%', '%id%')"
+		          ng-model="%model%" placeholder="%placeholder%" %validators% name="%name%"></textarea>
+		%errors%
+	</div>
+	%validateTip%
+</script>
+
+<script type="text/ng-template" id="form-directive.html">
+	<div class="%size%">
+		<div %directive% data-options="%options%" class="form-control nsw-form-input"
+		     ng-change="onChange(data, '%model%', '%id%')" ng-model="%model%" %validators%
+		     name="%name%"></div>
+		%errors%
+	</div>
+	%validateTip%
+</script>
+
+<script type="text/ng-template" id="form-radioGroup.html">
+	<div class="col-sm-8">
+		%content%
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-radio.html">
+	<label class="radio-inline">
+		<input type="radio" name="%name%" data-ng-value="'%key%'" ng-change="onChange(data, '%model%', '%id%')"
+		       ng-model="%model%">%display%</label>
+</script>
+<script type="text/ng-template" id="form-checkbox.html">
+	<label class="checkbox-inline">
+		<input type="checkbox" name="%name%" data-ng-value="'%key%'" ng-change="onChange(data, '%model%', '%id%')"
+		       ng-model="%model%">%display%</label>
+</script>
+<script type="text/ng-template" id="form-single-image.html">
+	<div class="border-slt text-center" img-lib="url" ng-model="%model%">
+		<h4 style="margin:5px 0px 5px 12px;font-weight:900;">%label%</h4>
+		<img class="c-allthumbImage" nsw-src="{{%model%}}" ng-show="%model%">
+		<i class="fa fa-cloud-upload fa-3x" style="margin-top: 20px;" ng-show="!%model%"></i>
+		<h6 ng-show="!%model%" style="margin-bottom: 20px;">点击上传</h6>
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-adlib.html">
+	<div class="%size%">
+		<div tool-ad-select class="nsw-form-input" ng-model="%model%"
+		     ng-change="onChange(data, '%model%', '%id%')">
+		</div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-html-editor.html">
+	<p>This is the content of the template</p>
+</script>
+
+<script type="text/ng-template" id="form-html-editor-rich.html">
+	<p>This is the content of the template</p>
+</script>
+
+<script type="text/ng-template" id="form-errorContainer.html">
+	<div ng-show="%formName%.%name%.$dirty && %formName%.%name%.$invalid">
+		%content%
+	</div>
+</script>
+
+<script type="text/ng-template" id="form-error.html">
+	<span class="err" ng-show="%formName%.%name%.$error.%error%">%errorMessage%</span>
+</script>
+
+<script type="text/ng-template" id="form-code.html">
+	<p>This is the content of the template</p>
+</script>
+

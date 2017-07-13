@@ -1,0 +1,149 @@
+@charset "UTF-8";
+/*base style*/
+.promise-color {
+  color: #f08300;
+}
+
+.promise-gray-color {
+  color: #dedede
+}
+
+.font-gray {
+  color: #595D6D;
+}
+
+@media screen {
+
+}
+
+.c-header {
+  height: 114px;
+  border-bottom: 2px solid #f18d14;
+  background: url(../images/hd_bg.jpg) no-repeat center top / cover;
+}
+
+.c-container {
+  overflow: hidden;
+}
+
+.c-header .c-logo {
+  float: left;
+  margin-top: 26px;
+  width: 334px;
+  height: 64px;
+  background: url(../images/logo.png) no-repeat;
+}
+
+.c-header .c-manager {
+  float: right;
+  text-align: right;
+  padding-top: 22px;
+}
+
+.c-header .c-manager > div {
+  padding-top: 15px;
+}
+
+.c-header .c-manager a {
+  padding: 0px 10px;
+}
+
+.c-header .c-manager .c-user-name {
+  color: #f08300;
+}
+
+.c-footer {
+  height: 64px;
+  line-height: 32px;
+  text-align: center;
+  background-color: #fffaf4;
+  border-top: 2px solid #f18d14;
+}
+
+.c-main {
+  min-height: 300px;
+  padding-bottom: 40px;
+  margin-left: 220px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.c-menu-icon {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  top: 10px;
+  left: 42px;
+  display: inline-block;
+  background: url(../images/menu_sprit.png) no-repeat;
+}
+
+.c-menu-home {
+  background-position: 0 0px;
+  &.active {
+	background-position: -27px 0px;
+  }
+}
+
+.c-menu-autoreply {
+  background-position: 0px -27px;
+  &.active {
+	background-position: -27px -27px;
+  }
+}
+
+.c-menu-menu {
+  background-position: 0px -54px;
+  &.active {
+	background-position: -27px -54px;
+  }
+}
+
+.c-menu-member {
+  background-position: 0px -81px;
+  &.active {
+	background-position: -27px -81px;
+  }
+}
+
+.c-menu-mass-message {
+  background-position: 0px -108px;
+  &.active {
+	background-position: -27px -108px;
+  }
+}
+
+.c-menu-material {
+  background-position: 0px -135px;
+  &.active {
+	background-position: -27px -135px;
+  }
+}
+.c-menu-qrcode {
+  background-position: 0px -189px;
+  &.active {
+    background-position: -27px -189px;
+  }
+}
+.c-menu-message {
+  background-position: 0px -162px;
+  &.active {
+    background-position: -27px -162px;
+  }
+}
+.c-message-template {
+  background-position: 0px -216px;
+  &.active {
+    background-position: -27px -216px;
+  }
+}
+
+
+.wechat-icon{
+  background:url("../images/wechat.png") no-repeat;
+  padding-left: 30px;
+  display: inline-block;
+  height: 21px;
+}
+
+@import "switch-project";

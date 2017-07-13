@@ -1,0 +1,26 @@
+<div class="message-box nsw-modal">
+	<div class="modal-header">
+		<h4 class="modal-title">发送预览</h4>
+		<a class="diaremove" ng-click="closeModal(false)"></a>
+	</div>
+	<div class="modal-body message-body">
+		<form class="preview-send form-inline formpreview" name="formpreview" nsw-nav-hint novalidate>
+			<div class="form-group">
+				<label>请选择微信号</label>
+
+				<div nsw-dropdown items="groupTypes" ng-model="options.groupType" nsw-display="name"
+				     nsw-value="id" data-after-select="groupTypeSelected(options.groupType)"></div>
+			</div>
+		</form>
+		<div class="button">
+			<button type="submit" class="btn btn-commit" ng-click="send()" data-ng-disabled="!formpreview.$dirty">
+				<label class="btn-icon" data-ng-class="modalOptions.commitIcon"></label>
+				<span class="btn-text">确认</span>
+			</button>
+			<button class="btn btn-cancel" ng-click="closeModal(false)">
+				<label class="btn-icon" data-ng-class="modalOptions.cancelIcon"></label>
+				<span class="btn-text black">关闭</span>
+			</button>
+		</div>
+	</div>
+</div>

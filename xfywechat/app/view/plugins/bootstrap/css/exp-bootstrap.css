@@ -1,0 +1,128 @@
+
+/*表单*/
+.btn,
+.form-control {padding: 4px 10px;}
+.form-control:focus {box-shadow: none;}/*清除输入框焦点状态阴影*/
+
+.btn{
+    border-radius: 2px;
+}
+.btn-warning:hover{
+    background-color:#f08300;
+}
+
+/*按钮*/
+.btn-default:hover {background: none;}
+.btn-sm, .btn-group-sm>.btn {padding:2px 6px;}
+
+/*表单组*/
+.input-group-addon {padding: 0 6px; font-size: 14px;}
+
+/*选项卡*/
+.nav > li > a:hover,
+.nav > li > a:focus {color: #f08300;}
+.nav-tabs {border-left: 1px solid #ddd; height:39px;}
+.nav-tabs > li { border-left: none; border-top:1px solid #ddd}
+.nav-tabs > li.active {border-top: 2px solid #f08300;}
+.nav-tabs>li>a{margin: 0px; border:  none; border-right: 1px solid #ddd;     padding: 8px 30px;}
+.nav-tabs > li > a:hover {border-color: #ddd;}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {border: 0 none !important; border-right: 1px solid #ddd !important;}
+.nav-tabs .dropdown-menu {left: -1px; margin-top: 0;}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {border-color: #ddd;}
+
+/*下拉面板*/
+/*1.下拉按钮焦点状态*/
+.btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default.focus:active, .btn-default:active:focus, .btn-default:active:hover, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {background-color: #eee;}
+
+/*取消下拉面板列表最后一项下边框*/
+/* .dropdown-menu > li:last-child > a {border-bottom: none;}
+ */
+/*2.下拉面板*/
+.dropdown-menu {margin: 0; padding: 0;}
+.dropdown-menu > li > a {padding: 4px 12px; border-bottom: 1px solid #DCDCDC;}
+
+
+/*取消下拉面板与下拉按钮外边距，默认面板与按钮之间有2px下外边距*/
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {margin: 0;}
+
+/*下拉面板列表分割线*/
+.dropdown-menu .divider {height: 5px; margin: 0; margin-top: -1px; border-top: 1px solid #ddd; background-color: #fff;}
+
+/*面包屑导航*/
+.breadcrumb {font-size: 14px;padding:8px 0;margin-bottom:5px;}
+.breadcrumb a:hover {text-decoration: none; color: #f08300;}
+/*面包削导航*/
+.nsw_bread_tit {height: 47px;position: relative;border-bottom: 1px solid #dcdcdc;}
+.nsw_add{float: left;margin-top: 12px;font: 14px/21px "Microsoft Yahei";}
+.nsw_add .active{color: #f08300;}
+.bread_link {float: right; margin-top: 14px;font: 12px/21px "Microsoft Yahei";}
+
+/*主色调按钮悬停及焦点状态*/
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.active,
+.btn-primary:active,
+.open > .dropdown-toggle.btn-primary,
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary.focus:active,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.open > .dropdown-toggle.btn-primary.focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.open > .dropdown-toggle.btn-primary:hover {background-color: #f07700; border-color: #f07700;}
+
+/*模态框*/
+.modal-content {box-shadow: 0px 0px 5px rgba(0, 0, 0, .3);}
+.modal-header {font-size: 14px; color: #f08300; background-color: #f5f5f5;}
+.modal-footer {border-top: 0 none;text-align: center;}
+
+.input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group {margin-right: 0;}
+.input-group-btn {z-index: 10;}
+
+/*弹窗*/
+div.mask, .modal-backdrop.in {background-color: #fff;opacity: 0;}
+div.data-speed-form, .modal-dialog {margin-top: 85px;box-shadow: 0 0 5px rgba(0, 0, 0, .3);border: 0;}
+
+/*分页按钮*/
+.pager li > a:hover,
+.pager li > span:hover {color: #fff;}
+
+
+/*表格样式*/
+.table{border:1px solid #ccc; border-collapse: inherit}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th{
+    height: 58px;
+    vertical-align: middle;
+}
+
+ .table>thead>tr>td, .table>tbody>tr>td{
+     border-top: none;
+     border-bottom:1px dashed #dcdcdc;
+     vertical-align:middle;
+     height:56px
+ }
+.table>tfoot>tr>td{
+    border-top: none;
+}
+.table>thead>tr>th{background-color:#f6f6f6;border-bottom:1px solid #ddd;}
+
+/*--------弹框20151209  yao----------*/
+/*大号弹框*/
+.modal-lg {
+   width: 740px;
+      /* min-height: 627px; */
+}
+
+
+/*-------临时解决弹框出现的时候页面左右晃动一下的问题- 20151223 yao------  */
+.modal-open {
+    /*overflow: hidden;
+    margin-right:16px;*/
+    height: 300%;
+}

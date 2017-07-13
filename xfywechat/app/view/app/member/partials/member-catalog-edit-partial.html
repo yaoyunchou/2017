@@ -1,0 +1,35 @@
+<div class="message-box menu-modal nsw-modal member-create-modal">
+	<div class="modal-header">
+		<h4 class="modal-title">编辑标签</h4>
+		<a class="diaremove" ng-click="closeModal(false)"></a>
+	</div>
+	<div class="modal-body message-body">
+		<div class="menu-rename-content col-md-12">
+			<form name="createCtg" beyond max-count='12'>
+				<label class="col-sm-3 nsw-label ">标签名称</label>
+
+				<div class="form-group col-sm-9" >
+					<input type="text" autocomplete="off" class="form-control" name="name" nsw-autofocus
+					       data-ng-model="modalOptions.selected.name" required="" nsw-max-length="12">
+
+					<div ng-show="createCtg.name.$dirty && createCtg.name.$invalid">
+						<span class="err" ng-show="createCtg.name.$error.required">标签名称不能为空</span>
+						<span class="err" ng-show="createCtg.name.$error.nswmaxlength">标签名称不得超过6个汉字或12个字符</span>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="button">
+			<button type="submit" class="btn btn-commit" ng-disabled="!((createCtg.$valid&&createCtg.$dirty))"
+			        ng-click="saveEdit()">
+				<label class="btn-icon btn-icon checkforward"></label>
+				<span class="btn-text">确认</span>
+			</button>
+			<!--data-ng-class="modalOptions.commitText? 'btn-cancel': 'btn-center'"-->
+			<button class="btn btn-cancel"  ng-click="closeModal(false)">
+				<label class="btn-icon checkcance"></label>
+				<span class="btn-text black">取消</span>
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,118 @@
+@charset "UTF-8";
+/*共用css*/
+/* 清除内外边距 */
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+fieldset, button, input, textarea, /* form elements 表单元素 */
+th, td { /* table elements 表格元素 */
+	margin: 0;
+	padding: 0;
+}
+
+input,textarea {border: 0 none; box-shadow: none; outline: none;}
+
+/* 设置默认字体 */
+body,
+button, input, select, textarea {
+	font: 14px/1.5  "Microsoft Yahei", arail, sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {font-family: "Microsoft Yahei";}
+h1 {font-size: $font-size-h1;}
+h2 {font-size: $font-size-h2;}
+h3 {font-size: $font-size-h3;}
+h4, h5, h6 {font-size: $font-size-h4;}
+* h1,* h2,* h3,* h4,* h5,* h6{margin: 0px;} /*覆盖bootstrape对标题加的默认外边距*/
+
+address, cite, dfn, em, i, var {font-style: normal;} /* 斜体扶正 */
+
+/* 重置列表元素 */
+ul, ol {list-style: none;}
+
+/* 重置文本格式元素 */
+a {text-decoration: none;}
+a:hover {text-decoration: none;  color: $promise-color;}
+
+.promise-color{color:$promise-color !important;}
+
+/* 重置表单元素 */
+legend {color: #000;} /* for ie6 */
+fieldset, img {border: none;} /* img 搭车：让链接里的 img 无边框 */
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+	font-size: 100%; /* 使表单元素在 ie 下能继承字体大小 */
+}
+
+/* 重置表格元素 */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁 */
+html {overflow-y: scroll;}
+
+/*设置浮动*/
+.fl {float: left;}
+.fr {float: right;}
+
+/*字体大小*/
+.fz12{font-size: $font-size-small;}
+.fz14{font-size: $font-size-base;}
+.fz16{font-size: $fz16;}
+.fz18{font-size: $fz18;}
+.fz20{font-size: $fz20;}
+.fz22{font-size: $fz22;}
+
+
+//
+//@media (max-width: @screen-xs-max) {  }
+//@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {  }
+//@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { }
+//@media (min-width: @screen-lg-min) { }
+
+/*页面框架样式*/
+.container{
+	max-width:1180px;
+	width:100%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+.nsw-row{
+	padding: 0;
+	margin: 0;
+	margin-bottom: 10px;
+}
+.clear-webuploader-pick{
+	.webuploader-pick {
+		display: inline-block;
+		cursor: pointer;
+		background: none;
+		padding: 0;
+		color: inherit;
+		text-align: center;
+		overflow: hidden;
+		border-radius: 0px;
+	}
+	.webuploader-pick-hover {
+		background: none;
+	}
+}
+.webuploader-container {
+	padding-bottom: 0px;
+}
+.updataimg{
+	display: inline-block;
+}
+
+
+.popover{
+	max-width:330px !important;
+	text-align: left;
+	.popover-content{
+		min-width: 330px;
+	}
+}
+

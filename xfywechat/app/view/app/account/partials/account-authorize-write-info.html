@@ -1,0 +1,35 @@
+<div class="authorize-mode">
+	<div class="ordinary-way">
+		<div class="head">
+			<div>
+				<div class="icon">
+
+				</div>
+				<!--<img src="account/content/images/accoutn-icon-authorize_r1_c1.png" alt="">-->
+				<a href="javascript:void(0)">普通绑定</a>
+				<p>简单，零门槛</p>
+			</div>
+		</div>
+		<div class="body">
+			<div class="authorize-body">
+				<div class="authorize-back">
+					<div class="authorize-back-left">
+						<div class="icon-box">
+
+						</div>
+					</div>
+					<div class="authorize-back-right">
+						<h3>复制此处Token和URL地址到微信平台进行绑定</h3>
+						<p>URL:&nbsp;<span data-ng-bind="currentItem.url"></span> <button class="btn btn-default" nsw-clipboard="{{currentItem.url}}">拷贝</button><br>
+							Token :&nbsp;<span data-ng-bind="currentItem.token"></span> <button class="btn btn-default" nsw-clipboard="{{currentItem.token}}">拷贝</button> <br>
+							<!--AesEncodingKey :<span data-ng-bind="currentItem.encodingAesKey"></span>       EbNswTRqskExcuNZP4EhcfsNjgLbBtsRsPt7Xfe<br>-->
+							<a class="promise-color" style="text-decoration: underline" target="_blank" href="http://kf.qq.com/faq/120911VrYVrA1307306biMFz.html">如何绑定？</a>
+						</p>
+
+						<button  type="submit" class="btn btn-warning nsw-btn"  ng-click="saveAirticle()">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

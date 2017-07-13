@@ -1,0 +1,103 @@
+<div class="modal-body">
+	<form class=" form-validation nsw-form" name="formaccount" novalidate>
+		<tabset>
+			<tab  select="selectTab(1)" heading="{{tabTitle}}"  active></tab>
+			<tab  select="selectTab(2)" heading="图片素材"></tab>
+		</tabset>
+		<div class="tab-form">
+			<button ng-show="tab===1" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;新建图文</button>
+			<div ng-show="tab===1" class="sub">
+				 <dl data-ng-click="createSingle()">
+					 <dt>
+						 <img src="materials/content/images/materials-icon-pic04.png" alt=""/>
+					 </dt>
+					 <dd>新建单图文</dd>
+				 </dl>
+				<dl data-ng-click="createMultiple()">
+					<dt>
+						<img src="materials/content/images/materials-icon-pic04.png" alt=""/>
+					</dt>
+					<dd>新建多图文</dd>
+				</dl>
+			</div>
+			<button ng-if="tab===2"  platform-img-upload data-module="material" data-img-url ="imgurl" data-ng-model="file" change-file="changeFile()"  class="btn btn-warning clear-webuploader-pick"><span class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;本地上传</button>
+			<!--<a href="javascript:void(0)" platform-img-upload data-img-url ="imgurl" data-ng-model="file" change-file="changeFile()" class="add-img clear-webuploader-pick"><span class="glyphicon glyphicon-plus"></span>选择图片</a>-->
+		</div>
+		<div class="nsw-tab-content">
+			<div ng-if="tab===1" class="nsw-tab-paneactive nsw-materials" data-ng-controller="materialsNewsListCtrl">
+				<div class="materials-list-search">
+					<div class="list-search search-one">
+						<input type="text" placeholder="请输入搜索条件"  nsw-enter="searchNewsData()"  class="pull-left" ng-model="searchOptions.filter">
+						<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+						<a class="search" href="javascript:void(0)" ng-click="searchNewsData()"></a>
+					</div>
+				</div>
+				<div class="materials-list-body">
+					<div class="account-welcome-body">
+						<ul class="img-box-style" platform-waterfall data-items = "dataList">
+							<li data-ng-repeat="material in dataList"  on-finish-render-filters >
+								<div platform-nsw-list-material data-material="material" data-remove="remove(material,'删除后内容将无法还原！是否确认删除？')" data-edit="editNews(material)" ></div>
+							</li>
+							<div class="no-material" ng-if="(!dataList || !dataList.length)&&!!searchOptions.filter">
+								没有搜索结果,请重新输入标题或者查看 <a class="promise-color" href="javascript:void(0)" data-ng-click="allMaterial()">全部图文素材</a>
+							</div>
+							<div class="no-member" ng-if="(!dataList || !dataList.length)&&!!!searchOptions.filter">
+								暂无图文素材！
+							</div>
+						</ul>
+					</div>
+					<div class="fy">
+						<div platform-pagenation  search-options="searchOptions" nsw-refresh="searchData()">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-if="tab===2" class="nsw-tab-paneactive nsw-materials" data-ng-controller="materialsImgListCtrl" >
+				<div class="materials-list-search">
+					<button class="btn btn-default" data-ng-click="deleteimgs()" data-ng-disabled="!ids.length"><span class="glyphicon glyphicon-remove-circle"></span>批量删除</button>
+					<div class="list-search search-one">
+						<input type="text" placeholder="请输入搜索条件"  nsw-enter="searchData()"  ng-model="searchOptions.filter">
+						<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+						<a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+					</div>
+				</div>
+				<div class="materials-list-body img-list">
+						<ul class="olny-img">
+							<li data-ng-repeat="img in dataList">
+								<div class="list-style-one">
+									<div class="delete-btn">
+										<a href="javascript:void(0)" ng-click="remove(img,'删除后内容将无法还原！是否确认删除？')"><img src="account/content/images/welcome-list-add-btn.png" alt=""/></a>
+									</div>
+									<div class="multiple-view img-width-auto">
+										<div class="img-box " data-ng-if = "img.url" >
+											<img nsw-src="{{ img.url }}" data-nsw-src-size="376x360"  alt=""/>
+										</div>
+										<div class="img-edit">
+											<div class="checkbox">
+												<label title="{{img.name}}">
+													<input type="checkbox" data-ng-model="img.ischeck" ng-change="check(img)">
+													<span data-ng-bind="img.name"></span>
+												</label>
+											</div>
+											<a href="javascript:void(0)" data-ng-click="editNickName(img)"></a>
+										</div>
+									</div>
+								</div>
+							</li>
+							<div class="no-material" ng-if="(!dataList || !dataList.length)&&!!searchOptions.filter">
+								没有搜索结果,请重新输入标题或者查看 <a class="promise-color" href="javascript:void(0)" data-ng-click="allimg()">全部图片素材</a>
+							</div>
+							<div class="no-member" ng-if="(!dataList || !dataList.length)&&!!!searchOptions.filter">
+								暂无图片素材！
+							</div>
+						</ul>
+						<div class="fy">
+							<div platform-pagenation  search-options="searchOptions" nsw-refresh="searchData()">
+							</div>
+						</div>
+				</div>
+			</div>
+
+		</div>
+	</form>
+</div>

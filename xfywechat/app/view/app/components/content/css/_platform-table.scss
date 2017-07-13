@@ -1,0 +1,19 @@
+table{
+	tr{
+		th{
+			height:60px;
+			line-height: 60px;
+			border-bottom: 1px solid #dcdcdc;
+			background: #f6f6f6;
+		}
+	}
+}
+.daterangepicker  {
+	table{
+		tr{
+			th{
+				line-height:inherit;
+			}
+		}
+	}
+}

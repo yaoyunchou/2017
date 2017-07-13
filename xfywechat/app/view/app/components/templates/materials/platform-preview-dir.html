@@ -1,0 +1,75 @@
+<div class="preview">
+	<div class="preview-left">
+		<div class="left-btn-group" role="group" aria-label="Vertical button group">
+			<button type="button" class="preview-btn" data-ng-class="{'on':option.tab==='material'}"
+			        data-ng-click="selectTab('material')">图文消息
+			</button>
+			<button type="button" class="preview-btn" data-ng-class="{'on':option.tab==='article'}"
+			        data-ng-click="selectTab('article')">消息正文
+			</button>
+		</div>
+	</div>
+	<div class="preview-mid">
+		<div class="preview-mid-box">
+			<h3 class="title" data-ng-bind="currentWechtInfo.nick_name">图文消息</h3>
+			<div class="nsw-article">
+				<div class="news" data-ng-if="option.tab==='material'">
+					<div class="nsw-article-title">
+						图文消息
+					</div>
+					<div class="list-style-one">
+						<div class="list-style-one-info" data-ng-if="option.material.articles.length==1">
+							<div class="h4"  data-ng-bind="option.material.articles[0].title">牛商网络</div>
+							<div class="time">{{option.create_time|nswDate:'yyyy-MM-dd'}}</div>
+						</div>
+						<div class="multiple-view" ng-click="edit()">
+							<div  data-ng-click="previewArticle(option.material.articles[0])" class="img-box nsw-bg-one"  nsw-bg={{option.material.articles[0].fileId}} >
+								<p data-ng-if="option.material.articles.length>1" class="word-left" data-ng-bind="option.material.articles[0].title">牛商网络股份</p>
+							</div>
+							<div class="abstract " data-ng-if="option.material.articles.length==1">
+								{{option.material.articles[0].digest | nswDesc :60}}
+							</div>
+							<div class="readMore"  data-ng-if="option.material.articles.length==1">
+								<span>阅读全文</span>
+								<em class=" glyphicon glyphicon-menu-right"></em>
+							</div>
+							<div class="articles" data-ng-if="option.material.articles.length>1">
+								<dl data-ng-repeat="article in option.material.articles" data-ng-if="$index>0"
+								    data-ng-click="previewArticle(article)">
+									<dt>
+										<a href="javascript:void(0)" data-ng-bind="article.title">标题标题1</a>
+									</dt>
+									<dd><img nsw-src="{{article.fileId}}"
+									         src="materials/content/images/materials-icon-pic01.png" alt=""/></dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="perview-article" data-ng-if="option.tab==='article'&&!!!option.currentItem.otherUrl">
+					<div class="nsw-article-title" data-ng-bind="option.currentItem.title">
+						图文消息
+					</div>
+					<div class="nsw-article-info">
+						<span class="time">{{option.create_time|nswDate:'yyyy-MM-dd'}}</span>
+						<span class="author"  data-ng-bind="currentWechtInfo.nick_name">牛商网络</span>
+					</div>
+					<div data-ng-if="option.currentItem.show_cover_pic" data-ng-click="previewArticle(option.currentItem)" class="img-box nsw-bg-one"  nsw-bg={{option.currentItem.fileId}} >
+					</div>
+					<section class="nsw-article-content" nsw-html="{{option.currentItem.content}}">
+					</section>
+					<a target="_blank" data-ng-if="option.currentItem.content_source_url" data-ng-href="{{option.currentItem.content_source_url}}">阅读原文</a>
+				</div>
+				<a  data-ng-if="option.tab==='article'&&!!option.currentItem.otherUrl" target="_blank" data-ng-href="{{option.currentItem.otherUrl}}" >外部链接点击跳转</a>
+			</div>
+		</div>
+	</div>
+	<div class="preview-right">
+	<button type="button" class="preview-btn" platform-preview-send data-information="mobilePreviewItem"  >发送到手机预览</button>
+		<!--<button type="button" class="preview-btn" data-ng-click="hasSaved()"  data-ng-if="!option.material.id">发送到手机预览</button>-->
+	<button type="button" class="preview-btn" data-ng-click="$close()">关闭</button>
+	</div>
+</div>

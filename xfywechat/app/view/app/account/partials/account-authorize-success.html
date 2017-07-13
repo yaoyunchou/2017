@@ -1,0 +1,49 @@
+<div class="authorize-success">
+	<div class="head">
+			<dl>
+				<dt></dt>
+				<dd>
+					<h3>授权成功</h3>
+					<a data-ng-if="currentItem.type===2" href="javascript:void(0)" data-ng-click="reAuthorize()">重新授权？</a>
+				</dd>
+			</dl>
+	</div>
+	<div class="body">
+		<div class="authorize-about-body">
+			<h4>基本信息</h4>
+			<div class="base-info">
+				<dl>
+					<dt>公众号名称</dt>
+					<dd data-ng-bind="currentItem.nick_name"></dd>
+				</dl>
+				<dl>
+					<dt>账号类型</dt>
+					<dd > {{ (currentItem.verify_type_info===-1?'未认证':'已认证') + (currentItem.bindType===2? '服务号':'订阅号')}}</dd>
+				</dl>
+				<dl data-ng-if="currentItem.name">
+					<dt>微信号</dt>
+					<dd data-ng-bind="currentItem.name"></dd>
+				</dl>
+				<dl>
+					<dt class="head-icon" >微信头像</dt>
+					<dd><img nsw-src="{{currentItem.head_img}}" alt=""></dd>
+				</dl>
+				<dl>
+					<dt>Appld  </dt>
+					<dd  data-ng-bind="currentItem.appId"></dd>
+				</dl>
+			</div>
+
+		</div>
+	</div>
+	<div class="foot message-box">
+		<div class="form-group nsw-form-but-group">
+			<div class="col-sm-offset-4 col-sm-6" >
+				<button type="submit" class="btn btn-center btn-commit"  ng-click="goList()">
+					<label class="btn-icon checkforward" data-ng-class="modalOptions.commitIcon"></label>
+					<span class="btn-text ng-binding">确 定</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

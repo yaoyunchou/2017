@@ -1,0 +1,111 @@
+<div class="img-reply">
+	<div data-ng-if="!materialId&& !createState">
+		<div class="img-reply-left">
+			<div class="img-reply-in">
+				<div class="img-reply-ct" data-ng-click="showArtcileLib('single')">
+					<p><a href="javascript:void(0)">从图文素材库中选择</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="img-reply-right">
+			<div class="img-reply-in">
+				<div class="img-reply-ct" data-ng-click="switchToArticle()">
+					<p><a href="javascript:void(0)">新建图文消息</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div data-ng-if="!materialId && createState" class="create-article">
+
+		<div class="img-reply-left">
+			<div class="img-reply-in">
+				<div class="img-reply-ct" data-ng-click="createArticle('single')">
+					<p><a href="javascript:void(0)">新建单图文</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="img-reply-right">
+			<div class="img-reply-in">
+				<div class="img-reply-ct" data-ng-click="createArticle('multiple')">
+					<p><a href="javascript:void(0)">新建多图文</a></p>
+				</div>
+			</div>
+		</div>
+
+
+		<!--<div class="select-img create-article">
+			<div class="img-lib" ng-click="createArticle('single')">
+				<em class="icon"></em>
+
+				<div class="description">新建单图文</div>
+			</div>
+			<em class="img-sep"></em>
+
+			<div class="img-local " ng-click="createArticle('multiple')">
+				<em class="icon"> </em>
+
+				<div class="description">
+					<span>新建多图文</span>
+				</div>
+			</div>
+		</div>-->
+	</div>
+	<div data-ng-if="materialId" class="aterial-box-nsw">
+		<!--<div class="list-style-one">-->
+			<!--<div class="multiple-view img-width-auto">-->
+				<!--<div class="img-box" data-ng-if="material.articles[0].fileId">-->
+					<!--<img nsw-src="{{ material.articles[0].fileId }}" alt=""/>-->
+
+					<!--<p data-ng-bind="material.articles[0].title">牛商网络股份</p>-->
+				<!--</div>-->
+				<!--<div class="abstract " data-ng-if="material.articles.length==1"-->
+				     <!--nsw-html="{{material.articles[0].digest}}">-->
+				<!--</div>-->
+				<!--<div class="articles" data-ng-if="material.articles.length>1">-->
+					<!--<dl data-ng-repeat="article in material.articles" data-ng-if="$index>0">-->
+						<!--<dt>-->
+							<!--<a href="javascript:void(0)" data-ng-bind="article.title">标题标题1</a>-->
+						<!--</dt>-->
+						<!--<dd><img nsw-src="{{article.fileId}}" src="materials/content/images/materials-icon-pic01.png"-->
+						         <!--alt=""/></dd>-->
+					<!--</dl>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="list-style-one"
+			 ng-click="setCurrentItem(material===currentItem?{}:material)">
+			<div ng-class="material===currentItem?'chose on':''">
+			</div>
+			<div class="article-title">
+				<!--<div ng-bind="material.articles[0].title"></div>-->
+				<div>{{material.create_time | nswDate:"MM月dd日"}}</div>
+			</div>
+			<div class="multiple-view">
+				<strong  data-ng-if="material.articles.length===1"  data-ng-bind="material.articles[0].title"></strong>
+				<div data-ng-click="editArticle(0,true)" class="img-box nsw-bg-one"
+					 nsw-bg={{material.articles[0].fileId}}>
+					<!--<p  data-ng-if="material.articles.length>1" data-ng-bind="material.articles[0].title">牛商网络股份</p>-->
+					<p  data-ng-if="material.articles.length>1" nsw-html="{{material.articles[0].title | nswDesc:'30'}}">牛商网络股份</p>
+				</div>
+				<div class="abstract " data-ng-if="material.articles.length==1"
+					 nsw-html="{{material.articles[0].digest | nswDesc :'60'}}">
+				</div>
+				<div class="articles" data-ng-if="material.articles.length>1">
+					<dl data-ng-repeat="article in material.articles"
+						data-ng-if="$index>0">
+						<dt>
+							<a href="javascript:void(0)"
+							   data-ng-bind="article.title">标题标题1</a>
+						</dt>
+						<dd><img nsw-src="{{article.fileId}}"
+								 src="materials/content/images/materials-icon-pic01.png"
+								 alt=""/></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<p class="delete">
+			<a href="javascript:void(0)" data-ng-click="doRemove()">删除</a>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div data-ng-controller="platformModalMessageCtrl" class="message-box nsw-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" data-ng-bind="modalOptions.title"></h4>
+		<a class="diaremove" ng-click="closeModal(false)"></a>
+	</div>
+	<div class="modal-body message-body">
+		<div class="icon">
+			<div data-ng-if="modalOptions.type==='success'" class="icon-success icon-same"></div>
+			<div data-ng-if="modalOptions.type==='warming'" class="icon-warming icon-same"></div>
+			<div data-ng-if="modalOptions.type==='error'" class="icon-error icon-same"></div>
+			<div data-ng-if="modalOptions.type==='confirm'" class="icon-confirm"></div>
+		</div>
+		<div class="message">
+			<div class="message-content" platform-Dynamic-Form  template="modalOptions.message" ></div>
+			<div data-ng-show="modalOptions.info" class="info-content"  platform-Dynamic-Form  template = "modalOptions.info" ></div>
+		</div>
+		<div class="button">
+		    <button type="submit" class="btn" data-ng-class="modalOptions.cancelText? 'btn-commit': 'btn-center'"
+			        data-ng-show="modalOptions.commitText" ng-click="closeModal(true)">
+				<label class="btn-icon" data-ng-class="modalOptions.commitIcon"></label>
+				<span class="btn-text" data-ng-bind="modalOptions.commitText"></span>
+			</button>
+			<button class="btn" data-ng-class="modalOptions.commitText? 'btn-cancel': 'btn-center'"
+			        data-ng-show="modalOptions.cancelText" ng-click="closeModal(false)">
+				<label class="btn-icon" data-ng-class="modalOptions.cancelIcon"></label>
+				<span class="btn-text black" data-ng-bind="modalOptions.cancelText"></span>
+			</button>
+		</div>
+	</div>
+</div>

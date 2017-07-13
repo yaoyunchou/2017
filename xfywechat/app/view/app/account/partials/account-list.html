@@ -1,0 +1,38 @@
+<div class="account-welcome">
+	<div class="account-welcome-header">
+		<div class="header-left">
+			<a href="#/wechat/account/notice">系统公告：</a><span>新增了用户管理功能</span>
+		</div>
+		<div class="header-right search-one">
+			<input type="text" placeholder="请输入公众账号"  nsw-enter="searchData()" ng-model="searchOptions.filter">
+			<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+			<a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+		</div>
+	</div>
+	<div class="account-welcome-body">
+		<ul>
+			<li class="add">
+				<div class="list-style-one">
+					<div class="img-box">
+						<a href="javascript:void(0)" ng-click ="addAccount()"><img src="account/content/images/welcome-list-pic.png" alt=""/></a>
+					</div>
+					<h4>新增账号</h4>
+					<p></p>
+				</div>
+			</li>
+			<li ng-repeat="account in dataList">
+				<div class="list-style-one {{account.deleteing?'on':''}}" >
+					<div class="img-box img-account">
+						<a href="javascript:void(0)" ng-click ="setCurrentItem(account)"><img nsw-src="{{account.head_img}}" alt=""/></a>
+					</div>
+					<h4 ng-bind="account.nick_name"></h4>
+					<p >账号类型：{{ (account.verify_type_info===-1?'未认证':'已认证') + (account.bindType===2? '服务号':'订阅号')}}</p>
+					<div class="delete-btn">
+						<a href="javascript:void(0)" ng-click="removeItem(account)"><img src="account/content/images/welcome-list-add-btn.png" alt=""/></a>
+					</div>
+					<img data-ng-show="account.newAccount"  class="account-new" src="account/content/images/welcome-list-new.png" alt=""/>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

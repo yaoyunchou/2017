@@ -1,0 +1,22 @@
+<div platform-bread-nav="breadNavs"></div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="switch-project">
+			<div class="projects">
+				<a ng-repeat="item in projects">
+					<div data-ng-if="item.projectType!==7" class="project" ng-click="selectProject(item)">
+						<div class="icon" ng-class="getIconClass(item)" ng-class="item.icon"></div>
+						<div class="title" ng-bind="item.projName"></div>
+					</div>
+					<div data-ng-if="item.projectType===7" class="project" ng-click="selectProject(item)">
+						<div class="icon" ng-class="getIconClass(item)" ng-class="item.icon"></div>
+						<div class="title" ng-bind="item.projName"></div>
+					</div>
+				</a>
+
+
+			</div>
+			<h2 style="margin-left:15%" ng-hide="projects.length">没有开通服务,请联系管理员！</h2>
+		</div>
+	</div>
+</div>

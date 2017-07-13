@@ -1,0 +1,76 @@
+<div class="mass-message" data-ng-if="tab===2">
+	<div class="content">
+		<div class="no-member" ng-if="!dataList || !dataList.length">
+			暂无发送历史！
+		</div>
+		<table ng-if="dataList && dataList.length" class="data-content">
+			<tr ng-repeat="item in dataList" class="data-row">
+				<td class="col-img">
+					<div ng-class="item.massType==='txt'?'empty':''"></div>
+					<img ng-if="item.massType==='news'" nsw-src-path="basFilePath" type="checkbox" class="image"
+					     nsw-src="{{item.content[0].fileId}}"/>
+					<img ng-if="item.massType==='pic'" type="checkbox" class="image"
+					     nsw-src="{{item.content}}" nsw-src-path="basFilePath"/>
+
+				</td>
+				<td class="col-content">
+					<div class="message">
+						<div class="message-type">
+							<span ng-show="item.massType==='news'">【图文消息】</span>
+							<span ng-show="item.massType==='txt'">【文字消息】</span>
+							<span ng-show="item.massType==='pic'">【图片消息】</span>
+						</div>
+						<div ng-show="item.massType==='txt'" class="mass-message-content" nsw-bind-html="{{item.content | nswEmotions}}"></div>
+						<!--<span ng-show="item.massType==='txt'" ng-bind="item.content"></span>-->
+					</div>
+				</td>
+				<td class="col-status">
+					<div data-ng-if="item.Status==='send success'">
+						<span class=" promise-color">发送成功</span>
+
+						<div nsw-popovertip data-dir="bottom" style="margin-right: 40%">
+							<div>
+								<div>成功人数：{{item.TotalCount}}人</div>
+								<div>失败人数：{{item.ErrorCount}}人</div>
+							</div>
+						</div>
+					</div>
+					<div data-ng-if="item.Status==='send fail'">
+						<span class=" promise-color">发送失败</span>
+					</div>
+					<div data-ng-if="item.Status==='ready'">
+						<p class=" promise-color">等待发送</p>
+						<span data-ng-click="cancelJob(item.jobId)">取消发送</span>
+					</div>
+					<div data-ng-if="item.Status==='send pause'" class="promise-color">
+						已取消发送
+					</div>
+				</td>
+				<td class="col-date">
+					<div data-ng-if="!item.jobTime">
+						{{item.CreateTime|nswDate:'MM月dd日'}}
+					</div>
+					<div data-ng-if="item.jobTime">
+						{{item.jobTime|nswDate:'MM月dd日 HH:mm:ss'}}
+					</div>
+				</td>
+				<td class="col-date">
+					<div>
+						<button type="button" class="btn btn-default"
+						        ng-click="remove(item,'确定删除？该操作只能删除“查看历史消息”中的相关记录；不能删除已成功发送的消息')">
+							<span class="fa-delete"></span><span class="fa-delete-text">删除</span>
+						</button>
+					</div>
+				</td>
+			</tr>
+			<tr class="data-footer">
+				<td class="col-content" colspan="6">
+					<div class="pull-right search">
+						<div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

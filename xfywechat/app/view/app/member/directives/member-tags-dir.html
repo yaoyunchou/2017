@@ -1,0 +1,28 @@
+<em class="tag-arrow"  data-ng-if="UI.show"></em>
+<div class="tags-box"  data-ng-if="UI.show">
+    <div class="tags-list">
+        <ul>
+            <li data-ng-repeat="item in tagList" data-ng-if="item.name!=='未分组'"><input type="checkbox" id="{{item.tagId}}" data-ng-model="item.isChecked" data-ng-click="isSelected(item)"  ng-checked = "isSelecteds(item.tagId)"><label title="{{item.name}}" for="{{item.tagId}}" data-ng-bind="item.name" >dfsdfsd</label></li>
+
+        </ul>
+        <div class="clearfix"></div>
+        <a href="javascript:void(0)" class="create-tag promise-color"   ng-click="createCatalog()"> 新建标签</a>
+
+    </div>
+    <!--<p class="err" data-ng-if="err" data-ng-bind="err"></p>-->
+    <div class="tags-foot  message-box">
+        <p class="err" data-ng-if="err" data-ng-bind="err"></p>
+        <div class="button">
+            <button type="submit" class="btn btn-commit" ng-disabled="!validationTagIdList()"
+                    ng-click="saveTags()">
+                <label class="btn-icon btn-icon checkforward"></label>
+                <span class="btn-text">确认</span>
+            </button>
+            <!--data-ng-class="modalOptions.commitText? 'btn-cancel': 'btn-center'"-->
+            <button class="btn btn-cancel"  ng-click="close()" >
+                <label class="btn-icon checkcance"></label>
+                <span class="btn-text black">取消</span>
+            </button>
+        </div>
+    </div>
+</div>

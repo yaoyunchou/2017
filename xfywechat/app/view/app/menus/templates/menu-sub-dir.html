@@ -1,0 +1,9 @@
+<ul>
+	<li ng-repeat="sub in subMenus" ng-bind="sub.name" ng-click="selectSubMenu(sub,$event)"
+	    ng-class="getSelectedClass(sub)" class="sub-menu-item meun-item">
+	</li>
+	<li ng-click="addSubMenu(parent,$event)" class="meun-item" ng-show="subMenus.length<5" >
+		<span class="add-menu glyphicon glyphicon-plus">
+		</span>
+	</li>
+</ul>

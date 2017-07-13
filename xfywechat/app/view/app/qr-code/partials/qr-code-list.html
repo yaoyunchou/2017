@@ -1,0 +1,82 @@
+<div class="qr-code-list">
+	<div class="search-info">
+		<div class="search-one pull-right">
+			<input type="text" placeholder="请搜索标题" nsw-enter="searchData()" class="pull-left"
+			       ng-model="searchOptions.filter">
+			<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+			<a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+		</div>
+	</div>
+	<div class="content">
+		<div class="no-member" ng-if="!dataList || !dataList.length">
+			暂无记录！
+		</div>
+		<table ng-if="dataList && dataList.length" class="data-content">
+			<tr>
+				<th></th>
+				<th>二维码名称</th>
+				<th>二维码类型</th>
+				<th>二维码图片</th>
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="item in dataList" class="data-row">
+				<td class="col-checkbox">
+					<input type="checkbox" data-ng-model="item.isChecked" ng-checked="isItemSelected(item)"
+					       ng-click="selectItem(item)"/>
+				</td>
+				<td class="col-title">
+					<span title="{{item.title}}" data-ng-bind="item.title"></span>
+				</td>
+				<td class="col-type">
+					<div class="message">
+						<div class="message-type">
+							<span ng-show="item.type==='forever'">永久二维码</span>
+							<span ng-show="item.type==='temp'">临时二维码</span>
+						</div>
+						<span ng-show="item.massType==='txt'" ng-bind="item.content"></span>
+					</div>
+				</td>
+
+				<td class="col-image">
+					<div>
+						<img nsw-src="{{item.qrCodeUrl}}" alt="">
+					</div>
+				</td>
+				<td class="ctrl-btn">
+					<div class="btn-group" role="group">
+
+						<button type="button" class="btn btn-default btn-sm" ng-click="editItem(item)">
+							<span class="glyphicon glyphicon-pencil"></span><span class="fa-edt-text">编辑</span>
+						</button>
+						<button type="button" class="btn btn-default btn-sm" ng-click="goChart(item)">
+							<span class="glyphicon glyphicon-zoom-in"></span><span class="fa-edt-text">查看统计详情</span>
+						</button>
+						<a  href="{{ '../qrCodeMana/downQrCode?url='+item.qrCodeUrl}}" class="btn btn-default btn-sm" >
+							<span class="glyphicon glyphicon-circle-arrow-down"></span><span
+								class="fa-delete-text">下载</span>
+						</a>
+						<button type="button" class="btn btn-default btn-sm"
+						        ng-click="remove(item,'确定删除？')">
+							<span class="glyphicon glyphicon-remove-circle"></span><span
+								class="fa-delete-text">删除</span>
+						</button>
+
+					</div>
+				</td>
+			</tr>
+			<tr class="data-footer">
+				<td class="col-select" colspan="2">
+					<div class="keyword-group-selector" data-nsw-group-selector data-list-getter="getList"
+					     selected-Items-Getter="getSelectedItems"></div>
+					<button class="btn btn-default btn-remove" data-ng-click="removeitems()">批量删除</button>
+				</td>
+				<td class="col-content" colspan="6">
+					<div class="pull-right search">
+						<div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

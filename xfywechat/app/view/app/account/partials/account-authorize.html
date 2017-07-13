@@ -1,0 +1,34 @@
+<div class="authorize-body">
+		<ul class="authorize-body-check">
+			<li data-ng-click="changeChooes(true)" data-ng-class="{'on':isAutoAuthorize}" >
+				<img src="account/content/images/accoutn-icon-authorize_r1_c3.png" alt=""/>
+				<a  href="javascript:void(0)">授权绑定</a>
+				<p>安全可靠，无需密码</p>
+			</li>
+			<!--<li data-ng-click="changeChooes(false)" data-ng-class="{'on':!isAutoAuthorize}">-->
+				<!--<img src="account/content/images/accoutn-icon-authorize_r1_c1.png" alt=""/>-->
+				<!--<a href="javascript:void(0)">普通绑定</a>-->
+				<!--<p>简单，零门槛</p>-->
+			<!--</li>-->
+		</ul>
+		<div class="authorize-info">
+			<span>公众号授权可以通过一键登录授权给第三方开发者，无需提供密码，保证公众号安全。
+</span><a target="_blank" href="https://open.weixin.qq.com/cgi-bin/frame?t=home/wx_plugin_tmpl&lang=zh_CN" class="prompt radio-inline-prompt"><img src="components/content/images/form-icon-prompt.png" alt=""/></a>
+		</div>
+		<div class="authorize-conditions">
+			<h3><p>授权条件</p></h3>
+			<div class="authorize-conditions-text">
+				<p>1.拥有一个微信公众号 <a target="_blank" href="https://mp.weixin.qq.com/cgi-bin/readtemplate?t=register/step1_tmpl&lang=zh_CN ">如何申请?</a></p>
+			</div>
+			<div class="authorize-conditions-btn">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox"   data-ng-model="isAgree"> 我已满足以上条件
+					</label>
+				</div>
+				<div class="submit">
+					<button data-ng-disabled="!isAgree" data-ng-click="chooesAuthorizeWay()"  class="btn conditions-btn btn-warning">微信公众号授权</button>
+				</div>
+			</div>
+		</div>
+</div>

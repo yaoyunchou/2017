@@ -1,0 +1,105 @@
+/*demo样式，实际使用不引入该样式*/
+/*全局样式*/
+h1[id] {padding-top: 20px; margin-top: 0px;}
+.h2, h2 {font-size: 30px;}
+
+/*代码段容器*/
+.highlight {padding: 20px 0;}
+.highlight pre code {font-size: 13px; color: #333;}
+.code {padding: 2px 4px; font-size: 90%; color: #C7254E; background-color: #F9F2F4; border-radius: 4px;}
+
+/*文档分类全局样式*/
+.bs-docs-section > p,
+.bs-docs-section > ul,
+.bs-docs-section > ol,
+.bs-example {margin-right: 0px; margin-left: 0px; background-color: #FFF; border-color: #DDD; border-width: 1px; border-radius: 4px 4px 0px 0px; box-shadow: none;}
+
+/*清除定位*/
+.clear-position {position: static; display: block;}
+
+/*标注*/
+.bs-callout {padding: 20px; margin: 20px 0px; border-width: 1px 1px 1px 5px; border-style: solid; border-color: #EEE; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-radius: 3px;}
+.bs-callout > p,
+.bs-callout > ol,
+.bs-callout > ul {font-size: 16px; line-height: 1.75; margin-bottom: 1em;}
+/*说明标题、边框颜色*/
+.bs-callout-info h4    {color: #1B809E;}
+.bs-callout-info       {border-left-color: #1B809E;}
+/*警告标题、边框颜色*/
+.bs-callout-warning h4 {color: #AA6708;}
+.bs-callout-warning    {border-left-color: #AA6708;}
+/*危险标题、边框颜色*/
+.bs-callout-danger h4  {color: #CE4844;}
+.bs-callout-danger     {border-left-color: #CE4844;}
+
+/*代码颜色*/
+.s1 {color: #C30;}
+.nt {color: #2F6F9F;}
+.na {color: #4F9FCF;}
+.s  {color: #D44950;}
+.nc {color: #0A8;}
+.kd {color: #069;}
+.k  {color: #069;}
+.nd {color: #99F;}
+.s2 {color: #C30;}
+.c1 {color: #999;}
+.nl {color: #99F;}
+.nb {color: #366;}
+.k  {color: #069;}
+.nn {color: #0CF;}
+.nc {color: #0A8;}
+.c1 {color: #999;}
+.c  {color: #999;}
+
+
+
+
+
+.fontawesome-icon-list .fa-hover a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    color: #222;
+    line-height: 32px;
+    height: 32px;
+    padding-left: 10px;
+    border-radius: 4px;
+}
+.fontawesome-icon-list .fa-hover a:hover {
+    background-color: #1D9D74;
+    color: #FFF;
+    text-decoration: none;
+}
+.fontawesome-icon-list .fa-hover a:hover .text-muted {
+    color: #BBE2D5;
+}
+.fontawesome-icon-list .fa-hover a:hover .fa {
+    height: 32px;
+    line-height: 32px;
+    font-size: 26px;
+    vertical-align: -6px;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-feature-settings: normal;
+    font-language-override: normal;
+    font-kerning: auto;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-size: inherit;
+    text-rendering: auto;
+}
+.fontawesome-icon-list .fa-hover a .fa {
+    width: 32px;
+    font-size: 14px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 10px;
+}

@@ -1,0 +1,168 @@
+/*@charset "utf-8";*/
+.ke-icon-mytest {
+  background-image: url(../../../../plugin/kindeditor/themes/default/default.png);
+  background-position: 0px -672px;
+  width: 16px;
+  height: 16px;
+}
+span.ke-icon-spechars {
+  background-position: 0px -1216px;
+  width: 15px;
+  height: 16px;
+}
+/* tabs */
+.ke-tabs {
+  font: 12px/1 "sans serif", tahoma, verdana, helvetica;
+  border-bottom: 1px solid #A0A0A0;
+  padding-left: 5px;
+  margin-bottom: 20px;
+}
+.ke-tabs-ul {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.ke-tabs-li {
+  position: relative;
+  border: 1px solid #A0A0A0;
+  background-color: #F0F0EE;
+  margin: 0 2px -1px 0;
+  padding: 0 20px;
+  float: left;
+  line-height: 25px;
+  text-align: center;
+  color: #555555;
+  cursor: pointer;
+}
+.ke-tabs-li-selected {
+  background-color: #FFF;
+  border-bottom: 1px solid #FFF;
+  color: #000;
+  cursor: default;
+}
+.ke-tabs-li-on {
+  background-color: #FFF;
+  color: #000;
+}
+.spec-char .ke-tabs-li {
+  padding: 0 5px;
+}
+.ke-dialog-row-row {
+  height: 30px;
+  line-height: 30px;
+}
+
+.ke-dialog-row-row label {
+  width: 70px;
+}
+
+.ke-outline .ke-icon-selecttemps, .ke-outline .ke-icon-selectmodular {
+  background: url(../images/nswtpl.png) no-repeat;
+  width: 110px;
+  height: 19px;
+}
+
+.ke-icon-nswmultiimage {
+  background-position: 0px -1232px;
+  width: 16px;
+  height: 16px;
+}
+
+.ke-icon-nswimage {
+  background-position: 0px -496px;
+  width: 16px;
+  height: 16px;
+}
+
+.ke-icon-nswpreview {
+  background-position: 0px -16px;
+  width: 16px;
+  height: 16px;
+}
+.ke-outline .ke-icon-nswpreviewphone {
+  background: url(../images/phone-preview.png) no-repeat;
+  background-size: 18px;
+  width: 16px;
+  height: 16px;
+}
+.ke-toolbar-icon.ke-toolbar-icon-url.ke-icon-baidumap{
+  background: url(../images/baidu-icon.png) no-repeat;
+  background-size: 18px;
+  width: 16px;
+  height: 16px;
+}
+
+.ke-icon-reformat {
+  background-position: 0px -1056px;
+  width: 16px;
+  height: 16px;
+}
+.phone-box iframe::-webkit-scrollbar {
+   width: 2px;
+   height: 6px;
+ }
+.phone-box iframe::-webkit-scrollbar-thumb {
+  background: #f07802;
+  border-radius: 4px;
+}
+
+/*.tusbar{
+  width: 100%;
+  height: 30px;
+}*/
+
+
+.tabbody span {
+  margin: 5px 3px;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  height: 16px;
+  line-height: 16px;
+  cursor: pointer;
+  &:hover{
+    background-color:#f07802;
+  }
+}
+
+.ke-statusbar{
+  //display: none;
+
+}
+
+.nsw-editor-toolbar{
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-top: none;
+  .word-count .err{
+    text-align: left;
+    line-height: 37px;
+    margin-left: 12px;
+    width: 185px;
+  }
+}
+
+.nsw-editor-tool-icon{
+  float: left;
+  width: 19px;
+  height: 19px;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  display: inline-block;
+  &.icon-emotions{
+    background: url("../images/emotions-icon.png") no-repeat;
+  }
+  &.icon-link{
+    color: #b5b5b5;
+    font-size: 17px;
+  }
+}
+
+.emotion-item{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}

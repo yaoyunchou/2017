@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+/*对表单的验证框样式定义*/
+.form-control.ng-dirty.ng-invalid {
+	border-color: #f44336;
+}
+
+.form-control.ng-dirty.ng-valid, .form-validation .form-control.ng-dirty.ng-valid:focus {
+	border-color: #4caf50;
+}
+.form-control.ng-pristine:focus {
+	border-color: $promise-color !important;
+}
+.err,.require{
+	color:red;
+}
+
+
+.nsw-form {
+	position: relative;
+	.nsw-tab-content {
+		border: 1px solid #dcdcdc;
+		border-top: none;
+		
+	}
+	.nsw-tab-paneactive{
+		padding-top: 28px;
+		@at-root.nsw-label{
+			padding-left: 40px;
+			font-weight: normal;
+		}
+		@at-root.form-group {
+			margin-bottom: 20px;
+			&:before,&:after{
+				content: " ";
+				display: block;
+			}
+			&:after{
+				clear: both;
+			}
+			.img-imgbox{
+				margin-left:10px;
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+		.arrow-panel{
+			background-color:#f5f5f5;
+			border-top:1px solid #dcdcdc;
+			border-bottom:1px solid #dcdcdc;
+			padding-top: 30px;
+			position: relative;
+			.nsw-arrow{
+				position: absolute;
+				top:-16px;
+				left:158px;
+				width :20px;
+				height: 16px;
+				background: url("../images/form-icon-arrow-up.png") no-repeat;
+			}
+		}
+		.table{
+			th{
+
+			}
+		}
+	}
+
+
+	/* 每个表单的最下面的提交,取消 按钮组*/
+	.nsw-form-but-group {
+		margin-top: 25px;
+		overflow: hidden;
+	}
+
+	.nsw-dropdown {
+		position: relative;
+		.dropdown-toggle {
+			border: none;
+			background: #eee;
+			position: inherit;
+		}
+		.dropdown{
+			position: inherit;
+			.dropdown-menu{
+				margin: 6px 0;
+
+			}
+		}
+	}
+}
+.nsw-form-in{
+
+}

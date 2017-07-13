@@ -1,0 +1,70 @@
+{
+  "title": "我的工具",
+  "groups": [
+	{
+	  "icon": "c-menu-icon c-menu-home",
+	  "name": "欢迎页面",
+	  "key": "welcome",
+	  "state": "account",
+	  "defaultSelected": true
+	},
+	{
+	  "icon": "c-menu-icon c-menu-autoreply",
+	  "name": "自动回复",
+	  "key": "tools",
+	  "hide": false,
+	  "menus": [
+		{
+		  "name": "关注时回复",
+		  "state": "autoReplyOnFollow",
+		  "isDefault": true
+		},
+		{
+		  "name": "关键词回复",
+		  "key": "channel",
+		  "state": "keywordautoReply"
+		},
+		{
+		  "name": "无匹配回复",
+		  "key": "tplMarket",
+		  "state": "noMatchReply"
+		}
+	  ]
+	},
+	{
+	  "icon": "c-menu-icon c-menu-mass-message",
+	  "name": "群发消息",
+	  "key": "tools",
+	  "hide": true,
+	  "state": "massMessage"
+	},
+	{
+	  "icon": "c-menu-icon c-menu-member",
+	  "name": "粉丝管理",
+	  "key": "member",
+	  "hide": true,
+	  "state": "member"
+	},
+	{
+	  "icon": "c-menu-icon c-menu-message",
+	  "name": "实时消息",
+	  "key": "message",
+	  "hide": true,
+	  "state": "message.list"
+	},
+	{
+	  "icon": "c-menu-icon c-menu-menu",
+	  "name": "自定义菜单",
+	  "key": "menus",
+	  "hide": true,
+	  "state": "menu"
+	},
+	{
+	  "icon": "c-menu-icon c-menu-material",
+	  "name": "素材管理",
+	  "key": "materials",
+	  "hide": true,
+	  "state": "materialsList"
+	}
+  ]
+}

@@ -1,0 +1,153 @@
+<div class="member-info">
+    <div class="search-info">
+        <div class="member-list-search">
+            <div class="add-catalog pull-right">
+                <button type="submit" class="btn btn-warning"
+                        ng-click="createCatalog()">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    <span class="nsw-btn-text">新建标签</span>
+                </button>
+            </div>
+            <div class="search-one pull-right">
+                <input type="text" placeholder="请输入用户名称" nsw-enter="searchData()" class="pull-left"
+                       ng-model="searchOptions.filter">
+                <a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+                <a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <tabset>
+            <tab class="tab-title" heading="{{getTabTitle()}}"></tab>
+        </tabset>
+        <div class="content">
+            <div class="con-left">
+                <div class="no-member" ng-if="options.showEmptyTip">
+                    暂无用户！
+                </div>
+                <table ng-if="dataList && dataList.length" class="data-content">
+                    <tr ng-repeat="item in dataList" class="data-row">
+                        <td class="col-select">
+                            <div>
+                                <input ng-disabled="currentCatalog.groupid!==1&&item.groupid === 1" type="checkbox" class="btn-check" ng-checked="isItemSelected(item)"
+                                       ng-click="selectItem(item)"/>
+                            </div>
+                        </td>
+                        <td class="col-image">
+                            <div>
+                                <img class="img-header" nsw-src="{{item.headimgurl}}" alt="{{item.nickname}}">
+                                <div class="show-detail" data-nsw-popovertip dir="right">
+                                    <dl>
+                                        <dt><img nsw-src="{{item.headimgurl}}"
+                                                 alt="{{item.nickname}}"></dt>
+                                        <dd>
+                                            <span class="detail-item">性别 : <span>{{item.sex===1?'男':'女'}}</span></span><br/>
+                                            <span>地区 :</span><span class="region" ng-bind="item.country"></span>
+                                            <span class="region" ng-bind="item.province"></span>
+                                            <span class="region" ng-bind="item.city"></span>
+                                            <div class="detail-item">
+                                                <span>关注时间:</span>
+                                                <span >{{item.subscribe_time|nswDate:'yyyy-MM-dd'}}</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-content">
+                            <div>
+                                <div class="nickname" ng-class="item.groupid === 1?'block-member':''">
+                                    <span ng-show="!item.remark" ng-bind="item.nickname"></span>
+                                    <span ng-show="item.remark" ng-bind="item.remark"></span>
+                                    <span ng-show="item.remark">({{item.nickname}})</span>
+                                </div>
+                                <div class="tag-detail" data-ng-if="item.groupid!==1">
+                                        <span data-ng-show="!item.tagid_list.length">无标签</span>
+                                        <div class = "tag-spans" data-ng-show="!!item.tagid_list.length">
+                                            <span data-ng-repeat="tag in item.tagid_list" class="tag" data-ng-click="deleteTag(item,tag)">
+                                                {{tag.name}}
+                                                <em class="glyphicon glyphicon-remove-sign"></em>
+                                            </span>
+                                        </div><span class="caret"></span>
+                                        <div class="member-position getTags" ctg-data="catalogList" member-tags data-placement="{{$index>3?'top':'bottom'}}" data-member="{{item.openid}}" data-ng-model="item.tagid_list" create-catalog="createCatalog()"></div>
+                                    </div>
+                                    <em class="icon icon-detail"></em>
+                            </div>
+                        </td>
+                        <td class="col-group">
+                           <button data-ng-if="item.groupid !== 1" class="btn btn-default"  ng-click="editNickName(item)" >修改备注</button>
+                            <button data-ng-if="item.groupid === 1" class="btn btn-default"  ng-click="switchToCatalog(item,0)" >移出黑名单</button>
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="data-footer">
+                    <!--<div class="col-select">
+                        <input id="selectAll" type="checkbox" class="btn-check-all" ng-model="formOptions.isAllSelected"
+                               ng-click="selectAll(!formOptions.isAllSelected)"/></div>
+
+                    <label for="selectAll" class="pull-left">全选</label>-->
+                    <div class="col-selector" data-nsw-group-selector data-list-getter="getList"
+                         selected-Items-Getter="getSelectedItems"></div>
+
+                    <div data-ng-if="!hasGroupSelected" class="dropup  pull-left">
+                        <div   class="select-tags  dropdown-toggle" >
+                            <span class="show-tag-box" ng-class="!hasSelectedItems()?'disabled-btn':'go'"  >打标签</span>
+                            <div class="member-position getTags" ctg-data="catalogList" member-tags data-placement="top"  data-member="{{item.openid}}" data-ng-model="selectArr" create-catalog="createCatalog()"></div>
+                        </div>
+
+                    </div>
+                    <!--<div data-ng-if="!hasGroupSelected"  class=" catalog-dropup  pull-left margin-left-20">-->
+                        <!--<button class="btn btn-default" ng-disabled="!hasSelectedItems()"   ng-click="switchToCatalog(null,1)">-->
+                            <!--加入黑名单-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <div data-ng-if="hasGroupSelected"  class=" catalog-dropup  pull-left margin-left-20 ">
+                        <button class="btn btn-default" ng-disabled="!hasSelectedItems()"   ng-click="switchToCatalog(null,0)">
+                            移出黑名单
+                        </button>
+                    </div>
+                    <!--<div class="pull-right">-->
+                        <!--<span>当前用户总数：</span>-->
+                        <!--<span ng-bind="searchOptions.totalRows"></span>-->
+                    <!--</div>-->
+                    <div class="pull-right search">
+                        <div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ctg-list">
+                <div class="catalog-list-item group-header"
+                     ng-class="hasGroupSelected?'':'curr'"
+                    >
+                    <div class="ctg-content"><span ng-click="selectCatalog({})">全部用户({{getTotal()}})</span>
+                        <em class="glyphicon "
+                            ng-class="showSubCatalogs?'glyphicon-triangle-bottom':'glyphicon-triangle-top'"  ng-click="toggleSubCatalogs()"></em>
+                    </div>
+                </div>
+                <div standard="con-left" platform-get-height style="height: 100%; overflow-y: auto">
+                    <ul class="catalog-list">
+                        <li class="catalog-list-item" ng-class="ctg.tagId===currentCatalog.tagId?'curr':''"
+                            ng-hide="showSubCatalogs"
+                            ng-repeat="ctg in catalogList|filter:{name:'!黑名单'}" ng-click="selectCatalog(ctg)">
+                            <div class="ctg-content">
+                                <span ng-bind="ctg.name"></span>
+                                <span>({{ctg.count}})</span>
+                                <em ng-show="!isDefaultCatalog(ctg)" class="pull-right icon-remove-active"
+                                    ng-click="removeCatalog(ctg, $event)"></em>
+                                <em ng-show="!isDefaultCatalog(ctg)" class="pull-right icon-edit-active"
+                                    ng-click="editCatalog(ctg, $event)"></em>
+
+                            </div>
+                        </li>
+                    </ul>
+                    <!--<div class="blacklist"  ng-class="1===currentCatalog.groupid?'curr':''"  ng-click="selectCatalog({name:'黑名单',groupid:1})">黑名单({{blacklist}})-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

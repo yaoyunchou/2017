@@ -1,0 +1,130 @@
+.template-box {
+  width: 447px;
+  border: 1px solid #dcdcdc;
+  padding: 12px 10px;
+  background: #FFFFFF;
+  color: #515366;
+  font-size: 12px; }
+  .template-box textarea {
+    border-bottom: 1px dashed #dcdcdc;
+    width: 100%;
+    overflow: hidden;
+    min-height: 100px; }
+  .template-box h3 {
+    font-weight: normal;
+    font-size: 12px;
+    color: #515366;
+    margin-top: 10px; }
+    .template-box h3 span {
+      border-left: 3px solid #EF8300;
+      padding-left: 8px; }
+
+.template-box {
+  width: 447px;
+  border: 1px solid #dcdcdc;
+  padding: 12px 10px;
+  background: #FFFFFF;
+  color: #515366;
+  font-size: 12px; }
+  .template-box textarea {
+    border-bottom: 1px dashed #dcdcdc;
+    width: 100%;
+    overflow: auto;
+    height: 170px;
+    resize: none; }
+  .template-box h3 {
+    font-weight: normal;
+    font-size: 12px;
+    color: #515366;
+    margin-top: 10px;
+    margin-bottom: 15px; }
+    .template-box h3 span {
+      border-left: 3px solid #EF8300;
+      padding-left: 8px; }
+
+.message-template-list .search-info {
+  position: absolute;
+  top: 30px;
+  right: 0; }
+.message-template-list .content {
+  overflow: hidden; }
+.message-template-list .cancel-job {
+  cursor: pointer; }
+  .message-template-list .cancel-job:hover {
+    color: #f08402; }
+.message-template-list .message-template-list-tab {
+  font-size: 12px;
+  width: 100%; }
+  .message-template-list .message-template-list-tab tr td {
+    min-height: 70px;
+    border-bottom: 1px dashed #dcdde1; }
+  .message-template-list .message-template-list-tab tr .col-checkbox {
+    width: 80px;
+    border-bottom: 1px dashed #dcdde1; }
+    .message-template-list .message-template-list-tab tr .col-checkbox input {
+      margin-left: 24px; }
+  .message-template-list .message-template-list-tab tr .col-tmplate-id {
+    width: 190px;
+    word-break: break-all;
+    border-bottom: 1px dashed #dcdde1;
+    padding: 20px 0px; }
+    .message-template-list .message-template-list-tab tr .col-tmplate-id span {
+      padding-right: 20px;
+      display: inline-block; }
+  .message-template-list .message-template-list-tab tr .col-title {
+    width: 115px;
+    border-bottom: 1px dashed #dcdde1;
+    padding-right: 15px; }
+    .message-template-list .message-template-list-tab tr .col-title > span {
+      display: inline-block;
+      width: 85px;
+      word-wrap: break-word;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+  .message-template-list .message-template-list-tab tr .col-template-status {
+    width: 50px; }
+    .message-template-list .message-template-list-tab tr .col-template-status span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 1em;
+      border: 1px solid #515567; }
+      .message-template-list .message-template-list-tab tr .col-template-status span.on {
+        background: #EF8300;
+        border-color: #EF8300; }
+  .message-template-list .message-template-list-tab tr .col-template-tag {
+    width: 160px; }
+  .message-template-list .message-template-list-tab tr .col-status {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 95px;
+    border-bottom: 1px dashed #dcdde1; }
+    .message-template-list .message-template-list-tab tr .col-status img {
+      width: 124px;
+      height: 124px; }
+  .message-template-list .message-template-list-tab tr .ctrl-btn {
+    border-bottom: 1px dashed #dcdde1; }
+    .message-template-list .message-template-list-tab tr .ctrl-btn .btn-default:hover {
+      color: #EF8300;
+      border-color: #EF8300; }
+  .message-template-list .message-template-list-tab .data-footer td {
+    height: 56px;
+    background: #f6f6f6; }
+    .message-template-list .message-template-list-tab .data-footer td .keyword-group-selector {
+      float: left;
+      margin: 10px 15px; }
+  .message-template-list .message-template-list-tab .data-footer .pull-right {
+    margin-right: 15px; }
+  .message-template-list .message-template-list-tab .data-footer .col-select .btn {
+    margin-top: 8px; }
+
+.template-preview {
+  margin-left: 175px; }
+
+.message-template-readonly {
+  background-color: #ffffff !important; }
+
+/*# sourceMappingURL=message-template.css.map */

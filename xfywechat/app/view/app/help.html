@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="renderer" content="webkit">
+	<title>微信管家</title>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<!-- inject:html -->
+	<!-- any *.html files among your sources will go here as: <link rel="import" href="FILE"> -->
+	<!-- endinject -->
+
+	<!-- inject:program css -->
+	<link rel="stylesheet"  href="../plugins/jquery/css/jquery-ui.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/exp-bootstrap.css">
+	<link rel="stylesheet"  href="../app/main/content/css/main.css">
+	<link rel="stylesheet"  href="../app/components/content/css/platform.css">
+	<!-- endinject -->
+	<!-- inject:pluginjs -->
+	<script type="text/javascript" charset="utf-8" src="../target/frames.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../target/tools.min.js"></script>
+	<!-- endinject -->
+</head>
+<body ng-app="app">
+<div  ng-controller="wechatCtrl">
+	<div class="container-fluid c-header">
+		<div class="container-fluid c-header">
+			<div class="container">
+				<a href="index.html" class="c-logo"></a>
+				<div class="c-manager">
+					<div>
+						<span class="wechat-icon" >微信管家 </span>
+						<a href="{{dataList.cmsProjectIndex}}" >切换</a>
+					</div>
+					<div>
+						<a class="c-user-name" href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;<span data-ng-bind="dataList.name"></span>&nbsp;&nbsp;欢迎你！</a>
+						<a target="_blank" href="{{dataList.formal_domain}}" >网站首页</a>&nbsp;
+						<span >｜&nbsp;</span>
+						<a href="help.html" >帮助中心</a>
+						<span >&nbsp;｜</span>
+						<a data-ng-if = "dataList.displayLogoutBtn"   href="index.html" >返回</a>
+						<span >&nbsp;｜</span>
+						<a data-ng-if = "dataList.displayLogoutBtn"  href="javascript:void(0)" ng-click="exit('../j_spring_cas_security_logout')" role="button" >退出</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container c-container">
+		<div class="help-word">
+			<div style="layout-grid:15.6pt" class="WordSection1">
+
+				<p align="center" style="margin-bottom:7.8pt;text-align:center;
+text-indent:44.0pt" class="MsoNormal"><b><span style="font-size:22.0pt">微信管家使用指南（目录）</span></b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+				<p align="center" style="margin-bottom:7.8pt;text-align:center;
+text-indent:21.0pt" class="MsoNormal">目<span lang="EN-US">&nbsp;&nbsp;&nbsp; </span>录</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:-18.0pt" class="MsoListParagraph"><span lang="EN-US">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span></span><span lang="EN-US"><a href="#_1.绑定公众号"><span lang="EN-US"><span lang="EN-US">绑定公众号</span></span></a></span></p>
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_1.1授权绑定">1.1<span lang="EN-US"><span lang="EN-US">授权</span></span><span lang="EN-US"><span lang="EN-US">绑定</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:-18.0pt" class="MsoListParagraph"><span lang="EN-US">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span></span><span lang="EN-US"><a href="#_2.管理图文素材"><span lang="EN-US"><span lang="EN-US">管理</span></span><span lang="EN-US"><span lang="EN-US">图文</span></span><span lang="EN-US"><span lang="EN-US">素材</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_2.1新建单图文素材">2.1<span lang="EN-US"><span lang="EN-US">新建</span></span><span lang="EN-US"><span lang="EN-US">单</span></span><span lang="EN-US"><span lang="EN-US">图文素材</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_2.2新建多图文素材">2.2<span lang="EN-US"><span lang="EN-US">新建</span></span><span lang="EN-US"><span lang="EN-US">多</span></span><span lang="EN-US"><span lang="EN-US">图文素材</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_2.3删除图文素材">2.3<span lang="EN-US"><span lang="EN-US">删除</span></span><span lang="EN-US"><span lang="EN-US">图文素材</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:-18.0pt" class="MsoListParagraph"><span lang="EN-US">3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span></span><span lang="EN-US"><a href="#_3.自动回复"><span lang="EN-US"><span lang="EN-US">自动</span></span><span lang="EN-US"><span lang="EN-US">回复</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_3.1关注时回复">3.1<span lang="EN-US"><span lang="EN-US">关注时</span></span><span lang="EN-US"><span lang="EN-US">回复</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_3.2关键词回复">3.2<span lang="EN-US"><span lang="EN-US">关键词</span></span><span lang="EN-US"><span lang="EN-US">回复</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_3.3无匹配回复">3.3<span lang="EN-US"><span lang="EN-US">无匹配</span></span><span lang="EN-US"><span lang="EN-US">回复</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:-18.0pt" class="MsoListParagraph"><span lang="EN-US">4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span></span><span lang="EN-US"><a href="#_4.自定义菜单"><span lang="EN-US"><span lang="EN-US">自定义</span></span><span lang="EN-US"><span lang="EN-US">菜单</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_4.1菜单管理">4.1<span lang="EN-US"><span lang="EN-US">菜单</span></span><span lang="EN-US"><span lang="EN-US">管理</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_4.2一级菜单">4.2<span lang="EN-US"><span lang="EN-US">一级</span></span><span lang="EN-US"><span lang="EN-US">菜单</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_4.3二级菜单">4.3<span lang="EN-US"><span lang="EN-US">二级</span></span><span lang="EN-US"><span lang="EN-US">菜单</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:-18.0pt" class="MsoListParagraph"><span lang="EN-US">5.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span></span><span lang="EN-US"><a href="#_群发消息"><span lang="EN-US"><span lang="EN-US">群发</span></span><span lang="EN-US"><span lang="EN-US">消息</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_5.1新建群发消息">5.1<span lang="EN-US"><span lang="EN-US">新建</span></span><span lang="EN-US"><span lang="EN-US">群发</span></span><span lang="EN-US"><span lang="EN-US">消息</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US"><a href="#_5.2管理群发消息">5.2<span lang="EN-US"><span lang="EN-US">管理</span></span><span lang="EN-US"><span lang="EN-US">群发消息</span></span></a></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+				<h2 style="margin-bottom:7.8pt"><a name="OLE_LINK2"></a><a name="OLE_LINK1"></a><a name="/_1.绑定公众号"></a><span lang="EN-US">1.</span>绑定公众号</h2>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">在“欢迎页面”点击<span lang="EN-US">“</span>新增账号<span lang="EN-US">”</span>可进行账号绑定。</p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_1.1授权绑定"></a><span lang="EN-US">1.1</span>授权绑定</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>选择<span lang="EN-US">“</span>授权绑定<span lang="EN-US">”</span>，再点击<span lang="EN-US">“</span>微信公众号授权<span lang="EN-US">”</span></b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="330" border="0" src="help/image/image005.jpg" id="图片 30"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>手机扫描二维码进行授权绑定</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">3.</span>授权成功后，选择功能菜单</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span lang="EN-US"><img width="191" height="313" border="0" src="help/image/image006.jpg" id="图片 12"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">4.</span>选择微信号类型，保存后绑定成功</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="342" border="0" src="help/image/image007.jpg" id="图片 31"></span></p>
+
+				<h2 style="margin-bottom:7.8pt"><a name="/_2.管理图文素材"></a><span lang="EN-US">2.</span>管理图文素材</h2>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击一级导航“素材管理”，进入相应页面。默认进入<span lang="EN-US">“</span>素材管理<span lang="EN-US">-</span>图文素材<span lang="EN-US">”</span>页面。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="226" border="0" src="help/image/image008.jpg" id="图片 1"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">鼠标移动至“新建图文”，可选择新建单<span lang="EN-US">/</span>多图文素材。</p>
+
+				<p style="margin-bottom:7.8pt" class="MsoNormal"><span lang="EN-US"><img width="554" height="227" border="0" src="help/image/image009.jpg" id="图片 32"></span></p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_2.1新建单图文素材"></a><span lang="EN-US">2.1</span>新建单图文素材</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击<span lang="EN-US">“</span>新建单图文<span lang="EN-US">”</span>，进行单图文消息编辑。点击右上角<span lang="EN-US">“</span>输入内容<span lang="EN-US">”</span>，可进行<span lang="EN-US">“</span>选取内容<span lang="EN-US">”</span>和<span lang="EN-US">“</span>输入内容<span lang="EN-US">”</span>的切换。默认进入<span lang="EN-US">“</span>选取内容<span lang="EN-US">”</span>的编辑页面（建议采用选取内容的方式进行编辑）。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>选取内容</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">下拉进行频道和分类列表的选择，输入标题名称进行搜索，若不输入标题名称直接进行搜索，显示该分类下的全部文章。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="265" border="0" src="help/image/image010.jpg" id="图片 33"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">选择文章后，可对标题、封面图片、摘要、正文、原文链接地址进行编辑、修改。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="451" border="0" src="help/image/image011.jpg" id="图片 34"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>标题（必填）：长度为<span lang="EN-US">1-64</span>个字（一个字母也算是一个字，不支持换行及设置字体大小）；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>封面图片（必填）：点击可在素材库中选取，或进行本地上传；最大上传容量<span lang="EN-US">2M</span>，允许上传的格式：<span lang="EN-US">bmp</span>、<span lang="EN-US">png</span>、<span lang="EN-US">jpeg</span>、<span lang="EN-US">jpg</span>、<span lang="EN-US">gif</span>。大图片建议尺寸：<span lang="EN-US">900*500</span>像素；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>摘要（选填）：最多可输入<span lang="EN-US">120</span>个字（一个字母也算是一个字），填写摘要后，在粉丝收到的图文消息封面会显示摘要内容；若未填写，在粉丝收到的图文消息封面则展示部分正文内容；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>正文（必填）：最多可输入<span lang="EN-US">20000</span>个字（一个字母也算是一个字）；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>原文链接（选填）：填写后，图文消息下发给粉丝后，粉丝通过手机微信收到消息后，在正文中点击“阅读原文<span lang="EN-US">”</span>，跳转到设置的网页链接。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>输入内容</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">对标题、封面图片、摘要、正文、原文链接地址的编辑与修改与<span lang="EN-US">“</span>选取内容<span lang="EN-US">”</span>一致。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">3.</span>素材的保存规则</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">必须填写标题与封面图片，才可对素材进行保存。</p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_2.2新建多图文素材"></a><span lang="EN-US">2.2</span>新建多图文素材</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击<span lang="EN-US">“</span>新建多图文<span lang="EN-US">”</span>，进行多图文消息编辑，与单图文消息的编辑一致。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>多图文素材内容的新增</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击左边的<span lang="EN-US">“+”</span>，可增加图文消息的内容，最多可添加<span lang="EN-US">6</span>个图文。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="278" border="0" src="help/image/image012.jpg" id="图片 35"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">需要注意的是，除第一个图文消息封面图片为大图，大图片建议尺寸：<span lang="EN-US">900*500</span>像素。其他图文消息的封面图片显示为小图片，建议尺寸：<span lang="EN-US">200*200</span>像素。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>多图文素材的编辑</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">鼠标移动到列表时，显示“编辑”和“删除”按钮，可对图文消息进行编辑、删除，鼠标选中上下拖动可以进行排序。</p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_2.3删除图文素材"></a><span lang="EN-US">2.3</span>删除图文素材</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">在图文素材管理页面，将鼠标移到图文素材时，右上角显示<span lang="EN-US">“×”</span>，点击删除图标，可删除图文素材。 </p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="284" border="0" src="help/image/image013.jpg" id="图片 36"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">删除图文素材后，如果是群发消息的素材，则不影响群发后的效果；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">如果是自动回复的素材，那对应的自动回复将受到影响，具体为：回复后依旧可以看到封面图、标题，单图文还能看到摘要，但点开时会显示：<span lang="EN-US"><img width="219" height="184" border="0" src="help/image/image014.jpg" id="图片 101"></span></p>
+
+				<h2 style="margin-bottom:7.8pt"><a name="/_3.自动回复"></a><span lang="EN-US">3.</span>自动回复</h2>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_3.1关注时回复"></a><span lang="EN-US">3.1</span>关注时回复</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>关注时回复设置方法</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击一级导航“自动回复<span lang="EN-US">-</span>关注时回复”，进入相应页面。填写回复内容，完成关键词回复设置。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="293" border="0" src="help/image/image015.jpg" id="图片 40"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span style="background:white">设置被关注时回复后，粉丝在关注您的公众号时，会自动发送您设置的文字<span lang="EN-US">/</span>图片给粉丝，设置后可根据需要“修改”或“删除”内容。</span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>关注时回复的规则</b></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>文本回复：输入框只可以输入<span lang="EN-US">1-600</span>个字（一个字母也算是一个字）；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>图片回复：只可选取一张图片作为回复。</p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_3.2关键词回复"></a><span lang="EN-US">3.2</span>关键词回复</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>关键词回复设置方法</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击一级导航“自动回复<span lang="EN-US">-</span>关键词回复”，进入相应页面。填写规则名、关键词，选择匹配方式、回复类型，完成关键词回复设置。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="336" border="0" src="help/image/image016.jpg" id="图片 38"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>关键词回复的规则</b></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>规则名：规则上限为<span lang="EN-US">200</span>条规则（每条规则名，最多可设置<span lang="EN-US">60</span>个汉字）；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>关键词：每条规则内最多设置<span lang="EN-US">10</span>条关键词（每条关键词，最多可设置<span lang="EN-US">30</span>个汉字），若设置了相同的关键词，但回复内容不同，系统会随机回复；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>匹配方式：只能选择一种（<span style="color:red">即单选</span>），模糊匹配或者精确匹配。粉丝发送的消息内如果含有设置的关键词，这时选择（精确匹配或者模糊匹配）：（<span lang="EN-US">1</span>）如果设置了精确匹配则发送的内容与设置的关键词必须完全一样，才会触发关键字回复，比如：设置“<span lang="EN-US">123</span>”，仅回复“<span lang="EN-US">123</span>”才会触发关键字回复；（<span lang="EN-US">2</span>）如果设置了模糊匹配则只需要发送的内容包含设置的关键字，就会触发关键字回复给对方。比如：设置“<span lang="EN-US">123</span>”，回复“<span lang="EN-US">1234</span>”会触发，但回复不完整的关键字“<span lang="EN-US">12</span>”则不会触发关键字回复）；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-size:12.0pt;font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>回复类型：只能选择一种，文本回复、图片回复或者图文回复，每条规则内最多<span lang="EN-US">1</span>条回复内容。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span style="background:yellow">如果粉丝发送的消息中含有不同规则里相同的关键词，则回复最近编辑保存的内容。</span></p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_3.3无匹配回复"></a><span lang="EN-US">3.3</span>无匹配回复</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>无匹配回复设置方法</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击一级导航“自动回复<span lang="EN-US">-</span>无匹配回复”，进入相应页面。填写回复内容，完成关键词回复设置。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span lang="EN-US"><img width="554" height="293" border="0" src="help/image/image017.jpg" id="图片 39"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">当用户发送的内容无任何关键词可匹配时，则属于无匹配回复。设置后可根据需要“修改”或“删除”内容。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>无匹配回复的规则</b></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>文本回复：输入框只可以输入<span lang="EN-US">1-600</span>个字（一个字母也算是一个字）；</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>图片回复：只可选取一张图片作为回复。</p>
+
+				<h2 style="margin-bottom:7.8pt"><a name="/_4.自定义菜单"></a><span lang="EN-US">4.</span>自定义菜单</h2>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">已认证的订阅号、未认证的服务号以及已认证的服务号可以直接开启自定义菜单；而未认证的订阅号需要先申请微信认证，才可以开启自定义菜单。开启自定义菜单之后，将在<span lang="EN-US">24</span>小时内对所有粉丝生效。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span style="background:white">编辑中的菜单不会马上被用户看到，点击发布后，会在<span lang="EN-US">24</span>小时后在手机端同步显示，粉丝不会收到更新提示，若多次编辑，以最后一次保存为准。</span></p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_4.1菜单管理"></a><span lang="EN-US">4.1</span>菜单管理</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击一级导航“自定义菜单”，进入相应页面。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>开启自定义菜单：开启自定义菜单之后，将在<span lang="EN-US">24</span>小时内对所有用户生效。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>禁用自定义菜单：系统默认为禁用状态。禁用后，在<span lang="EN-US">24</span>小时内对所有用户生效。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">自定义菜单分为两部分：菜单管理（左边）及菜单内容管理（右边）</p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><span lang="EN-US"><img width="554" height="325" border="0" src="help/image/image018.jpg" id="图片 13"></span></h3>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_4.2一级菜单"></a><span lang="EN-US">4.2</span>一级菜单</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>添加一级菜单</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击<span lang="EN-US">“+”</span>可添加一级菜单，最多可添加<span lang="EN-US">3</span>个一级菜单，一级菜单命名最多<span lang="EN-US">4</span>个汉字或<span lang="EN-US">8</span>个字符。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span lang="EN-US"><img width="554" height="367" border="0" src="help/image/image019.jpg" id="图片 14"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>编辑一级菜单</b></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>排序：鼠标选中任一一级菜单左右拖动，可进行一级菜单之间位置的互换，互换后该一级菜单下的二级菜单跟着一级菜单移动。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>删除：点击一级菜单，在右边可删除该菜单。删除后，该一级菜单下的内容将都被删除。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>编辑名称（重命名）：点击一级菜单，右边可编辑名称。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="323" border="0" src="help/image/image020.jpg" id="图片 42"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">3.</span>设定一级菜单内容</b>（<span style="color:red">只有在一级菜单下无二级菜单时，才可设定一级菜单内容，否则只能编辑一级菜单的名称</span>）</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">设置的内容包含：发送消息或跳转到网页。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="315" border="0" src="help/image/image021.jpg" id="图片 43"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>发送消息：可发送信息类型包括图片和图文消息。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span><b>图片</b>：每次只能群发一张图片，可从素材库选择或本地上传图片。本地上传图片并群发后，该图片将被保存到素材库中；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="322" border="0" src="help/image/image022.jpg" id="图片 44"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span><b>图文</b>：每次只能群发一个单图文或者多图文消息，同样可以从素材库选择或新建图文消息。新建图文消息的话，可选择单图文消息或者多图文消息。新建的图文素材群发后，将被保存到素材库中；
+				</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:7.8pt;
+margin-left:21.0pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="319" border="0" src="help/image/image023.jpg" id="图片 45"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>跳转到网页：输入<span lang="EN-US">URL</span>链接，用户点击该菜单时，直接跳转到对应网页。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="318" border="0" src="help/image/image024.jpg" id="图片 46"></span></p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_4.3二级菜单"></a><span lang="EN-US">4.3</span>二级菜单</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>添加二级菜单</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">在一级菜单下点击<span lang="EN-US">“+”</span>可添加二级菜单，每个一级菜单下最多可添加<span lang="EN-US">5</span>个二级菜单，二级菜单命名最多<span lang="EN-US">8</span>个汉字或<span lang="EN-US">16</span>个字符。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="323" border="0" src="help/image/image025.jpg" id="图片 47"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>编辑二级菜单</b></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>排序：鼠标选中任一二级菜单上下拖动，可进行二级菜单之间位置的互换。同一个一级菜单下的二级菜单互换同一个一级菜单下的二级菜单；一级菜单与二级菜单不可互换；不是同一个一级菜单下的二级菜单不可互换。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>删除：点击二级菜单，在右边可删除该菜单。删除后，该菜单下的内容将都被删除。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>编辑名称（重命名）：点击二级菜单，右边可编辑名称。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="325" border="0" src="help/image/image026.jpg" id="图片 48"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">3.</span>设定二级菜单内容</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">可对二级菜单进行发送消息、跳转到网页设置，与设定一级菜单内容一致。</p>
+
+				<h2 style="margin-top:0cm;margin-right:0cm;margin-bottom:7.8pt;margin-left:
+18.0pt;text-indent:-18.0pt"><a name="/_群发消息"></a><span lang="EN-US">5.<span style="font:7.0pt &quot;Times New Roman&quot;"> </span></span>群发消息</h2>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">点击一级导航“群发消息”，进入相应页面。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="333" border="0" src="help/image/image027.jpg" id="图片 49"></span></p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_5.1新建群发消息"></a><span lang="EN-US">5.1</span>新建群发消息</h3>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">进入<span lang="EN-US">“</span>群发消息<span lang="EN-US">”</span>页面，默认在<span lang="EN-US">“</span>新建群发消息<span lang="EN-US">”</span>页面。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>如何群发？</b></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>选择群发对象：支持“全部用户<span lang="EN-US">”</span>或<span lang="EN-US">“</span>按分组选择<span lang="EN-US">”</span>；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="338" border="0" src="help/image/image028.jpg" id="图片 50"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>选择群发消息类型：可选择的类型如下图，支持文本、图片、图文消息。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="332" border="0" src="help/image/image029.jpg" id="图片 51"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:42.0pt;text-indent:-21.0pt" class="MsoListParagraph"><span lang="EN-US" style="font-family:Wingdings">l<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;
+</span></span>编辑群发内容</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b>文本</b>：字数上限为<span lang="EN-US">600</span>个字符、或<span lang="EN-US">600</span>个汉字；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b>图片</b>：每次只能群发一张图片，可从素材库选择或本地上传图片。本地上传图片并群发后，该图片将被保存到素材库中，如下图；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="553" height="337" border="0" src="help/image/image030.jpg" id="图片 52"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b>图文</b>：每次只能群发一个单图文或者多图文消息，同样可以从素材库选择或新建图文消息。新建图文消息的话，可选择单图文消息或者多图文消息。新建的图文素材群发后，将被保存到素材库中，如下图：</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:0cm" class="MsoNormal"><span lang="EN-US"><img width="554" height="333" border="0" src="help/image/image031.jpg" id="图片 53"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">2.</span>群发消息的人数上限？</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">微信公众平台群发消息的人数没有限制，只能群发给粉丝，不支持群发给非订阅用户。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">3.</span>群发消息的规则<span lang="EN-US">/</span>限制？</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">订阅号（认证用户、非认证用户）在<span lang="EN-US">1</span>天只能群发<span lang="EN-US">1</span>条消息（每天<span lang="EN-US">0</span>点更新，次数不会累加）；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">服务号（认证用户、非认证用户），<span lang="EN-US">1</span>个月（按自然月）内可发送<span lang="EN-US">4</span>条群发消息（每月月底<span lang="EN-US">0</span>点更新，次数不会累加）；</p>
+
+				<h3 style="margin-bottom:7.8pt;text-indent:7.5pt"><a name="/_5.2管理群发消息"></a><span lang="EN-US">5.2</span>管理群发消息</h3>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph">在“群发消息”菜单下，点击<span lang="EN-US">“</span>已发送列表<span lang="EN-US">”</span>，切换到群发消息管理的页面。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">在群发消息管理中，可删除群发消息，查看群发消息（类型，时间，发送成功<span lang="EN-US">/</span>失败人数）</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><b><span lang="EN-US">1.</span>群发消息的删除 </b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">通过查看已发送列表（包括发送成功、发送失败的消息），点击“删除<span lang="EN-US">”</span>按钮，可删除群发消息，如下图：</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal"><span lang="EN-US"><img width="478" height="253" border="0" src="help/image/image032.jpg" id="图片 28"></span></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">将删除图文消息详情页（多图文消息删除所有详情页），但粉丝仍能在会话页面查看预览内容；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">将删除公众号的“已发送列表”中的相关记录；</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">图文消息删除后，群发权限不会恢复；图文消息删除<span lang="EN-US">5</span>分钟后全部生效。</p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">温馨提示：目前在微信公众平台中只能删除已发送成功的消息；正在群发中的消息，暂不支持撤回或删除。</p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><b><span lang="EN-US">2.</span>查看群发消息</b></p>
+
+				<p style="margin-bottom:7.8pt;text-indent:21.0pt" class="MsoNormal">可查看群发消息的类型（文字消息、图片消息、图文消息），发送时间，对于发送成功的消息，将鼠标移至<span lang="EN-US">“</span>发送成功<span lang="EN-US">”</span>，还可查看群发成功<span lang="EN-US">/</span>失败的人数，如下图：</p>
+
+				<p style="margin-bottom:0cm;margin-bottom:.0001pt;text-indent:
+0cm" class="MsoNormal"><span lang="EN-US" style="font-size:12.0pt;font-family:宋体"><img width="599" height="196" border="0" src="help/image/image033.jpg" id="图片 29"></span></p>
+
+				<p style="margin-top:0cm;margin-right:0cm;margin-bottom:
+7.8pt;margin-left:18.0pt;text-indent:0cm" class="MsoListParagraph"><span lang="EN-US">&nbsp;</span></p>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="container-fluid c-footer">
+		<div class="container">
+			<p>@ NSW-PCCMS后台管理系统</p>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- inject:componentjs -->
+<!-- any *.js files among your sources will go here as: <script src="FILE"></script> -->
+<!-- endinject -->
+
+<!-- inject:programjs -->
+<script type="text/javascript" charset="utf-8" src="../target/conponent.min.js"></script>
+<!-- endinject -->
+</body>
+</html>

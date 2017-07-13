@@ -1,0 +1,64 @@
+<div class="nsw-tab-paneactive message" data-ng-if="tab==1">
+	<div class="search-info">
+		<div class="member-list-search">
+			<div class="search-one pull-right">
+				<input type="text" placeholder="请输入搜索条件" nsw-enter="searchData()" class="pull-left"
+					   ng-model="searchOptions.filter">
+				<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+				<a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="message-dropdown">
+			<div  nsw-dropdown items="timeFrame" ng-model="searchOptions.dayNum" data-ng-change="search()" nsw-display ="name" nsw-value="_id"></div>
+		</div>
+		<p class="all-info" data-ng-if="searchOptions.dayNum===0||!!!searchOptions.dayNum">全部消息({{searchOptions.totalRows}}条)</p>
+		<p class="all-info" data-ng-if="searchOptions.dayNum===1">今天消息({{searchOptions.totalRows}}条)</p>
+		<p class="all-info" data-ng-if="searchOptions.dayNum===2">昨天消息({{searchOptions.totalRows}}条)</p>
+		<p class="all-info" data-ng-if="searchOptions.dayNum===3">前天消息({{searchOptions.totalRows}}条)</p>
+		<p class="all-info" data-ng-if="searchOptions.dayNum===4">最近五天消息({{searchOptions.totalRows}}条)</p>
+		<div class="no-member" ng-if="!dataList || !dataList.length">
+			暂无消息！
+		</div>
+		<ul class="message-list">
+			<li data-ng-repeat=" message in dataList">
+				<div class="li01">
+					<img nsw-src="{{message.fansHeadImgUrl}}" data src="message/content/images/head.png" alt="" data-ng-click="msgCreate(message)">
+				</div>
+				<div class="li02">
+					<h2 data-ng-bind="message.nickName" data-ng-click="msgCreate(message)"></h2>
+					<div nsw-bind-html="{{message.content | nswDesc: 120| nswEmotions}}"></div>
+				</div>
+				<div class="li03">
+					<span class="time" data-ng-bind="message.createTime"></span>
+					<span data-ng-class="{'promise-color': message.isReply}" > {{message.isReply ? '已回复': '未回复'}}</span>
+					<span class="reply" data-ng-click="isShow(message);"></span>
+				</div>
+				<form ng-if="message.isShow" class=" form-validation nsw-form" name="formchat">
+					<div class="line"></div>
+					<div class="editor" beyond>
+						<div platform-emotion-editor data-ng-change="setMsgType('txt')"
+						     ng-model="message.reply.content" k-maximum-words="600"
+						     maxlength="600" data-height="181"
+						     ng-change="textChanged()" required></div>
+					</div>
+					<div class="form-group nsw-form-but-group">
+						<div >
+							<button type="submit" class="btn btn-warning nsw-btn" ng-disabled="!((formchat.$valid&&formchat.$dirty))" ng-click="send(message,formchat)"><label class="nsw-btn-save-icon"></label><span class="nsw-btn-text">发送</span></button>
+							<button class="btn btn-default nsw-btn btn-cancel"  data-ng-click="isShow(message);"><label class="up-img"></label><span class="nsw-btn-text nsw-btn-text-black">收起</span></button>
+						</div>
+					</div>
+				</form>
+
+			</li>
+
+			<div class="pull-right search">
+				<div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+				</div>
+			</div>
+
+		</ul>
+
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<div class="authorize-body">
+	<div class="authorize-conditions">
+		<h3><p>微信公众平台</p></h3>
+		<div class="authorize-about-header">
+			<dl>
+				<dt><img src="account/content/images/authorize-about-wechat.png" alt="di"/></dt>
+				<dd><b>微信</b></dd>
+			</dl>
+			<div class="about-header">
+				<div class="row nsw-row">
+					<div class="checkbox authorize-checkbox">
+						<label>
+							<input type="checkbox" checked disabled="disabled"> 已授权
+						</label>
+					</div>
+					<div class="checkbox authorize-checkbox">
+						<label>
+							<input type="checkbox" data-ng-model="isCertifi" disabled="disabled"> 认证服务号
+						</label>
+					</div>
+					<a class="promise-color" data-ng-click="reAuthorize()" href="javascript:void(0)">重新授权？</a>
+				</div>
+				<!--<div class="row nsw-row">-->
+					<!--<div class="form-group">-->
+						<!--<label >公众号名称:</label>-->
+						<!--<span data-ng-bind="currentItem.nick_name"></span>-->
+					<!--</div>-->
+				<!--</div>-->
+			</div>
+		</div>
+		<div class="authorize-about-body">
+			<h4>基本信息</h4>
+			<div class="base-info">
+				<dl>
+					<dt>公众号名称</dt>
+					<dd data-ng-bind="currentItem.nick_name"></dd>
+				</dl>
+				<dl>
+					<dt>公众号原始ID</dt>
+					<dd  data-ng-bind="currentItem.user_name"></dd>
+				</dl>
+				<dl>
+					<dt>微信头像</dt>
+					<dd><img nsw-src="{{currentItem.head_img}}" alt=""></dd>
+				</dl>
+				<dl>
+					<dt>Appld  </dt>
+					<dd  data-ng-bind="currentItem.appId"></dd>
+				</dl>
+			</div>
+
+		</div><br/>
+		<div class="form-group">
+			<div class="col-sm-offset-1 col-sm-10" >
+				<button type="submit" class="btn btn-warning nsw-btn"  data-ng-click="goList()"><label class="about-icon"></label><span class="nsw-btn-text">确&nbsp;定</span></button>
+			</div>
+		</div>
+
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,7 @@
+<ul>
+	<li data-ng-repeat="keyWord in keyWordList">
+		<input type="text" data-ng-change="setValue()" data-ng-model="keyWord.name" maxlength="30">
+		<a href="javascript:void(0)" data-ng-click="deleteKeyWord($index)" class="glyphicon glyphicon-minus-sign"></a>
+	</li>
+	<a href="javascript:void(0)" data-ng-click="addKeyWord()" class="glyphicon glyphicon-plus-sign promise-color"></a>
+</ul>

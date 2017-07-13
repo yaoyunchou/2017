@@ -1,0 +1,306 @@
+<style>
+	/*图片库组件样式*/
+	.c-imglib {
+		min-height: 380px;
+		padding: 10px;
+	}
+
+	.c-imglib .c-uploader {
+		margin: 30px 77px 10px;
+	}
+
+	.c-imglib .c-view-list {
+		border: 1px solid #dcdcdc;
+	}
+
+	.c-imglib .c-lib-view-list {
+		border: 1px solid #dcdcdc;
+		margin-top: 10px;
+	}
+
+	.c-imglib .c-lib-list {
+		border: 1px solid #dcdcdc;
+		height: 266px;
+		padding: 10px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	.c-imglib .c-tip {
+		padding: 0 10px;
+		line-height: 25px;
+		border-bottom: 1px solid #dcdcdc;
+		background: #fffaf4;
+	}
+
+	.c-imglib .c-preview {
+		padding: 10px;
+		max-height: 260px;
+		min-height: 150px;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	.c-imglib .c-lib-preview {
+		padding: 10px;
+		overflow-x: auto;
+	}
+
+	.c-imglib .preview {
+		width: 672px;
+		height: 122px;
+		padding-top: 10px;
+		margin-left: 11px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.c-imglib .preview ul {
+		position: absolute;
+		left: 0;
+		top: 14px;
+	}
+
+	.c-imglib .c-img-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.c-imglib .c-lib-preview .c-img-list {
+		display: inline-flex;
+	}
+
+	.c-imglib .c-lib-preview .c-img-list li {
+		margin-bottom: 0;
+	}
+
+	.c-imglib .c-img-list li {
+		list-style: none;
+		float: left;
+		display: inline;
+		position: relative;
+		width: 96px;
+		margin: 0 8px 8px;
+		border: 1px solid #dcdcdc;
+		cursor: pointer;
+	}
+
+	.c-imglib .c-img-list a {
+		width: 100%;
+		height: 80px;
+		line-height: 80px;
+		display: block;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	.c-imglib .c-img-list a img {
+		max-height: 79px;
+		margin: 0 auto;
+		width: auto;
+		max-width: 94px;
+		vertical-align: middle;
+	}
+
+	.c-imglib .c-img-list span {
+		display: block;
+		text-align: center;
+		height: 22px;
+		line-height: 22px;
+		overflow: hidden;
+		border-top: 1px solid #dcdcdc;
+	}
+
+	.c-imglib .c-img-list i {
+		display: none;
+		position: absolute;
+		padding: 2px;
+		background-color: #000;
+		color: #fff;
+		font-size: 16px;
+		filter: alpha(opacity=80);
+		-moz-opacity: 0.8;
+		-khtml-opacity: 0.8;
+		opacity: 0.8;
+	}
+
+	.c-imglib .c-img-list i.fa-times {
+		right: 0;
+		top: 0;
+	}
+
+	.c-imglib .c-img-list i.fa-check {
+		right: 0;
+		top: 0;
+	}
+
+	.c-imglib .c-img-list i.fa-eye {
+		left: 0;
+		top: 60px;
+	}
+
+	.c-imglib .c-img-list li:hover i {
+		display: block;
+	}
+
+	.c-imglib .c-img-list li:hover i.fa-check {
+		display: none;
+	}
+
+	.c-imglib .c-img-list li:hover,
+	.c-imglib .c-img-list li.selected,
+	.c-imglib .c-img-list li.selected span,
+	.c-imglib .c-img-list li:hover span {
+		border-color: #f08300;
+	}
+
+	.c-imglib .c-img-list li.selected i.fa-check {
+		display: block;
+		background-color: green;
+	}
+
+	.c-imglib .c-img-list li .c-ready-up {
+		position: absolute;
+		letf: 0;
+		top: 58px;
+		width: 100%;
+		background-color: #000;
+		color: #bbb;
+		filter: alpha(opacity=60);
+		-moz-opacity: 0.6;
+		-khtml-opacity: 0.6;
+		opacity: 0.6;
+	}
+
+	.c-imglib .c-img-list li .c-file-name {
+		border: 0;
+		height: 22px;
+		width: 100%;
+		text-align: center;
+	}
+
+	.c-imglib .c-imgtab-search {
+		margin-right: 10px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+
+	.c-imglib .tab-pane {
+		overflow: hidden;
+	}
+	.select-group select{
+		background: #fff ;
+		border: 1px solid #dcdcdc;
+		height: 29px;
+		line-height: 29px;
+		width: 248px;
+	}
+
+	/* .c-imglib .fy li a:hover{ color:#ffffff !important; } */
+	.c-imglib .fy {
+		height: 32px;
+		overflow: hidden;
+		padding-left: 200px;
+		margin-top: 20px;
+	}
+
+	.c-imglib .fy ul {
+		margin: 0 auto;
+	}
+
+	.c-imglib .imglistbox {
+		height: 222px;
+	}
+
+	.diaremove-top0 {
+		margin-top: 0px;
+	}
+
+	.sliderbox {
+		position: relative;
+	}
+
+	.silderbox .next, .silderbox .prev {
+		position: absolute;
+		left: 20px;
+		top: 94px;;
+		background: url("../content/images/main_sprit1.png") no-repeat -371px -692px;
+		width: 14px;
+		height: 14px;
+		display: block;
+	}
+
+	.silderbox .prev {
+		left: inherit;
+		right: 20px;
+		background-position: -371px -659px;
+	}
+	.select-group{
+		float: left;
+	}
+</style>
+<div class="modal-header nsw">
+	<h4 class="modal-title">常见模板<a class="diaremove diaremove-top0" ng-click="$close()"></a></h4>
+</div>
+<div class="modal-body c-imglib nsw">
+	<!--<div class="c-imgtab-search">
+		<div class="select-group  col-sm-6">
+			<label>请选择分类</label>
+			<select name="ddlColumnID" id="ddlColumnID" class="pass_faq">
+				<option value="0001" sid="0001">模版根目录</option>
+				<option value="0001,0021" sid="0001,0021">└&#45;&#45;&#45;&#45;内页编辑</option>
+				<option value="0001,0021,0019" sid="0001,0021,0019">　　　　　├&#45;&#45;&#45;&#45;公司介绍</option>
+				<option value="0001,0021,0020" sid="0001,0021,0020">　　　　　├&#45;&#45;&#45;&#45;发展历程</option>
+				<option value="0001,0021,0022" sid="0001,0021,0022">　　　　　├&#45;&#45;&#45;&#45;联系方式</option>
+				<option value="0001,0021,0023" sid="0001,0021,0023">　　　　　├&#45;&#45;&#45;&#45;批发定制</option>
+				<option value="0001,0021,0024" sid="0001,0021,0024">　　　　　├&#45;&#45;&#45;&#45;招商加盟</option>
+				<option value="0001,0021,0025" sid="0001,0021,0025">　　　　　├&#45;&#45;&#45;&#45;特色优势</option>
+				<option value="0001,0021,0026" sid="0001,0021,0026">　　　　　├&#45;&#45;&#45;&#45;定制流程</option>
+				<option value="0001,0021,0027" sid="0001,0021,0027">　　　　　├&#45;&#45;&#45;&#45;PK对比</option>
+				<option value="0001,0021,0028" sid="0001,0021,0028">　　　　　├&#45;&#45;&#45;&#45;疑惑困扰</option>
+				<option value="0001,0021,0029" sid="0001,0021,0029">　　　　　├&#45;&#45;&#45;&#45;栏目标题</option>
+				<option value="0001,0021,0030" sid="0001,0021,0030">　　　　　├&#45;&#45;&#45;&#45;服务与支持</option>
+				<option value="0001,0021,0031" sid="0001,0021,0031">　　　　　└&#45;&#45;&#45;&#45;产品细节</option>
+
+			</select>
+		</div>
+		<div class="input-group col-sm-6">
+			&lt;!&ndash;  ng-value="{{imgParam}}" &ndash;&gt;
+			<input type="text" autocomplete="off" class="form-control" ng-model="imgParam" />
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button" ng-click="findPic(imgParam)">
+					<i class="fa fa-search"></i> 查询
+				</button>
+			</span>
+		</div>
+	</div>-->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="c-lib-list">
+				<ul class="c-img-list imglistbox">
+					<li ng-class="{selected: selected===item}" ng-repeat="item in templateLib" ng-click="selectImg(item);">
+						<i class="fa fa-eye" ng-click="imgPreview(item.imgLg,$event)"></i>
+						<i class="fa fa-check"></i>
+						<a href="javascript:void(0);"><img nsw-src="{{item.imgSm}}"/></a>
+						<span>{{item.name}}</span>
+						<span>{{item.desc}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row fy">
+		<div class="col-md-12" ng-controller="fyCtrl">
+			<uib-pagination total-items="bigTotalItems" items-Per-Page="pageSize" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"></uib-pagination>
+		</div>
+	</div>
+</div>
+<div class="modal-footer nsw">
+	<!--<label for="chkCover" style="font-weight:500;;">是否覆盖已有的：</label>
+	<input id="chkCover" type="checkbox" name="chkCover" value="true" class="dn" ng-model="checked">&nbsp;&nbsp;&nbsp;&nbsp;-->
+	<button class="btn btn-primary btn-color" type="button" ng-click="commit()" style="width: 127px"><label class="checkright"></label><span
+			class="btntext">立即使用</span></button>
+	<button class="btn btn-default btn-color btn-cancel" type="button" ng-click="closeModal(false)"><label
+			class="checkcancel"></label><span class="btntext black">取&nbsp;消</span></button>
+</div>

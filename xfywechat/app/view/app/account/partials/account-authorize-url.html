@@ -1,0 +1,19 @@
+<div class="authorize-body">
+	<div class="authorize-back">
+		<div class="authorize-back-left">
+			<div class="icon-box">
+
+			</div>
+		</div>
+		<div class="authorize-back-right">
+			<h3>复制此处Token和URL地址到微信平台进行绑定</h3>
+			<p>URL:&nbsp;<span data-ng-bind="currentItem.url"></span> <a href="javascript:void(0)" class="promise-color" nsw-clipboard="{{currentItem.url}}">复制</a><br>
+				Token :&nbsp;<span data-ng-bind="currentItem.token"></span> <a href="javascript:void(0)" class="promise-color" nsw-clipboard="{{currentItem.token}}">复制</a> <br>
+				<!--AesEncodingKey :<span data-ng-bind="currentItem.encodingAesKey"></span>       EbNswTRqskExcuNZP4EhcfsNjgLbBtsRsPt7Xfe<br>-->
+				<a class="promise-color" style="text-decoration: underline" target="_blank" href="http://kf.qq.com/faq/120911VrYVrA1307306biMFz.html">如何绑定？</a>
+			</p>
+
+			<button  type="submit" class="btn btn-warning nsw-btn-lg"  ng-click="saveAirticle()"><span class="nsw-btn-text">确定</span></button>
+		</div>
+	</div>
+</div>

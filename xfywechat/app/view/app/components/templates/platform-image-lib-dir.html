@@ -1,0 +1,71 @@
+<div class=" nsw-modal">
+    <div class="modal-header ">
+        <h4 class="modal-title">选择图片</h4>
+        <a class="diaremove" ng-click="$close()"></a>
+    </div>
+    <div class="modal-body nsw-img-lib">
+        <div class=" nsw-form">
+            <tabset>
+                <tab select="searchType('wechat',1)" heading="{{myImg}}" data-active="tabs[1]"></tab>
+                <tab select="searchType('phone',2)" heading="{{phoneImg}}" data-active="tabs[2]" data-ng-if="checkAuthed('phoneProj')"></tab>
+            </tabset>
+            <div class="tab-form">
+                <div class="list-search search-one fl">
+                    <input type="text" placeholder="请输入搜索条件" ng-model="searchOptions.filter" nsw-enter="searchData()">
+                    <a class="reset glyphicon glyphicon-remove" href="javascript:void(0)"
+                       ng-click="resetSearchData()"></a>
+                    <a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+                </div>
+                <button  ng-if="tab===1" platform-img-upload data-module="material" data-img-url="imageUrl" data-ng-model="file" change-file="changeFile(file)"
+                        class="btn btn-warning clear-webuploader-pick fr"><span
+                        class="glyphicon glyphicon-arrow-up"></span>&nbsp;&nbsp;本地上传
+                </button>
+            </div>
+            <div class="nsw-tab-content">
+                <div class="nsw-body-mid">
+                    <div class="mid-left">
+                        <ul>
+                            <li data-ng-repeat="img in dataList"
+                                data-ng-click="setCurrentItem(img===currentItem?{}:img)">
+                                <div class="list-style-one">
+                                    <div class="chose" data-ng-class={'on':img.id===currentItem.id}>
+
+                                    </div>
+                                    <div class="multiple-view img-width-auto">
+                                        <div class="img-box small-img-box" data-ng-if="img.fileId">
+                                            <img nsw-src="{{ img.fileId }}" data-nsw-src-size="118x118" alt=""/>
+                                        </div>
+                                        <div class="img-edit">
+                                            <span data-ng-bind="img.name"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="no-member" ng-if="(!dataList || !dataList.length)">
+                            无对应图片素材！
+                        </div>
+
+                        <div class="fy">
+                            <div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer message-box">
+        <button data-ng-disabled="!currentItem.fileId" class="btn btn-commit" type="button"
+                ng-click="closeModal(true, currentItem)">
+            <label class="btn-icon checkforward"></label>
+            <span class="btn-text">确&nbsp;定</span>
+        </button>
+        <button class="btn btn-cancel" type="button" ng-click="closeModal(false)"><label
+                class="btn-icon checkcance"></label>
+            <span class="btn-text black">取&nbsp;消</span>
+        </button>
+    </div>
+</div>

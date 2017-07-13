@@ -1,0 +1,302 @@
+<div class="wechat-menu">
+	<div class="banner">
+		<img src="menus/content/images/unlock-menu.png" alt="已开启自定义菜单">
+
+		<div class="unlock-menu">已开启自定义菜单</div>
+		<button class="nsw-btn btn-forbid" ng-click="disable()">
+			<span class="icon"></span>
+			<span>禁用</span>
+		</button>
+	</div>
+	<div class="tip-bar">
+		<span class="star">
+			*
+		</span>
+		<span class="tip">
+			注：一级菜单最多3个功能、二级菜单最多5个功能；一级菜单最多8个字符，二级菜单最多16个字符
+		</span>
+	</div>
+
+	<div class="phone-frame pull-left">
+		<ul class="menu-group" nsw-sortable="menu" nsw-sortable-enable="enableSort" data-exclude=".create-menu"
+		    items="currentItem.button" child="menu"
+		    updated="menuSorted()">
+
+			<li class="btn btn-default meun-item l1" ng-repeat="menu in currentItem.button"
+			    ng-class="selected=== menu? 'current':''">
+				<div ng-click="selectMenu(menu)" class="menu-button">
+					<a href="javascript:void(0)" ng-bind="menu.name"></a>
+				</div>
+				<div ng-show="currentMenu=== menu && (!enableSort || (enableSort && menu.sub_button.length))" class="sub-menu-group">
+					<ul nsw-sortable nsw-sortable-enable="enableSort" items="menu.sub_button"
+					    data-exclude=".create-menu" child="sub"
+					    updated="menuSorted()">
+						<li ng-repeat="sub in menu.sub_button" ng-click="selectSubMenu(sub)"
+						    ng-class="selected === sub? 'current':''"
+						    class="btn btn-default meun-item sub-menu-item">
+							{{sub.name|nswDesc:8:true}}
+						</li>
+						<li ng-click="createMenu(currentMenu)"
+						    class="create-menu btn btn-default meun-item sub-menu-item"
+						    ng-show="(!menu.sub_button || menu.sub_button.length<5)&&!enableSort">
+							<span class="add-menu glyphicon glyphicon-plus">
+							</span>
+						</li>
+
+					</ul>
+					<div class="pointer">
+						<em></em>
+					</div>
+				</div>
+			</li>
+
+			<li class="create-menu btn btn-default meun-item" ng-show="currentItem.button.length<3&&!enableSort"
+			    ng-click="createMenu()">
+				<span class="add-menu glyphicon glyphicon-plus">
+				</span>
+			</li>
+		</ul>
+
+		<button class="btn btn-default btn-sort-menu" ng-click="toggleSortable()">{{enableSort?'确 认':'菜单排序'}}</button>
+	</div>
+	<div class="pull-right">
+		<div class="menu-edit edit-panel panel panel-default">
+			<div class="panel-heading">
+				<span data-ng-if="!!!selected">设置动作</span>
+
+				<div data-ng-if="!!selected">
+					<span ng-if="!!selected.sub_button">一级菜单：</span>
+					<span ng-if="!selected.sub_button">二级菜单：</span>
+					<span ng-bind="selected.name"></span>
+					<span class="pull-right">
+						<a href="javascript:void(0)" class="pull-right" ng-click="removeMenu(selected)">删除</a>
+						<!--<a href="javascript:void(0)" class="pull-right" ng-click="reNameMenu(selected)">重命名</a>-->
+					</span>
+				</div>
+
+			</div>
+			<form name="menuForm" class="panel-body nsw-form menuForm">
+				<div class="edit-menu-option form-horizontal">
+					<div class="tip-no-menu" ng-if="selected && selected.sub_button.length">
+						<span>已为“{{selected.name}}”添加了{{selected.sub_button.length}}个子菜单，无法设置其它内容！</span>
+					</div>
+					<div ng-if="selected" class="form-group" beyond max-count='200'>
+						<label class="col-sm-2 control-label">{{selected.sub_button?'菜单名称':'子菜单名称'}}</label>
+
+						<div class="col-sm-6">
+							<input type="text" autocomplete="off" nsw-autofocus class="form-control" name="name"
+							       data-ng-change="selectedNameChange()" data-ng-model="selected.name" required=""
+							       nsw-max-length="{{selected.sub_button?8:16}}" nsw-user-validator="validateName"
+							       data-validator-name="menuName">
+
+							<div class="input-tip promise-color">
+								字数不超过{{selected.sub_button?4:8}}个汉字或者{{selected.sub_button?8:16}}个字母
+							</div>
+						</div>
+					</div>
+					<div ng-if="selected && !selected.sub_button.length" class="form-group">
+						<label class="col-sm-2 control-label">菜单内容</label>
+
+						<div class="col-sm-8 ">
+							<label class="radio-inline">
+								<input type="radio" name="matchType" ng-value="'click'"
+								       ng-model="selected.type"> 发送消息
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="matchType" ng-value="'view'"
+								       ng-model="selected.type">跳转网页
+							</label>
+
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="chose" data-ng-if="selected&& !selected.sub_button.length && selected.type==='click'">
+						<tabset>
+							<!-- || selected.materialType==='pic'-->
+							<tab ng-click="selectTab('pic')"
+							     select="selectTab('pic')"
+							     data-active="tabs['pic']"
+							     heading="图片">
+							</tab>
+							<!--<tab select="selectTab('word')" heading="文字">
+							</tab>-->
+							<!-- || selected.materialType==='news'-->
+							<tab
+									ng-click="selectTab('message')" select="selectTab('message')"
+									data-active="tabs['message']"
+									heading="图文消息">
+							</tab>
+							<tab
+									ng-click="selectTab('keyWord')" select="selectTab('keyWord')"
+									data-active="tabs['keyWord']"
+									heading="触发关键词">
+							</tab>
+
+						</tabset>
+						<div class="content nsw-tab-content">
+							<div class="nsw-tab-pane menu-tab" ng-if="tab==='pic'">
+								<div class="select-img" ng-if="selected.materialType!=='pic' || !selected.key">
+									<div class="img-lib">
+										<em class="icon" ng-click="showImageLib()"></em>
+										<!-- img-lib="image"  after-select="selectImg(image)"-->
+
+										<div class="description">从图片素材中选择</div>
+									</div>
+									<em class="img-sep"></em>
+
+									<div class="img-local">
+										<div class="clear-webuploader-pick" platform-img-upload
+										     img-url="imgurl" ng-model="selectedImg"
+										     change-file="selectImg(file)">
+											<em class="icon"></em>
+										</div>
+
+										<div class="description">上传图片</div>
+									</div>
+								</div>
+								<div ng-if="selected.key && selected.materialType==='pic'">
+									<div class="img-preview-container">
+										<div class="img-preview">
+											<img nsw-src="{{selected.key}}">
+											<a href="javascript:void(0)" class="remove"
+											   ng-click="removeImg(selected)">删除</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="nsw-tab-pane menu-tab" ng-show="tab==='keyWord'">
+								<div class="keyword">
+									<div class="head">
+										<div class="form-group">
+											<label class="col-sm-2 control-label">关键词</label>
+
+											<div class="col-sm-4">
+												<input type="text" readonly data-ng-model="selected.keyWord"
+												       class="form-control"/>
+											</div>
+											<div class="col-sm-2">
+												<button class="btn btn-default menu-point"
+												        data-ng-click="getKeyWords()">
+													<span></span>选择关键词
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="preview-key-word">
+										<p class="title">预览</p>
+
+										<p class="content"
+										   ng-if="selected.key && selected.materialType==='keyWord'&&materials[selected.key].keyWordReplyType==='txt'"
+										   nsw-bind-html="{{materials[selected.key].data|nswEmotions}}">
+										</p>
+
+										<div ng-if="selected.key && selected.materialType==='keyWord'&&materials[selected.key].keyWordReplyType==='news'"
+										     class="article-preview-container">
+											<div class="img-preview">
+												<div platform-nsw-material data-material="materials[selected.key].data"
+												     data-remove="remove(selected)" class="ng-isolate-scope"></div>
+											</div>
+										</div>
+										<div ng-if="selected.key && selected.materialType==='keyWord'&&materials[selected.key].keyWordReplyType === 'pic'">
+											<div class="img-preview-container">
+												<div class="img-preview">
+													<img nsw-src="{{materials[selected.key].data}}">
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="nsw-tab-pane menu-tab" ng-show="tab==='message'">
+								<div class="select-img" ng-if="selected.materialType!=='news' || !selected.key">
+									<div class="img-lib">
+										<em class="icon" ng-click="showArtcileLib()"></em>
+
+										<div class="description">从图文素材库中选择</div>
+									</div>
+									<em class="img-sep"></em>
+
+									<div class="img-local ">
+										<em class="icon" ng-click="selectTab('message-create')"> </em>
+
+										<div class="description">
+											<span>新建图文消息</span>
+										</div>
+									</div>
+								</div>
+								<div ng-if="selected.key && selected.materialType==='news'"
+								     class="article-preview-container">
+									<div class="img-preview">
+										<div platform-nsw-material data-material="materials[selected.key]"
+										     data-remove="remove(selected)" class="ng-isolate-scope"></div>
+										<a href="javascript:void(0)" class="remove"
+										   ng-click="removeArticle(selected)">删除</a>
+									</div>
+								</div>
+							</div>
+							<div class="nsw-tab-pane menu-tab" ng-show="tab==='message-create'">
+								<div class="select-img create-article">
+									<div class="img-lib" ng-click="createArticle('single')">
+										<em class="icon"></em>
+
+										<div class="description">新建单图文</div>
+									</div>
+									<em class="img-sep"></em>
+
+									<div class="img-local " ng-click="createArticle('multiple')">
+										<em class="icon"> </em>
+
+										<div class="description">
+											<span>新建多图文</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div></div>
+						</div>
+					</div>
+
+				</div>
+				<div class="edit-url-option" name="url"
+				     ng-if="selected&& !selected.sub_button.length && selected.type==='view'">
+					<div class="tip">
+						<span>订阅者点击该菜单会收到以下链接</span>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="menUrl">页面地址</label>
+
+						<div class="col-sm-6">
+							<input required="" type="text" class="form-control" id="menUrl" autocomplete="off"
+							       data-ng-pattern="/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)?(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/"
+							       ng-model="selected.url" placeholder="http://" data-ng-click="isContentChanged()"
+							       placeholder="请填入链接地址">
+							<a href="javascript:void(0)" data-ng-if="checkAuthed('phoneProj')"
+							   class="promise-color cmsArticle" data-ng-click="getCmsMobileUrl()">选择手机网站中的文章地址</a>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="tip-no-menu" ng-if="!selected">
+					<span>您可以点击左侧菜单或添加一个新菜单，然后设置菜单内容</span>
+				</div>
+
+			</form>
+			<button ng-disabled="!menuForm.$valid||enableSort" type="submit"
+			        data-ng-if="selected && !selected.sub_button.length"
+			        class="btn btn-warning nsw-btn nsw-save"
+			        ng-click="saveMenu()">
+				<label class="nsw-btn-save-icon"></label>
+				<span class="nsw-btn-text">保存并发布</span>
+			</button>
+		</div>
+		<button ng-disabled="!menuForm.$valid" type="submit" data-ng-if="selected && selected.sub_button.length"
+		        class="btn btn-warning nsw-btn nsw-save-two pull-left"
+		        ng-click="saveMenu()">
+			<label class="nsw-btn-save-icon"></label>
+			<span class="nsw-btn-text">保存并发布</span>
+		</button>
+	</div>
+</div>

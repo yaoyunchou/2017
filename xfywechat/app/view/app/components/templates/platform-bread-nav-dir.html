@@ -1,0 +1,9 @@
+<div class="nsw_bread_tit">
+	<span class="nsw_add">
+		<span>当前位置：</span>
+		<span class="nsw-bread-item" data-ng-repeat="nav in _breadNavs" data-ng-click="navigateTo(nav)" >
+			<span data-ng-bind="nav.name"></span>
+			<span ng-hide="$last">&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;</span>
+		</span>
+	</span>
+</div>

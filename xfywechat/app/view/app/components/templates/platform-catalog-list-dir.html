@@ -1,0 +1,44 @@
+<div class="tool-nav">
+	<h2 class="list-group-item h2" data-ng-bind="options.caption"></h2>
+	<ul class="list-group">
+		<li class="list-group-item" data-ng-class="{'active':options.data.selectedItem===item}"
+		    data-ng-repeat="item in displayList"
+		    data-ng-click="updateSelection(item)">
+
+			<input type="text" autocomplete="off" class="ctgname" data-ng-class="{'white':lineEditing}"
+			       data-ng-readonly="!lineEditing || options.data.selectedItem!==item"
+			       data-ng-model="item[options.data.displayField]" title="{{ item[options.data.displayField] }}"/>
+
+			<a class="editbtn" title="快速编辑" data-ng-click="toggleLineEdit(item)"
+			   data-ng-show="(options.enableLineEdit||options.enableSpeedEdit) && (!lineEditing ||(lineEditing && options.data.selectedItem===item))"
+			   data-ng-class="{true: 'editing', false: ''}[lineEditing]">
+				<i class="fa fa-edit"
+				   data-ng-class="{true: 'fa fa-edit', false: 'glyphicon glyphicon-floppy-disk'}[!lineEditing]"></i>
+			</a>
+
+			<div class="btn-group fr deletbtn">
+                        <span data-ng-if="options.enableSort">
+			    		    <i data-ng-hide="$first || lineEditing" class="fa fa-arrow-up"
+					           data-ng-click="options.onSorted(item, displayList[$index-1])"></i>
+			    		    <i data-ng-hide="$last || lineEditing" class="fa fa-arrow-down"
+					           data-ng-click="options.onSorted(item, displayList[$index+1])"></i>
+		    		    </span>
+				<button type="button" class="tool-nav-btn " data-ng-if="options.enableDelete"
+				        data-ng-hide="lineEditing"
+				        data-ng-click="options.onDeleted(item,$index)">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+			</div>
+		</li>
+	</ul>
+	<div class="submitbox" data-ng-show="options.enableCreate">
+		<form class="form-horizontal form-validation" name="{{options.formOptions.name}}" novalidate>
+			<div data-platform-form data-options="options.formOptions"/>
+			<button type="button" class="col-sm-4 btn btn-default btn-hover"
+			        data-ng-disabled="lineEditing || options.formOptions.$invalid"
+			        data-ng-click="doSaveCreate(options.formOptions.data)">
+				<span class="addattr"></span>添加
+			</button>
+		</form>
+	</div>
+</div>

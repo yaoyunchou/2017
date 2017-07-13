@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="renderer" content="webkit">
+	<title>微信管家</title>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<!-- inject:html -->
+	<!-- any *.html files among your sources will go here as: <link rel="import" href="FILE"> -->
+	<!-- endinject -->
+	<!-- inject:plugin css -->
+	<link rel="stylesheet"  href="../plugins/jquery/css/jquery-ui.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/daterangepicker.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/exp-bootstrap.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet"  href="../plugins/bootstrap/demo/demo.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/qunit/qunit.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/plugins/code/prettify.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/themes/default/default.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/themes/simple/simple.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/skin/classic/firebug.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/skin/xp/firebug-1.3a2.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/skin/xp/firebug.IE6.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/skin/xp/firebug.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/skin/light/firebug.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/build/chrome-extension/skin/xp/firebug-1.3a2.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/build/chrome-extension/skin/xp/firebug.IE6.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/build/chrome-extension/skin/xp/firebug.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/build/chrome-extension-beta/skin/xp/firebug-1.3a2.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/build/chrome-extension-beta/skin/xp/firebug.IE6.css">
+	<link rel="stylesheet"  href="../plugins/kindeditor/lib/firebug-lite/build/chrome-extension-beta/skin/xp/firebug.css">
+	<link rel="stylesheet"  href="../plugins/webuploader/cropper.css">
+	<link rel="stylesheet"  href="../plugins/webuploader/webuploader.css">
+	<!-- endinject -->
+	<!-- inject:program css -->
+	<link rel="stylesheet"  href="../app/main/content/css/main.css">
+	<link rel="stylesheet"  href="../app/components/content/css/platform.css">
+	<link rel="stylesheet"  href="../app/account/content/css/account.css">
+	<link rel="stylesheet"  href="../app/materials/content/css/materials.css">
+	<link rel="stylesheet"  href="../app/menus/content/css/style.css">
+	<link rel="stylesheet"  href="../app/auto-reply/content/css/autoReply.css">
+	<link rel="stylesheet"  href="../app/member/content/css/style.css">
+	<link rel="stylesheet"  href="../app/mass-message/content/css/mass-message.css">
+	<link rel="stylesheet"  href="../app/message/content/css/message.css">
+	<link rel="stylesheet"  href="../app/qr-code/content/css/qr-code.css">
+	<link rel="stylesheet"  href="../app/message-template/content/css/message-template.css">
+	<!-- endinject -->
+	<!-- inject:pluginjs -->
+	<script type="text/javascript" charset="utf-8" src="../target/frames.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../target/tools.min.js"></script>
+	<!-- endinject -->
+</head>
+<body ng-app="app">
+<div  ng-controller="wechatCtrl">
+	<div class="container-fluid c-header">
+		<div class="container-fluid c-header">
+			<div class="container">
+				<a href="index.html" class="c-logo"></a>
+				<div class="c-manager">
+					<div>
+						<span class="wechat-icon" >微信管家 </span>
+						<a href="javascript:void(0)"  ng-show="enableSwitchProject" class="c-user-name" ng-click="switchProject(true)">切换</a>
+					</div>
+					<div>
+						<a class="c-user-name" href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;<span data-ng-bind="dataList.name"></span>&nbsp;&nbsp;欢迎你！</a>
+						<a target="_blank" href="{{dataList.formal_domain}}" >网站首页</a>&nbsp;
+						<span >｜&nbsp;</span>
+						<a href="help.html" >帮助中心</a>
+						<span >&nbsp;｜</span>
+						<a data-ng-if = "dataList.displayLogoutBtn"  href="javascript:void(0)" ng-click="exit('../j_spring_cas_security_logout')" role="button" >退出</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container c-container">
+		<div class="c-menu-container" data-ng-if="showMenus">
+			<div data-platform-menu data-ng-model="menuOptions"  ></div>
+			<div class="menu-info">
+				<!--<div class="menu-info-in" data-ng-if="isWelcome&&leftEdit">-->
+				<!--<a href="#">公众账号<br/>-->
+				<!--用不了怎么办</a>-->
+				<!--</div>-->
+				<div class="menu-info-two"  data-ng-if="!isWelcome">
+					<a href="javascript:void(0)" data-ng-click="editAccount()">
+						<img src="main/content/images/white.png" alt=""/>
+						<strong data-ng-bind="currentWechtInfo.nick_name"></strong>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="c-main" data-ng-class="{'main-no-menus':!showMenus}">
+			<div platform-bread-nav="breadNavs" data-ng-if="showMenus"></div>
+			<div class="c-main-box">
+				<ui-view></ui-view>
+			</div>
+		</div>
+
+	</div>
+	<div class="container-fluid c-footer">
+		<div class="container">
+			<p>@ 微信管家管理后台</p>
+			<p>微信管家管理后台V1.1版本&nbsp;&nbsp;深圳市牛商网络股份有限公司</p>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- inject:componentjs -->
+<!-- any *.js files among your sources will go here as: <script src="FILE"></script> -->
+<!-- endinject -->
+
+<!-- inject:programjs -->
+<script type="text/javascript" charset="utf-8" src="../app/main/globals.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/main/app.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/main/services/main-menu-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/main/services/switch-project-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/main/services/wechat-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/main/controllers/switch-project-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/main/controllers/wechatController.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/platform.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-date-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-domain-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-form-domin-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-http-intercepter-provider.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-img-uploader-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-js-beautifer-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-kindeditor-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-messenger-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-mobile-preview-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-modal-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-navigation-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-preview-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-template-preview-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-uploader-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-wechat-emotion-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platform-word-count-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platformImgLibSvc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/services/platfrom-menu-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/filters/nsw-date-filter.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/filters/nsw-desc-filter.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/filters/nsw-emoji-filter.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/filters/nsw-emotions-filter.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/filters/nsw-trusted-html-filter.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/controllers/platform-img-lib-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/controllers/platform-img-lib-win-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/controllers/platform-modal-message-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/controllers/platform-modal-tip-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/controllers/platform-preview-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/controllers/platform-preview-send-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/auth/platform-nsw-auth-enable-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/auth/platform-nsw-auth-if-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/auth/platform-nsw-auth-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/datetimepicker/platform-date-range-picker-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/datetimepicker/platform-date-time-picker-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/dropdown/platform-nsw-dropdown-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/echarts/platform-echarts-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/platform-form-builder-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/platform-form-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/platform-input-autofocus-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/image-lib/platform-image-lib-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/image-lib/platform-image-upload-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/image-lib/platform-img-lib-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/image-lib/platform-nsw-img-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/image-lib/platform-nsw-img-group-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/platform-emotion-editor-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/platform-kindeeditor-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/material/platform-article-material-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/material/platform-article-material-selector-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/material/platform-img-material-selector-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/material/platform-preview-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/material/platform-preview-send-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/menu/platform-menu-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/menu/platform-meun-group-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/message/platform-img-text-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/message/platform-only-img-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/qrcode/platform-nsw-qrcode-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/search/platform-get-key-word-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/search/platform-sign-key-word-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/validators/max-length-validator-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/validators/max-word-validator-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/validators/min-length-validator-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/validators/model-compare-validator-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/validators/nsw-user-validator-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/nsw-bind-html-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/nsw-enter-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-bread-nav-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-catalog-list-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-dynamic-form-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-get-height-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-input-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-modal-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nav-update-hint.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-autofocus-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-background-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-clipboard-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-combo-box-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-commit.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-draggable-dr.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-fileuploader-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-group-selector-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-href-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-html-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-lazyscroll-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-list-material-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-material-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-progress-bar.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-sortable-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-src-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-nsw-status-button-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-pagination-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-popover-tip-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-popovertip-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-qr-code-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-template-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-ueditor.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-validate.dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/widgets/platform-waterfall-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/adlib-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/base-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/checkbox-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/htmleditor-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/input-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/label-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/radio-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/row-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/select-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/singleimage-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/textarea-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/validation-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/form/template-builders/validation-tip-builder.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/nswimage.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/nswmultiimage.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/nswpreview.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/nswpreviewphone.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/reformate.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/selectmodular.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/directives/kindeeditor/plugins/specharts.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-detail-ctrl-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-list-ctrl-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-main-ctrl-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/variables-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-plugins/bas-data-auth-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-plugins/bas-data-cache-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-plugins/bas-data-item-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-plugins/bas-data-list-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-plugins/bas-data-processor-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/components/base/bas-data-plugins/bas-data-validation-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/account.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/services/account-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/services/notice-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/controllers/accoun-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/controllers/account-authorize-url-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/controllers/account-base-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/controllers/account-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/controllers/account-url-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/account/controllers/notice-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/materials.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/services/article-lib-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/services/materials-cache-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/services/materials-cms-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/services/materials-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/services/materials-img-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/articles-lib-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/material-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/materials-detail-add-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/materials-detail-apply-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/materials-img-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/materials-img-rename-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/materials-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/materials/controllers/materials-news-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/menu.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/services/menu-cms-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/services/menu-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/services/menu-key-word-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/controllers/menu-cms-mobile-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/controllers/menu-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/controllers/menu-enable-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/controllers/menu-keyword-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/controllers/menu-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/controllers/menu-rename-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/menus/directives/menu-sub-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/autoReply.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/services/auto-reply-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/services/key-word-reply-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/services/no-match-reply-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/controllers/no-match-reply-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/controllers/reply-key-word-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/controllers/reply-key-word-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/controllers/reply-key-word-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/controllers/reply-on-follow-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/auto-reply/directives/auto-reply-key-word-list-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/member.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/services/member-ctg-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/services/member-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/services/member-tag-data-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/filters/memeber-ctg-filter.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/controllers/member-catalog-create-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/controllers/member-catalog-edit-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/controllers/member-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/controllers/member-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/member/directives/member-tags-dir.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/mass-message/mass-message.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/mass-message/services/mass-message-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/mass-message/controllers/mass-message-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/mass-message/controllers/mass-message-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/mass-message/controllers/mass-message-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/message.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/services/messag-chat-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/services/message-cache-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/services/message-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/controllers/message-chat-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/controllers/message-chat-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/controllers/message-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message/controllers/message-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/qr-code.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/services/qr-code-charts-all-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/services/qr-code-charts-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/services/qr-code-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/controllers/qr-code-charts-all-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/controllers/qr-code-charts-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/controllers/qr-code-charts-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/controllers/qr-code-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/controllers/qr-code-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/qr-code/controllers/qr-code-list-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message-template/message-template.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message-template/services/message-template-svc.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message-template/controllers/message-template-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message-template/controllers/message-template-detail-ctrl.js"></script>
+<script type="text/javascript" charset="utf-8" src="../app/message-template/controllers/message-template-list-ctrl.js"></script>
+<!-- endinject -->
+</body>
+</html>

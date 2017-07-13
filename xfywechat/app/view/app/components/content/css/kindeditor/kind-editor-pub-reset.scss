@@ -1,0 +1,19 @@
+@charset "utf-8";
+.editor-reset {
+  //margin: 0 2%;
+  padding: 0;
+  border: 0;
+  font: 14px/14px Helvetica, 'Hiragino Sans GB', Arial, sans-serif;
+  color: #000;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  @import "platform-kindeditor-reset";
+}
+
+@media (min-width: 768px) {
+  .editor-reset {
+    margin: 0 2%;
+    max-width:96%;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="img-reply">
+	<div ng-if="!materialId">
+		<div class="img-reply-left">
+			<div class="img-reply-in">
+				<div class="img-reply-ct" img-lib="image" after-select="afterImageSelected(image)">
+					<p><a href="javascript:void(0)">从图片素材中选择</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="img-reply-right">
+			<div class="img-reply-in clear-webuploader-pick" platform-img-upload data-img-url="imageUrl"
+			     change-file="imageUploaded(file)" data-ng-model="updateImg">
+				<div class="img-reply-ct">
+					<p><a href="javascript:void(0)">上传图片</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="materialId" class="material-box-img">
+		<img nsw-src="{{ materialId }}" alt=""/>
+		<a href="javascript:void(0)" data-ng-click="doRemove()">删除</a>
+	</div>
+</div>

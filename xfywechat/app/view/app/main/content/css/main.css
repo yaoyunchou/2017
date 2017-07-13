@@ -1,0 +1,180 @@
+@charset "UTF-8";
+/*base style*/
+.promise-color {
+  color: #f08300; }
+
+.promise-gray-color {
+  color: #dedede; }
+
+.font-gray {
+  color: #595D6D; }
+
+.c-header {
+  height: 114px;
+  border-bottom: 2px solid #f18d14;
+  background: url(../images/hd_bg.jpg) no-repeat center top/cover; }
+
+.c-container {
+  overflow: hidden; }
+
+.c-header .c-logo {
+  float: left;
+  margin-top: 26px;
+  width: 334px;
+  height: 64px;
+  background: url(../images/logo.png) no-repeat; }
+
+.c-header .c-manager {
+  float: right;
+  text-align: right;
+  padding-top: 22px; }
+
+.c-header .c-manager > div {
+  padding-top: 15px; }
+
+.c-header .c-manager a {
+  padding: 0px 10px; }
+
+.c-header .c-manager .c-user-name {
+  color: #f08300; }
+
+.c-footer {
+  height: 64px;
+  line-height: 32px;
+  text-align: center;
+  background-color: #fffaf4;
+  border-top: 2px solid #f18d14; }
+
+.c-main {
+  min-height: 300px;
+  padding-bottom: 40px;
+  margin-left: 220px;
+  background: #ffffff;
+  overflow: hidden; }
+
+.c-menu-icon {
+  width: 27px;
+  height: 27px;
+  position: absolute;
+  top: 10px;
+  left: 42px;
+  display: inline-block;
+  background: url(../images/menu_sprit.png) no-repeat; }
+
+.c-menu-home {
+  background-position: 0 0px; }
+  .c-menu-home.active {
+    background-position: -27px 0px; }
+
+.c-menu-autoreply {
+  background-position: 0px -27px; }
+  .c-menu-autoreply.active {
+    background-position: -27px -27px; }
+
+.c-menu-menu {
+  background-position: 0px -54px; }
+  .c-menu-menu.active {
+    background-position: -27px -54px; }
+
+.c-menu-member {
+  background-position: 0px -81px; }
+  .c-menu-member.active {
+    background-position: -27px -81px; }
+
+.c-menu-mass-message {
+  background-position: 0px -108px; }
+  .c-menu-mass-message.active {
+    background-position: -27px -108px; }
+
+.c-menu-material {
+  background-position: 0px -135px; }
+  .c-menu-material.active {
+    background-position: -27px -135px; }
+
+.c-menu-qrcode {
+  background-position: 0px -189px; }
+  .c-menu-qrcode.active {
+    background-position: -27px -189px; }
+
+.c-menu-message {
+  background-position: 0px -162px; }
+  .c-menu-message.active {
+    background-position: -27px -162px; }
+
+.c-message-template {
+  background-position: 0px -216px; }
+  .c-message-template.active {
+    background-position: -27px -216px; }
+
+.wechat-icon {
+  background: url("../images/wechat.png") no-repeat;
+  padding-left: 30px;
+  display: inline-block;
+  height: 21px; }
+
+.main-no-menus {
+  margin-left: 0px; }
+  .main-no-menus .switch-project {
+    width: 100%;
+    margin-left: 200px;
+    margin-top: 50px; }
+    .main-no-menus .switch-project .projects > a {
+      display: inline-block;
+      width: 189px;
+      background-color: #e0f2be;
+      cursor: pointer;
+      margin-left: 30px; }
+    .main-no-menus .switch-project .project {
+      width: 189px;
+      height: 252px;
+      border: 1px solid #dddddd;
+      background-color: #ffffff;
+      text-align: center;
+      box-sizing: border-box; }
+      .main-no-menus .switch-project .project:hover {
+        border-color: #f79d31; }
+      .main-no-menus .switch-project .project .icon {
+        height: 80%;
+        width: 100%; }
+      .main-no-menus .switch-project .project .title {
+        font-family: "微软雅黑";
+        font-size: 14px;
+        font-weight: bolder;
+        margin: 35px auto 0; }
+      .main-no-menus .switch-project .project .desc {
+        font-family: "微软雅黑";
+        font-size: 12px; }
+      .main-no-menus .switch-project .project .icon {
+        background: url("../images/switch-project.png") no-repeat; }
+      .main-no-menus .switch-project .project .pc {
+        margin: 71px auto 0;
+        width: 108px;
+        height: 81px;
+        background-position: -1025px -60px; }
+      .main-no-menus .switch-project .project .phone {
+        margin: 70px auto 0;
+        width: 55px;
+        height: 82px;
+        background-position: -470px -59px; }
+      .main-no-menus .switch-project .project .responsive {
+        margin: 71px auto 0;
+        width: 140px;
+        height: 81px;
+        background-position: -602px -55px; }
+      .main-no-menus .switch-project .project .wechat {
+        margin: 52px auto 0;
+        width: 125px;
+        height: 100px;
+        background-position: -55px -51px; }
+      .main-no-menus .switch-project .project:hover .title {
+        color: #f08402; }
+      .main-no-menus .switch-project .project:hover .pc {
+        background-position: -902px -60px; }
+      .main-no-menus .switch-project .project:hover .phone {
+        background-position: -533px -59px; }
+      .main-no-menus .switch-project .project:hover .responsive {
+        background-position: -749px -59px; }
+      .main-no-menus .switch-project .project:hover .wechat {
+        background-position: -180px -51px; }
+
+/*# sourceMappingURL=main.css.map */

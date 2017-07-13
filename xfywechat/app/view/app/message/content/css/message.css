@@ -1,0 +1,236 @@
+.message .search-info {
+  position: relative;
+  top: -70px; }
+.message .chat {
+  margin-top: 23px; }
+  .message .chat .chat-box {
+    height: 293px;
+    border: 1px solid #dcdcdc; }
+    .message .chat .chat-box .header {
+      height: 30px;
+      border-bottom: 1px solid #dcdcdc; }
+  .message .chat .menu-tab {
+    min-height: 200px; }
+  .message .chat .edit-menu-option .reset {
+    color: #f08300;
+    text-decoration: underline; }
+  .message .chat .edit-menu-option .tip {
+    padding-bottom: 23px; }
+  .message .chat .edit-menu-option .select-img {
+    margin-bottom: 51px;
+    width: 100%;
+    height: 135px; }
+    .message .chat .edit-menu-option .select-img .img-lib {
+      margin: 0px;
+      padding: 0px;
+      width: 327px;
+      height: 242px;
+      float: left;
+      box-sizing: content-box; }
+      .message .chat .edit-menu-option .select-img .img-lib:hover .icon {
+        background: url("../images/select-pic-active.png") no-repeat; }
+      .message .chat .edit-menu-option .select-img .img-lib:hover .description {
+        color: #f08402; }
+      .message .chat .edit-menu-option .select-img .img-lib .icon {
+        margin-left: 132px;
+        margin-top: 87px; }
+    .message .chat .edit-menu-option .select-img .img-sep {
+      margin-top: 25px;
+      display: block;
+      float: left;
+      width: 1px;
+      height: 193px;
+      background: url("../images/select-sep.png") no-repeat; }
+    .message .chat .edit-menu-option .select-img .img-local {
+      margin: 0px;
+      padding: 0px;
+      width: 310px;
+      height: 242px;
+      float: left; }
+      .message .chat .edit-menu-option .select-img .img-local:hover .icon {
+        background: url("../images/select-pic-active.png") no-repeat; }
+      .message .chat .edit-menu-option .select-img .img-local:hover .description {
+        color: #f08402; }
+      .message .chat .edit-menu-option .select-img .img-local .icon {
+        margin-left: 124px;
+        margin-top: 87px; }
+    .message .chat .edit-menu-option .select-img .icon {
+      cursor: pointer;
+      width: 63px;
+      height: 63px;
+      margin: 20px;
+      display: block;
+      background: url("../images/select-pic.png") no-repeat; }
+    .message .chat .edit-menu-option .select-img .description {
+      display: block;
+      width: 100%;
+      margin-top: 0px;
+      text-align: center; }
+  .message .chat .edit-menu-option .editor {
+    height: 273px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 18px; }
+    .message .chat .edit-menu-option .editor textarea {
+      border: none;
+      height: 203px;
+      box-shadow: none; }
+    .text-info {
+      height: 39px;
+      line-height: 39px;
+      border-top: 1px solid #dcdcdc; }
+      .text-info img {
+        float: left;
+        margin: 10px 0 0 13px; }
+      .text-info .errorMsg {
+        margin-left: 10px;
+        float: left; }
+      .text-info .tip-row-height {
+        float: right;
+        margin-right: 10px; }
+  .message .chat .edit-url-option .reset {
+    color: #f08300;
+    text-decoration: underline; }
+  .message .chat .edit-url-option .form-inline {
+    margin-top: 29px; }
+    .message .chat .edit-url-option .form-inline label {
+      font-weight: normal; }
+    .message .chat .edit-url-option .form-inline input {
+      width: 288px;
+      height: 29px;
+      margin-left: 28px; }
+  .message .chat .tip-no-menu {
+    font-size: 14px;
+    margin: 159px auto auto 141px; }
+  .message .chat .select-option .tip {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 63px; }
+  .message .chat .select-option .select-icon {
+    float: left;
+    width: 104px;
+    height: 104px;
+    display: block; }
+    .message .chat .select-option .select-icon:hover {
+      border-color: #f08402;
+      color: #f08402; }
+  .message .chat .select-option .send-message {
+    margin: 47px auto auto 161px;
+    cursor: pointer;
+    background: url("../images/send-message.png") no-repeat; }
+    .message .chat .select-option .send-message:hover {
+      background: url("../images/send-message-active.png") no-repeat; }
+    .message .chat .select-option .send-message .description {
+      display: block;
+      width: 100%;
+      margin-top: 121px;
+      text-align: center; }
+  .message .chat .select-option .web-link {
+    margin: 47px auto auto 90px;
+    display: block;
+    cursor: pointer;
+    background: url("../images/web-link.png") no-repeat; }
+    .message .chat .select-option .web-link:hover {
+      background: url("../images/web-link-active.png") no-repeat; }
+    .message .chat .select-option .web-link .description {
+      display: block;
+      width: 100%;
+      margin-top: 121px;
+      text-align: center; }
+  .message .chat .select-option .icon-wrapper {
+    height: 102px;
+    width: 102px; }
+  .message .chat .nav-tabs {
+    height: 38px; }
+  .message .chat .img-reply {
+    min-height: 242px;
+    overflow: auto;
+    border: none; }
+.message .nsw-btn .nsw-btn-save-icon {
+  background: url("../images/send.png") no-repeat 0px 2px; }
+
+.message-list {
+  overflow: hidden; }
+  .message-list .search {
+    margin-bottom: 20px; }
+  .message-list li {
+    padding: 15px 20px;
+    margin-bottom: 23px;
+    overflow: hidden;
+    border: 1px solid #dcdcdc; }
+    .message-list li .li01 {
+      float: left;
+      width: 56px; }
+      .message-list li .li01 img {
+        width: 50px;
+        height: 50px;
+        cursor: pointer; }
+    .message-list li .li02 {
+      float: left;
+      width: 465px;
+      padding-right: 40px;
+      padding-left: 15px; }
+      .message-list li .li02 h2 {
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer; }
+      .message-list li .li02 .pic h2, .message-list li .li02 .news h2 {
+        height: 32px;
+        line-height: 32px;
+        margin-bottom: 10px; }
+      .message-list li .li02 .pic dt, .message-list li .li02 .news dt {
+        width: 90px;
+        height: 90px;
+        float: left; }
+        .message-list li .li02 .pic dt img, .message-list li .li02 .news dt img {
+          width: 90px;
+          height: 90px; }
+      .message-list li .li02 .pic dd, .message-list li .li02 .news dd {
+        float: left;
+        padding-left: 20px;
+        max-width: 315px; }
+        .message-list li .li02 .pic dd h4, .message-list li .li02 .news dd h4 {
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 24px; }
+    .message-list li .li03 {
+      float: left; }
+      .message-list li .li03 span, .message-list li .li03 a {
+        display: inline-block;
+        min-width: 100px; }
+      .message-list li .li03 .reply {
+        height: 18px;
+        cursor: pointer;
+        background: url("../images/reply.png") no-repeat left top; }
+    .message-list li form {
+      clear: both; }
+    .message-list li .line {
+      clear: both;
+      height: 1px;
+      width: 100%;
+      padding-top: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #dcdcdc; }
+    .message-list li .editor {
+      height: 200px; }
+      .message-list li .editor textarea {
+        border: none;
+        box-shadow: none; }
+    .message-list li .up-img {
+      width: 21px;
+      height: 21px;
+      background: url("../images/up.png");
+      margin: 2px 3px 0 0; }
+
+.message .content {
+  padding: 0 20px;
+  min-height: 150px; }
+  .message .content .message-dropdown {
+    width: 200px; }
+  .message .content .all-info {
+    margin: 20px 0; }
+    .message .content .all-info span {
+      color: #EF8300; }
+
+/*# sourceMappingURL=message.css.map */

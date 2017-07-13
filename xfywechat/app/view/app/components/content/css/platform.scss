@@ -1,0 +1,21 @@
+@charset "utf-8";
+// Core variables and mixins
+@import "platform-variables";
+@import "platform-mixins";
+
+//reset
+@import "platform-reset";
+
+//menu  侧边主导航
+@import "platform-widgets";
+@import "platform-kind-editor";
+
+@import "platform-button";
+@import "platform-form";
+@import "platform-modal";
+@import "platform-img-lib";
+@import "platform-table";
+@import "platform-progress";
+@import "platform-nsw-group-selector";
+
+

@@ -1,0 +1,22 @@
+<div class="account-authorize-base" data-ng-class="{1:'stage-one',2:'stage-two',3:'stage-three'}[getStage()]">
+    <div class="account-authorize-base-head">
+            <div class="account-progress-bar"></div>
+            <div class="info-default">
+                <span class="one">
+                    授权前须知
+                </span>
+                <span class="two">
+                    选择授权方式
+                </span>
+                <span class="three">
+                    授权成功
+                </span>
+            </div>
+            <div class="arrow-box">
+                <span class="arrow"></span>
+            </div>
+    </div>
+    <div class="account-authorize-base-body">
+        <div ui-view></div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="renderer" content="webkit">
+	<title>微信管家</title>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<!-- inject:html -->
+	<!-- any *.html files among your sources will go here as: <link rel="import" href="FILE"> -->
+	<!-- endinject -->
+	<!-- inject:plugin css -->
+	<!-- any *.css files among your sources will go here as: <link rel="stylesheet" href="FILE"> -->
+	<!-- endinject -->
+	<!-- inject:program css -->
+	<!-- any *.css files among your sources will go here as: <link rel="stylesheet" href="FILE"> -->
+	<!-- endinject -->
+	<!-- inject:pluginjs -->
+	<!-- any *.js files among your sources will go here as: <script src="FILE"></script> -->
+	<!-- endinject -->
+</head>
+<body ng-app="app">
+<div  ng-controller="wechatCtrl">
+	<div class="container-fluid c-header">
+		<div class="container-fluid c-header">
+			<div class="container">
+				<a href="index.html" class="c-logo"></a>
+				<div class="c-manager">
+					<div>
+						<span class="wechat-icon" >微信管家 </span>
+						<a href="javascript:void(0)"  ng-show="enableSwitchProject" class="c-user-name" ng-click="switchProject(true)">切换</a>
+					</div>
+					<div>
+						<a class="c-user-name" href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;<span data-ng-bind="dataList.name"></span>&nbsp;&nbsp;欢迎你！</a>
+						<a target="_blank" href="{{dataList.formal_domain}}" >网站首页</a>&nbsp;
+						<span >｜&nbsp;</span>
+						<a href="help.html" >帮助中心</a>
+						<span >&nbsp;｜</span>
+						<a data-ng-if = "dataList.displayLogoutBtn"  href="javascript:void(0)" ng-click="exit('../j_spring_cas_security_logout')" role="button" >退出</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container c-container">
+		<div class="c-menu-container" data-ng-if="showMenus">
+			<div data-platform-menu data-ng-model="menuOptions"  ></div>
+			<div class="menu-info">
+				<!--<div class="menu-info-in" data-ng-if="isWelcome&&leftEdit">-->
+				<!--<a href="#">公众账号<br/>-->
+				<!--用不了怎么办</a>-->
+				<!--</div>-->
+				<div class="menu-info-two"  data-ng-if="!isWelcome">
+					<a href="javascript:void(0)" data-ng-click="editAccount()">
+						<img src="main/content/images/white.png" alt=""/>
+						<strong data-ng-bind="currentWechtInfo.nick_name"></strong>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="c-main" data-ng-class="{'main-no-menus':!showMenus}">
+			<div platform-bread-nav="breadNavs" data-ng-if="showMenus"></div>
+			<div class="c-main-box">
+				<ui-view></ui-view>
+			</div>
+		</div>
+
+	</div>
+	<div class="container-fluid c-footer">
+		<div class="container">
+			<p>@ 微信管家管理后台</p>
+			<p>微信管家管理后台V1.1版本&nbsp;&nbsp;深圳市牛商网络股份有限公司</p>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- inject:componentjs -->
+<!-- any *.js files among your sources will go here as: <script src="FILE"></script> -->
+<!-- endinject -->
+
+<!-- inject:programjs -->
+<!-- any *.js files among your sources will go here as: <script src="FILE"></script> -->
+<!-- endinject -->
+</body>
+</html>

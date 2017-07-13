@@ -1,0 +1,31 @@
+@charset "utf-8";
+html {
+  margin:0;
+  padding:0;
+}
+
+html, body {
+  border: 0;
+  font: 12px/1 Helvetica, 'Hiragino Sans GB', Arial, sans-serif;
+  color: #000;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+
+@media (min-width: 768px) {
+  body {
+    margin: 0 2%;
+    max-width:96%;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    margin:0;
+    max-width:100%;
+  }
+}
+@import "platform-kindeditor-reset";
+
+

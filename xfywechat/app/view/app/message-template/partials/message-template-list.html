@@ -1,0 +1,94 @@
+<div class="message-template-list">
+	<div class="search-info">
+		<div class="search-one pull-right">
+			<input type="text" placeholder="请搜索消息标题" nsw-enter="searchData()" class="pull-left"
+			       ng-model="searchOptions.filter">
+			<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+			<a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+		</div>
+	</div>
+	<div class="content">
+		<div class="no-member" ng-if="!dataList || !dataList.length">
+			暂无记录！
+		</div>
+		<table ng-if="dataList && dataList.length" class="message-template-list-tab">
+			<tr>
+				<th></th>
+				<th>消息标题</th>
+				<th>模板ID</th>
+				<th>发送对象</th>
+				<th>发送状态</th>
+				<th>发送时间</th>
+				<!--<th>启用</th>-->
+
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="item in dataList" class="data-row">
+				<td class="col-checkbox">
+					<input type="checkbox" data-ng-model="item.isChecked" ng-checked="isItemSelected(item)"
+					       ng-click="selectItem(item)"/>
+				</td>
+				<td class="col-title">
+					<span title="{{item.title}}" data-ng-bind="item.title"></span>
+				</td>
+				<td class="col-tmplate-id">
+					<span title="{{item.templateId}}" data-ng-bind="item.templateId"></span>
+				</td>
+				<td class="col-template-tag">
+					<span title="{{item.groupId}}">{{item.groupId|memberCtg}}</span></td>
+				<td class="col-status">
+					<div data-ng-if="item.sendStatus==='success'">
+						<span class=" promise-color">发送成功</span>
+					</div>
+					<div data-ng-if="item.sendStatus==='fail'">
+						<span class=" promise-color">发送失败</span>
+					</div>
+					<div data-ng-if="item.sendStatus==='ready'">
+						<p class=" promise-color">等待发送</p>
+						<span class="cancel-job" data-ng-click="cancelJob(item.id)">取消发送</span>
+					</div>
+					<div data-ng-if="item.sendStatus==='pause'" class="promise-color">
+						已取消发送
+					</div>
+				</td>
+
+				<td>
+					<span >{{item.sendTime||item.createTime}}</span>
+				</td>
+				<!--<td class="col-template-status">-->
+					<!--<span ng-class={'on':item.status} ng-click="toggleStatus(item)"></span>-->
+				<!--</td>-->
+
+				<td class="ctrl-btn">
+					<div class="btn-group" role="group">
+
+						<!--<button type="button" class="btn btn-default btn-sm" ng-click="editItem(item)">-->
+							<!--<span class="glyphicon glyphicon-pencil"></span><span class="fa-edt-text">编辑</span>-->
+						<!--</button>-->
+						<button type="button" class="btn btn-default btn-sm"
+						        ng-click="remove(item,'确定删除？')">
+							<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+								class="fa-delete-text">删除</span>
+						</button>
+
+					</div>
+				</td>
+			</tr>
+			<tr class="data-footer">
+				<td class="col-select" colspan="4">
+					<div class="keyword-group-selector" data-nsw-group-selector data-list-getter="getList"
+					     selected-Items-Getter="getSelectedItems"></div>
+					<button class="btn btn-default btn-remove" data-ng-disabled="!hasSelectedItems()"
+					        data-ng-click="removeItems()">批量删除
+					</button>
+				</td>
+				<td class="col-content" colspan="6">
+					<div class="pull-right search">
+						<div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

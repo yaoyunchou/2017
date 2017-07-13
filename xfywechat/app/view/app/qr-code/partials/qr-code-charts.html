@@ -1,0 +1,42 @@
+<div class="autoreply-body nsw-form nsw-form-in">
+	<tabset>
+		<tab heading="二维码统计" data-active="tabs[1]">
+		</tab>
+	</tabset>
+	<div class="nsw-tab-content">
+		<div class="qr-code-charts">
+			<div class="charts-head">
+				<div class="form-group" beyond>
+					<label class="col-sm-2 nsw-label">
+						二维码名称
+					</label>
+
+					<div class="col-sm-3">
+						<div nsw-dropdown items="options.groupTypes" ng-model="options.groupType" nsw-display="name"
+							 nsw-value="id" data-after-select="groupTypeSelected(options.groupType)"></div>
+					</div>
+
+					<div class="col-sm-3" ng-if="options.groupType===-99">
+						<div nsw-dropdown items="qrCodeList" ng-model="options.id" nsw-display="title"
+							 nsw-value="id" data-reject="{name:'黑名单'}" data-after-select="getId(options.id)"></div>
+					</div>
+				</div>
+
+			</div>
+			<div class="charts-body">
+				<ul class="num-box">
+					<li><p>今日新增扫描人数</p>
+						<strong data-ng-bind="options.info.followCount"></strong>
+					</li>
+					<li><p>累积扫描人数</p>
+						<strong  data-ng-bind="options.info.allScanCount"></strong>
+					</li>
+				</ul>
+				<ui-view></ui-view>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+

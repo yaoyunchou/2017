@@ -1,0 +1,12 @@
+<div class="nsw-page" data-ng-show="hasVal">
+	<div class="hd  pull-right">
+		<a href="javascript:void(0)" class="glyphicon glyphicon-chevron-left" ng-click="getPrevious()"></a>
+		<a href="javascript:void(0)" class="glyphicon glyphicon-chevron-right"  ng-click="goNext()"></a>
+	</div>
+	<div class="num-select  pull-right">
+		<select ng-model="searchOptions.pageNum" ng-options="page as page for page in pagesList" data-ng-change="goPage()"></select>
+	</div>
+	<div class="num-info pull-right">
+		<span data-ng-bind="searchOptions.pageNum">1</span>/<span data-ng-bind="searchOptions.totalPages">20</span>
+	</div>
+</div>

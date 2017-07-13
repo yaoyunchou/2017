@@ -1,0 +1,66 @@
+<div>
+	<div class="materials-tab">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		<span>&nbsp;&nbsp;</span>
+	<span>
+		<a data-ng-bind="sourceName" data-ng-click="goBack()" href="javascript:void(0)"></a>
+	</span>
+		<span>/</span>
+		<span class="cur">{{type=='single'? '单':'多'}}图文消息</span>
+	</div>
+	<div class="materials-body">
+		<div class="body-left">
+			<div class="view" data-ng-if="type=='single'">
+				<h3 data-ng-bind="option.article.title">牛商网的历史</h3>
+
+				<p>{{option.article.create_time| nswDate:'yyyy-MM-dd'}}</p>
+
+				<div class="img-box nsw-bg-one" nsw-bg={{option.article.fileId}}>
+				</div>
+				<div class="abstract" nsw-html="{{option.article.digest | nswDesc: 60}}"></div>
+			</div>
+			<div class="multiple-view list-style-one" data-ng-if="type=='multiple'">
+				<div data-ng-click="editArticle(0,true)" class="img-box nsw-bg-one"
+				     nsw-bg={{currentItem.articles[0].fileId}}>
+					<p>{{currentItem.articles[0].title| nswDesc:'20'}}</p>
+				</div>
+				<div class="articles">
+					<dl data-ng-repeat="article in currentItem.articles" data-ng-class={'last':$last}
+					    data-ng-if="$index>0">
+						<dt>
+							<a href="javascript:void(0)">{{article.title | nswDesc:'30'}}</a>
+						</dt>
+						<dd><img nsw-src={{article.fileId}} src="materials/content/images/materials-icon-pic01.png"
+						         alt=""/>
+						</dd>
+						<div class="eadt">
+							<a href="javascript:void(0)" data-ng-click="editArticle($index,true)"
+							   class="glyphicon glyphicon-editglyphicon glyphicon-edit"> </a>
+							<a href="javascript:void(0)" data-ng-click="deleteArticle($index)"
+							   class="glyphicon glyphicon-trash"></a>
+						</div>
+					</dl>
+					<a data-ng-click="addArticle()" class="material-add">
+						<span class="glyphicon glyphicon-plus"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="body-right" data-ng-class="{
+					        0:'position1',
+					        1:'position2',
+					        2:'position3',
+					        3:'position4',
+					        4:'position5',
+					        5:'position6',
+					        6:'position7',
+					        7:'position8',
+				        }[option.selectedIndex]">
+			<div class="arrow-left">
+
+			</div>
+			<div ui-view></div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="message-box menu-modal nsw-modal">
+	<div class="modal-header">
+		<h4 class="modal-title" ng-bind="modalOptions.title"></h4>
+		<a class="diaremove" ng-click="closeModal(false)"></a>
+	</div>
+	<div class="modal-body message-body">
+		<div class="menu-rename-content col-md-12">
+			<form name="rename">
+				<label ng-bind="modalOptions.label"></label>
+				<div class="form-group">
+					<input type="text" autocomplete="off" nsw-autofocus class="form-control" name="name" data-ng-model="modalOptions.selected.name" required="" nsw-max-length="{{maxCount}}">
+
+					<div class="input-tip">字数不超过{{maxCount/2}}个汉字或者{{maxCount}}个字母</div>
+				</div>
+			</form>
+		</div>
+		<div class="button">
+			<button type="submit" class="btn btn-commit" ng-disabled="!((rename.$valid&&rename.$dirty))" ng-click="closeModal(true)">
+				<label class="btn-icon btn-icon checkforward" ></label>
+				<span class="btn-text">确认</span>
+			</button>
+			<button class="btn" data-ng-class="modalOptions.commitText? 'btn-cancel': 'btn-center'"
+			        data-ng-show="modalOptions.cancelText" ng-click="closeModal(false)">
+				<label class="btn-icon checkcance"></label>
+				<span class="btn-text black" >取消</span>
+			</button>
+		</div>
+	</div>
+</div>

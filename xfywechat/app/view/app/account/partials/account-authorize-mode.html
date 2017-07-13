@@ -1,0 +1,128 @@
+<div class="authorize-mode">
+	<ul class="authorize-body-check" data-ng-if="isWrite">
+		<li data-ng-click="chooesAuthorizeWay(1)">
+			<img src="account/content/images/accoutn-icon-authorize_r1_c3.png" alt="">
+			<a href="javascript:void(0)" >授权绑定</a>
+			<p>安全可靠，无需密码</p>
+		</li>
+		<!--<li class="other-way" data-ng-click="chooesAuthorizeWay(2)">-->
+			<!--<img src="account/content/images/accoutn-icon-authorize_r1_c1.png" alt="">-->
+			<!--<a href="javascript:void(0)">普通绑定</a>-->
+			<!--<p>简单，零门槛</p>-->
+		<!--</li>-->
+	</ul>
+	<div class="ordinary-way" data-ng-if="!isWrite">
+		<div class="head">
+			<div>
+				<div class="icon">
+
+				</div>
+				<!--<img src="account/content/images/accoutn-icon-authorize_r1_c1.png" alt="">-->
+				<a href="javascript:void(0)">普通绑定</a>
+				<p>简单，零门槛</p>
+			</div>
+		</div>
+		<div class="body">
+			<form class=" form-validation nsw-form" name="formaccount" nsw-nav-hint novalidate>
+				<div class="nsw-tab-paneactive" >
+				<div class="form-group" data-beyond>
+					<label class="col-sm-3 nsw-label"><span class="require">*</span>公众号名称</label>
+					<div class="col-sm-5">
+						<input type="text"  data-ng-show="(isEdit&&currentItem.type===3)||!isEdit" class="form-control" name="nick_name" data-ng-model="currentItem.nick_name"  ng-maxlength="30" required >
+						<span data-ng-if="isEdit&&currentItem.type===2" data-ng-bind="currentItem.nick_name"></span>
+						<span data-ng-if="isEdit&&currentItem.type===2">&nbsp;&nbsp;&nbsp;&nbsp;</span><a data-ng-if="isEdit&&currentItem.type===2" href="javascript:void(0)" class="promise-color" data-ng-click="reAuthorize()">重新授权</a>
+						<div ng-show="formaccount.nick_name.$dirty&&formaccount.nick_name.$invalid">
+							<span class="err" ng-show="formaccount.nick_name.$error.required" >请填写公众号名称</span>
+							<span class="err" ng-show="formaccount.nick_name.$error.maxlength">公众号名称长度为0~30字符</span>
+						</div>
+					</div>
+					<span  data-ng-show="isEdit&&currentItem.type===3||!isEdit" class="tip-row-height"><span class="mess-zx">0</span>/30字符</span>
+				</div>
+				<div class="form-group" beyond data-ng-show="isEdit&&currentItem.type!== 2||!!!isEdit">
+					<label class="col-sm-3 nsw-label"><span class="require">*</span>微信号</label>
+					<div class="col-sm-5">
+						<input type="text"  data-ng-if="!isEdit" class="form-control" name="name" data-ng-model="currentItem.name"  required>
+						<span data-ng-bind="currentItem.name"  data-ng-if="isEdit"></span>
+
+					</div>
+				</div>
+				<div class="form-group" data-ng-if = "currentItem.url" >
+					<label class="col-sm-3 nsw-label">URL</label>
+					<div class="col-sm-5">
+						<span ng-bind="currentItem.url"></span>
+					</div>
+				</div>
+				<div class="form-group"  data-ng-if = "currentItem.token" >
+					<label class="col-sm-3 nsw-label">Token</label>
+					<div class="col-sm-5">
+						<span ng-bind="currentItem.token"></span>
+					</div>
+				</div>
+				<div class="form-group" beyond>
+					<label class="col-sm-3 nsw-label"><span class="require">*</span>微信头像</label>
+					<div class="col-sm-5">
+						<div class="imgbox">
+							<img nsw-src= "{{currentItem.head_img}}"  width="71" height="71" src="components/content/images/form-icon-img-default.png" alt=""/>
+							<div data-ng-hide="isEdit&&currentItem.type===2" platform-img-upload data-img-url ="imgurl" change-file="changeFile(file)"  class="clear-webuploader-pick updataimg" ng-model="currentItem.head_img">
+								<a href="javascript:void(0)">上传头像</a>
+							</div>
+							<span class="err" ng-show="formaccount.head_img.$dirty&&formaccount.head_img.$error.required" >请上传头像</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" beyond>
+					<label class="col-sm-3 nsw-label"><span class="require">*</span>微信帐号类型</label>
+					<div class="col-sm-5 ">
+						<div data-ng-show = "!isEdit" nsw-dropdown items="accountType" ng-model="currentItem.bindType" nsw-display ="name" nsw-value="_id"></div>
+						<span  data-ng-show = "isEdit" >{{currentItem.bindType==0?'订阅号':'服务号'}}</span>
+					</div>
+				</div>
+				<div class="arrow-panel panel">
+					<div class="nsw-arrow">
+
+					</div>
+					<div class="form-group" beyond>
+						<label class="col-sm-3 nsw-label"><span></span>{{currentItem.bindType==0?'订阅号':'服务号'}}认证</label>
+						<div data-ng-hide="isEdit&&currentItem.type===2" class="col-sm-5 ">
+							<label class="radio-inline">
+								<input type="radio" name="verify_type_info" id="inlineRadio1" ng-value="-1"   ng-model="currentItem.verify_type_info"> 未认证
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="verify_type_info" id="inlineRadio2" ng-value="0"  ng-model="currentItem.verify_type_info"> 已认证
+							</label>
+						</div>
+						<div  data-ng-show = "isEdit&&currentItem.type===2"  class="col-sm-5">
+							<span>{{currentItem.bindType==0?'已认证':'未认证'}}</span>
+						</div>
+					</div>
+					<div class="form-group" beyond>
+						<label class="col-sm-3 nsw-label"><span class="require">*</span>AppID</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" name="name" data-ng-model="currentItem.appId" data-ng-readonly="isEdit&&currentItem.appId" required>
+						</div>
+						<div class="col-sm-1 prompt-box prompt-box1">
+							<span class="prompt"   nsw-popover data-container=".prompt-box1"    data-html="true"  data-placement="right"   data-content="登录微信公众平台<a target='_black' href='https://mp.weixin.qq.com'>https://mp.weixin.qq.com/</a> ,点高级功能，进入开发者模式，查看接口配置信息"><img src="components/content/images/form-icon-prompt.png" alt=""/></span>
+						</div>
+					</div>
+					<div class="form-group" beyond data-ng-show="isEdit&&currentItem.type!== 2||!isEdit" >
+						<label class="col-sm-3 nsw-label"><span class="require">*</span>AppSecret</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" name="name" data-ng-model="currentItem.appSecret"  required>
+						</div>
+						<div class="col-sm-1 prompt-box prompt-box2">
+							<span class="prompt"   nsw-popover data-container=".prompt-box2" data-html="true"   data-placement="right" data-html="true"   data-content="登录微信公众平台<a target='_black' href='https://mp.weixin.qq.com'>https://mp.weixin.qq.com/</a> ,点高级功能，进入开发者模式，查看接口配置信息"><img src="components/content/images/form-icon-prompt.png" alt=""/></span>
+						</div>
+						<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>
+					</div>
+				</div>
+				<div class="form-group nsw-form-but-group">
+					<div class="col-sm-offset-3 col-sm-10" >
+						<button type="submit" class="btn btn-warning nsw-btn" ng-disabled="!((formaccount.$valid&&formaccount.$dirty))"  ng-click="save()"><label class="nsw-btn-save-icon"></label><span class="nsw-btn-text">保&nbsp;存</span></button>
+						<button class="btn btn-default nsw-btn btn-cancel" onclick="window.history.go(-1)"><label class="nsw-btn-cancal-icon"></label><span class="nsw-btn-text nsw-btn-text-black">取&nbsp;消</span></button>
+					</div>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,135 @@
+.mass-message {
+  .content {
+	min-height: 300px;
+  }
+  .data-content {
+	width: 100%;
+	.data-footer {
+	  height: 88px;
+	}
+  }
+  .icon-send {
+	background: url("../images/icon-send.png") no-repeat;
+	height: 20px;
+	width: 20px;
+	margin-top: 2px;
+	margin-right: 5px;
+  }
+
+  .control {
+	width: 188px;
+	height: 29px;
+  }
+
+  .data-row {
+
+	border-bottom: 1px dashed #dcdcdc;
+	td {
+	  min-height: 130px;
+	}
+	td > div {
+	  min-height: 130px;
+	  float: left;
+	  padding-top: 30px;
+	  .fa-delete {
+		display: inline-block;
+		width: 20px;
+		height: 16px;
+		float: left;
+		background: url("../../../components/content/images/main_sprit1.png") no-repeat;
+		background-position: -587px 3px;
+	  }
+	  .btn:hover {
+		border-color: #f08402;
+		color: #f08402;
+		.fa-delete {
+		  background-position: -587px -20px;
+		}
+	  }
+	}
+
+  }
+
+  .col-img {
+	width: 110px;
+	.image {
+	  display: block;
+	  height: 130px;
+	  width: 130px;
+	  padding: 20px 20px 20px 20px;
+	}
+	.empty {
+	  display: block;
+	  height: 130px;
+	  width: 130px;
+	  padding: 20px 20px 20px 20px;
+	  background: url(../../../components/content/images/nsw.png) no-repeat center center;
+	}
+  }
+  .col-content {
+	padding-right: 10px;
+	max-width: 240px;
+	.message-type {
+	  font-size: 12px;
+	  font-weight: bold;
+	  word-break: break-all;
+	  display: inline-block;
+	}
+
+	.message {
+	  max-width: 440px;
+	  min-height: 130px;
+	  float: left;
+	  padding-top: 30px;
+	  font-size: 12px;
+	  display: inline-block;
+	}
+  }
+
+  .col-status {
+	cursor: pointer;
+	> div > span:hover {
+	  color: #e77919;
+	}
+  }
+
+  .icon-tip {
+	background: url(../images/icon-warming-active.png) no-repeat 0px 4px;
+	width: 14px;
+	height: 20px;
+	display: inline-block;
+
+  }
+
+  .tip {
+	vertical-align: top;
+	display: block;
+	padding-left: 40px;
+	color: #f08402;
+	padding-bottom: 20px;
+	& > span {
+	  vertical-align: top;
+	}
+  }
+
+  .mass-message-content > p {
+	display: inline-block;
+  }
+
+  .send-time {
+	float: left;
+	font-weight: normal;
+  }
+	.err{
+		float: left;
+		width: 1em;
+		height:1em;
+		display: inline-block;
+	}
+	.popover .popover-content {
+		min-width: 180px;
+	}
+}
+.time-picker-box{
+	width:650px;
+}

@@ -1,0 +1,26 @@
+<div class="list-style-one">
+	<div class="delete-btn">
+		<a href="javascript:void(0)" ng-click="remove()"><img src="account/content/images/welcome-list-add-btn.png" alt=""/></a>
+	</div>
+	<div class="multiple-view" ng-click="edit()">
+		<div class="article-title">
+			<div>{{material.create_time | nswDate:"MM月dd日"}}</div>
+		</div>
+		<strong  data-ng-if="material.articles.length===1"  data-ng-bind="material.articles[0].title"></strong>
+		<div class="img-box nsw-bg-one"
+			 nsw-bg = "{{ material.articles[0].fileId }}">
+			<p  data-ng-if="material.articles.length>1" nsw-html="{{material.articles[0].title | nswDesc:'30'}}">牛商网络股份</p>
+		</div>
+		<div class="abstract " data-ng-if="material.articles.length===1">
+			{{material.articles[0].digest | nswDesc :60}}
+		</div>
+		<div class="articles" data-ng-if="material.articles.length>1"  >
+			<dl data-ng-repeat="article in material.articles" data-ng-if="$index>0" >
+				<dt>
+					<a href="javascript:void(0)" data-ng-bind="article.title" >标题标题1</a>
+				</dt>
+				<dd><img nsw-src="{{article.fileId}}"  src="materials/content/images/materials-icon-pic01.png" alt=""/></dd>
+			</dl>
+		</div>
+	</div>
+</div>

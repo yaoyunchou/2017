@@ -1,0 +1,94 @@
+@charset "utf-8";
+.main-no-menus{
+	margin-left: 0px;
+	.switch-project{
+		width: 100%;
+		margin-left: 200px;
+		 margin-top: 50px;
+		.projects{
+			&>a{
+				display: inline-block;
+				width: 189px;
+				background-color: #e0f2be;
+				cursor: pointer;
+				margin-left: 30px;
+			}
+
+		}
+		.project{
+			width: 189px;
+			height: 252px;
+			border:1px solid #dddddd;
+			background-color: #ffffff;
+			text-align: center;
+			box-sizing: border-box;
+			&:hover{
+				border-color:#f79d31 ;
+			}
+			.icon{
+				height: 80%;
+				width: 100%;
+			}
+			.title{
+				font-family: "微软雅黑";
+				font-size: 14px;
+				font-weight: bolder;
+				margin: 35px auto 0;
+			}
+			.desc{
+				font-family: "微软雅黑";
+				font-size: 12px;
+			}
+
+			.icon{
+				background: url("../images/switch-project.png") no-repeat;
+			}
+
+			.pc{
+				margin: 71px auto 0;
+				width: 108px;
+				height: 81px;
+				background-position:-1025px -60px ;
+			}
+			.phone{
+				margin: 70px auto 0;
+				width: 55px;
+				height: 82px;
+				background-position: -470px -59px ;
+			}
+
+			.responsive{
+				margin: 71px auto 0;
+				width: 140px;
+				height: 81px;
+				background-position:-602px -55px ;
+			}
+			.wechat{
+				margin: 52px auto 0;
+				width: 125px;
+				height: 100px;
+				background-position: -55px -51px;
+			}
+
+			&:hover{
+				.title {
+					color: #f08402;
+				}
+				.pc {
+					background-position: -902px -60px;
+				}
+				.phone{
+					background-position:-533px -59px ;
+				}
+				.responsive{
+					background-position:-749px -59px ;
+				}
+				.wechat{
+					background-position: -180px -51px
+				}
+			}
+
+
+		}
+	}
+}

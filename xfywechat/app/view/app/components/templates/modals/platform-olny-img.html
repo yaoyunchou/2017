@@ -1,0 +1,24 @@
+<div class="img-reply">
+    <div ng-if="!keyWordImage">
+        <div class="img-reply-left">
+            <div class="img-reply-in" >
+                <div class="img-reply-ct" img-lib="image"  after-select="afterImageSelected(image)">
+                    <p><a href="javascript:void(0)">从图片素材库中选择</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="img-reply-right">
+            <div class="img-reply-in clear-webuploader-pick" platform-img-upload data-img-url="imgurl" change-file="changeFile(file)" data-ng-model="updateImg">
+                <div class="img-reply-ct"  >
+                    <p><a href="javascript:void(0)">上传图片</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="keyWordImage" class="material-box-img">
+        <div class="img-box" data-ng-if = "keyWordImage.url" >
+            <img nsw-src="{{ keyWordImage.url }}"  alt=""/>
+        </div>
+        <a href="javascript:void(0)" data-ng-click="deleteMaterial()">删除</a>
+    </div>
+</div>

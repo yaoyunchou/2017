@@ -1,0 +1,26 @@
+[
+  {
+    "code": "10974436",
+    "name": "JavaScript权威指南（第6版）",
+    "publisher": "机械工业出版社",
+    "author": " David Flanagan "
+  },
+  {
+    "code": "11090963",
+    "name": "JavaScript语言精粹（修订版）",
+    "publisher": "电子工业出版社",
+    "author": "Douglas Crockford"
+  },
+  {
+    "code": "11044070",
+    "name": "JavaScript Patterns",
+    "publisher": "中国电力出版社",
+    "author": "Stoyan Stefanov"
+  },
+  {
+    "code": "11755693",
+    "name": "高性能JavaScript",
+    "publisher": "中国工信出版集团",
+    "author": "Nicholas C. Zakas"
+  }
+]

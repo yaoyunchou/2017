@@ -1,0 +1,89 @@
+<div class="materials-tab">
+	<span class="glyphicon glyphicon-chevron-left"></span> &nbsp;&nbsp;<span>图文回复</span>  /  <span class="cur">单图文消息</span>
+</div>
+<div class="materials-body">
+	<div class="body-left">
+		<div class="view">
+			<h3>牛商网的历史</h3>
+			<p><span>8月27日</span></p>
+			<div class="imgbox">
+				<img src="materials/content/images/materials-icon-pic01.png" alt=""/>
+			</div>
+		   <div class="abstract">
+			   企业主要面临的问题:<br>
+			   高昂的营销费换不来高利润回报!<br>
+			   到底该怎样做好移动营销!
+
+		   </div>
+		</div>
+	</div>
+	<div class="body-right">
+		<div class="arrow-left">
+
+		</div>
+		<div class="body-right-in">
+			<form class=" form-validation nsw-form" name="formaccount" nsw-nav-hint novalidate>
+				<tabset>
+					<tab  select="display(1)" heading="输入内容"  active>
+					</tab>
+				</tabset>
+				<div class="tab-form">
+					<a href="#">选取内容</a><a href="#">输入内容</a>
+				</div>
+				<div class="nsw-tab-content">
+					<div class="nsw-tab-paneactive" >
+						<div class="form-group" beyond>
+							<label class="col-sm-2 nsw-label">标   题</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="nick_name" data-ng-model="currentItem.nick_name"  ng-maxlength="30" required >
+							</div>
+						</div>
+						<div class="form-group" beyond>
+							<label class="col-sm-2 nsw-label">摘   要</label>
+							<div class="col-sm-8">
+								<a href="#" class="add-img"><span class="glyphicon glyphicon-plus"></span>选择图片</a>
+								<p class="info">（图片大小建议尺寸：900像素*500像素）</p>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox"> 封面图片显示在正文中
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group" beyond>
+							<label class="col-sm-2 nsw-label">摘   要</label>
+							<div class="col-sm-8">
+								<textarea class="materials-textarea" name="" >
+
+								</textarea>
+							</div>
+						</div>
+						<div class="form-group" beyond>
+							<label class="col-sm-2 nsw-label">外部链接</label>
+							<div class="col-sm-8">
+								<label class="radio-inline">
+									<input type="radio" name="verify_type_info" id="inlineRadio1" ng-value="-1" ng-model="currentItem.verify_type_info"> 正文
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="verify_type_info" id="inlineRadio2" ng-value="0" ng-model="currentItem.verify_type_info"> URL地址
+								</label>
+								<div class="tab-radio">
+									<div class="tab-radio-arrow">
+									</div>
+									<textarea class="materials-textarea tab-show" name="" ></textarea>
+									<input type="text"  class="form-control tab-hide"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group nsw-form-but-group">
+					<div class="col-sm-offset-2 col-sm-10" >
+						<button type="submit" class="btn btn-warning nsw-btn" ng-disabled="!((formaccount.$valid&&formaccount.$dirty))"  ng-click="save()"><label class="nsw-btn-save-icon"></label><span class="nsw-btn-text">保&nbsp;存</span></button>
+						<button class="btn btn-default nsw-btn btn-cancel" onclick="window.history.go(-1)"><label class="nsw-btn-cancal-icon"></label><span class="nsw-btn-text nsw-btn-text-black">清除内容</span></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="message-box nsw-modal">
+	<div class="modal-header">
+		<h4 class="modal-title">粘贴板调用失败</h4>
+		<a class="diaremove" ng-click="closeModal(false)"></a>
+	</div>
+	<div class="modal-body message-body">
+		<div class="icon">
+			<div class="icon-warming icon-same"></div>
+		</div>
+		<div class="message">
+			<form name="rename" class="ng-pristine ng-valid ng-valid-required">
+				<div class="form-group">
+					<div class="input-tip ng-binding">您的浏览器安全设置不允许使用复制操作，请使用快捷键(Ctrl+C)来完成。</div>
+					<div>
+						<input type="text" autocomplete="off" class="form-control" name="content" readonly data-ng-model="modalOptions.content">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="button clipboard-error">
+			<button class="btn btn-cancel" ng-click="closeModal(false)">
+				<label class="btn-icon checkcance"></label>
+				<span class="btn-text black">关闭</span>
+			</button>
+		</div>
+	</div>
+</div>

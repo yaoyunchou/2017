@@ -1,0 +1,187 @@
+@charset "UTF-8";
+/* 弹窗 */
+.nsw-modal-xs {
+	width: 300px;
+}
+.nsw-modal-sm {
+	width: 496px;
+}
+
+.nsw-modal-md {
+	width: 600px;
+	overflow:hidden;
+}
+.nsw-modal-lg {
+	width: 760px;
+	overflow:hidden;
+}
+.nsw-modal-sg {
+	width: 870px;
+}
+.nsw-modal{
+	.modal-title{
+		float: left;
+	}
+}
+.message-body .fy{
+	float:right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+/*提示框*/
+.message-box{
+	.btn{
+		width: 102px;
+		height: 34px;
+		border-radius: 2px;
+		padding: 0;
+		/* margin-left: 50px; */
+		background-color:#f08300;
+	}
+	.btn-icon{
+		margin: 0;
+		padding: 0;
+		height: 25px;
+		width: 25px;
+		background: url("../images/main_sprit1.png") no-repeat -316px -195px;
+	}
+	.btn-text{
+		margin: 0;
+		padding:  0;
+		color:#fff;
+		position: relative;
+		top: -5px;
+	}
+	.message{
+		display: inline-block;
+		width: 320px;
+		margin-bottom:20px;
+		vertical-align:middle;
+	}
+	.icon{
+		width: 107px;
+		height: 100%;
+		display: inline-block;
+		vertical-align:middle;
+	}
+	.icon-success{
+		background: url("../images/main_sprit1.png") no-repeat 0px -836px;
+		display: inline-block;
+		width: 42px;
+		height: 42px;
+		margin:0 30%;
+	}
+	.icon-warming{
+		background: url("../images/main_sprit1.png") no-repeat -228px -865px;
+		display: inline-block;
+		width: 42px;
+		height: 42px;
+		margin:0 30%;
+	}
+	.icon-confirm{
+		background: url("../images/main_sprit1.png") no-repeat -228px -865px;
+		display: inline-block;
+		width: 42px;
+		height: 42px;
+		margin:0 30%;
+	}
+	.icon-error{
+		background: url("../images/main_sprit1.png") no-repeat -228px -930px;
+		display: inline-block;
+		width: 42px;
+		height: 42px;
+		margin:0 30%;
+
+	}
+	.icon-same{
+		width: 45px;
+		overflow: hidden;
+	}
+	.btn.btn-commit{
+		margin:0 0 17px 0;
+		background-color: #f08300;
+
+	}
+	.btn.btn-cancel{
+		margin:0 0 17px 17px;
+		background-color: #fff;
+		border: 1px solid #dcdcdc;
+		.btn-text {
+			color: #333;
+		}
+		.btn-icon{
+			background-position:-365px -609px;
+		}
+	}
+	.message-content{
+		margin-top:20px;
+	}
+	.info-content{
+		color:#515567;
+		font-size:12px;
+		margin-top:20px;
+	}
+
+}
+.article-title{
+	padding:0 10px;
+}
+
+
+.tip-box{
+	.tip-icon{
+		width: 41px;
+		height: 41px;
+		margin-left: 58px;
+		margin-top: 11px;
+	}
+	.tip-text{
+		padding-top: 23px;
+		padding-left: 10px;
+		color: black;
+		position: absolute;
+	}
+	.icon-success{
+		background: url("../images/main_sprit1.png") no-repeat -0px -836px;
+	}
+	.icon-warming{
+		background: url("../images/main_sprit1.png") no-repeat -115px -836px;
+	}
+	.icon-loading{
+		background: url("../images/loading.gif") no-repeat;
+		background-size: 40px 40px;
+	}
+}
+
+
+.nsw-modal{
+	.modal-header{
+		padding-left: 15px;
+		height:44px;
+		line-height:44px;
+	}
+	.modal-body{
+		padding-left: 15px;
+	}
+	.modal-footer{
+		padding-left: 15px;
+		margin-top: 13px;
+	}
+	.button{
+		margin-left:111px;
+		margin-bottom:20px;
+	}
+	.button .btn{margin-bottom:0px;}
+}
+
+.diaremove {
+	float: right;
+	display: block;
+	width: 16px;
+	height: 16px;
+	//欢迎页面不要margin-top
+	//margin-top: -14px;
+	background: url("../images/main_sprit1.png") no-repeat -356px -59px;
+	cursor: pointer;
+}

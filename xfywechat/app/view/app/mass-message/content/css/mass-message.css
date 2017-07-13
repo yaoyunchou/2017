@@ -1,0 +1,118 @@
+.mass-message .content {
+  min-height: 300px; }
+.mass-message .data-content {
+  width: 100%; }
+  .mass-message .data-content .data-footer {
+    height: 88px; }
+.mass-message .icon-send {
+  background: url("../images/icon-send.png") no-repeat;
+  height: 20px;
+  width: 20px;
+  margin-top: 2px;
+  margin-right: 5px; }
+.mass-message .control {
+  width: 188px;
+  height: 29px; }
+.mass-message .data-row {
+  border-bottom: 1px dashed #dcdcdc; }
+  .mass-message .data-row td {
+    min-height: 130px; }
+  .mass-message .data-row td > div {
+    min-height: 130px;
+    float: left;
+    padding-top: 30px; }
+    .mass-message .data-row td > div .fa-delete {
+      display: inline-block;
+      width: 20px;
+      height: 16px;
+      float: left;
+      background: url("../../../components/content/images/main_sprit1.png") no-repeat;
+      background-position: -587px 3px; }
+    .mass-message .data-row td > div .btn:hover {
+      border-color: #f08402;
+      color: #f08402; }
+      .mass-message .data-row td > div .btn:hover .fa-delete {
+        background-position: -587px -20px; }
+.mass-message .col-img {
+  width: 110px; }
+  .mass-message .col-img .image {
+    display: block;
+    height: 130px;
+    width: 130px;
+    padding: 20px 20px 20px 20px; }
+  .mass-message .col-img .empty {
+    display: block;
+    height: 130px;
+    width: 130px;
+    padding: 20px 20px 20px 20px;
+    background: url(../../../components/content/images/nsw.png) no-repeat center center; }
+.mass-message .col-content {
+  padding-right: 10px;
+  max-width: 240px; }
+  .mass-message .col-content .message-type {
+    font-size: 12px;
+    font-weight: bold;
+    word-break: break-all;
+    display: inline-block; }
+  .mass-message .col-content .message {
+    max-width: 440px;
+    min-height: 130px;
+    float: left;
+    padding-top: 30px;
+    font-size: 12px;
+    display: inline-block; }
+.mass-message .col-status {
+  cursor: pointer; }
+  .mass-message .col-status > div > span:hover {
+    color: #e77919; }
+.mass-message .icon-tip {
+  background: url(../images/icon-warming-active.png) no-repeat 0px 4px;
+  width: 14px;
+  height: 20px;
+  display: inline-block; }
+.mass-message .tip {
+  vertical-align: top;
+  display: block;
+  padding-left: 40px;
+  color: #f08402;
+  padding-bottom: 20px; }
+  .mass-message .tip > span {
+    vertical-align: top; }
+.mass-message .mass-message-content > p {
+  display: inline-block; }
+.mass-message .send-time {
+  float: left;
+  font-weight: normal; }
+.mass-message .err {
+  float: left;
+  width: 1em;
+  height: 1em;
+  display: inline-block; }
+.mass-message .popover .popover-content {
+  min-width: 180px; }
+
+.time-picker-box {
+  width: 650px; }
+
+.template-box {
+  width: 447px;
+  broder: 1px solid #dcdcdc;
+  padding: 12px 10px;
+  background: #FFFFFF;
+  color: #515366;
+  font-size: 12px; }
+  .template-box textarea {
+    border-bottom: 1px dashed #dcdcdc;
+    width: 100%;
+    overflow: hidden;
+    min-height: 100px; }
+  .template-box h3 {
+    font-weight: normal;
+    font-size: 12px;
+    color: #515366;
+    margin-top: 10px; }
+    .template-box h3 span {
+      border-left: 3px solid #EF8300;
+      padding-left: 8px; }
+
+/*# sourceMappingURL=mass-message.css.map */

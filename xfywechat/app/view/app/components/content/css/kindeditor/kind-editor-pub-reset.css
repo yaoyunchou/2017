@@ -1,0 +1,99 @@
+.editor-reset {
+  padding: 0;
+  border: 0;
+  font: 14px/14px Helvetica, 'Hiragino Sans GB', Arial, sans-serif;
+  color: #000;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  /* HTML5 display-role reset for older browsers */
+  /*li{list-style:none;}*/
+  /*title*/ }
+  .editor-reset article, .editor-reset aside, .editor-reset details, .editor-reset figcaption, .editor-reset figure,
+  .editor-reset footer, .editor-reset header, .editor-reset hgroup, .editor-reset menu, .editor-reset nav, .editor-reset section {
+    display: block; }
+  .editor-reset ol, .editor-reset ul {
+    list-style: none; }
+  .editor-reset blockquote, .editor-reset q {
+    quotes: none; }
+  .editor-reset body, .editor-reset p, .editor-reset div, .editor-reset span {
+    word-wrap: break-word; }
+  .editor-reset blockquote:before, .editor-reset blockquote:after,
+  .editor-reset q:before, .editor-reset q:after {
+    content: '';
+    content: none; }
+  .editor-reset table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+  .editor-reset em {
+    font-style: italic; }
+  .editor-reset del, .editor-reset ins {
+    text-decoration: none; }
+  .editor-reset caption, .editor-reset th {
+    text-align: left; }
+  .editor-reset q:before, .editor-reset q:after {
+    content: ''; }
+  .editor-reset sup, .editor-reset sub {
+    vertical-align: baseline; }
+  .editor-reset input, .editor-reset select {
+    vertical-align: middle; }
+  .editor-reset pre, .editor-reset code, .editor-reset kbd, .editor-reset samp, .editor-reset tt {
+    font-family: monospace;
+    font-size: 108%;
+    line-height: 100%; }
+  .editor-reset .txtboxcs {
+    border: solid 1px #ccc;
+    height: 22px; }
+  .editor-reset h1 {
+    font-size: 32px; }
+  .editor-reset h2 {
+    font-size: 26px; }
+  .editor-reset h3 {
+    font-size: 20px; }
+  .editor-reset h4 {
+    font-size: 14px; }
+  .editor-reset h5 {
+    font-size: 12px; }
+  .editor-reset h6 {
+    font-size: 10px; }
+  .editor-reset .mt10 {
+    margin-top: 10px; }
+  .editor-reset div {
+    margin: 5px 0;
+    line-height: 32px; }
+  .editor-reset img {
+    border: 0; }
+  .editor-reset .fl {
+    float: left; }
+  .editor-reset .fr {
+    float: right; }
+  .editor-reset .clear {
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden; }
+  .editor-reset .usercontrol_tab input {
+    width: 268px; }
+  .editor-reset .usercontrol_tab .fl {
+    width: 200px;
+    height: 315px;
+    overflow: hidden; }
+  .editor-reset .tabbody {
+    height: 390px;
+    overflow: hidden; }
+  .editor-reset .tabbody span {
+    margin: 5px 3px;
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 16px;
+    line-height: 16px;
+    cursor: pointer; }
+
+@media (min-width: 768px) {
+  .editor-reset {
+    margin: 0 2%;
+    max-width: 96%; } }
+
+/*# sourceMappingURL=kind-editor-pub-reset.css.map */

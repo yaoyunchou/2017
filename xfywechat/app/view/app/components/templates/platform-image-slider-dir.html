@@ -1,0 +1,16 @@
+<div class="picScroll-left">
+	<div class="hd">
+		<a class="next"></a>
+		<ul></ul>
+		<a class="prev"></a>
+		<span class="pageState"></span>
+	</div>
+	<div class="bd">
+		<ul class="picList">
+			<li data-ng-repeat="image in imageList">
+				<div class="pic"><img data-nsw-src="{{image.path}}"/></div>
+				<div class="title" data-ng-bind="image.description"></div>
+			</li>
+		</ul>
+	</div>
+</div>

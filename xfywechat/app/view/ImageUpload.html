@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>图片上传</title>
+    <link type="text/css" rel="stylesheet" href="skins/easyui/gray/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="skins/easyui/icon.css" />
+    <link type="text/css" rel="stylesheet" href="skins/base/common.css" />
+    <link type="text/css" rel="stylesheet" href="skins/default/default.css"/>
+    <link type="text/css" rel="stylesheet" href="skins/base/login.css" />
+    <link type="text/css" href="skins/easyui/gray/easyui.css" rel="stylesheet"/>
+    <link type="text/css" href="skins/easyui/icon.css" rel="stylesheet" />
+</head>
+<body>
+<form action="" name="orderForm" id="orderForm">
+  <input name="projId" />
+  <input name="username" />
+   <input name="formId" />  
+   <a onclick="kuayu();" href="#"> 跨域请求</a>
+</form>
+
+    <div id="fileUpload"></div>
+    <img id="imgId" alt="" src="http://192.168.4.152/group1/M00/00/00/wKgEmFXxdU-AKeLDAAHC15OCEAg759.png">
+</body>
+<script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyui/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/nsw.js"></script>
+<script type="text/javascript" src="js/sea.2.3.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var imgUpload = new nsw.File.fileUpload("#fileUpload", {
+            auto: true,
+	        extensions: "*",//文件类型
+            mimeTypes: "*",
+            server: nsw.CommonUtil.wrapUrl("/image/upload"),
+            success: function(file,res){
+            	console.info(file);
+            	console.info(res._raw);
+            	var fmHost = "http://192.168.4.160:8080/" + res._raw;
+            	$("#imgId").attr("src", fmHost);
+            }
+		/*
+		
+            imgUpload.setFormData({"description": description, "filename": filename});
+            imgUpload.upload();
+		*/
+        });
+		})
+	function kuayu(){
+		  var datas={"formId":"formid123","projId":"projId123","name":"aaaaaaaaaaaa"}; 
+		  /* $.ajax({
+		        'url': 'http://192.168.2.39:8080/vcenter/intentionalOrder/add',
+		        'type':'post',
+		        'dataType':'jsonp',
+		        'data':datas,
+		        'jsonpCallback':'callback',
+		        'error':function(e){
+		         alert(e.repsonseText);
+		        },
+		        'success':function(data){
+		            alert(data[0].msg);
+		        }
+		    }); */
+		  $.getJSON("http://127.0.0.1:8084/thinker/finance/jsonp.json?callback=?",datas,
+		            function(data){
+		              alert(data.msg);
+		        });
+	}
+</script>
+</html>

@@ -1,0 +1,49 @@
+<div class="message-box menu-modal nsw-modal">
+    <div class="modal-header">
+        <h4 class="modal-title" >关键词提取库</h4>
+        <a class="diaremove" ng-click="closeModal(false)"></a>
+    </div>
+    <div class="modal-body message-body keyworks">
+        <div class="search-info tagChose">
+            <div class="member-list-search">
+                <div class="search-one">
+                    <input type="text" placeholder="请输入关键词" nsw-enter="searchData()" class="pull-left"
+                           ng-model="searchOptions.filter">
+                    <a class="reset glyphicon glyphicon-remove" href="javascript:void(0)"
+                       ng-click="resetSearchData()"></a>
+                    <a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+                </div>
+                <div class="selectedTag" data-ng-if="selectedItem.keyword" data-ng-bind="selectedItem.keyword">
+                </div>
+            </div>
+        </div>
+        <div class="modal-body-conten">
+            <div class="head" >
+                <div class="col-sm-3" >规则名</div>
+                <div class='col-sm-9'>关键词</div>
+            </div>
+            <ul class="tab-list"  ng-if="dataList && dataList.length">
+                <li ng-repeat="item in dataList" class="data-row" >
+                    <p class="col-sm-3 rule" title="{{item.ruleName}}" data-ng-bind="item.ruleName"></p>
+                    <div class="col-sm-9 td2">
+                        <span class="keyword"  data-ng-repeat="tag in item.keyWordList" get-key-word data-ng-model="tag" title="{{tag}}" ng-class="{'on':selectedTag(item,tag)}" data-key-word="searchOptions.filter" data-ng-click="selectKeyword(item,tag)"></span>
+                    </div>
+                </li>
+            </ul>
+            <div class="no-member" ng-if="!dataList || !dataList.length">
+                暂无关键词，请先在自动回复-关键词回复中设置关键词，再进行选择！
+            </div>
+        </div>
+        <div class="button">
+            <button type="submit" class="btn btn-commit" data-ng-disabled="!selectedItem.keyword"
+                    ng-click="closeModal(true,selectedItem)">
+                <label class="btn-icon btn-icon checkforward"></label>
+                <span class="btn-text">确认</span>
+            </button>
+            <button class="btn btn-cancel"  ng-click="closeModal(false)">
+                <label class="btn-icon checkcance"></label>
+                <span class="btn-text black">取消</span>
+            </button>
+        </div>
+    </div>
+</div>

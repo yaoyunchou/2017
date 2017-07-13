@@ -1,0 +1,183 @@
+.autoreply-body {
+  padding-top: 28px; }
+  .autoreply-body .img-reply {
+    min-height: 269px; }
+  .autoreply-body .autoreply .text-reply {
+    width: 910px;
+    height: 280px;
+    /*border:1px solid #dddddd;*/
+    border-radius: 5px; }
+    .autoreply-body .autoreply .text-reply textarea {
+      width: 100%;
+      height: 240px;
+      border: none;
+      box-shadow: none; }
+  .img-reply {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid #dddddd;
+    padding: 28px;
+    margin: 0 auto; }
+    .img-reply .img-preview {
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+      width: 200px;
+      min-height: 200px;
+      display: block; }
+    .img-reply .material-box-img {
+      width: 160px;
+      overflow: hidden;
+      margin: 0 auto;
+      text-align: center; }
+      .img-reply .material-box-img img {
+        width: 100%;
+        height: 160px; }
+    .img-reply .aterial-box-nsw {
+      width: 280px;
+      margin: 0 auto; }
+      .img-reply .aterial-box-nsw .delete {
+        text-align: center; }
+    .img-reply .img-reply-left {
+      width: 50%;
+      height: 100%;
+      float: left;
+      border-right: 1px dashed #dddddd; }
+    .img-reply .img-reply-right {
+      width: 50%;
+      height: 100%;
+      float: left; }
+      .img-reply .img-reply-right .clear-webuploader-pick .webuploader-pick {
+        width: 100%; }
+    .img-reply .img-reply-in {
+      width: 210px;
+      margin: 0 auto; }
+      .img-reply .img-reply-in .img-reply-ct {
+        width: 100%;
+        margin-top: 48px;
+        height: 120px;
+        display: inline-block;
+        padding-top: 100px;
+        background: url("../../../components/content/images/add-big.png") no-repeat center top; }
+        .img-reply .img-reply-in .img-reply-ct p {
+          text-align: center; }
+  .autoreply-body .autoreply .img-reply-height {
+    height: 280px; }
+  .autoreply-body .keyword-reply {
+    position: relative; }
+    .autoreply-body .keyword-reply .prompt {
+      margin: 0px 32px 0 10px; }
+    .autoreply-body .keyword-reply .reply .radio-inline {
+      margin-right: 50px; }
+    .autoreply-body .keyword-reply .keyword-box {
+      min-width: 390px;
+      max-width: 620px;
+      padding: 14px;
+      min-height: 60px;
+      overflow: hidden;
+      border: 1px solid #e5e5e5; }
+      .autoreply-body .keyword-reply .keyword-box ul li {
+        float: left;
+        width: 94px;
+        height: 29px;
+        border: 1px dashed #e5e5e5;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        position: relative; }
+        .autoreply-body .keyword-reply .keyword-box ul li input {
+          display: inline-block;
+          line-height: 27px;
+          width: 100%; }
+        .autoreply-body .keyword-reply .keyword-box ul li a {
+          position: absolute;
+          right: -6px;
+          top: -6px;
+          cursor: pointer; }
+      .autoreply-body .keyword-reply .keyword-box ul > a {
+        display: inline-block;
+        float: left; }
+    .autoreply-body .keyword-reply .reply-way {
+      width: 540px;
+      min-height: 275px;
+      padding-top: 15px;
+      background: url("../../../components/content/images/form-icon-arrow-up.png") no-repeat 24px top; }
+      .autoreply-body .keyword-reply .reply-way .reply-way-in {
+        width: 100%;
+        min-height: 260px; }
+      .autoreply-body .keyword-reply .reply-way .text textarea {
+        width: 100%;
+        height: 228px;
+        border: none;
+        box-shadow: none; }
+    .autoreply-body .keyword-reply .reply-way-mid {
+      background-position: 135px top; }
+    .autoreply-body .keyword-reply .search-info {
+      position: absolute;
+      right: 0;
+      top: -40px; }
+    .autoreply-body .keyword-reply .reply-way-right {
+      background-position: 260px top; }
+    .autoreply-body .keyword-reply .table {
+      border: none;
+      margin-top: -28px;
+      margin-bottom: 0px; }
+      .autoreply-body .keyword-reply .table th {
+        height: auto; }
+      .autoreply-body .keyword-reply .table .listTitle, .autoreply-body .keyword-reply .table .keyword {
+        width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden; }
+      .autoreply-body .keyword-reply .table .keyword {
+        width: 155px; }
+      .autoreply-body .keyword-reply .table .data-footer {
+        background: #f6f6f6;
+        height: 50px; }
+        .autoreply-body .keyword-reply .table .data-footer td {
+          border-bottom: none; }
+        .autoreply-body .keyword-reply .table .data-footer .pull-left {
+          height: 30px;
+          line-height: 30px; }
+        .autoreply-body .keyword-reply .table .data-footer .keyword-group-selector {
+          display: inline-block;
+          margin-left: -4px; }
+          .autoreply-body .keyword-reply .table .data-footer .keyword-group-selector .btn-check-all {
+            margin-left: 4px; }
+        .autoreply-body .keyword-reply .table .data-footer .btn-remove.btn {
+          padding: 2px 10px; }
+      .autoreply-body .keyword-reply .table .no-member td {
+        border: none; }
+      .autoreply-body .keyword-reply .table .ctrlbtn .btn {
+        float: left; }
+        .autoreply-body .keyword-reply .table .ctrlbtn .btn .fa-edt {
+          display: inline-block;
+          width: 20px;
+          height: 16px;
+          float: left;
+          background: url("../../../components/content/images/main_sprit1.png") no-repeat;
+          background-position: -523px 3px; }
+        .autoreply-body .keyword-reply .table .ctrlbtn .btn .fa-delete {
+          display: inline-block;
+          width: 20px;
+          height: 16px;
+          float: left;
+          background: url("../../../components/content/images/main_sprit1.png") no-repeat;
+          background-position: -587px 3px; }
+      .autoreply-body .keyword-reply .table .btn:hover .fa-edt {
+        background-position: -523px -20px; }
+      .autoreply-body .keyword-reply .table .btn:hover .fa-edt-text, .autoreply-body .keyword-reply .table .btn:hover .fa-delete-text {
+        color: #f08300; }
+      .autoreply-body .keyword-reply .table .btn:hover .fa-delete {
+        background-position: -587px -20px; }
+      .autoreply-body .keyword-reply .table .checkboxbtn {
+        cursor: pointer; }
+        .autoreply-body .keyword-reply .table .checkboxbtn .checkbtn {
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          background: url("../images/chock.png") no-repeat; }
+        .autoreply-body .keyword-reply .table .checkboxbtn .checkbtn-circle {
+          background-image: url("../images/chocked.png"); }
+
+/*# sourceMappingURL=autoReply.css.map */

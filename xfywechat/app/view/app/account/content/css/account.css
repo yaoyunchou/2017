@@ -1,0 +1,512 @@
+@charset "UTF-8";
+/*base style*/
+.promise-color, .account-welcome .account-welcome-header .header-left a {
+  color: #f08300; }
+
+.promise-gray-color {
+  color: #dedede; }
+
+.font-gray, .account-welcome .account-welcome-header .header-left {
+  color: #595D6D; }
+
+/*--welcome Css---*/
+.account-welcome {
+  margin-top: 25px;
+  border: 1px solid #dedede;
+  font-weight: 500;
+  /* 公告列表页面*/ }
+  .account-welcome .account-welcome-header {
+    height: 59px;
+    line-height: 59px;
+    padding: 0 25px;
+    border-bottom: 1px solid #dedede;
+    background: #f5f5f5; }
+    .account-welcome .account-welcome-header .header-left {
+      float: left; }
+    .account-welcome .account-welcome-header .header-right {
+      float: right;
+      margin: 16px 0 0 28px; }
+  .account-welcome .account-welcome-body {
+    overflow: hidden;
+    padding-left: 60px;
+    padding-bottom: 40px; }
+    .account-welcome .account-welcome-body ul li {
+      position: relative;
+      width: 200px;
+      height: 240px;
+      float: left;
+      margin-right: 24px;
+      margin-top: 32px; }
+      .account-welcome .account-welcome-body ul li .list-style-one {
+        height: 227px; }
+        .account-welcome .account-welcome-body ul li .list-style-one .account-new {
+          position: absolute;
+          top: 37px;
+          left: 137px; }
+        .account-welcome .account-welcome-body ul li .list-style-one .new-icon {
+          display: none;
+          position: absolute;
+          top: 37px;
+          left: 135px;
+          z-index: 10; }
+        .account-welcome .account-welcome-body ul li .list-style-one:hover, .account-welcome .account-welcome-body ul li .list-style-one.on {
+          border-color: #f08300; }
+          .account-welcome .account-welcome-body ul li .list-style-one:hover .delete-btn, .account-welcome .account-welcome-body ul li .list-style-one.on .delete-btn {
+            display: block; }
+          .account-welcome .account-welcome-body ul li .list-style-one:hover .img-account img, .account-welcome .account-welcome-body ul li .list-style-one.on .img-account img {
+            border-color: #f08300; }
+        .account-welcome .account-welcome-body ul li .list-style-one .img-box {
+          width: 105px;
+          height: 105px;
+          margin: 50px 0 0 40px; }
+          .account-welcome .account-welcome-body ul li .list-style-one .img-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 53px;
+            border: 1px solid #dddddd; }
+        .account-welcome .account-welcome-body ul li .list-style-one h4 {
+          text-align: center;
+          font-size: 14px;
+          line-height: 32px;
+          height: 32px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden; }
+        .account-welcome .account-welcome-body ul li .list-style-one p {
+          text-align: center; }
+      .account-welcome .account-welcome-body ul li.add > div {
+        border-color: #f08300;
+        color: #f08300; }
+  .account-welcome .notice-body {
+    padding: 22px 25px; }
+    .account-welcome .notice-body ul {
+      border: 1px solid #dcdcdc;
+      border-bottom: none; }
+      .account-welcome .notice-body ul li {
+        height: 45px;
+        line-height: 45px;
+        border-bottom: 1px solid #dcdcdc;
+        color: #515567;
+        padding: 0 10px; }
+        .account-welcome .notice-body ul li a {
+          display: inline-block;
+          max-width: 750px;
+          color: #515567;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden; }
+        .account-welcome .notice-body ul li em {
+          display: inline-block;
+          width: 17px;
+          height: 45px;
+          background: url("../images/announcement-new.png") no-repeat left center; }
+        .account-welcome .notice-body ul li span {
+          display: inline-block;
+          float: right; }
+
+.authorize-body {
+  padding-top: 50px; }
+  .authorize-body .authorize-body-check {
+    width: 538px;
+    height: 208px;
+    margin-left: 120px; }
+    .authorize-body .authorize-body-check li {
+      width: 126px;
+      margin-left: 143px;
+      float: left;
+      color: #515567;
+      cursor: pointer; }
+      .authorize-body .authorize-body-check li img {
+        display: block;
+        margin: 0 auto; }
+      .authorize-body .authorize-body-check li a {
+        display: block;
+        height: 25px;
+        line-height: 25px;
+        border-radius: 12px;
+        font-size: 14px;
+        background-color: #f5f5f5;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #e1e1e1;
+        margin-top: 16px; }
+      .authorize-body .authorize-body-check li.on a, .authorize-body .authorize-body-check li:hover a {
+        border-color: #f08300;
+        color: #f08300; }
+      .authorize-body .authorize-body-check li p {
+        text-align: center;
+        margin-top: 12px; }
+  .authorize-body .authorize-info {
+    height: 37px;
+    line-height: 37px;
+    background: #f5f5f5;
+    text-align: center; }
+  .authorize-body .authorize-conditions {
+    /*authorize about 授权成功返回页面*/ }
+    .authorize-body .authorize-conditions .about-icon {
+      width: 30px;
+      height: 25px;
+      background: url("../images/welcome-list-about-btn.png") no-repeat 5px 2px;
+      margin-bottom: 0px; }
+    .authorize-body .authorize-conditions h3 {
+      height: 41px;
+      margin-top: 13px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid #dcdcdc; }
+      .authorize-body .authorize-conditions h3 p {
+        height: 34px;
+        line-height: 34px;
+        border-left: 5px solid #f08300;
+        font-size: 16px;
+        color: #515567;
+        padding-left: 10px; }
+    .authorize-body .authorize-conditions .authorize-conditions-text {
+      padding: 30px 0 30px 18px;
+      color: #515567;
+      border-bottom: 1px solid #dcdcdc; }
+      .authorize-body .authorize-conditions .authorize-conditions-text a {
+        color: #f08300; }
+    .authorize-body .authorize-conditions .authorize-conditions-btn {
+      padding: 34px 0 0 374px; }
+      .authorize-body .authorize-conditions .authorize-conditions-btn .checkbox {
+        padding: 10px 45px; }
+      .authorize-body .authorize-conditions .authorize-conditions-btn .submit .conditions-btn {
+        width: 227px;
+        font-size: 20px;
+        height: 50px;
+        line-height: 44px;
+        border: none;
+        text-align: center;
+        color: #ffffff;
+        display: block; }
+    .authorize-body .authorize-conditions .authorize-about-header {
+      height: 118px;
+      margin-top: 22px; }
+      .authorize-body .authorize-conditions .authorize-about-header dl {
+        float: left;
+        width: 91px; }
+        .authorize-body .authorize-conditions .authorize-about-header dl dt {
+          padding-left: 10px;
+          padding-bottom: 10px; }
+        .authorize-body .authorize-conditions .authorize-about-header dl dd {
+          text-align: center; }
+      .authorize-body .authorize-conditions .authorize-about-header .about-header {
+        width: 830px;
+        float: left; }
+        .authorize-body .authorize-conditions .authorize-about-header .about-header .authorize-checkbox {
+          float: left;
+          width: 123px;
+          height: 25px;
+          text-align: center;
+          font-weight: bold;
+          border-radius: 12px;
+          border: 1px solid #dcdcdc;
+          background-color: #f5f5f5;
+          margin: 0;
+          margin-right: 30px; }
+    .authorize-body .authorize-conditions .authorize-about-body {
+      padding: 10px;
+      background-color: #f5f5f5; }
+      .authorize-body .authorize-conditions .authorize-about-body h4 {
+        font-weight: normal;
+        color: #EF8300;
+        background: url("../images/icon-pic.png") no-repeat left center;
+        font-size: 14px;
+        height: 32px;
+        line-height: 32px;
+        padding-left: 20px; }
+      .authorize-body .authorize-conditions .authorize-about-body .base-info {
+        padding: 20px 0 0 80px; }
+        .authorize-body .authorize-conditions .authorize-about-body .base-info dl {
+          height: 60px; }
+          .authorize-body .authorize-conditions .authorize-about-body .base-info dl dt {
+            width: 110px;
+            float: left; }
+          .authorize-body .authorize-conditions .authorize-about-body .base-info dl dd {
+            float: left;
+            width: 400px; }
+            .authorize-body .authorize-conditions .authorize-about-body .base-info dl dd img {
+              display: inline-block;
+              width: 50px;
+              height: 50px;
+              float: left; }
+      .authorize-body .authorize-conditions .authorize-about-body .btn-warning {
+        margin-left: 23px; }
+  .authorize-body .authorize-back {
+    overflow: hidden;
+    padding-bottom: 30px; }
+    .authorize-body .authorize-back .authorize-back-left {
+      width: 80px;
+      float: left; }
+      .authorize-body .authorize-back .authorize-back-left .icon-box {
+        width: 41px;
+        height: 41px;
+        margin-left: 22px;
+        background: url("../../../components/content/images/main_sprit1.png") no-repeat 0px -836px; }
+    .authorize-body .authorize-back .authorize-back-right {
+      float: left; }
+      .authorize-body .authorize-back .authorize-back-right h3 {
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 32px; }
+      .authorize-body .authorize-back .authorize-back-right p {
+        padding: 15px 0;
+        line-height: 38px;
+        font-size: 14px; }
+        .authorize-body .authorize-back .authorize-back-right p .btn {
+          padding: 0px 10px; }
+      .authorize-body .authorize-back .authorize-back-right .nsw-btn {
+        padding: 0;
+        margin: 0;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center; }
+
+.prompt-box .prompt {
+  cursor: pointer;
+  width: 20px; }
+
+/*2016-7-13 新版本*/
+.account-authorize-base {
+  width: 638px;
+  margin: 64px 0 0 158px; }
+  .account-authorize-base .account-authorize-base-head {
+    height: 128px; }
+    .account-authorize-base .account-authorize-base-head .account-progress-bar {
+      height: 41px;
+      width: 100%;
+      background: url("../images/account-v2-pic01.png") no-repeat top; }
+    .account-authorize-base .account-authorize-base-head .info-default {
+      height: 45px;
+      line-height: 45px; }
+      .account-authorize-base .account-authorize-base-head .info-default span {
+        color: #595D6D;
+        font-size: 14px; }
+      .account-authorize-base .account-authorize-base-head .info-default .one {
+        color: #EF8300; }
+      .account-authorize-base .account-authorize-base-head .info-default .two {
+        margin-left: 200px; }
+      .account-authorize-base .account-authorize-base-head .info-default .three {
+        margin-left: 200px; }
+    .account-authorize-base .account-authorize-base-head .arrow-box {
+      height: 42px;
+      width: 100%;
+      position: relative; }
+      .account-authorize-base .account-authorize-base-head .arrow-box .arrow {
+        width: 21px;
+        height: 21px;
+        position: absolute;
+        bottom: 0px;
+        left: 26px;
+        background: url("../images/account-v2-arrow.png") no-repeat; }
+  .account-authorize-base .account-authorize-base-body {
+    width: 610px;
+    margin-left: 17px;
+    border: 1px solid #dcdcdc; }
+    .account-authorize-base .account-authorize-base-body .authorize-explain .top {
+      height: 90px;
+      margin-top: 32px; }
+      .account-authorize-base .account-authorize-base-body .authorize-explain .top button {
+        margin-left: 215px;
+        width: 180px;
+        font-size: 14px;
+        height: 50px;
+        border: none;
+        text-align: center;
+        color: #ffffff;
+        display: block; }
+      .account-authorize-base .account-authorize-base-body .authorize-explain .top p {
+        text-align: center;
+        margin-top: 15px; }
+    .account-authorize-base .account-authorize-base-body .authorize-explain .mid {
+      width: 554px;
+      margin-top: 34px;
+      margin-left: 28px;
+      color: #595D6D; }
+      .account-authorize-base .account-authorize-base-body .authorize-explain .mid h3 {
+        height: 24px;
+        border-bottom: 1px solid #dcdcdc;
+        font-size: 14px; }
+        .account-authorize-base .account-authorize-base-body .authorize-explain .mid h3 span {
+          font-weight: normal;
+          border-left: 4px solid #f08300;
+          padding-left: 10px;
+          display: inline-block;
+          height: 16px; }
+      .account-authorize-base .account-authorize-base-body .authorize-explain .mid p {
+        padding: 19px 15px;
+        line-height: 36px;
+        font-size: 12px; }
+        .account-authorize-base .account-authorize-base-body .authorize-explain .mid p a {
+          color: #f08300;
+          margin-left: 30px; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check {
+      height: 233px;
+      margin-top: 71px; }
+      .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check li {
+        width: 126px;
+        margin: 0 auto;
+        color: #515567;
+        cursor: pointer; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check li img {
+          display: block;
+          margin: 0 auto; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check li a {
+          display: block;
+          height: 25px;
+          line-height: 25px;
+          border-radius: 12px;
+          font-size: 14px;
+          background-color: #f5f5f5;
+          font-weight: bold;
+          text-align: center;
+          border: 1px solid #e1e1e1;
+          margin-top: 16px; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check li:hover a {
+          border-color: #f08300;
+          color: #f08300; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check li p {
+          text-align: center;
+          margin-top: 12px; }
+      .account-authorize-base .account-authorize-base-body .authorize-mode .authorize-body-check .other-way {
+        margin-left: 146px; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .head {
+      width: 552px;
+      height: 304px;
+      border-bottom: 1px solid #dcdcdc;
+      margin-left: 28px; }
+      .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .head div {
+        width: 126px;
+        margin: 66px 0 0 218px;
+        float: left;
+        color: #515567;
+        cursor: pointer; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .head div .icon {
+          float: none;
+          width: 115px;
+          height: 116px;
+          display: block;
+          margin: 0 auto;
+          border-radius: 5px;
+          background: #EF8300 url("../images/accoutn-icon-authorize_r1_c1.png") no-repeat; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .head div a {
+          display: block;
+          height: 25px;
+          line-height: 25px;
+          border-radius: 12px;
+          font-size: 14px;
+          background-color: #f5f5f5;
+          font-weight: bold;
+          text-align: center;
+          border: 1px solid #e1e1e1;
+          margin-top: 16px;
+          border-color: #f08300;
+          color: #f08300; }
+        .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .head div p {
+          text-align: center;
+          margin-top: 12px; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .nsw-tab-paneactive {
+      margin-top: 25px; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .nsw-label {
+      padding-left: 28px; }
+      .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .nsw-label span {
+        display: inline-block;
+        width: 15px; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .imgbox img {
+      border-radius: 35px; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .updataimg {
+      display: block;
+      padding-left: 10px; }
+      .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .updataimg a {
+        text-decoration: underline; }
+    .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .arrow-panel {
+      background-color: #f5f5f5;
+      border-top: 1px solid #dcdcdc;
+      border-bottom: 1px solid #dcdcdc;
+      padding-top: 30px;
+      position: relative;
+      padding-bottom: 16px; }
+      .account-authorize-base .account-authorize-base-body .authorize-mode .ordinary-way .body .arrow-panel .nsw-arrow {
+        position: absolute;
+        top: -16px;
+        left: 158px;
+        width: 20px;
+        height: 16px;
+        background: url("../../../components/content/images/form-icon-arrow-up.png") no-repeat; }
+    .account-authorize-base .account-authorize-base-body .authorize-success .head {
+      height: 159px;
+      width: 552px;
+      margin: 34px 0 0 32px;
+      border-bottom: 1px solid #dcdcdc; }
+      .account-authorize-base .account-authorize-base-body .authorize-success .head dl {
+        width: 65px;
+        margin: 0 auto; }
+        .account-authorize-base .account-authorize-base-body .authorize-success .head dl dt {
+          height: 65px;
+          background: url("../images/account-v2-pic03.png") no-repeat; }
+        .account-authorize-base .account-authorize-base-body .authorize-success .head dl dd {
+          text-align: center; }
+          .account-authorize-base .account-authorize-base-body .authorize-success .head dl dd h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f08300;
+            margin-top: 15px;
+            margin-bottom: 20px; }
+          .account-authorize-base .account-authorize-base-body .authorize-success .head dl dd a {
+            font-size: 12px;
+            color: #f08300;
+            text-decoration: underline; }
+    .account-authorize-base .account-authorize-base-body .authorize-success .body {
+      width: 552px;
+      margin: 0 auto;
+      border-bottom: 1px solid #dcdcdc; }
+      .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body {
+        margin: 32px 0 0 -5px; }
+        .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body h4 {
+          font-weight: normal;
+          color: #EF8300;
+          background: url("../images/icon-pic.png") no-repeat left center;
+          font-size: 14px;
+          height: 32px;
+          line-height: 32px;
+          padding-left: 20px; }
+        .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .base-info {
+          padding: 20px 0 0 80px; }
+          .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .base-info dl {
+            height: 60px; }
+            .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .base-info dl dt {
+              width: 110px;
+              float: left;
+              font-weight: normal; }
+            .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .base-info dl .head-icon {
+              margin-top: 12px; }
+            .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .base-info dl dd {
+              float: left;
+              width: 200px; }
+              .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .base-info dl dd img {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                float: left;
+                border-radius: 25px; }
+        .account-authorize-base .account-authorize-base-body .authorize-success .body .authorize-about-body .btn-warning {
+          margin-left: 23px; }
+    .account-authorize-base .account-authorize-base-body .authorize-success .foot {
+      padding-top: 23px; }
+
+.stage-two .account-authorize-base-head .account-progress-bar {
+  background-position: left -41px; }
+.stage-two .account-authorize-base-head .info-default .two {
+  color: #EF8300; }
+.stage-two .account-authorize-base-head .arrow-box .arrow {
+  left: 300px; }
+
+.stage-three .account-authorize-base-head .account-progress-bar {
+  background-position: left -82px; }
+.stage-three .account-authorize-base-head .info-default .two, .stage-three .account-authorize-base-head .info-default .three {
+  color: #EF8300; }
+.stage-three .account-authorize-base-head .arrow-box .arrow {
+  left: 589px; }
+
+/*# sourceMappingURL=account.css.map */

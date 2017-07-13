@@ -1,0 +1,140 @@
+<div class="nsw-tab-paneactive keyword-reply qr-code ">
+	<form class=" form-validation " name="formTemplate" autocomplete="off" nsw-nav-hint novalidate>
+		<p class="tip">
+			<span class="require">*</span>
+			<span>此功能仅支持认证服务号。</span>
+		</p>
+
+		<div class="form-group" data-beyond>
+			<label class="col-sm-2 nsw-label">
+				<span class="require">*</span>
+				消息标题</label>
+
+			<div class="col-sm-4">
+				<div nsw-dropdown items="options.allTemplate" ng-model="currentItem.title" nsw-display="title"
+				     nsw-value="title" data-after-select="changeTemplateId(selected)" required></div>
+			</div>
+
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-2 nsw-label">
+				<span class="require"></span>
+				模板ID
+			</label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control message-template-readonly"
+				       name="title" data-ng-model="currentItem.templateId" required readonly>
+
+			</div>
+
+			<!--<div class="col-sm-4">-->
+				<!--<p class="warning-message">请复制微信后台模板详情里的模板ID</p>-->
+			<!--</div>-->
+
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 nsw-label">
+				<span class="require"></span>
+				定时发送
+			</label>
+
+			<div class="col-sm-2">
+				<label class="radio-inline">
+					<input type="radio" name="verify_type_info" ng-value="false"
+					       ng-model="currentItem.job"> 否
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="verify_type_info" ng-value="true" data-ng-click="getTime()"
+					       ng-model="currentItem.job"> 是
+				</label>
+			</div>
+			<label class="send-time col-sm-2 nsw-label" data-ng-if="currentItem.job">
+				<span class="require"></span>
+				发送时间
+			</label>
+
+			<div class="time-picker-box" data-ng-if="currentItem.job" date-time-picker
+			     data-ng-model="currentItem.sendTime" class="hasDatepicker"></div>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-2 nsw-label">
+				<span class="require">*</span>
+				发送对象
+			</label>
+
+			<div class="col-sm-4">
+				<div nsw-dropdown items="groupTypes" ng-model="options.groupType" nsw-display="name"
+				     nsw-value="id" data-after-select="groupTypeSelected(options.groupType)" required></div>
+			</div>
+
+			<div class="col-sm-4" ng-if="options.groupType===-99">
+				<div nsw-dropdown items="memberCatalogs" ng-model="currentItem.groupId" nsw-display="name" name="groupId"
+				     nsw-value="tagId" data-reject="{name:'未分组'}" required></div>
+			</div>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-2 nsw-label">
+				<span class="require">*</span>
+				消息链接
+			</label>
+
+			<div class="col-sm-4 ">
+				<input type="text" class="form-control"
+				       data-ng-pattern="/^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)?(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/"
+				       name="title" data-ng-model="currentItem.url" placeholder="http://" ng-click="isUrlChanged()" required>
+			</div>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-2 nsw-label">
+				<span class="require">*</span>
+				消息内容
+			</label>
+
+			<div class="col-sm-10 ">
+				<div class="template-box">
+					<textarea data-ng-bind="currentItem.content"
+					          onpropertychange="this.style.posHeight=this.scrollHeight "
+					          ng-hide="options.showPreview"></textarea>
+					<textarea data-ng-bind="options.previewConent" readonly ng-if="options.showPreview"></textarea>
+
+					<h3><span>配置区</span></h3>
+
+					<div class="form-group" data-ng-repeat="row in options.para">
+						<label class="col-sm-5 nsw-label">
+							<span class="require">*</span>
+							{{row.title}}
+						</label>
+
+						<div class="col-sm-7"  >
+							<input type="text" class="form-control"
+							       name="title" data-ng-model="currentItem.para[row.keyValue]" ng-change="updatePreview()"
+							        required>
+						</div>
+
+
+					</div>
+					<button data-ng-if="currentItem.content" class="btn nsw-btn btn-default btn-cancel ng-isolate-scope nsw-btn-md template-preview"
+					        ng-click="togglePreview()">
+						<span ng-hide="options.showPreview" class="glyphicon glyphicon-zoom-in nsw-btn-text"></span>
+						<span ng-hide="options.showPreview" class="nsw-btn-text nsw-btn-text-black">预览</span>
+
+
+						<label ng-show="options.showPreview" class="nsw-btn-cancal-icon nsw-btn-text"></label>
+						<span ng-show="options.showPreview" class="nsw-btn-text nsw-btn-text-black">取消</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-group nsw-form-but-group">
+			<div class="col-sm-offset-3 col-sm-10">
+				<button type="submit" class="btn btn-warning nsw-btn"
+				        ng-disabled="!(formTemplate.$valid&&formTemplate.$dirty)"
+				        ng-click="saveItem(formTemplate,saveOptions)"><label
+						class="nsw-btn-save-icon"></label><span class="nsw-btn-text">保存</span></button>
+				<button class="btn btn-default nsw-btn btn-cancel" data-ng-click="reset(formTemplate)"><label
+						class="nsw-btn-cancal-icon"></label><span
+						class="nsw-btn-text nsw-btn-text-black">取消</span></button>
+			</div>
+		</div>
+	</form>
+</div>

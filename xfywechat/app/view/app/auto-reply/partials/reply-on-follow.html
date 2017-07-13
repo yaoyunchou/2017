@@ -1,0 +1,73 @@
+<div class="autoreply-body nsw-form nsw-form-in">
+	<form class=" form-validation " name="formmaterials" nsw-nav-hint novalidate>
+		<tabset>
+			<tab select="selectTab(1)" heading="文本回复" data-active="tabs[1]">
+
+			</tab>
+			<tab select="selectTab(2)" heading="图片回复" data-active="tabs[2]">
+
+			</tab>
+		</tabset>
+		<div class="nsw-tab-content">
+			<div class="nsw-tab-paneactive autoreply" data-ng-if="tab==1">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div class="reply-way-in text text-reply" beyond>
+							<!--<textarea class=" form-control" name="content" data-ng-model="currentItem.content" ng-maxlength="600" required></textarea>
+
+							<div class="text-info">
+								<div class="img-btn">
+									<img src="message/content/images/imgs.png" alt="">
+
+									<div ng-show="formmaterials.content.$dirty && formmaterials.content.$invalid"
+									     class="errorMsg">
+										<span class="err" ng-show="formmaterials.content.$error.required">请填写内容</span>
+										<span class="err"
+										      ng-show="formmaterials.content.$error.maxlength">内容长度为0~600字符</span>
+									</div>
+									<span class="tip-row-height"><span class="mess-zx">0</span>/600字符</span>
+								</div>
+							</div>-->
+
+							<div platform-emotion-editor data-ng-change="setMsgType('txt')"
+							     ng-model="currentItem.content" k-maximum-words="600"
+							     maxlength="600" data-height="248"
+							     ng-change="textChanged()" required></div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group nsw-form-but-group">
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-warning nsw-btn"
+						        ng-disabled="formmaterials.$invalid || formmaterials.$pristine"
+						        ng-click="save(formmaterials)"><label
+								class="nsw-btn-save-icon"></label><span class="nsw-btn-text">保&nbsp;存</span></button>
+						<button class="btn btn-default nsw-btn btn-cancel" data-ng-click="textReset()"><label
+								class="nsw-btn-cancal-icon"></label><span
+								class="nsw-btn-text nsw-btn-text-black">清除内容</span></button>
+					</div>
+				</div>
+			</div>
+			<div class="nsw-tab-paneactive autoreply" data-ng-if="tab==2">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div platform-img-material-selector ng-model="currentItem.fileId" required></div>
+					</div>
+				</div>
+				<div class="form-group nsw-form-but-group">
+					<div class="col-sm-offset-4 col-sm-10">
+						<button type="submit" class="btn btn-warning nsw-btn"
+						        ng-disabled="formmaterials.$invalid || formmaterials.$pristine"
+						        ng-click="replaySave()"><label class="nsw-btn-save-icon"></label><span
+								class="nsw-btn-text">保&nbsp;存</span></button>
+						<button class="btn btn-default nsw-btn btn-cancel" data-ng-click="imgReset()"><label
+								class="nsw-btn-cancal-icon"></label><span
+								class="nsw-btn-text nsw-btn-text-black">清除内容</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
+

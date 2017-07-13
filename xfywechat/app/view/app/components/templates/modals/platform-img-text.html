@@ -1,0 +1,41 @@
+<div class="img-reply">
+    <div  data-ng-if="!material">
+        <div class="img-reply-left">
+            <div class="img-reply-in" >
+                <div class="img-reply-ct" data-ng-click="showArtcileLib()">
+                    <p><a href="javascript:void(0)" >单图文消息</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="img-reply-right">
+            <div class="img-reply-in">
+                <div class="img-reply-ct"  data-ng-click="showArtcileLib()" >
+                    <p><a href="javascript:void(0)" >多图文消息</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-if="material" class="aterial-box-nsw">
+        <div class="list-style-one">
+            <div class="multiple-view">
+                <div class="img-box" data-ng-if = "material.articles[0].url" >
+                    <img nsw-src="{{ material.articles[0].url }}"  alt=""/>
+                    <p data-ng-bind="material.articles[0].title">牛商网络股份</p>
+                </div>
+                <div class="abstract " data-ng-if="material.articles.length==1" nsw-html="{{material.articles[0].digest}}">
+                </div>
+                <div class="articles" data-ng-if="material.articles.length>1"  >
+                    <dl data-ng-repeat="article in material.articles" data-ng-if="$index>0" >
+                        <dt>
+                            <a href="javascript:void(0)" data-ng-bind="article.title" >标题标题1</a>
+                        </dt>
+                        <dd><img nsw-src="{{article.url}}" src="materials/content/images/materials-icon-pic01.png" alt=""/></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <p class="delete">
+            <a href="javascript:void(0)" data-ng-click="deleteNsw()">删除</a>
+        </p>
+    </div>
+</div>

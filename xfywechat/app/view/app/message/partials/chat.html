@@ -1,0 +1,110 @@
+<div class="message">
+    <div class="chat" data-ng-controller="messageChatCtrl">
+        <div class="edit-menu-option nsw-form">
+            <tabset>
+                <tab ng-click="selectTab('txt')" select="selectTab('txt')" data-active="tabs['txt']" heading="文本"></tab>
+                <tab ng-click="selectTab('pic')" select="selectTab('pic')" data-active="tabs['pic']" heading="图片"></tab>
+                <tab ng-click="selectTab('news')" select="selectTab('news')" data-active="tabs['news']"
+                     heading="图文消息"></tab>
+            </tabset>
+            <div class="nsw-tab-content">
+                <form class=" form-validation nsw-form" name="formchat" nsw-nav-hint novalidate>
+                    <div class="nsw-tab-pane menu-tab" ng-show="tab==='txt'">
+
+                        <div class="editor">
+                            <!-- <textarea rows="10" cols="90" class="form-control" data-ng-change="setMsgType('txt')"
+                                       data-ng-model="currentItem.content" name="content" ng-maxlength="600"
+                                       required></textarea>-->
+                            <div platform-emotion-editor data-ng-change="setMsgType('txt')"
+                                 ng-model="currentItem.content" k-maximum-words="600"
+                                 maxlength="600" data-height="211"
+                                 ng-change="textChanged()" name='txt' required></div>
+
+                            <!--<div class="text-info">
+                                <div class="img-btn">
+                                    <img src="message/content/images/imgs.png" alt="">
+                                    <div ng-show="formchat.content.$dirty && formchat.content.$invalid"
+                                         class="errorMsg">
+                                        <span class="err" ng-show="formchat.content.$error.required">请填写内容</span>
+                                        <span class="err"
+                                              ng-show="formchat.content.$error.maxlength">内容长度为0~600字符</span>
+                                    </div>
+                                    <span class="tip-row-height"><span class="mess-zx">0</span>/600字符</span>
+                                </div>
+                            </div>-->
+                        </div>
+
+                    </div>
+
+                </form>
+                <form ng-show="tab==='pic'" class=" form-validation nsw-form" name="formchatpci" nsw-nav-hint novalidate>
+                    <div class="nsw-tab-pane menu-tab" >
+                        <div platform-img-material-selector data-after-select="setMsgType('pic')"
+                             ng-model="currentItem.fileId" required></div>
+                    </div>
+                </form>
+                <form class=" form-validation nsw-form" name="formchatnews" nsw-nav-hint novalidate>
+                    <div class="nsw-tab-pane menu-tab" ng-show="tab==='news'">
+                        <div platform-article-material-selector data-src-module-name="实时消息"
+                             data-after-select="setMsgType('news', material)" data-key="messageChatCtrl"
+                             ng-model="currentItem.mediaId" required></div>
+                    </div>
+                </form>
+            </div>
+            <div class="form-group nsw-form-but-group">
+                <div>
+                    <button ng-show="tab==='txt'"type="submit" ng-disabled="!(formchat.$valid&&formchat.$dirty)"
+                            class="btn btn-warning nsw-btn" ng-click="save(true,formchat,saveOptions)"><label
+                            class="nsw-btn-save-icon"></label><span class="nsw-btn-text">发送</span></button>
+                    <button ng-show="tab==='pic'"type="submit" ng-disabled="!(formchatpci.$valid&&formchatpci.$dirty)"
+                            class="btn btn-warning nsw-btn" ng-click="save(true,formchatpci,saveOptions)"><label
+                            class="nsw-btn-save-icon"></label><span class="nsw-btn-text">发送</span></button>
+                    <button ng-show="tab==='news'"type="submit" ng-disabled="!(formchatnews.$valid&&formchatnews.$dirty)"
+                            class="btn btn-warning nsw-btn"ng-click="save(true,formchatnews,saveOptions)"><label
+                            class="nsw-btn-save-icon"></label><span class="nsw-btn-text">发送</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-list" data-ng-controller="messageChatListCtrl">
+        <p>最近一个月聊天纪录</p>
+        <ul class="message-list">
+            <li data-ng-repeat=" message in displayList">
+                <div class="li01">
+                    <img nsw-src="{{message.GetOrPut=='get'?message.fansHeadImgUrl:message.gzhHeadImgUrl}}"
+                         src="message/content/images/head.png" alt="" data-ng-click="msgCreate(message)">
+                </div>
+                <div class="li02">
+                    <div class="text" data-ng-if="message.msgType=='text'">
+                        <h2 data-ng-bind="message.GetOrPut=='get'?message.nickName:message.gzhNickName"></h2>
+                        <div nsw-bind-html="{{message.content | nswEmotions}}"></div>
+                    </div>
+                    <dl class="pic" data-ng-if="message.msgType=='image'">
+                        <h2 data-ng-bind="message.GetOrPut=='get'?message.nickName:message.gzhNickName"></h2>
+                        <dt><img nsw-src="{{message.picUrl}}" alt=""></dt>
+                        <dd>
+                            <h4>【图片消息】</h4>
+                        </dd>
+                    </dl>
+                    <dl class="news" data-ng-if="message.msgType=='news'">
+                        <h2 data-ng-bind="message.GetOrPut=='get'?message.nickName:message.gzhNickName"></h2>
+                        <dt><img nsw-src="{{message.dataContent[0].picurl}}" alt=""></dt>
+                        <dd>
+                            <h4>【图文消息】{{message.dataContent[0].title}}</h4>
+                            <p data-ng-bind="message.dataContent[0].description"></p>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="li03">
+                    <span class="time" data-ng-bind="message.createTime"></span>
+                </div>
+
+            </li>
+            <div class="pull-right search">
+                <div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+

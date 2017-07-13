@@ -1,0 +1,168 @@
+<div class="nsw-tab-paneactive keyword-reply qr-code ">
+	<form class=" form-validation " name="formQRCode" autocomplete="off" nsw-nav-hint novalidate>
+		<p class="tip">
+			<span class="require">*</span>
+			<span>可选择创建临时二维码和永久二维码两种类型，用于不同场景扫描。</span>
+		</p>
+
+		<div class="form-group" data-beyond>
+			<label class="col-sm-3 nsw-label">
+				<span class="require">*</span>
+				二维码名称</label>
+
+			<div class="col-sm-4">
+				<input type="text" class="form-control"
+				       name="title" data-ng-model="currentItem.title" ng-maxlength="30" ng-minlength="2" required>
+
+				<div ng-show="formQRCode.title.$dirty && formQRCode.title.$invalid">
+					<span class="err"
+					      ng-show="formQRCode.title.$error.maxlength || formQRCode.title.$error.minlength||formQRCode.title.$error.required">二维码名称长度为2~30字符</span>
+				</div>
+			</div>
+            <span class="tip-row-height"><span
+		            class="mess-zx">0</span>/30字符</span>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-3 nsw-label">
+				<span class="require">*</span>
+				二维码类型
+			</label>
+
+			<div class="col-sm-4">
+				<div nsw-dropdown items="options.groupTypes" ng-model="currentItem.type" nsw-display="name"
+				     nsw-value="id" data-after-select="changeType(currentItem.type)"></div>
+			</div>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-3 nsw-label">
+				<span class="require">*</span>
+				参数二维码
+			</label>
+
+			<div class="col-sm-8">
+				<dl class="code-box">
+					<dt>
+						<img nsw-src="{{options.qrCodeUrl}}" alt="">
+					<p>建议logo尺寸：<span>20像素 * 20像素</span></p>
+					</dt>
+					<dd>
+						<a id='cancelLogo' qr-code qr-code-url="currentItem.url" href="javascript:void(0)"
+						   data-after-select="getQrCodeUrl(data)" ng-model=" currentItem.style">{{currentItem.style!=='personality'?'上传logo':'取消logo'}}</a>
+						<!--<a id = 'cancelLogo' form = "formQRCode" qr-code qr-code-url="currentItem.url" data-ng-if="currentItem.style ==='personality'" href="javascript:void(0)"  data-after-select="getQrCodeUrl(data)" data-qr-code-info="options.qrCodeInfo" >取消logo</a>-->
+					</dd>
+
+				</dl>
+			</div>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-3 nsw-label">
+				<span class="require">*</span>
+				扫描关注后的粉丝标签
+			</label>
+
+			<div class="col-sm-4">
+				<div nsw-dropdown items="groupTypes" ng-model="options.groupType" nsw-display="name"
+				     nsw-value="id" data-after-select="groupTypeSelected(options.groupType)"></div>
+			</div>
+
+			<div class="col-sm-4" ng-if="options.groupType===-99">
+				<div nsw-dropdown items="memberCatalogs" ng-model="currentItem.groupId" nsw-display="name"
+				     nsw-value="tagId" data-reject="{name:'未分组'}" required=""></div>
+			</div>
+		</div>
+		<div class="form-group" beyond>
+			<label class="col-sm-3 nsw-label">
+				<span class="require">*</span>
+				扫描后是否触发回复
+			</label>
+
+			<div class="col-sm-4 ">
+				<label class="radio-inline">
+					<input type="radio" name="isneed" ng-value="false"
+					       ng-model="currentItem.reply">
+					否
+				</label>
+
+				<label class="radio-inline">
+					<input type="radio" name="isneed" ng-value="true"
+					       ng-model="currentItem.reply">是
+				</label>
+
+			</div>
+		</div>
+		<div class="need-reply" data-ng-if="currentItem.reply">
+			<div class="form-group reply">
+				<label class="col-sm-3 nsw-label">
+					<span class="require">*</span>
+					触发回复类型
+				</label>
+
+				<div class="col-sm-8 ">
+					<label class="radio-inline">
+						<input type="radio" name="massType" ng-value="'txt'" class="not-check-dirty"
+						       ng-model="currentItem.replyType">
+						文本
+					</label>
+
+					<label class="radio-inline">
+						<input type="radio" name="massType" ng-value="'pic'" class="not-check-dirty"
+						       ng-model="currentItem.replyType">图片
+					</label>
+
+					<label class="radio-inline">
+						<input type="radio" name="massType" ng-value="'news'" class="not-check-dirty"
+						       ng-model="currentItem.replyType">图文消息
+					</label>
+
+					<div class="reply-way"
+					     data-ng-class="{
+					        txt:'reply-way-left',
+					        pic:'reply-way-mid',
+					        news:'reply-way-right',
+				        }[currentItem.replyType]">
+						<div class="reply-way-in text" ng-if="currentItem.replyType=='txt'" beyond>
+						<!--<textarea class="form-control" name="content" ng-model="currentItem.content" maxlength="600"
+						          ng-change="textChanged()" required></textarea>
+
+							<div class="text-info">
+								<div class="img-btn">
+									<img src="message/content/images/imgs.png" alt="">
+
+									<div ng-show="formMsg.content.$dirty && formMsg.content.$invalid" class="errorMsg">
+										<span class="err" ng-show="formMsg.content.$error.required">请填写内容</span>
+										<span class="err" ng-show="formMsg.content.$error.maxlength">内容长度为0~600字符</span>
+									</div>
+									<span class="tip-row-height"><span class="mess-zx">0</span>/600字符</span>
+								</div>
+							</div>-->
+							<div platform-emotion-editor data-ng-change="textChanged('txt')"
+							     ng-model="currentItem.content" k-maximum-words="600"
+							     maxlength="600" data-height="211"
+							     ng-change="textChanged()" required></div>
+						</div>
+						<div class="reply-way-in pic" ng-if="currentItem.replyType=='pic'">
+							<div platform-img-material-selector ng-model="currentItem.fileId"
+							     data-after-select="imgSelected()" required></div>
+						</div>
+						<div class="reply-way-in pc-text" ng-if="currentItem.replyType=='news'">
+							<div platform-article-material-selector data-src-module-name="二维码管理"
+							     data-key="QRCodeDetailCtrl" ng-model="currentItem.mediaId" required></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group nsw-form-but-group">
+			<div class="col-sm-offset-3 col-sm-10">
+				<button type="submit" class="btn btn-warning nsw-btn"
+				        ng-disabled="!(formQRCode.$valid&&formQRCode.$dirty)"
+				        ng-click="saveItem(formQRCode,saveOptions)"><label
+						class="nsw-btn-save-icon"></label><span class="nsw-btn-text">保存</span></button>
+				<button class="btn btn-default nsw-btn btn-cancel" data-ng-click="reset(formQRCode)"><label
+						class="nsw-btn-cancal-icon"></label><span
+						class="nsw-btn-text nsw-btn-text-black">取消</span></button>
+			</div>
+		</div>
+	</form>
+</div>

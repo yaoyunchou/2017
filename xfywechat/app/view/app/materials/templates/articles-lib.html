@@ -1,0 +1,117 @@
+<div class=" nsw-modal">
+    <div class="modal-header">
+        <h4 class="modal-title">选择图文</h4>
+        <a class="diaremove close-icon" ng-click="closeModal(false)"></a>
+    </div>
+    <div class="modal-body message-body nsw-material-lib">
+        <div class=" nsw-form">
+            <tabset>
+                <tab select="searchType('myMaterials',1)" heading="微信管家素材"></tab>
+                <tab select="searchType('wechatMeterials',2)" heading="微信素材" active></tab>
+            </tabset>
+            <div class="tab-form-head">
+                <div class="modal-buts">
+                    <div data-ng-if="tab===1" class="tab-form modal-add">
+                        <button class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;新建图文
+                        </button>
+                        <div class="sub">
+                            <dl data-ng-click="createArticle('single')">
+                                <dt>
+                                    <img src="materials/content/images/materials-icon-pic04.png" alt=""/>
+                                </dt>
+                                <dd>新建单图文</dd>
+                            </dl>
+                            <dl data-ng-click="createArticle('multiple')">
+                                <dt>
+                                    <img src="materials/content/images/materials-icon-pic04.png" alt=""/>
+                                </dt>
+                                <dd>新建多图文</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <button data-ng-if="tab===2" class="btn btn-warning" data-ng-disabled="syncDisable" data-ng-click="sync()"><span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;一键同步
+                    </button>
+                </div>
+
+                <div class="materials-list-search">
+                    <div class="list-search search-one">
+                        <input type="text" placeholder="请输入搜索条件" nsw-enter="searchData()"
+                               ng-model="searchOptions.filter">
+                        <a class="reset glyphicon glyphicon-remove" href="javascript:void(0)"
+                           ng-click="resetSearchData()"></a>
+                        <a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nsw-tab-content article-lib">
+                <div class="nsw-materials nsw-body-mid">
+                    <div class="materials-list-body">
+                        <div class="article-list">
+                            <div class="no-member" ng-if="(!dataList || !dataList.length)">
+                                无对应图文素材！
+                            </div>
+                            <ul  ng-if="dataList && dataList.length" >
+                                <li data-ng-repeat="material in dataList" class="list-item"
+                                    on-finish-render-filters>
+                                    <div class="list-style-one"
+                                         ng-click="setCurrentItem(material===currentItem?{}:material)">
+                                        <div ng-class="material===currentItem?'chose on':''">
+                                        </div>
+                                        <div class="article-title">
+                                            <!--<div ng-bind="material.articles[0].title"></div>-->
+                                            <div>{{material.create_time | nswDate:"MM月dd日"}}</div>
+                                        </div>
+                                        <div class="multiple-view">
+                                            <strong  data-ng-if="material.articles.length===1"  data-ng-bind="material.articles[0].title"></strong>
+                                            <div data-ng-click="editArticle(0,true)" class="img-box nsw-bg-one"
+                                                 nsw-bg={{material.articles[0].fileId}}>
+                                                <p  data-ng-if="material.articles.length>1" nsw-html="{{material.articles[0].title | nswDesc:'30'}}">牛商网络股份</p>
+
+                                            </div>
+                                            <div class="abstract " data-ng-if="material.articles.length==1"
+                                                 nsw-html="{{material.articles[0].digest | nswDesc :'60'}}">
+                                            </div>
+                                            <div class="articles" data-ng-if="material.articles.length>1">
+                                                <dl data-ng-repeat="article in material.articles"
+                                                    data-ng-if="$index>0">
+                                                    <dt>
+                                                        <a href="javascript:void(0)"
+                                                           data-ng-bind="article.title">标题标题1</a>
+                                                    </dt>
+                                                    <dd><img nsw-src="{{article.fileId}}"
+                                                             src="materials/content/images/materials-icon-pic01.png"
+                                                             alt=""/></dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fy">
+                    <div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="modal-footer message-box">
+        <button data-ng-disabled="!currentItem.id" class="btn btn-commit" type="button"
+                ng-click="closeModal(true, currentItem)">
+            <label class="btn-icon checkforward"></label>
+            <span class="btn-text">确&nbsp;定</span>
+        </button>
+        <button class="btn btn-cancel" type="button" ng-click="closeModal(false)"><label
+                class="btn-icon checkcance"></label>
+            <span class="btn-text black">取&nbsp;消</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="charts-list">
+	<div class="form-group">
+		<span class="time-quantum">自定义时间段：</span>
+		<div date-range-picker data-after-select="getNewList(data)"></div>
+	</div>
+	<div class="charts-list-in">
+		<h3>
+			<span class="title">扫描次数统计</span>
+			<button data-ng-click="downQrCodeData()" class="btn btn-default btn-sm pull-right">导出数据 <span class="glyphicon glyphicon-share-alt"></span>
+			</button>
+		</h3>
+		<table width="758"  class="list-table">
+			<tr>
+				<th>
+					<div class="title" >
+					二维码名称
+					</div>
+				</th>
+				<th>二维码类型</th>
+				<th>扫描次数</th>
+				<th>已关注用户扫描</th>
+				<th>新增关注</th>
+			</tr>
+			<tr data-ng-repeat="item in  dataList">
+				<td>
+					<div title="{{item.title}}" class="title" data-ng-bind="item.title">
+
+					</div>
+				</td>
+				<td>{{item.type==='forever'?'永久二维码':'临时二维码'}}</td>
+				<td data-ng-bind="item.scanNum">1</td>
+				<td data-ng-bind="item.scanFollowNum">0</td>
+				<td data-ng-bind="item.addFollowNum"></td>
+			</tr>
+		</table>
+		<div class="pull-right search">
+			<div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

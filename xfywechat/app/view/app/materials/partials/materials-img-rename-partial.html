@@ -1,0 +1,30 @@
+<div class="message-box menu-modal nsw-modal member-create-modal">
+	<div class="modal-header">
+		<h4 class="modal-title">修改图片名称</h4>
+		<a class="diaremove" ng-click="closeModal(false)"></a>
+	</div>
+	<div class="modal-body message-body">
+		<div class="menu-rename-content col-md-30">
+			<form name="editform" beyond max-count='30'>
+				<label class="col-sm-3 nsw-label ">图片名称</label>
+
+				<div class="form-group col-sm-9" >
+					<input nsw-autofocus type="text" autocomplete="off" class="form-control" name="name"
+					       data-ng-model="modalOptions.selected.name">
+				</div>
+			</form>
+		</div>
+		<div class="button">
+			<button type="submit" class="btn btn-commit" ng-disabled="!((editform.$valid&&editform.$dirty))"
+			        ng-click="closeModal(true, modalOptions.selected)">
+				<label class="btn-icon btn-icon checkforward"></label>
+				<span class="btn-text">确认</span>
+			</button>
+			<!--data-ng-class="modalOptions.commitText? 'btn-cancel': 'btn-center'"-->
+			<button class="btn btn-cancel"  ng-click="closeModal(false)">
+				<label class="btn-icon checkcance"></label>
+				<span class="btn-text black">取消</span>
+			</button>
+		</div>
+	</div>
+</div>

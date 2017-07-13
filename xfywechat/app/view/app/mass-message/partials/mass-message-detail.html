@@ -1,0 +1,126 @@
+<div class="nsw-tab-paneactive keyword-reply mass-message " data-ng-if="tab==1">
+	<form class=" form-validation " name="formMsg" nsw-nav-hint novalidate>
+		<span class="tip">
+			<em class="icon-tip"></em>
+			<span>服务号每月粉丝最多接收4条消息，订阅号每天粉丝最多接收1条消息，超出部分也可发送成功，但粉丝无法收到。</span>
+		</span>
+
+		<div class="form-group" beyond>
+			<label class="col-sm-2 nsw-label">
+				<span class="err">*</span>
+				群发对象
+			</label>
+
+			<div class="col-sm-3">
+				<div nsw-dropdown items="groupTypes" ng-model="options.groupType" nsw-display="name"
+				     nsw-value="id" data-after-select="groupTypeSelected(options.groupType)"></div>
+			</div>
+
+			<div class="col-sm-3" ng-if="options.groupType===-99">
+				<div nsw-dropdown items="memberCatalogs" ng-model="currentItem.groupid" nsw-display="name"
+				     nsw-value="tagId" data-reject="{name:'未分组'}" required></div>
+			</div>
+		</div>
+		<div class="form-group" data-ng-if="checkAuthed('massJobByTime')">
+			<label class="col-sm-2 nsw-label">
+				<span class="err">*</span>
+				定时群发
+			</label>
+
+			<div class="col-sm-2">
+				<label class="radio-inline">
+					<input type="radio"  name="verify_type_info" ng-value="false"
+						   ng-model="currentItem.hasDatePicker"> 否
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="verify_type_info" ng-value="true" data-ng-click="getTime()"
+						   ng-model="currentItem.hasDatePicker"> 是
+				</label>
+			</div>
+			<div  data-ng-if="currentItem.hasDatePicker">
+				<label class="send-time">
+					发送时间
+				</label>
+
+				<div class="time-picker-box" date-time-picker data-ng-model="currentItem.jobTime" class="hasDatepicker"></div>
+			</div>
+		</div>
+
+		<div class="form-group reply">
+			<label class="col-sm-2 nsw-label">
+				<span class="err">*</span>
+				消息类型
+			</label>
+
+			<div class="col-sm-8 ">
+				<label class="radio-inline">
+					<input type="radio" name="massType" ng-value="'txt'" class="not-check-dirty"
+					       ng-model="currentItem.massType">
+					文本
+				</label>
+
+				<label class="radio-inline">
+					<input type="radio" name="massType" ng-value="'pic'" class="not-check-dirty"
+					       ng-model="currentItem.massType">图片
+				</label>
+
+				<label class="radio-inline">
+					<input type="radio" name="massType" ng-value="'news'" class="not-check-dirty"
+					       ng-model="currentItem.massType">图文消息
+				</label>
+
+				<div class="reply-way"
+				     data-ng-class="{
+					        txt:'reply-way-left',
+					        pic:'reply-way-mid',
+					        news:'reply-way-right',
+				        }[currentItem.massType]">
+					<div class="reply-way-in text" ng-if="currentItem.massType=='txt'" >
+						<!--<textarea class="form-control" name="content" ng-model="currentItem.content" maxlength="600"
+						          ng-change="textChanged()" required></textarea>-->
+
+						<div platform-emotion-editor ng-model="currentItem.content" k-maximum-words="600" maxlength="600" data-height="228"
+						     ng-change="textChanged()" required></div>
+
+						<!--<div class="text-info">
+							<div class="img-btn">
+								<img src="message/content/images/imgs.png" alt="">
+
+								<div ng-show="formMsg.content.$dirty && formMsg.content.$invalid" class="errorMsg">
+									<span class="err" ng-show="formMsg.content.$error.required">请填写内容</span>
+									<span class="err" ng-show="formMsg.content.$error.maxlength">内容长度为0~600字符</span>
+								</div>
+								<span class="tip-row-height"><span class="mess-zx">0</span>/600字符</span>
+							</div>
+						</div>-->
+					</div>
+					<div class="reply-way-in pic" ng-if="currentItem.massType=='pic'">
+						<div platform-img-material-selector ng-model="currentItem.fileId"
+						     data-after-select="imgSelected()" required></div>
+					</div>
+					<div class="reply-way-in pc-text" ng-if="currentItem.massType=='news'">
+						<div platform-article-material-selector data-src-module-name="群发消息"
+						     data-key="massMessage.detail" ng-model="currentItem.mediaId"
+						     data-after-select="articleSelected()" required></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="form-group nsw-form-but-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-warning nsw-btn"
+				        ng-disabled="!(formMsg.$valid&&formMsg.$dirty)"
+				        ng-click="save(true,formMsg,saveOptions)"><label
+						class="icon-send"></label><span class="nsw-btn-text">群&nbsp;发</span></button>
+				<button class="btn btn-default nsw-btn btn-cancel" data-ng-click="reset(formMsg)"><label
+						class="nsw-btn-cancal-icon"></label><span
+						class="nsw-btn-text nsw-btn-text-black">清除内容</span></button>
+				<button class="btn btn-default nsw-btn btn-cancel" platform-preview-send data-information="currentItem">
+					<label
+							class="glyphicon glyphicon-zoom-in nsw-btn-text"></label><span
+						class="nsw-btn-text nsw-btn-text-black">预览</span></button>
+			</div>
+		</div>
+	</form>
+</div>

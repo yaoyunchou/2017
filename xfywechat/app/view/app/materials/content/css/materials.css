@@ -1,0 +1,386 @@
+@charset "UTF-8";
+/*添加素材页面*/
+.materials-tab {
+  height: 30px;
+  line-height: 30px;
+  background: #f5f5f5;
+  padding-left: 27px;
+  border-top: 1px solid #dbdbdb; }
+  .materials-tab .cur {
+    color: #EF8300; }
+
+.tab-form {
+  position: absolute;
+  right: 0px;
+  top: 0px; }
+  .tab-form .sub {
+    position: absolute;
+    width: 258px;
+    height: 162px;
+    right: 0px;
+    display: none;
+    background: url("../images/materials-icon-pic03.png") no-repeat;
+    z-index: 1000; }
+    .tab-form .sub dl {
+      width: 70px;
+      height: 95px;
+      float: left;
+      margin: 40px 0 0 40px;
+      cursor: pointer; }
+      .tab-form .sub dl dt img {
+        display: block;
+        margin: 0 auto; }
+      .tab-form .sub dl dd {
+        margin-top: 12px; }
+  .tab-form:hover .sub {
+    display: block; }
+
+.chose {
+  top: 17px; }
+
+.materials-body .body-left {
+  width: 318px;
+  float: left;
+  padding: 15px 20px; }
+  .materials-body .body-left .nsw-bg-one {
+    height: 190px; }
+  .materials-body .body-left .view {
+    width: 280px;
+    padding: 10px;
+    line-height: 20px;
+    border: 1px solid #dddddd;
+    font-size: 12px; }
+    .materials-body .body-left .view h3 {
+      line-height: 28px;
+      height: 28px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 14px;
+      font-weight: bold; }
+    .materials-body .body-left .view p {
+      padding-bottom: 5px; }
+    .materials-body .body-left .view .img-box {
+      height: 173px; }
+      .materials-body .body-left .view .img-box img {
+        width: 100%; }
+    .materials-body .body-left .view .abstract {
+      max-height: 90px;
+      line-height: 24px; }
+.materials-body .body-right {
+  width: 642px;
+  float: left;
+  position: relative; }
+  .materials-body .body-right .arrow-left {
+    position: absolute;
+    top: 93px;
+    display: block;
+    width: 16px;
+    height: 29px;
+    background: url("../images/arrow-left.png") no-repeat; }
+  .materials-body .body-right .body-right-in {
+    width: 627px;
+    float: right;
+    padding-top: 17px; }
+    .materials-body .body-right .body-right-in .article-img {
+      overflow: hidden; }
+      .materials-body .body-right .body-right-in .article-img .th-img {
+        width: 80px;
+        height: 80px;
+        display: inline-block;
+        float: left; }
+      .materials-body .body-right .body-right-in .article-img .add-img {
+        float: left;
+        margin-top: 25px;
+        margin-left: 10px;
+        height: 29px;
+        padding: 4px 10px;
+        border: 1px solid #dcdcdc;
+        display: inline-block; }
+        .materials-body .body-right .body-right-in .article-img .add-img:hover {
+          border-color: #ee8913; }
+    .materials-body .body-right .body-right-in .info {
+      padding: 10px 0 0px 0;
+      font-size: 12px; }
+    .materials-body .body-right .body-right-in .materials-textarea {
+      display: block;
+      width: 98%;
+      border: 1px solid #dcdcdc;
+      min-height: 81px; }
+    .materials-body .body-right .body-right-in .materials-keditor {
+      margin-bottom: 25px;
+      display: block;
+      width: 100%;
+      min-height: 81px; }
+    .materials-body .body-right .body-right-in .nsw-label {
+      padding-left: 25px; }
+    .materials-body .body-right .body-right-in .tab-radio {
+      padding-top: 16px;
+      position: relative; }
+      .materials-body .body-right .body-right-in .tab-radio .tab-radio-arrow {
+        position: absolute;
+        left: 25px;
+        top: 1px;
+        width: 20px;
+        height: 16px;
+        background: url("../../../components/content/images/form-icon-arrow-up.png") no-repeat; }
+      .materials-body .body-right .body-right-in .tab-radio .tab-hide {
+        display: none; }
+      .materials-body .body-right .body-right-in .tab-radio .tab-show {
+        display: block; }
+      .materials-body .body-right .body-right-in .tab-radio .input-arrow {
+        left: 114px; }
+.materials-body .position1 {
+  margin-top: 0px; }
+.materials-body .position2 {
+  margin-top: 168px; }
+.materials-body .position3 {
+  margin-top: 248px; }
+.materials-body .position4 {
+  margin-top: 328px; }
+.materials-body .position5 {
+  margin-top: 408px; }
+.materials-body .position6 {
+  margin-top: 490px; }
+.materials-body .position7 {
+  margin-top: 568px; }
+.materials-body .position8 {
+  margin-top: 645px; }
+.materials-body .materials-articles .title {
+  padding-left: 22px;
+  height: 28px;
+  line-height: 28px;
+  background-color: #dedede; }
+.materials-body .materials-articles .tip {
+  padding: 35px 20px; }
+.materials-body .materials-articles ul {
+  max-height: 263px;
+  overflow-y: auto;
+  padding-bottom: 15px; }
+  .materials-body .materials-articles ul li {
+    font-size: 12px;
+    height: 32px;
+    margin-top: 10px;
+    line-height: 32px;
+    padding-left: 22px; }
+    .materials-body .materials-articles ul li a {
+      display: block;
+      widht: 100%;
+      overflow: hidden; }
+    .materials-body .materials-articles ul li:hover {
+      background: #dedede; }
+      .materials-body .materials-articles ul li:hover a {
+        color: #EF8300; }
+.materials-body .materials-info {
+  border-top: 1px solid #dddddd;
+  padding-top: 24px;
+  overflow: hidden;
+  background-color: #f5f5f5; }
+
+/*素材管理列表*/
+.nsw-materials {
+  padding-bottom: 100px;
+  overflow: hidden; }
+  .nsw-materials img-box-style .multiple-view .img-box {
+    border-bottom: none; }
+  .nsw-materials .fy {
+    position: absolute;
+    bottom: 31px;
+    right: 20px; }
+  .nsw-materials .materials-list-search {
+    height: 29px;
+    padding: 0 16px; }
+    .nsw-materials .materials-list-search .list-search {
+      float: right; }
+  .nsw-materials .materials-list-body ul {
+    position: relative; }
+    .nsw-materials .materials-list-body ul .no-material {
+      margin: 60px 0 0 320px; }
+    .nsw-materials .materials-list-body ul li {
+      width: 280px;
+      margin: 23px 0 0 40px;
+      position: absolute; }
+  .nsw-materials .materials-list-body .olny-img li {
+    width: 210px;
+    margin: 12px 0 0 17px;
+    float: left;
+    position: relative; }
+
+.fy {
+  clear: both; }
+
+a.close-icon {
+  margin-top: 0px; }
+
+.article-lib {
+  min-height: 413px;
+  padding-top: 0; }
+  .article-lib .article-list {
+    height: 423px;
+    width: 100%;
+    padding-bottom: 50px;
+    overflow-y: auto;
+    overflow-x: hidden; }
+  .article-lib .article-title {
+    font-size: 12px;
+    margin: 10px;
+    height: 33px;
+    line-height: 33px;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 0; }
+  .multiple-view {
+    padding: 0px;
+    line-height: 20px;
+    font-size: 12px; }
+    .multiple-view strong {
+      padding: 0 10px;
+      line-height: 18px;
+      display: inline-block; }
+    .multiple-view .article-title {
+      font-size: 12px;
+      margin: 10px;
+      height: 33px;
+      line-height: 33px;
+      border-bottom: 1px solid #dcdcdc;
+      padding: 0; }
+    .multiple-view .img-box {
+      position: relative;
+      margin: 10px;
+      padding: 0;
+      border-bottom: 1px solid #dbdbdb;
+      height: 190px;
+      overflow: hidden; }
+      .multiple-view .img-box img {
+        width: 100%;
+        height: 180px; }
+      .multiple-view .img-box p {
+        width: 100%;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5) !important;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        line-height: 18px;
+        text-align: left;
+        font-size: 14px;
+        color: #ffffff;
+        display: block;
+        font-weight: 600; }
+      .multiple-view .img-box .word-left {
+        text-align: left; }
+    .multiple-view .small-img-box {
+      height: 138px;
+      display: table-cell;
+      padding: 10px; }
+      .multiple-view .small-img-box img {
+        max-height: 118px;
+        width: 118px; }
+    .multiple-view .img-edit {
+      height: 32px;
+      padding: 0 10px;
+      margin-top: 10px; }
+      .multiple-view .img-edit .checkbox {
+        max-width: 167px;
+        float: left;
+        margin: 0; }
+        .multiple-view .img-edit .checkbox label {
+          width: 160px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis; }
+          .multiple-view .img-edit .checkbox label input[type='text'] {
+            width: 145px; }
+      .multiple-view .img-edit a {
+        width: 20px;
+        height: 20px;
+        display: block;
+        background: url("../images/material-img-edit.png") no-repeat;
+        float: right; }
+    .multiple-view .articles dl {
+      padding: 10px;
+      height: 70px;
+      border-top: 1px solid #dbdbdb;
+      margin-top: 10px;
+      position: relative; }
+      .multiple-view .articles dl dt {
+        display: block;
+        float: left;
+        height: 45px;
+        font-weight: normal;
+        max-width: 200px;
+        text-align: left;
+        overflow: hidden; }
+      .multiple-view .articles dl dd {
+        width: 48px;
+        height: 48px;
+        float: right;
+        border: 1px solid #dcdcdc; }
+        .multiple-view .articles dl dd img {
+          width: 100%; }
+      .multiple-view .articles dl .eadt {
+        display: none; }
+      .multiple-view .articles dl:hover .eadt {
+        width: 100%;
+        height: 70px;
+        position: absolute;
+        left: 0px;
+        top: -1px;
+        background: #f5f5f5;
+        border: 1px solid #EF8300;
+        display: block;
+        font-size: 22px; }
+        .multiple-view .articles dl:hover .eadt a {
+          display: inline-block;
+          width: 50%;
+          text-align: center;
+          float: left;
+          line-height: 60px; }
+      .multiple-view .articles dl.last {
+        border-bottom: none;
+        border-bottom: 1px solid #dbdbdb; }
+    .multiple-view .articles .material-add {
+      display: block;
+      width: 170px;
+      height: 34px;
+      text-align: center;
+      line-height: 34px;
+      border: 1px dashed #dcdcdc;
+      margin: 18px auto 18px; }
+      .multiple-view .articles .material-add:hover {
+        border-color: #EF8300; }
+    .multiple-view .abstract {
+      padding: 0 10px;
+      overflow: hidden;
+      word-wrap: break-word;
+      line-height: 24px; }
+  .article-lib .nsw-materials {
+    height: 423px;
+    min-height: 342px;
+    padding: 0; }
+  .article-lib .article-list .list-item {
+    width: 280px;
+    margin: 23px 0 0 40px;
+    cursor: pointer;
+    position: relative;
+    float: left; }
+    .article-lib .article-list .list-item .chose.on {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      width: 100%;
+      background: url("../images/icon-selected.png") no-repeat center 120px;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 200; }
+  .article-lib .nsw-tab-content {
+    position: absolute;
+    top: 42px;
+    border: none;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 10px 0; }
+
+.material-editor {
+  height: 250px; }
+
+/*# sourceMappingURL=materials.css.map */

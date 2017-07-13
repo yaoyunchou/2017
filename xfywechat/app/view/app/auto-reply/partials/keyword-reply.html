@@ -1,0 +1,212 @@
+<div class="autoreply-body  nsw-form nsw-form-in">
+	<tabset>
+		<tab select="selectTab(1)" heading="{{editTitle}}" data-active="tabs[1]">
+		</tab>
+		<tab select="selectTab(2)" heading="查看回复列表" data-active="tabs[2]">
+		</tab>
+	</tabset>
+	<div class="nsw-tab-content">
+		<div class="nsw-tab-paneactive keyword-reply" data-ng-controller="replyKeyWordAddCtrl" data-ng-if="tab==1">
+			<form class=" form-validation" name="formreplay" nsw-nav-hint novalidate>
+				<div class="form-group" beyond>
+					<label class="col-sm-2 nsw-label"><span class="require">*</span>规则名</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="ruleName" data-ng-model="currentItem.ruleName"
+						       ng-maxlength="60" required>
+						<div ng-show="formreplay.ruleName.$dirty&&formreplay.ruleName.$invalid">
+							<span class="err" ng-show="formreplay.ruleName.$error.required">请填写规则名</span>
+                                <span class="err"
+                                      ng-show="formreplay.ruleName.$error.maxlength">规则名长度为0-60个字符</span>
+						</div>
+					</div>
+                        <span class="tip-row-height"><span
+		                        class="mess-zx">0</span>/60字符</span>
+				</div>
+				<div class="form-group" beyond>
+					<label class="col-sm-2 nsw-label"><span class="require">*</span>关键词</label>
+					<div class="col-sm-10">
+						<div class="keyword-box" data-ng-model="currentItem.keyWordList" auto-reply-key-word-list></div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 nsw-label"><span class="require">*</span>匹配方式</label>
+					<div class="col-sm-8 ">
+						<label class="radio-inline">
+							<input type="radio" name="matchType" ng-value="0"
+							       ng-model="currentItem.matchType"> 模糊匹配
+						</label>
+						<span class="popover01">
+							<span class="prompt radio-inline-prompt"  nsw-popover data-container=".popover01"    data-content="只要对方发送内容包含设置的完整关键词，就会触发关键字回复给对方。"><img
+									src="components/content/images/form-icon-prompt.png" alt=""/></span>
+						</span>
+
+						<label class="radio-inline">
+							<input type="radio" name="matchType" ng-value="1"
+							       ng-model="currentItem.matchType">精确匹配
+						</label>
+						<span class="popover02">
+							<span class="prompt radio-inline-prompt" nsw-popover data-container=".popover02"    data-content="对方发送的内容与设置的关键字须完全一样，才会触发关键字回复，不能多一个字符也不能少一个字符。"  data-placement="right"><img
+									src="components/content/images/form-icon-prompt.png" alt=""/></span>
+						</span>
+
+					</div>
+				</div>
+				<div class="form-group reply">
+					<label class="col-sm-2 nsw-label"><span class="require">*</span>回复类型</label>
+					<div class="col-sm-8 ">
+						<label class="radio-inline">
+							<input type="radio" name="replyType" ng-value="'txt'" ng-model="currentItem.replyType" class="not-check-dirty"> 文本
+						</label>
+
+						<label class="radio-inline">
+							<input type="radio" name="replyType" ng-value="'pic'" ng-model="currentItem.replyType"  class="not-check-dirty">图片
+						</label>
+
+						<label class="radio-inline">
+							<input type="radio" name="replyType" ng-value="'news'" ng-model="currentItem.replyType"  class="not-check-dirty">图文回复
+						</label>
+						<div class="reply-way"
+						     data-ng-class="{'reply-way-mid':currentItem.replyType=='pic','reply-way-right':currentItem.replyType=='news'}">
+							<div class="reply-way-in text" ng-if="currentItem.replyType=='txt'" beyond>
+								<!--<textarea class="text-reply form-control" name="content"
+								          data-ng-model="currentItem.content" ng-maxlength="600"></textarea>
+								<div class="text-info">
+									<div class="img-btn">
+										<img src="message/content/images/imgs.png" alt="">
+										<div ng-show="formreplay.content.$dirty && formreplay.content.$invalid"
+										     class="errorMsg">
+											<span class="err"
+											      ng-show="formreplay.content.$error.maxlength">内容长度为0~600字符</span>
+										</div>
+										<span class="tip-row-height"><span class="mess-zx">0</span>/600字符</span>
+									</div>
+								</div>
+-->
+								<div platform-emotion-editor data-ng-change="setMsgType('txt')"
+								     ng-model="currentItem.content" k-maximum-words="600"
+								     maxlength="600" data-height="248"
+								     ng-change="textChanged()" required></div>
+							</div>
+							<div class="reply-way-in pic" ng-if="currentItem.replyType=='pic'">
+								<div platform-img-material-selector ng-model="currentItem.fileId"></div>
+							</div>
+							<div class="reply-way-in pc-text" ng-if="currentItem.replyType=='news'">
+								<div platform-article-material-selector data-key="replyKeyWordAddCtrl"
+								     ng-model="currentItem.mediaId" data-src-module-name="关键词回复"></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="form-group nsw-form-but-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-warning nsw-btn"
+						        ng-disabled="!(formreplay.$valid&&formreplay.$dirty&&currentItem.keyWordList)||(!(formreplay.$valid&&formreplay.$dirty&&currentItem.keyWordList)&&currentItem.replyType=='pic'&&currentItem.fileId)||(!(formreplay.$valid&&formreplay.$dirty&&currentItem.keyWordList)&&currentItem.replyType=='news'&&currentItem.mediaId)"
+						        ng-click="wordSave()"><label
+								class="nsw-btn-save-icon"></label><span class="nsw-btn-text">保&nbsp;存</span></button>
+						<button class="btn btn-default nsw-btn btn-cancel" data-ng-click="reset()"><label
+								class="nsw-btn-cancal-icon"></label><span
+								class="nsw-btn-text nsw-btn-text-black">清除内容</span></button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="nsw-tab-paneactive keyword-reply" data-ng-controller="replyKeyWordListCtrl" data-ng-if="tab==2"
+		     data-items="dataList">
+
+			<div class="search-info">
+				<div class="member-list-search">
+					<div class="search-one pull-right">
+						<input type="text" placeholder="请输入搜索条件" nsw-enter="searchData()" class="pull-left"
+						       ng-model="searchOptions.filter">
+						<a class="reset glyphicon glyphicon-remove" href="javascript:void(0)"
+						   ng-click="resetSearchData()"></a>
+						<a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+					</div>
+				</div>
+			</div>
+			<div class="content">
+				<table class="table table-hover">
+					<thead>
+					<tr>
+						<th>
+							<!--<input type="checkbox" ng-model="isCheckAll" ng-click="checkAll()"/>-->
+						</th>
+						<th>规则名</th>
+						<th>关键词</th>
+						<th>匹配类型</th>
+						<th>回复类型</th>
+						<!--<th>显示</th>-->
+						<th>回复次数</th>
+						<!-- <th>静态页</th> -->
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="item in dataList">
+						<td>
+							<input type="checkbox" ng-model="item.isChecked" ng-checked="isItemSelected(item)" ng-click="selectItem(item)"/>
+						</td>
+						<td>
+							<div class="listTitle"><span data-ng-bind="item.ruleName" title="{{basImagePath+item.ruleName}}"></span></div>
+						</td>
+						<td>
+							<!--<div class="keyword"><span >{{item.keyWordList.toString()}}</span></div>-->
+							<div class="keyword" sign-key-word data-ng-model="item.keyWordList"
+							  title="{{item.keyWordList}}"   data-key-word="searchOptions.filter"></div>
+						</td>
+						<td>
+							<span data-ng-if="item.matchType==0">模糊匹配</span>
+							<span data-ng-if="item.matchType==1">精确匹配</span>
+						</td>
+						<td>
+							<span data-ng-if="item.replyType=='txt'">文本回复</span>
+							<span data-ng-if="item.replyType=='pic'">图片回复</span>
+							<span data-ng-if="item.replyType=='news'">图文回复</span>
+						</td>
+						<!--<td>-->
+						<!--<div class="checkboxbtn" ng-click="updateEnable(item)">-->
+						<!--<i class="checkbtn"  ng-class="{'checkbtn-circle':item.enable}">-->
+						<!--</i>-->
+						<!--</div>-->
+						<!--</td>-->
+						<td>{{item.replyNum}}</td>
+						<!-- <td>已生成</td> -->
+						<td class="ctrlbtn">
+							<button type="button" class="btn btn-default btn-sm" ng-click="editItem(item)">
+								<span class="fa-edt"></span><span class="fa-edt-text">编辑</span>
+							</button>
+							<button type="button" class="btn btn-default btn-sm" ng-click="remove(item)">
+								<span class="fa-delete"></span><span class="fa-delete-text">删除</span>
+							</button>
+
+						</td>
+					</tr>
+					<tr class="no-member" ng-if="!dataList || !dataList.length">
+						<td rowspan="8">暂无对应规则！</td>
+					</tr>
+					<tr class="data-footer">
+						<td class="col-select" colspan="2">
+							<div class="keyword-group-selector" data-nsw-group-selector data-list-getter="getList" selected-Items-Getter="getSelectedItems"></div>
+							<button class="btn btn-default btn-remove" data-ng-click="removeitems()" data-ng-disabled="!hasSelectedItems()">批量删除</button>
+						</td>
+
+						<td colspan="5">
+							<div class="pull-right search">
+								<div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+								</div>
+							</div>
+							<div class="pull-left">
+								<span>当前数据总数：</span>
+								<span ng-bind="searchOptions.totalRows"></span>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+</div>

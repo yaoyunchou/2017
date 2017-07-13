@@ -1,0 +1,24 @@
+<div class="kind-editor">
+	<textarea style="visibility:hidden;"></textarea>
+
+	<div class="nsw-editor-toolbar">
+		<div class="nsw-editor-tool-icon icon-emotions">	</div>
+		<div class="nsw-editor-tool-icon icon-link glyphicon glyphicon-link" ng-click="addLink()">	</div>
+		<div style="display: none">
+			<div class="emotions" style="width: 300px;height: 240px;">
+				<span ng-repeat="em in emotions" class="emotion-item" data-code="{{em.img}}">
+					<img ng-src="{{resolveImage(em.img)}}" alt="{{em.desc}}"  >
+				</span>
+			</div>
+		</div>
+
+		<div class="word-count">
+			<span class="err" data-ng-show="maxLengthError" style="text-align: left">录入字数不能超过<span
+					data-ng-bind="options.maximumWords"></span>个字符</span>
+			<span data-ng-bind="wordCount" style="min-width: 200px;float: right; text-align: right;margin: 10px 10px;"></span>
+		</div>
+	</div>
+
+</div>
+
+

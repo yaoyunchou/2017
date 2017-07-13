@@ -1,0 +1,52 @@
+<div class="message-box menu-modal nsw-modal">
+    <div class="modal-header">
+        <h4 class="modal-title">选择链接地址</h4>
+        <a class="diaremove" ng-click="closeModal(false)"></a>
+    </div>
+    <div class="modal-body message-body cms-mobile">
+        <div class="search-info">
+            <div class="search-one pull-left">
+                <input type="text" placeholder="请输入文章标题" nsw-enter="searchData()" class="pull-left"
+                       ng-model="searchOptions.filter">
+                <a class="reset glyphicon glyphicon-remove" href="javascript:void(0)" ng-click="resetSearchData()"></a>
+                <a class="search" href="javascript:void(0)" ng-click="searchData()"></a>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="article-list">
+            <table class="table table-hover">
+                <tr >
+                    <th></th>
+                    <th>文章标题</th>
+                    <th>日期</th>
+                </tr>
+                <tr ng-repeat="item in dataList" class="data-row" >
+                    {{selectedItems}}
+                    <td><input type="checkbox"  ng-checked="isItemSelected(item)"
+                               ng-click="selectItem(item)"/></td>
+                    <td class="cms-mobile-title" data-ng-bind="item.title"></td>
+                    <td>{{item.publishDate|nswDate:'yyyy-MM-dd'}}</td>
+                </tr>
+
+            </table>
+            <div class="no-member" ng-if="!dataList || !dataList.length">
+                暂无文章！
+            </div>
+        </div>
+        <div class="pull-right search">
+            <div platform-pagenation search-options="searchOptions" nsw-refresh="searchData()">
+            </div>
+        </div>
+        <div class="button">
+            <button type="submit" class="btn btn-commit" data-ng-disabled="!hasSelectedItems()"
+                    ng-click="closeModal(true,currentItem)">
+                <label class="btn-icon btn-icon checkforward"></label>
+                <span class="btn-text">确认</span>
+            </button>
+            <button class="btn btn-cancel"  ng-click="closeModal(false)">
+                <label class="btn-icon checkcance"></label>
+                <span class="btn-text black">取消</span>
+            </button>
+        </div>
+    </div>
+</div>

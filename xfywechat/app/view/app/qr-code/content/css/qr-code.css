@@ -1,0 +1,149 @@
+.qr-code {
+  width: 800px; }
+  .qr-code .tip {
+    padding-left: 15px;
+    margin-bottom: 15px; }
+  .qr-code .require {
+    width: 20px;
+    display: inline-block;
+    color: red; }
+  .qr-code .nsw-label {
+    padding-left: 15px; }
+  .qr-code .code-box dt {
+    clear: both;
+    overflow: hidden; }
+    .qr-code .code-box dt img {
+      width: 160px;
+      height: 160px;
+      float: left;
+      display: block; }
+    .qr-code .code-box dt p {
+      float: left;
+      margin-top: 140px;
+      font-size: 12px;
+      font-weight: normal;
+      margin-left: 15px; }
+      .qr-code .code-box dt p span {
+        color: #EF8300; }
+  .qr-code .code-box dd {
+    width: 160px;
+    text-align: center;
+    padding-top: 20px; }
+    .qr-code .code-box dd a {
+      color: #EF8300;
+      text-decoration: underline; }
+
+.qr-code-list .search-info {
+  position: absolute;
+  top: 30px;
+  right: 0; }
+.qr-code-list .content {
+  overflow: hidden; }
+.qr-code-list table {
+  width: 100%; }
+  .qr-code-list table tr .col-checkbox {
+    width: 80px;
+    border-bottom: 1px dashed #dcdde1; }
+    .qr-code-list table tr .col-checkbox input {
+      margin-left: 24px; }
+  .qr-code-list table tr .col-type {
+    width: 140px;
+    border-bottom: 1px dashed #dcdde1; }
+  .qr-code-list table tr .col-title {
+    width: 275px;
+    border-bottom: 1px dashed #dcdde1;
+    padding-right: 30px; }
+    .qr-code-list table tr .col-title > span {
+      display: inline-block;
+      width: 230px;
+      word-wrap: break-word; }
+  .qr-code-list table tr .col-image {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 210px;
+    border-bottom: 1px dashed #dcdde1; }
+    .qr-code-list table tr .col-image img {
+      width: 124px;
+      height: 124px; }
+  .qr-code-list table tr .ctrl-btn {
+    border-bottom: 1px dashed #dcdde1; }
+    .qr-code-list table tr .ctrl-btn .btn-default:hover {
+      color: #EF8300;
+      border-color: #EF8300; }
+  .qr-code-list table .data-footer td {
+    height: 56px;
+    background: #f6f6f6; }
+    .qr-code-list table .data-footer td .keyword-group-selector {
+      float: left;
+      margin: 10px 15px; }
+  .qr-code-list table .data-footer .pull-right {
+    margin-right: 15px; }
+  .qr-code-list table .data-footer .col-select .btn {
+    margin-top: 8px; }
+
+.qr-code-charts .charts-head {
+  height: 60px;
+  background: #f6f6f6;
+  padding: 15px; }
+.qr-code-charts .charts-body {
+  padding: 20px; }
+  .qr-code-charts .charts-body .num-box {
+    height: 168px;
+    border-bottom: 1px solid #dcdcdc;
+    padding-left: 156px; }
+    .qr-code-charts .charts-body .num-box li {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #f08300;
+      color: #f08300;
+      text-align: center;
+      margin-right: 240px;
+      float: left; }
+      .qr-code-charts .charts-body .num-box li p {
+        font-size: 12px;
+        margin: 18px 0; }
+      .qr-code-charts .charts-body .num-box li strong {
+        font-size: 24px; }
+  .qr-code-charts .charts-body .charts-list {
+    padding-top: 30px; }
+    .qr-code-charts .charts-body .charts-list .time-quantum {
+      float: left;
+      padding-left: 32px; }
+    .qr-code-charts .charts-body .charts-list h3 {
+      height: 50px;
+      padding: 10px 20px;
+      font-size: 14px;
+      line-height: 30px; }
+      .qr-code-charts .charts-body .charts-list h3 .title {
+        border-left: 3px solid #f08300;
+        padding-left: 10px; }
+    .qr-code-charts .charts-body .charts-list .list-table {
+      border: 1px solid #ebebeb;
+      margin-left: 32px; }
+      .qr-code-charts .charts-body .charts-list .list-table td, .qr-code-charts .charts-body .charts-list .list-table th {
+        height: 38px;
+        line-height: 38px;
+        text-align: center;
+        border-bottom: 1px solid #ebebeb; }
+      .qr-code-charts .charts-body .charts-list .list-table .title {
+        width: 240px;
+        text-align: left;
+        padding: 0 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-right: -110px; }
+    .qr-code-charts .charts-body .charts-list .charts-list-in {
+      width: 807px;
+      overflow: hidden; }
+      .qr-code-charts .charts-body .charts-list .charts-list-in .search {
+        margin: 15px; }
+
+.e-charts {
+  height: 414px;
+  border-bottom: 1px solid #ebebeb; }
+  .e-charts .echarts {
+    height: 290px;
+    width: 780px; }
+
+/*# sourceMappingURL=qr-code.css.map */
