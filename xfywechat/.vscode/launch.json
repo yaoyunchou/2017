@@ -21,33 +21,34 @@
 //     ]
 // }
 {
-   "version": "0.2.0",
-   "configurations": [
-       {
-           "name": "Launch",
-           "type": "node", 
-           "request": "launch",
-           "program": "${workspaceRoot}/src/app.js", //这个配置成要调试的文件
-           "stopOnEntry": false,
-           "args": [],
-           "cwd": "${workspaceRoot}/",
-           "runtimeExecutable": null,
-           "runtimeArgs": [
-               "--nolazy"
-           ],
-           "env": {
-               "NODE_ENV": "development"
-           },
-           "console": "internalConsole",
-           "preLaunchTask": "",
-           "sourceMaps": true,
-           "outFiles": []
-       },
-       {
-           "name": "Attach",
-           "type": "node",
-           "request": "attach",
-           "port": 5858
-       }
-   ]
+    "version": "0.2.0",
+    "configurations": [{
+            "name": "Launch",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/app.js", //这个配置成要调试的文件
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}/",
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/app/app.js"
+            ], //源映射，指定实际执行文件
+            "preLaunchTask": "build" //首先执行build task
+        },
+        {
+            "name": "Attach",
+            "type": "node",
+            "request": "attach",
+            "port": 5858
+        }
+    ]
 }
