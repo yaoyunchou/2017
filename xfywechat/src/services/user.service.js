@@ -10,8 +10,7 @@ export default class Service extends basService {
 			name: '',
 			nikeName: '',
 			desc: '',
-			avatar: '',
-			roles: []
+			avatar: ''
 		}
 	}
 }

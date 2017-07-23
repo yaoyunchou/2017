@@ -39,8 +39,7 @@ var Service = function (_basService) {
 				name: '',
 				nikeName: '',
 				desc: '',
-				avatar: '',
-				roles: []
+				avatar: ''
 			};
 		}
 	}]);

@@ -25,17 +25,35 @@ var _koaStatic = require("koa-static");
 
 var _koaStatic2 = _interopRequireDefault(_koaStatic);
 
-require("./controllers");
+require("./job");
+
+var _controllers = require("./controllers");
+
+var _controllers2 = _interopRequireDefault(_controllers);
+
+var _context = require("./common/context");
+
+var _context2 = _interopRequireDefault(_context);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var koa = new _koa2.default();
+
+_controllers2.default.bindRouters();
 
 koa.use((0, _koaStatic2.default)(__dirname + '/view'));
 
 koa.use((0, _g2.default)(_config2.default.wechat, _weixin2.default.reply));
 koa.use(_router.koaRouter.routes());
 koa.use(_router.koaRouter.allowedMethods());
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/yao', {
+  useMongoClient: true
+  /* other options */
+});
+
+//import "./test"
 
 koa.listen(process.env.PORT || 8090);
 console.log('Listening:' + (process.env.PORT || 8090));
