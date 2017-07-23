@@ -9,7 +9,7 @@
 				template: '<div class="c-menu-div"> ' +
 				'               <div class="c-menu-title" data-ng-bind="menus.title"></div>' +
 				'               <div class="c-menu-box">' +
-				'				    <div data-ng-repeat="group in menus.groups" ng-show="!group.hide"  data-platform-menu-group data-ng-model="group"/></div>' +
+				'				    <div data-ng-repeat="group in menus.groups"   data-platform-menu-group data-ng-model="group"/></div>' +
 				'               </div>' +
 				'           </div>',
 				link: function (scope) {

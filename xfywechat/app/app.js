@@ -25,7 +25,7 @@ var _koaStatic = require("koa-static");
 
 var _koaStatic2 = _interopRequireDefault(_koaStatic);
 
-require("./demo/user.controller");
+require("./controllers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

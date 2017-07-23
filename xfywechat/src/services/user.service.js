@@ -1,5 +1,5 @@
-import basService from "../common/bas.serice";
-import schema from "../models/user.schame";
+import basService from "../common/bas.service";
+import schema from "../models/user.schema";
 
 export default class Service extends basService {
 	constructor() {

@@ -15,7 +15,7 @@
 	if (exportObj.location) {
 		var paths = window.location.pathname.split('/');
 		paths.length = paths.length -2;
-		appRoot = window.location.protocol + '//' + window.location.hostname + paths.join('/')+'/';
+		appRoot = window.location.protocol + '//' + window.location.hostname+':'+window.location.port + paths.join('/')+'/';
 		//appRoot = window.location.origin + '/wx/';
 	}
 	exportObj.globals = {

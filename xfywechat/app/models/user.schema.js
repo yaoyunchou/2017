@@ -16,9 +16,10 @@ exports.default = new _mongoose.Schema({
 	desc: _mongoose.Schema.Types.String,
 	email: String,
 	pssword: String,
+	avatar: String,
 	roles: [_mongoose.Schema.Types.ObjectId],
 	created: {
-		type: _mongoose.Schema.Types.Datem,
+		type: _mongoose.Schema.Types.Date,
 		default: Date.now
 	},
 	update: {
@@ -30,4 +31,4 @@ exports.default = new _mongoose.Schema({
 }); /**
      * Created by yao on 2017/6/23.
      */
-//# sourceMappingURL=uers.schema.js.map
+//# sourceMappingURL=user.schema.js.map

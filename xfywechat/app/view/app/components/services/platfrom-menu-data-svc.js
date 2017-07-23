@@ -106,14 +106,8 @@
 							appId: currentAppId
 						}
 					}).then(function (res) {
-						if (res.data.isSuccess) {
-							menus = res.data.data || {groups: []};
-							menus.groups.push({
-								name: '公众号管理',
-								state: 'accountEdit',
-								hide: true
-							});
-
+						if (res.data) {
+							menus = res.data || {groups: []};
 							if (selectedMenu && selectedMenu.updateState) {
 								var menu = getMenuByName(selectedMenu.name);
 								nswGlobals.setValue(menuKey, menu, true);

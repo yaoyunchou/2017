@@ -8,7 +8,6 @@
 			$scope.isWelcome = true;
 			$scope.leftEdit = false;
 			$scope.showMenus = true;
-			$scope.enableSwitchProject = true;
 			var getCurrentWechatInfo = function getCurrentWechatInfo(currentItem) {
 				$scope.currentWechtInfo = currentItem;
 			};
@@ -23,9 +22,6 @@
 				$scope.breadNavs = mainMenuSvc.buildNavigation(platformMenuDataSvc.getCurrentMenu(), platformMenuDataSvc.getCurrentMenuGroup());
 			});
 
-			platformNavigationSvc.registerRouteUpdated(function (menu) {
-				$scope.isWelcome = menu.key === 'welcome';
-			});
 
 
 			$scope.exit = function exit(route) {
@@ -37,11 +33,6 @@
 				window.location = route;
 			};
 
-
-			$scope.$on('$stateChangeStart', function (e, toState) {
-				$scope.isWelcome = toState.name === 'wechat.account' || toState.name === 'wechat.authorizeMain.explain' || toState.name === 'wechat.authorizeMain.mode' || toState.name === 'wechat.authorizeMain.success' || toState.name === 'wechat.authorizeUrl' || toState.name === 'wechat.authorizeAbout';
-				$scope.leftEdit = !(toState.name === 'wechat.accountAdd' || toState.name === 'wechat.accountEdit');
-			});
 
 			$scope.$on('$stateChangeSuccess', function (e, route) {
 				platformMenuDataSvc.selectMenu(route.name, false);
@@ -60,9 +51,6 @@
 				$scope.showMenus = true;
 			};
 
-			$scope.switchProject = function switchProject() {
-				$scope.goState('wechat.switchProject');
-			};
 
 			// $scope.checkAuthed = function checkAuthed(code) {
 			// 	return platformNswAuthSvc.getAuth(code);

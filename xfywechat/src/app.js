@@ -11,7 +11,7 @@ import weixin from './weixin';
 import serve from 'koa-static';
 const koa = new Koa();
 
-import './demo/user.controller';
+import './controllers';
 
 koa.use(serve(__dirname + '/view'));
 
