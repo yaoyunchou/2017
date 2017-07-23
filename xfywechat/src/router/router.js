@@ -2,7 +2,11 @@
  * Created by yao on 2017/6/12.
  */
 import koaRouter from "./koa-router";
-
+/**
+ * @param  {} route
+ * @param  {} method
+ * @param  {} isAsync=true
+ */
 export function route(route, method, isAsync = true) {
     return function (target, name, descriptor) {
         setTimeout(function () {//TODO：默认类的实例化会在函数实例化之后，所有这里会加这个东东
@@ -15,7 +19,7 @@ export function route(route, method, isAsync = true) {
             }
 
             console.log(fixed_route);
-            method = method || 'get';
+            method = method || getDefaultHttpMethod(name,route)||'get';
             koaRouter[method](fixed_route, async function (next) {
                 var result;
                 try {
@@ -36,4 +40,18 @@ export function route(route, method, isAsync = true) {
         });
     }
 
+}
+
+function getDefaultHttpMethod(name, route) {
+	if (/^get/.test(name)) {
+		return 'get';
+	} else if (/^update/.test(name)) {
+		return 'put';
+	} else if (/^delete/.test(name) || /^remove/.test(name)) {
+		return 'delete';
+	} else if (/^save/.test(name)) {
+		return 'post';
+	} else if (route) {
+		return getDefaultHttpMethod(route);
+	}
 }

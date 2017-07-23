@@ -2,7 +2,7 @@
 // koaRouter.add(UserController);
 
 // @routePrefix('user/:id')
-// export class UserController{
+// export default class UserController{
 //     @route() // http://localhost:3000/user
 //     async getUser({id}){
 //         let user = await timeout({id:"01",name:'bowen',xxx:id});
