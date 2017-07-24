@@ -84,6 +84,21 @@ var Service = function () {
 			// })
 			return this.DbModal.findOne(filter).exec();
 		}
+	}, {
+		key: "getItemById",
+		value: function getItemById(id) {
+			// return new Promise((resolve, reject) => {
+			// 	this.DbModal.findOne(filter).exec((err,item)=>{
+			// 		//console.log(item);
+			// 		if(err){
+			// 			reject('没有找到对应的'+this.name);
+			// 		}else{
+			// 			resolve(item);
+			// 		}
+			// 	});
+			// })
+			return this.DbModal.findOne({ '_id': _mongoose2.default.Types.ObjectId(id) }).exec();
+		}
 		/**
    * @param  {Object} item
    */

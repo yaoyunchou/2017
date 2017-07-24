@@ -52,6 +52,19 @@ export default class Service {
 		// })
 		return this.DbModal.findOne(filter).exec();
 	}
+	getItemById(id) {
+		// return new Promise((resolve, reject) => {
+		// 	this.DbModal.findOne(filter).exec((err,item)=>{
+		// 		//console.log(item);
+		// 		if(err){
+		// 			reject('没有找到对应的'+this.name);
+		// 		}else{
+		// 			resolve(item);
+		// 		}
+		// 	});
+		// })
+		return this.DbModal.findOne({'_id': mogoose.Types.ObjectId(id)}).exec();
+	}
 	/**
 	 * @param  {Object} item
 	 */
