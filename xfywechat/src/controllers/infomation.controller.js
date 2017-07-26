@@ -28,15 +28,15 @@ export default class InfomationController{
 	}
 }
 
-//fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
+fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
 var schedule = require("node-schedule");
 var rule = new schedule.RecurrenceRule();
 
 　　rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 
-　　rule.hour = 0;
+　　rule.hour = 1;
 
-　　rule.minute = 0;
+　　rule.minute = 55;
 
 　　var job = schedule.scheduleJob(rule, function(){
 　　　fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());

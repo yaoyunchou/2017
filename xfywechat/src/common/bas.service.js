@@ -70,7 +70,8 @@ export default class Service {
 	 */
 	saveItem(item) {
 		var id = item._id;
-		if (id) {
+		try{
+			if (id) {
 			delete item._id;
 			return this.DbModal.findByIdAndUpdate(id, item, {
 				upsert: true
@@ -78,6 +79,10 @@ export default class Service {
 		} else {
 			return this.toSchema(item).save();
 		}
+		}catch(e){
+			console.log(e);
+		}
+		
 	}
 	create() {
 

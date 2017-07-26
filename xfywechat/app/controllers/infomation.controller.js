@@ -135,18 +135,18 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 
 	return InfomationController;
 }(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype)), _class2)) || _class) || _class);
-
-//fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
-
 exports.default = InfomationController;
+
+
+(0, _util.fetchInfomation)('http://www.w3cplus.com/rss.xml', 1, new _infomation2.default());
 var schedule = require("node-schedule");
 var rule = new schedule.RecurrenceRule();
 
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 
-rule.hour = 0;
+rule.hour = 1;
 
-rule.minute = 0;
+rule.minute = 55;
 
 var job = schedule.scheduleJob(rule, function () {
 	(0, _util.fetchInfomation)('http://www.w3cplus.com/rss.xml', 1, new _infomation2.default());

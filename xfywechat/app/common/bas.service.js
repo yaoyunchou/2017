@@ -107,13 +107,17 @@ var Service = function () {
 		key: "saveItem",
 		value: function saveItem(item) {
 			var id = item._id;
-			if (id) {
-				delete item._id;
-				return this.DbModal.findByIdAndUpdate(id, item, {
-					upsert: true
-				});
-			} else {
-				return this.toSchema(item).save();
+			try {
+				if (id) {
+					delete item._id;
+					return this.DbModal.findByIdAndUpdate(id, item, {
+						upsert: true
+					});
+				} else {
+					return this.toSchema(item).save();
+				}
+			} catch (e) {
+				console.log(e);
 			}
 		}
 	}, {
