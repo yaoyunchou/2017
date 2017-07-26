@@ -34,6 +34,6 @@ mongoose.connect('mongodb://root:ZaObybUEKIy40YwSTkIzmLXF1KdIkiWKmOTGgON0@aagqcs
 
 
 //import "./test"
-console.log(process.env);
+//console.log(process.env);
 koa.listen(process.env.PORT||8090);
 console.log('Listening:'+(process.env.PORT ||8090));

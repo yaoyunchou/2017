@@ -75,7 +75,7 @@ exports.fetchInfomation = function fetch(feed, typeId, service) {
 
 	feedparser.on('error', done);
 	feedparser.on('end', function (err) {
-		//console.log(posts);
+		console.log("存到数据库");
 		service.saveInfo(posts); //存到数据库  
 	});
 	feedparser.on('readable', function () {
