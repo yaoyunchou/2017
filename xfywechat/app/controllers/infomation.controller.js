@@ -144,9 +144,9 @@ var rule = new schedule.RecurrenceRule();
 
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 
-rule.hour = 0;
+rule.hour = 1;
 
-rule.minute = 0;
+rule.minute = 55;
 
 var job = schedule.scheduleJob(rule, function () {
 	(0, _util.fetchInfomation)('http://www.w3cplus.com/rss.xml', 1, new _infomation2.default());

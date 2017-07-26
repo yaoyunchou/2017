@@ -41,6 +41,9 @@ var koa = new _koa2.default();
 
 _controllers2.default.bindRouters();
 
+var log4js = require('koa-log4');
+koa.use(log4js.koaLogger(log4js.getLogger("http"), { level: 'auto' }));
+
 koa.use((0, _koaStatic2.default)(__dirname + '/view'));
 
 koa.use((0, _g2.default)(_config2.default.wechat, _weixin2.default.reply));
@@ -51,13 +54,14 @@ mongoose.Promise = global.Promise;
 
 // var content = 'mongodb://localhost/yao'
 // var content = MONGODB_URI ||'mongodb://localhost/yao'
-mongoose.connect('mongodb://root:ZaObybUEKIy40YwSTkIzmLXF1KdIkiWKmOTGgON0@aagqcsamfkip.mongodb.sae.sina.com.cn:10128/admin', {
+mongoose.connect('mongodb://root:VFcfObzKDr6bIrWCa3tOJUALeZ6TdL2BRZep45e2@ufaifeqagyya.mongodb.sae.sina.com.cn:10128/admin', {
   useMongoClient: true
   /* other options */
 });
 
 //import "./test"
-console.log(process.env);
+
+//console.log(process.env);
 koa.listen(process.env.PORT || 8090);
 console.log('Listening:' + (process.env.PORT || 8090));
 //# sourceMappingURL=app.js.map
