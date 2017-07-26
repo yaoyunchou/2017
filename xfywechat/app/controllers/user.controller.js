@@ -150,7 +150,7 @@ var UserController = (_dec = (0, _router.routePrefix)('user'), _dec2 = (0, _serv
 	}]);
 
 	return UserController;
-}(), (_applyDecoratedDescriptor(_class2.prototype, 'getUser', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getUser'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'create', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'create'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [log, _dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype)), _class2)) || _class) || _class);
+}(), (_applyDecoratedDescriptor(_class2.prototype, 'getUser', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getUser'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'create', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'create'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype)), _class2)) || _class) || _class);
 exports.default = UserController;
 
 function log(target, name, descriptor) {

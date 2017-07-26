@@ -51,10 +51,7 @@ var Service = function () {
 
 	}, {
 		key: "getList",
-		value: function getList(filter, pageSize) {
-			var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-			var sortter = arguments[3];
-
+		value: function getList(filter, pageSize, pageNumber, sortter) {
 			var skipItems = pageNumber * pageSize;
 			var query = this.DbModal.find(filter);
 			if (pageSize) {

@@ -17,8 +17,11 @@ export default class InfomationController{
 		return infomation;
 	}
 	@route('list')
-	async getList() {
-		let list = await this.service.getList();
+	async getList(params,body) {
+		let pageSize = body.query.pageSize||10;
+		let pageNumber = body.query.pageNumber||0;
+		let sortter = { "pubDate":-1};
+		let list = await this.service.getList({},pageSize,pageNumber,sortter);
 		let backData = {
 			isSuccess:true,
 			data:list
@@ -26,9 +29,14 @@ export default class InfomationController{
 
 		return backData;
 	}
+	@route('addRssByLink')
+	async addRssByLink(params,body){
+		fetchInfomation(body.query.link,2,this.service)
+		//return backData;
+	}
 }
 
-fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
+//fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
 var schedule = require("node-schedule");
 var rule = new schedule.RecurrenceRule();
 

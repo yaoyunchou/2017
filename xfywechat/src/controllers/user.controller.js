@@ -29,7 +29,6 @@ export default class UserController{
         console.log(this)
 		return this.service.create();
     }
-    @log
 	@route('list')
 	async getList() {
 		let list = await timeout([{

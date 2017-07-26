@@ -11,7 +11,7 @@ var _regenerator2 = _interopRequireDefault(_regenerator);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2;
 
 var _router = require('../router');
 
@@ -60,7 +60,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 	return desc;
 }
 
-var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('list'), _dec(_class = _dec2(_class = (_class2 = function () {
+var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('list'), _dec5 = (0, _router.route)('addRssByLink'), _dec(_class = _dec2(_class = (_class2 = function () {
 	function InfomationController() {
 		_classCallCheck(this, InfomationController);
 	}
@@ -100,16 +100,19 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}, {
 		key: 'getList',
 		value: function () {
-			var _ref3 = _asyncToGenerator(_regenerator2.default.mark(function _callee2() {
-				var list, backData;
+			var _ref3 = _asyncToGenerator(_regenerator2.default.mark(function _callee2(params, body) {
+				var pageSize, pageNumber, sortter, list, backData;
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {
 						switch (_context2.prev = _context2.next) {
 							case 0:
-								_context2.next = 2;
-								return this.service.getList();
+								pageSize = body.query.pageSize || 10;
+								pageNumber = body.query.pageNumber || 0;
+								sortter = { "pubDate": -1 };
+								_context2.next = 5;
+								return this.service.getList({}, pageSize, pageNumber, sortter);
 
-							case 2:
+							case 5:
 								list = _context2.sent;
 								backData = {
 									isSuccess: true,
@@ -117,7 +120,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 								};
 								return _context2.abrupt('return', backData);
 
-							case 5:
+							case 8:
 							case 'end':
 								return _context2.stop();
 						}
@@ -125,20 +128,45 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 				}, _callee2, this);
 			}));
 
-			function getList() {
+			function getList(_x2, _x3) {
 				return _ref3.apply(this, arguments);
 			}
 
 			return getList;
 		}()
+	}, {
+		key: 'addRssByLink',
+		value: function () {
+			var _ref4 = _asyncToGenerator(_regenerator2.default.mark(function _callee3(params, body) {
+				return _regenerator2.default.wrap(function _callee3$(_context3) {
+					while (1) {
+						switch (_context3.prev = _context3.next) {
+							case 0:
+								(0, _util.fetchInfomation)(body.query.link, 2, this.service);
+								//return backData;
+
+							case 1:
+							case 'end':
+								return _context3.stop();
+						}
+					}
+				}, _callee3, this);
+			}));
+
+			function addRssByLink(_x4, _x5) {
+				return _ref4.apply(this, arguments);
+			}
+
+			return addRssByLink;
+		}()
 	}]);
 
 	return InfomationController;
-}(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype)), _class2)) || _class) || _class);
+}(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'addRssByLink', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'addRssByLink'), _class2.prototype)), _class2)) || _class) || _class);
+
+//fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
+
 exports.default = InfomationController;
-
-
-(0, _util.fetchInfomation)('http://www.w3cplus.com/rss.xml', 1, new _infomation2.default());
 var schedule = require("node-schedule");
 var rule = new schedule.RecurrenceRule();
 

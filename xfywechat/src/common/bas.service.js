@@ -25,7 +25,7 @@ export default class Service {
 	 * @param  {Number} pageNumber=0
 	 * @param  {*} sortter
 	 */
-	getList(filter, pageSize, pageNumber = 0, sortter) {
+	getList(filter, pageSize, pageNumber, sortter) {
 		var skipItems = pageNumber * pageSize;
 		var query = this.DbModal.find(filter);
 		if (pageSize) {
