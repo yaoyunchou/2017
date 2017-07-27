@@ -14,6 +14,7 @@ export default class InfomationController{
 	@route('detail/:id') // http://localhost:3000/user
 	async getInfomation({id}) {
 		let infomation = await this.service.getItemById(id);
+		fixhtml(infomation);
 		return infomation;
 	}
 	@route('list')
@@ -49,3 +50,8 @@ var rule = new schedule.RecurrenceRule();
 　　var job = schedule.scheduleJob(rule, function(){
 　　　fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
 　　});
+
+function fixhtml(data){
+	data.description.replace(/pre/g,"<div>");
+	console.log(data.description);
+}
