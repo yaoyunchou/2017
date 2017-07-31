@@ -81,9 +81,11 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 
 							case 2:
 								infomation = _context.sent;
+
+								fixhtml(infomation);
 								return _context.abrupt('return', infomation);
 
-							case 4:
+							case 5:
 							case 'end':
 								return _context.stop();
 						}
@@ -179,4 +181,9 @@ rule.minute = 55;
 var job = schedule.scheduleJob(rule, function () {
 	(0, _util.fetchInfomation)('http://www.w3cplus.com/rss.xml', 1, new _infomation2.default());
 });
+
+function fixhtml(data) {
+	data.description.replace(/pre/g, "<div>");
+	console.log(data.description);
+}
 //# sourceMappingURL=infomation.controller.js.map
