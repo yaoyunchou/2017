@@ -51,7 +51,10 @@ var Service = function () {
 
 	}, {
 		key: "getList",
-		value: function getList(filter, pageSize, pageNumber, sortter) {
+		value: function getList(filter, pageSize) {
+			var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+			var sortter = arguments[3];
+
 			var skipItems = pageNumber * pageSize;
 			var query = this.DbModal.find(filter);
 			if (pageSize) {
@@ -94,7 +97,9 @@ var Service = function () {
 			// 		}
 			// 	});
 			// })
-			return this.DbModal.findOne({ '_id': _mongoose2.default.Types.ObjectId(id) }).exec();
+			return this.DbModal.findOne({
+				'_id': _mongoose2.default.Types.ObjectId(id)
+			}).exec();
 		}
 		/**
    * @param  {Object} item

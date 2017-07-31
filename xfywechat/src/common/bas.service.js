@@ -25,7 +25,7 @@ export default class Service {
 	 * @param  {Number} pageNumber=0
 	 * @param  {*} sortter
 	 */
-	getList(filter, pageSize, pageNumber, sortter) {
+	getList(filter, pageSize, pageNumber = 0, sortter) {
 		var skipItems = pageNumber * pageSize;
 		var query = this.DbModal.find(filter);
 		if (pageSize) {
@@ -63,26 +63,28 @@ export default class Service {
 		// 		}
 		// 	});
 		// })
-		return this.DbModal.findOne({'_id': mogoose.Types.ObjectId(id)}).exec();
+		return this.DbModal.findOne({
+			'_id': mogoose.Types.ObjectId(id)
+		}).exec();
 	}
 	/**
 	 * @param  {Object} item
 	 */
 	saveItem(item) {
 		var id = item._id;
-		try{
+		try {
 			if (id) {
-			delete item._id;
-			return this.DbModal.findByIdAndUpdate(id, item, {
-				upsert: true
-			})
-		} else {
-			return this.toSchema(item).save();
-		}
-		}catch(e){
+				delete item._id;
+				return this.DbModal.findByIdAndUpdate(id, item, {
+					upsert: true
+				})
+			} else {
+				return this.toSchema(item).save();
+			}
+		} catch (e) {
 			console.log(e);
 		}
-		
+
 	}
 	create() {
 
