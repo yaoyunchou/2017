@@ -28,11 +28,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')]
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
@@ -57,6 +52,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
+      },
+       {
+        test: /\.html$/,
+        loader: "html-loader"
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
