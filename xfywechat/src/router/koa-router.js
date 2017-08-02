@@ -5,7 +5,6 @@
 var koaRouter = new require("koa-router")({
     prefix:'/api'
 });
-
 koaRouter.add = function(Controller){
     if(typeof Controller === 'function'){
         new Controller();
