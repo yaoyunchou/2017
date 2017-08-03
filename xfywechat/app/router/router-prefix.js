@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 exports.routePrefix = routePrefix;
 
@@ -12,12 +12,12 @@ var _koaRouter = require('./koa-router');
  */
 var router = require('koa-router');
 function routePrefix(route) {
-    return function (target) {
-        if (typeof target === 'function') {
-            target.prototype.router = {
-                prefix: route
-            };
-        }
-    };
+	return function (target) {
+		if (typeof target === 'function') {
+			target.prototype.router = {
+				prefix: route
+			};
+		}
+	};
 }
 //# sourceMappingURL=router-prefix.js.map

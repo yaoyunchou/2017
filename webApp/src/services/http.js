@@ -1,35 +1,41 @@
-import http from 'http';
-import {
-	httpConfig
-} from '../globals';
+import http from 'axios'
 
-class Http {
-	static httpModth(options) {
-		const req = http.request(options, (res) => {
-			console.log(`STATUS: ${res.statusCode}`);
-			console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-			res.setEncoding('utf8');
-			res.on('data', (chunk) => {
-        console.log(`BODY: ${chunk}`);
-			});
-			res.on('end', () => {
-				console.log('No more data in response.');
-			});
-		});
-
-		req.on('error', (e) => {
-			console.error(`problem with request: ${e.message}`);
-		});
-
-		// write data to request body
-		req.write(postData);
-		req.end();
+export default{
+	 httpModth(options) {
+		return http(options);
+	},
+	 get(url, data) {
+		console.log(http.defaults.headers);
+		let options = {
+			method: 'get',
+			data: data,
+			url: url
+		}
+		return this.httpModth(options);
+	},
+	 put(url, data) {
+		let options = {
+			method: 'put',
+			data: data,
+			url: url
+		}
+		return this.httpModth(options);
+	},
+	 post(url, data) {
+		let options = {
+			method: 'post',
+			data: data,
+			url: url
+		}
+		return this.httpModth(options);
+	},
+	 delete(url, data) {
+		let options = {
+			method: 'delete',
+			data: data,
+			url: url
+		}
+		return this.httpModth(options);
 	}
-	static get(option) {
-		option = _.extend(httpConfig, option)
-		return this.httpModth(opeion)
 
-	}
 }
-var http = new Http();
-export default http;

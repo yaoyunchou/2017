@@ -54,8 +54,8 @@ mongoose.Promise = global.Promise;
 
 // var content = 'mongodb://localhost/yao'
 // var content = MONGODB_URI ||'mongodb://localhost/yao'
-//mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
-mongoose.connect('mongodb://localhost/yao', {
+mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
+  //mongoose.connect('mongodb://localhost/yao', {
   useMongoClient: true
   /* other options */
 });

@@ -1,5 +1,4 @@
 const element = require('./demo.html');
-import Vue from 'vue'
 
 export default {
   template: element,
