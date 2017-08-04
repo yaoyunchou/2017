@@ -1,11 +1,14 @@
 import element from './form.html';
 import http from '@/services/http';
 import axios from 'axios'
-
+import 'weui';
+import weui from '@/services/weui.js';
+console.log(weui);
 export default {
 	template: element,
 	methods: {
 		handleClick(id) {
+			weui.alert('alert');
 			console.log(id);
 			console.log(axios.defaults.headers);
 		}
