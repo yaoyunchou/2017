@@ -1,14 +1,40 @@
 import element from './form.html';
 import http from '@/services/http';
 import axios from 'axios'
-import 'weui';
-import weui from '@/services/weui.js';
+import weui from '@/services/weui/weui.js';
 console.log(weui);
 export default {
 	template: element,
 	methods: {
 		handleClick(id) {
-			weui.alert('alert');
+			weui.picker([{
+					label: '飞机票',
+					value: 0,
+					disabled: true // 不可用
+				},
+				{
+					label: '火车票',
+					value: 1
+				},
+				{
+					label: '汽车票',
+					value: 3
+				},
+				{
+					label: '公车票',
+					value: 4,
+				}
+			], {
+				className: 'custom-classname',
+				defaultValue: [3],
+				onChange: function(result) {
+					console.log(result)
+				},
+				onConfirm: function(result) {
+					console.log(result)
+				},
+				id: 'singleLinePicker'
+			});
 			console.log(id);
 			console.log(axios.defaults.headers);
 		}

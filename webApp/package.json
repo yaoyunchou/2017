@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "balajs": "^1.0.6",
+    "element-closest": "^2.0.2",
     "element-ui": "^1.4.1",
     "vue": "^2.3.3",
     "vue-router": "^2.6.0",
