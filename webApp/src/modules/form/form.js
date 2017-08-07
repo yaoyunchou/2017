@@ -1,8 +1,7 @@
 import element from './form.html';
 import http from '@/services/http';
 import axios from 'axios'
-import 'weui';
-import weui from '@/services/weui.js';
+import weui from '@/services/weui/weui.js';
 console.log(weui);
 export default {
 	template: element,
