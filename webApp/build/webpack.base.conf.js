@@ -64,8 +64,8 @@ module.exports = {
 				}
 			}, {
 				test: /\.less$/,
-        loader: "style-loader!css-loader!less-loader",
-        include: [] 
+				loader: "style-loader!css-loader!less-loader",
+				include: ['src']
 			}
 		]
 	}

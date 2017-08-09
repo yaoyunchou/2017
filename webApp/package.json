@@ -6,8 +6,10 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
+    "analyz": "set NODE_ENV=production && set npm_config_report=true && npm run build",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
+    "build:dll": "webpack --config build/webpack.dll.conf.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e"
