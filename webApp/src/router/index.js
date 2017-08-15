@@ -5,6 +5,8 @@ import Hello from '@/components/Hello'
 const Demo = resolve => require(['@/modules/demo/demo.js'], resolve)
 //import Form from '@/modules/form/form.js'
 const Form = resolve => require(['@/modules/form/form.js'], resolve)
+const DemoRender = resolve => require(['@/modules/demo.1/demo.js'], resolve)
+const DemoTest = resolve => require(['@/modules/demo.3/demo.js'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -21,6 +23,17 @@ export default new Router({
 			path: '/form',
 			name: 'Form',
 			component: Form
+		},
+		{
+			path: '/demo-render',
+			name: 'DemoRender',
+			component: DemoRender
+		},
+		,
+		{
+			path: '/demo-test',
+			name: 'DemoTest',
+			component: DemoTest
 		}
 	]
 })

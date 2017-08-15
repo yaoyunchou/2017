@@ -1,14 +1,18 @@
-const element = require('./demo.html');
-import NswTable from '@/components/Table'
+import TableCtrl from '@/components/TableCtrl'
+
+import element from './demo.html'
+import  '@/components/test.1.js'
+import '@/components/test.2.js'
 export default {
-	template: element,
-	components:{NswTable},
-	data() {
+	template:element,
+	data: () => {
 		return {
-			radio2: 3,
-			aaa: 1
+			text:'dd',
+			msg:'你好！',
+			value2:2
 		}
 	},
+	
 	methods: {
 		randomIndex: function() {
 			return Math.floor(Math.random() * this.items.length)

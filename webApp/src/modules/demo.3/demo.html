@@ -1,0 +1,16 @@
+<div id="list-demo" class="demo">
+	<test2 :msg="msg" >
+		<!-- <slot  :text="msg">
+			<el-rate v-model="value2" :colors="['#99A9BF', '#F7BA2A', '#FF9900']">
+			</el-rate>
+		</slot>
+		<p slot="footer">
+			Copyright 2016 Evan You
+		</p> -->
+		<template slot scope="props">
+      <div class="my-fancy-item">{{ props.text }}</div>
+    </template>
+	</test2>
+	<!-- <div><slot :text="msg"></slot></div> -->
+
+</div>
