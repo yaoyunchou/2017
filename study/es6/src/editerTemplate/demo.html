@@ -1,0 +1,48 @@
+<!doctype html>
+<html dir="ltr" lang="zh-CN">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="IE=8" http-equiv="X-UA-Compatible"/>
+	<style type="text/css">
+		.wrapper {
+			margin: 5px 5px 5px 5px;
+			padding: 5px 5px 5px 5px;
+			background-color:#dfe8f6;
+			border: 1px solid magenta;
+		}
+		.inner{
+			margin:1em;
+			height:20px;
+			background:#a9ea00
+		}
+		.border{
+			border:2px solid red;
+		}
+	</style>
+	<title>包裹节点 by 司徒正美</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var wrapOuter = function(target,html){
+				var wrap = html
+				if(Object.prototype.toString.call(html) === "[object String]"){
+					if(document.createRange){
+						var range=document.createRange();
+						range.selectNodeContents(target);
+						wrap = range.createContextualFragment(html).firstChild;
+					}else {
+						wrap = document.createElement(str);
+					}
+				}
+				target.parentNode.replaceChild(wrap,target);
+				wrap.appendChild(target)
+			}
+			var a = document.getElementById("target");
+			wrapOuter(a,"<div class='border'></div>")
+		}
+	</script>
+</head>
+<body id="id10">
+<div class="container">
+	<div class="inner" id="target">目标节点</div>
+</div>
+</body>
