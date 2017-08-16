@@ -1,6 +1,11 @@
 
 <script>
 import TableCtrl from '@/components/TableCtrl'
+import renderCell from '../../cells'
+/**
+ * 默认的table结构
+ * 1.要与传入的数据结构做对应，传入的数据是一个见的数据结构，这里要做对应的映射
+ */
 var tableConfig = {
 	table: {
 		name: 'el-table',
@@ -23,7 +28,10 @@ var tableConfig = {
 	}
 		, {
 		name: 'el-table-column',
-		slot: 'TableCtrl',
+		domain:'group',
+		children:[{
+			
+		}],
 		props: {
 			label: '操作',
 			width: '100'
@@ -31,44 +39,15 @@ var tableConfig = {
 	}
 	]
 }
+
 export default {
-	data() {
-		return {
-			tableData: [{
-				date: '2016-05-03',
-				name: '王小虎',
-				province: '上海',
-				city: '普陀区',
-				address: '上海市普陀区金沙江路 1518 弄',
-				zip: 200333
-			}, {
-				date: '2016-05-02',
-				name: '王小虎',
-				province: '上海',
-				city: '普陀区',
-				address: '上海市普陀区金沙江路 1518 弄',
-				zip: 200333
-			}, {
-				date: '2016-05-04',
-				name: '王小虎',
-				province: '上海',
-				city: '普陀区',
-				address: '上海市普陀区金沙江路 1518 弄',
-				zip: 200333
-			}, {
-				date: '2016-05-01',
-				name: '王小虎',
-				province: '上海',
-				city: '普陀区',
-				address: '上海市普陀区金沙江路 1518 弄',
-				zip: 200333
-			}]
-		}
-	},
 	methods: {
+		/**
+		 * 
+		 */
 		test(params) {
 			return () => {
-				console.log('dfsd')
+				console.log(params)
 			}
 		},
 		handleClick(id) {
@@ -102,26 +81,30 @@ export default {
 				});
 			console.log(id);
 			console.log(axios.defaults.headers);
+		},
+		renderInputRow(h, context){										
+			return (<el-button type="text" on-click={this.test(context.row)}  size="small">查看</el-button>);
 		}
 	},
 	render(h) {
-		const self = this;
+		const that = this;
 		
+		// 对配置文件进行处理
 		return h(tableConfig.table.name, {
 			props: {
 				data: this[tableConfig.table.data]
 			}
 		},
-			tableConfig.tableColumn.map(function (data) {
-				if (data.slot) {
-					console.log(data.slot)
+			tableConfig.tableColumn.map((data)=> {
+				 renderCell(h, that, data)
+				if (data.domain) {
 					return h(data.name, {
 						props: data.props,
 					}, [
 							self => {
 								return (
 									<div>
-										<el-button type="text" onClick={console.log} data-scope ={self.row.date} size="small">查看</el-button>
+										{that.renderInputRow(h, self)}
 										<el-button type="text" size="small">编辑</el-button>
 									</div>
 								)
@@ -136,7 +119,8 @@ export default {
 
 			})
 		)
-	}
+	},
+	props:['tableData','tableConfig']
 }
 
 </script>
