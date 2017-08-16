@@ -7,7 +7,7 @@ export default {
 		return {
 			radio2: 3,
 			aaa: 1,
-			tableData: [{
+			dataList: [{
 				date: '2016-05-03',
 				name: '王小虎',
 				province: '上海',
@@ -35,10 +35,43 @@ export default {
 				city: '普陀区',
 				address: '上海市普陀区金沙江路 1518 弄',
 				zip: 200333
-			}]
+			}],
+			table: [{
+				type:'selection',
+				width: '55'
+			},{
+				prop: 'date',
+				label: '日期',
+				width: '150'
+			},
+			{
+				prop: 'name',
+				label: '姓名',
+				width: '550'
+			}
+			,
+			{
+				type: 'button',
+				children: [{
+					label:'查看',
+					handler:'edit'
+				}
+				,{
+					label:'编辑',
+					ctrlFn(context,params){ return ()=>{context.$emit('nsw_edit',{params})}}
+				}
+				],
+				label: '操作',
+				width: '100'
+				
+			}
+			]
 		}
 	},
 	methods: {
+		edit(data){
+			console.log(data);	
+		},
 		randomIndex: function() {
 			return Math.floor(Math.random() * this.items.length)
 		},

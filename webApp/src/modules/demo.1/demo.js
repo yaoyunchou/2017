@@ -1,10 +1,11 @@
 import TableCtrl from '@/components/TableCtrl'
-import  '@/components/test.js'
+import '@/components/test.js'
 export default {
 
 	data: () => {
 		return {
-			level: 1
+			level: 1,
+			
 		}
 	},
 	render: function(createElement) {
