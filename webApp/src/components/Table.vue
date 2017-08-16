@@ -65,36 +65,12 @@ export default {
 			}]
 		}
 	},
-	render: function (createElement) {
-		let self = this;
-		return createElement(tableConfig.table.name, {
-			props: {
-				data: this[tableConfig.table.data]
+	methods: {
+		test(params) {
+			return () => {
+				console.log('dfsd')
 			}
 		},
-			tableConfig.tableColumn.map(function (data) {
-				if (data.slot) {
-					console.log(data.slot)
-					return createElement(data.name, {
-						props: data.props,
-					}, [
-						createElement('div', [
-							self.$scopedSlots.default({
-								text: self.msg
-							})
-						])
-					])
-				} else {
-					return createElement(data.name, {
-						props: data.props,
-						attrs: data.attrs
-					})
-				}
-
-			})
-		)
-	},
-	methods: {
 		handleClick(id) {
 			weui.picker([{
 				label: '飞机票',
@@ -127,6 +103,39 @@ export default {
 			console.log(id);
 			console.log(axios.defaults.headers);
 		}
+	},
+	render(h) {
+		const self = this;
+		
+		return h(tableConfig.table.name, {
+			props: {
+				data: this[tableConfig.table.data]
+			}
+		},
+			tableConfig.tableColumn.map(function (data) {
+				if (data.slot) {
+					console.log(data.slot)
+					return h(data.name, {
+						props: data.props,
+					}, [
+							self => {
+								return (
+									<div>
+										<el-button type="text" onClick={console.log} data-scope ={self.row.date} size="small">查看</el-button>
+										<el-button type="text" size="small">编辑</el-button>
+									</div>
+								)
+							}
+						])
+				} else {
+					return h(data.name, {
+						props: data.props,
+						attrs: data.attrs
+					})
+				}
+
+			})
+		)
 	}
 }
 
