@@ -50,17 +50,17 @@ var findDocuments = function findDocuments(collectionName, query) {
 	});
 };
 
-var updateDocument = function updateDocument(collectionName,query){
-	connect(function(db,callback){
+var updateDocument = function updateDocument(collectionName, query){
+	connect(function(db, callback){
 		let collection = db.collection(collectionName);
-		collection.updateOne(query.o,query.n,function(err,result){
-			assert.equal(err,null);
-			assert.equal(1,result.result.n);
+		collection.updateOne(query.o, query.n, function(err, result){
+			assert.equal(err, null);
+			assert.equal(1, result.result.n);
 			console.log("Update the ducument with the field a equal to 2");
 			callback(result);
 		});
 	});
 };
 
-export {insertDocuments, findDocuments,updateDocument};
+export {insertDocuments, findDocuments, updateDocument};
 

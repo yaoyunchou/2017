@@ -1,4 +1,6 @@
-import {readdir, readFile} from 'fs';
+/*eslint-disable*/ 
+
+import {readdir} from 'fs';
 import {fileConfig} from '../config';
 import jsdom from 'jsdom';
 import  {insertDocuments, findDocuments, updateDocument} from '../mongoDB/testMongoDB';
