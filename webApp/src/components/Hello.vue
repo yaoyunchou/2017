@@ -17,12 +17,22 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <parent>
+        <span> test </span>
+        <child>
+
+        </child>
+    </parent>
   </div>
+
 </template>
 
 <script>
+// import parent from './Parent'
+// import child from './child'
 export default {
   name: 'hello',
+  components:{parent:resolve =>require(['./Parent'], resolve),child:resolve =>require(['./child'], resolve)},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
