@@ -9,13 +9,20 @@ function resolve(dir) {
 
 module.exports = {
 	entry: {
+		vendor:['vue'],
+		element:['element-ui'],
+		lodash:['lodash'],
 		app: './src/main.js'
+		//app2:'./src/vendor1.js',
+		
+
 	},
 	output: {
 		path: config.build.assetsRoot,
 		filename: '[name].js',
 		publicPath: process.env.NODE_ENV === 'production' ?
-			config.build.assetsPublicPath : config.dev.assetsPublicPath
+			config.build.assetsPublicPath :
+			config.dev.assetsPublicPath
 	},
 	resolve: {
 		extensions: ['.js', '.vue', '.json'],
@@ -25,7 +32,8 @@ module.exports = {
 		}
 	},
 	module: {
-		rules: [{
+		rules: [
+			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
 				options: vueLoaderConfig

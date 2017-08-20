@@ -7,6 +7,7 @@ const Demo = resolve => require(['@/modules/demo/demo.js'], resolve)
 const Form = resolve => require(['@/modules/form/form.js'], resolve)
 const DemoRender = resolve => require(['@/modules/demo.1/demo.js'], resolve)
 const DemoTest = resolve => require(['@/modules/demo.3/demo.js'], resolve)
+const DemoForm = resolve => require(['@/modules/demo.4/demo.js'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +35,11 @@ export default new Router({
 			path: '/demo-test',
 			name: 'DemoTest',
 			component: DemoTest
+		},
+		{
+			path: '/demo-form',
+			name: 'DemoForm',
+			component: DemoForm
 		}
 	]
 })

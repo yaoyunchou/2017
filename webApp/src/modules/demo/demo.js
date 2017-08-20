@@ -1,13 +1,14 @@
 const element = require('./demo.html');
-import {NswTable} from '@/components/renders'
+import {
+	renderTable
+} from '@/components/renders'
 export default {
 	template: element,
-	components:{NswTable},
 	data() {
 		return {
 			radio2: 3,
 			aaa: 1,
-			dataList: [{
+			data: [{
 				date: '2016-05-03',
 				name: '王小虎',
 				province: '上海',
@@ -37,40 +38,49 @@ export default {
 				zip: 200333
 			}],
 			table: [{
-				type:'selection',
-				width: '55'
-			},{
-				prop: 'date',
-				label: '日期',
-				width: '150'
-			},
-			{
-				prop: 'name',
-				label: '姓名',
-				width: '550'
-			}
-			,
-			{
-				type: 'button',
-				children: [{
-					label:'查看',
-					handler:'edit'
+					type: 'selection',
+					width: '55'
+				}, {
+					prop: 'date',
+					label: '日期',
+					width: '150'
+				},
+				{
+					prop: 'name',
+					label: '姓名',
+					width: '550'
+				},
+				{
+					type: 'button',
+					children: [{
+						label: '查看',
+						handler: 'edit'
+					}, {
+						label: '编辑',
+						ctrlFn(context, params) {
+							return () => {
+								context.$emit('nsw_edit', {
+									params
+								})
+							}
+						}
+					}],
+					label: '操作',
+					width: '100'
+
 				}
-				,{
-					label:'编辑',
-					ctrlFn(context,params){ return ()=>{context.$emit('nsw_edit',{params})}}
-				}
-				],
-				label: '操作',
-				width: '100'
-				
-			}
 			]
 		}
 	},
+	render(h) {
+		var context = this;
+		console.log(renderTable);
+		return renderTable(h, context);
+
+	},
 	methods: {
-		edit(data){
-			console.log(data);	
+		edit(data) {
+			console.log(data);
 		},
 		randomIndex: function() {
 			return Math.floor(Math.random() * this.items.length)

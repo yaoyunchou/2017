@@ -87,14 +87,14 @@ TableStore.prototype.mutations = {
     states._data = data;
     states.data = sortData((data || []), states);
 
-    // states.data.forEach((item) => {
-    //   if (!item.$extra) {
-    //     Object.defineProperty(item, '$extra', {
-    //       value: {},
-    //       enumerable: false
-    //     });
-    //   }
-    // });
+    states.data.forEach((item) => {
+      if (!item.$extra) {
+        Object.defineProperty(item, '$extra', {
+          value: {},
+          enumerable: false
+        });
+      }
+    });
 
     this.updateCurrentRow();
 
@@ -146,23 +146,21 @@ TableStore.prototype.mutations = {
   },
 
   filterChange(states, options) {
-    let { column, values, silent } = options;
+    let { column, values } = options;
     if (values && !Array.isArray(values)) {
       values = [values];
     }
 
     const prop = column.property;
-    const filters = {};
-
     if (prop) {
       states.filters[column.id] = values;
-      filters[column.columnKey || column.id] = values;
     }
 
     let data = states._data;
+    const filters = states.filters;
 
-    Object.keys(states.filters).forEach((columnId) => {
-      const values = states.filters[columnId];
+    Object.keys(filters).forEach((columnId) => {
+      const values = filters[columnId];
       if (!values || values.length === 0) return;
       const column = getColumnById(this.states, columnId);
       if (column && column.filterMethod) {
@@ -175,9 +173,7 @@ TableStore.prototype.mutations = {
     states.filteredData = data;
     states.data = sortData(data, states);
 
-    if (!silent) {
-      this.table.$emit('filter-change', filters);
-    }
+    this.table.$emit('filter-change', filters);
 
     Vue.nextTick(() => this.table.updateScrollY());
   },
@@ -200,7 +196,6 @@ TableStore.prototype.mutations = {
       states.reserveSelection = column.reserveSelection;
     }
 
-    this.updateColumns();  // hack for dynamics insert column
     this.scheduleLayout();
   },
 
@@ -210,7 +205,6 @@ TableStore.prototype.mutations = {
       _columns.splice(_columns.indexOf(column), 1);
     }
 
-    this.updateColumns();  // hack for dynamics remove column
     this.scheduleLayout();
   },
 

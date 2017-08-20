@@ -1,4 +1,4 @@
-import renderCell from '../../cells'
+import renderCell from '../cells'
 import _ from 'lodash'
 
 var tableConfig = {
@@ -49,13 +49,24 @@ export function configExtend(config) {
 }
 
 export function renderTable(h, context) {
-	return h(tableConfig.table.name, {
-			props: {
-				data: context[tableConfig.table.data]
-			}
-		},
-		tableConfig.tableColumn.map((data) =>
-			renderCell(h, context, data)
-		)
-	)
+	console.log(context);
+	// return h(tableConfig.table.name, {
+	// 		props: {
+	// 			data: context[tableConfig.table.data]
+	// 		}
+	// 	},
+	// 	tableConfig.tableColumn.map((data) =>
+	// 		renderCell(h, context, data)
+	// 	)
+	// )
+	configExtend(context.table);
+	//this.data = context.data;
+	return (<el-table  data={context.data} border style="width: 100%">
+			{
+				tableConfig.tableColumn.map((data) =>
+					renderCell(h,context,data)
+				)
+				
+			}	
+			</el-table>)
 }
