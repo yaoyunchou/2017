@@ -2,9 +2,20 @@
   "name": "webpack-demo",
   "version": "1.0.0",
   "description": "用于研究webpack",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
+  },
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "vue": "^1.0.26"
+  },
+  "devDependencies": {
+    "css-loader": "^0.24.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^1.15.1"
   },
   "author": "姚运筹",
   "license": "ISC"
