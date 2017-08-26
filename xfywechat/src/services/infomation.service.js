@@ -2,6 +2,13 @@
 import basService from "../common/bas.service";
 import schema from "../models/infomation.schema";
 
+/**
+ * 
+ * 
+ * @export
+ * @class Service
+ * @extends {basService}
+ */
 export default class Service extends basService {
 	constructor() {
 		super('infomation', schema)

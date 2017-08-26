@@ -31,8 +31,16 @@ exports.writeFileAsync = function (fpth, content) {
 var request = require('request'),
 	iconv = require('iconv-lite'),
 	FeedParser = require('feedparser');
+
+/**
+ * 
+ * 
+ * @param {string} feed  网址
+ * @param {number} typeId 对不同的网址进行的编号
+ * @param {function} service 对应的方法
+ */
 exports.fetchInfomation = function fetch(feed, typeId,service) {
-	var posts;
+	var posts;//定义收到的内容的容器
 	// Define our streams  
 
 	var options = {
@@ -74,10 +82,12 @@ exports.fetchInfomation = function fetch(feed, typeId,service) {
 	});
 
 	feedparser.on('error', done);
+	//运行结束后将整个数据进行存库
 	feedparser.on('end', function (err) {
 		console.log("存到数据库");
 		service.saveInfo(posts); //存到数据库  
 	});
+
 	feedparser.on('readable', function () {
 		var post;
 		while (post = this.read()) {
@@ -85,6 +95,13 @@ exports.fetchInfomation = function fetch(feed, typeId,service) {
 		}
 	});
 
+	/**
+	 * 
+	 * 
+	 * @param {any} string 
+	 * @param {any} name 
+	 * @returns 
+	 */
 	function getUrlParam(string, name) {
 		var reg = new RegExp(name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
 		var r = string.match(reg); //匹配目标参数
@@ -92,6 +109,12 @@ exports.fetchInfomation = function fetch(feed, typeId,service) {
 		return null; //返回参数值
 	}
 
+	/**
+	 * 
+	 * 对数据进行处理，形成和modal对应的数据
+	 * @param {object} post 
+	 * @returns 
+	 */
 	function transToPost(post) {
 		var mPost = {
 			title: post.title,
