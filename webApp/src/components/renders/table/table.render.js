@@ -50,18 +50,8 @@ export function configExtend(config) {
 
 export function renderTable(h, context) {
 	console.log(context);
-	// return h(tableConfig.table.name, {
-	// 		props: {
-	// 			data: context[tableConfig.table.data]
-	// 		}
-	// 	},
-	// 	tableConfig.tableColumn.map((data) =>
-	// 		renderCell(h, context, data)
-	// 	)
-	// )
 	configExtend(context.table);
-	//this.data = context.data;
-	return (<el-table  data={context.data} border style="width: 100%">
+	return (<el-table ref="multipleTable"  data={context.data} border style="width: 100%">
 			{
 				tableConfig.tableColumn.map((data) =>
 					renderCell(h,context,data)
