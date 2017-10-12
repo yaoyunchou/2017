@@ -10,31 +10,38 @@
  *   7.最外层的中间件收回执行权之后，执行next函数后面的代码
  * c.我们在不存在异步和i/o操作的时候理解原理，
  *   然后自然可以过度到把异步的代码转成同步的进行逻辑功能的开发！
- * 
- * d.在理解了这个就是个堆栈的时候我们很容易扩展到错误捕捉！
  */
 
 const Koa =  require('koa') ;
 
 
 const app = new Koa();
-const handler = async (ctx, next) => {
-    try {
-      await next();
-    } catch (err) {
-      ctx.response.status = err.statusCode || err.status || 500;
-      ctx.response.body = {
-        message: err.message
-      };
-    }
-  };
+let main = ctx =>{
+    console.log('main');
+    ctx.response.body = 'hello world!';
+}
+const one = (ctx, next) => {
+    console.log('>> one');
+    next();
+    console.log('<< one');
+  }
   
-  const main = ctx => {
-    ctx.throw(500);
-  };
+  const two = (ctx, next) => {
+    console.log('>> two');
+    next(); 
+    console.log('<< two');
+  }
   
-  app.use(handler);
-  app.use(main);
+  const three = (ctx, next) => {
+    console.log('>> three');
+    next();
+    console.log('<< three');
+  }
+  
+  app.use(one);
+  app.use(two);
+  app.use(three);
+ app.use(main);
 app.listen(4000);
 console.info('http://localhost:4000');
 console.log('listening------'+(process.env.PORT||4000));
