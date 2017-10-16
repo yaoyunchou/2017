@@ -51,8 +51,8 @@ module.exports = {
 					name: utils.assetsPath('media/[name].[hash:7].[ext]')
 				}
 			}, {
-				test: /\.less$/,
-				loader: "style-loader!css-loader!less-loader",
+				test: /\.scss$/,
+				loader: "style-loader!css-loader!scss-loader",
 				include: []
 			},
 			{

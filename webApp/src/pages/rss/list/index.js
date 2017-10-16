@@ -1,7 +1,6 @@
 import element from './form.html';
 import http from '@/services/http';
 import axios from 'axios'
-import weui from '@/services/weui/weui.js';
 import Vue from 'vue';
 console.log(weui);
 

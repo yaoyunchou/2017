@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './style/weui/weui.less'
+import './style/platform/platform.scss'
 import 'element-ui/lib/theme-default/index.css'
 
 

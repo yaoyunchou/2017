@@ -9,6 +9,9 @@ console.log(weui);
 export default {
 	template: element,
 	methods: {
+		eidt:function(id){
+			this.$router.push({ name: 'RssDetail', params: { id: id }})
+		},
 		handleClick(id) {
 			weui.picker([{
 					label: '飞机票',
@@ -82,4 +85,5 @@ export default {
 			this.tableData = res.data.data;
 		})
 	}
+	
 }
