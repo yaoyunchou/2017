@@ -25,16 +25,17 @@ export default class Service {
 	 * @param  {Number} pageNumber=0
 	 * @param  {*} sortter
 	 */
-	getList(filter, pageSize, pageNumber = 0, sortter) {
-		var skipItems = pageNumber * pageSize;
-		var query = this.DbModal.find(filter);
+	getList(filter,pageSize, pageNumber = 0,expect,  sortter) {
+		expect =expect ||{};
+		var skipItems = (pageNumber-1) * pageSize;
+		var query = this.DbModal.find(filter,expect);
 		if (pageSize) {
 			query.skip(skipItems).limit(pageSize);
 		}
 		sortter = sortter || {
 			updated: -1
 		};
-		return query.sort(sortter).exec();
+		return query.sort(sortter);
 	}
 	/**
 	 * @param  {String} filter

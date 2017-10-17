@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.default = undefined;
 
@@ -23,41 +23,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * 
+ * 
+ * @export
+ * @class Service
+ * @extends {basService}
+ */
 var Service = function (_basService) {
-	_inherits(Service, _basService);
+  _inherits(Service, _basService);
 
-	function Service() {
-		_classCallCheck(this, Service);
+  function Service() {
+    _classCallCheck(this, Service);
 
-		return _possibleConstructorReturn(this, (Service.__proto__ || Object.getPrototypeOf(Service)).call(this, 'infomation', _infomation2.default));
-	}
+    return _possibleConstructorReturn(this, (Service.__proto__ || Object.getPrototypeOf(Service)).call(this, 'infomation', _infomation2.default));
+  }
 
-	_createClass(Service, [{
-		key: "saveInfo",
-		value: function saveInfo(data) {
-			var self = this;
-			data = data || [];
-			data.forEach(function (element) {
-				self.saveItem(element);
-			}, this);
-		}
-	}, {
-		key: "create",
-		value: function create() {
-			return {
-				title: '',
-				link: '',
-				description: '',
-				pubDate: '',
-				source: '',
-				author: '',
-				typeId: ''
+  _createClass(Service, [{
+    key: "saveInfo",
+    value: function saveInfo(data) {
+      var self = this;
+      data = data || [];
+      data.forEach(function (element) {
+        self.saveItem(element);
+      }, this);
+    }
+  }, {
+    key: "create",
+    value: function create() {
+      return {
+        title: '',
+        link: '',
+        description: '',
+        pubDate: '',
+        source: '',
+        author: '',
+        typeId: ''
 
-			};
-		}
-	}]);
+      };
+    }
+  }]);
 
-	return Service;
+  return Service;
 }(_bas2.default);
 
 exports.default = Service;

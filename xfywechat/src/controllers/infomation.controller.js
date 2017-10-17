@@ -19,10 +19,11 @@ export default class InfomationController{
 	}
 	@route('list')
 	async getList(params,body) {
-		let pageSize = body.query.pageSize||10;
-		let pageNumber = body.query.pageNumber||0;
+		let pageSize = parseInt(body.query.pageSize) ||10;
+		let pageNumber = parseInt(body.query.pageNumber)||0;
 		let sortter = { "pubDate":-1};
-		let list = await this.service.getList({},pageSize,pageNumber,sortter);
+		let expect =  body.query.expect||{};
+		let list = await this.service.getList({},pageSize,pageNumber,expect,sortter);
 		let backData = {
 			isSuccess:true,
 			data:list

@@ -103,18 +103,19 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 		key: 'getList',
 		value: function () {
 			var _ref3 = _asyncToGenerator(_regenerator2.default.mark(function _callee2(params, body) {
-				var pageSize, pageNumber, sortter, list, backData;
+				var pageSize, pageNumber, sortter, expect, list, backData;
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {
 						switch (_context2.prev = _context2.next) {
 							case 0:
-								pageSize = body.query.pageSize || 10;
-								pageNumber = body.query.pageNumber || 0;
+								pageSize = parseInt(body.query.pageSize) || 10;
+								pageNumber = parseInt(body.query.pageNumber) || 0;
 								sortter = { "pubDate": -1 };
-								_context2.next = 5;
-								return this.service.getList({}, pageSize, pageNumber, sortter);
+								expect = body.query.expect || {};
+								_context2.next = 6;
+								return this.service.getList({}, pageSize, pageNumber, expect, sortter);
 
-							case 5:
+							case 6:
 								list = _context2.sent;
 								backData = {
 									isSuccess: true,
@@ -122,7 +123,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 								};
 								return _context2.abrupt('return', backData);
 
-							case 8:
+							case 9:
 							case 'end':
 								return _context2.stop();
 						}

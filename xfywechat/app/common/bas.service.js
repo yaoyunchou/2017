@@ -53,17 +53,19 @@ var Service = function () {
 		key: "getList",
 		value: function getList(filter, pageSize) {
 			var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-			var sortter = arguments[3];
+			var expect = arguments[3];
+			var sortter = arguments[4];
 
-			var skipItems = pageNumber * pageSize;
-			var query = this.DbModal.find(filter);
+			expect = expect || {};
+			var skipItems = (pageNumber - 1) * pageSize;
+			var query = this.DbModal.find(filter, expect);
 			if (pageSize) {
 				query.skip(skipItems).limit(pageSize);
 			}
 			sortter = sortter || {
 				updated: -1
 			};
-			return query.sort(sortter).exec();
+			return query.sort(sortter);
 		}
 		/**
    * @param  {String} filter
