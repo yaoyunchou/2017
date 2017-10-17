@@ -1,0 +1,92 @@
+@charset "utf-8";
+/*
+第一块 ：css的书写顺序:    
+1位置属性：position, top right z-index ,display,float   
+2,大小  ：width height,padding,margin  
+3,文字系列： font,line-height,letter-spacing,color,text-align   
+4,背景：    background,border   
+5,其他:     animation,transition 
+
+
+
+@todo来表示某些东西需要在后面进行修改与优化复查
+@bugfix 表示代码或特定的浏览器遇到的问题
+@workaround：不完美的权益之计
+
+
+
+*/
+
+body,div,h1,h2,h3,h4,h5,h6,ul,li,dl,dd,dt{ padding:0; margin:0;}
+
+
+body{ background:black;}
+
+/* @grounp demo1 */
+
+.demo1{
+    width:200px;
+    height:200px; 
+    margin:100px auto;
+    box-sizing: border-box;
+    border: 100px solid pink;
+    border-left-color: pink;
+    border-top-color: green;
+    border-right-color: black;
+    border-bottom-color: grey;
+    border-radius: 20px;
+    box-shadow: 0 0 0 20px red,0 0 0 40px blue;
+}
+.demo2{
+    width:200px;
+    height:200px; 
+    margin:100px auto;
+    box-sizing: border-box;
+    border: 100px solid transparent;
+    border-top-width:0;
+    border-bottom: 200px solid red;
+}
+
+
+.demo3{
+    width:200px;
+    height:200px; 
+    margin:100px auto;
+    box-sizing: border-box;
+    border: 40px solid  red;
+    border-radius: 80px;
+    
+    border-left-width: 0;
+}
+
+.demo4{
+    width:200px;
+    height:200px; 
+    position: relative;
+    margin:100px auto;
+    box-sizing: border-box;
+    background: pink;
+}
+
+.demo4::before{
+    content: '';
+    display: block;
+    position: absolute;
+    width:20px;
+    height: 20px;
+    border-radius: 15px;
+    border:5px solid #fff;
+}
+
+.demo4::after{
+    content: '';
+    display: block;
+    position: absolute;
+    left:30px;
+    top:30px;
+    width:5px;
+    height:20px;
+    border-radius: 5px;
+    background: #fff;
+    transform: rotate(135deg);
+}
