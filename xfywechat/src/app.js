@@ -17,7 +17,12 @@ controllers.bindRouters();
 import context from './common/context';
 const log4js = require('koa-log4')
 koa.use(log4js.koaLogger(log4js.getLogger("http"), { level: 'auto' }))
-
+const one = function *(next) {
+  console.log('>> one');
+  yield next;
+  console.log(this);
+}
+koa.use(one);
 koa.use(serve(__dirname + '/view'));
 
 koa.use(wechat(config.wechat,weixin.reply));

@@ -6,7 +6,7 @@ import InfomationSvc from '../services/infomation.service'
 import Service from '../common/service.decorator'
 import {fetchInfomation} from '../libs/util'
 
-
+const dateFormat = require('dateformat');
 
 @routePrefix('infomation')
 @Service(InfomationSvc, 'infomations')
@@ -15,15 +15,30 @@ export default class InfomationController{
 	async getInfomation({id}) {
 		let infomation = await this.service.getItemById(id);
 		fixhtml(infomation);
-		return infomation;
+		infomation.yao = 'yaoyunchou';
+		
+		return {
+			title: infomation.title,
+			link: infomation.link,
+			description: infomation.description,
+			pubDate: infomation.pubDate,
+			created: dateFormat(infomation.created ,"yyyy-mm-dd HH:mm:ss"),
+			source: infomation.source,
+			author: infomation.author,
+			typeId: infomation.typeId,
+			_slef:infomation
+
+		};
 	}
 	@route('list')
 	async getList(params,body) {
 		let pageSize = parseInt(body.query.pageSize) ||10;
-		let pageNumber = parseInt(body.query.pageNumber)||0;
+		let pageNumber = parseInt(body.query.pageNumber)||1;
 		let sortter = { "pubDate":-1};
 		let expect =  body.query.expect||{};
-		let list = await this.service.getList({},pageSize,pageNumber,expect,sortter);
+		let list =  await this.service.getList({},pageSize,pageNumber,expect,sortter);
+	
+		
 		let backData = {
 			isSuccess:true,
 			data:list

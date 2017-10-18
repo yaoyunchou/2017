@@ -52,7 +52,7 @@ var Service = function () {
 	}, {
 		key: "getList",
 		value: function getList(filter, pageSize) {
-			var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+			var pageNumber = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
 			var expect = arguments[3];
 			var sortter = arguments[4];
 

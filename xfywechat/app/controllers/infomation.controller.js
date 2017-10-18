@@ -60,6 +60,8 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 	return desc;
 }
 
+var dateFormat = require('dateformat');
+
 var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('list'), _dec5 = (0, _router.route)('addRssByLink'), _dec(_class = _dec2(_class = (_class2 = function () {
 	function InfomationController() {
 		_classCallCheck(this, InfomationController);
@@ -83,9 +85,22 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 								infomation = _context.sent;
 
 								fixhtml(infomation);
-								return _context.abrupt('return', infomation);
+								infomation.yao = 'yaoyunchou';
 
-							case 5:
+								return _context.abrupt('return', {
+									title: infomation.title,
+									link: infomation.link,
+									description: infomation.description,
+									pubDate: infomation.pubDate,
+									created: dateFormat(infomation.created, "yyyy-mm-dd HH:mm:ss"),
+									source: infomation.source,
+									author: infomation.author,
+									typeId: infomation.typeId,
+									_slef: infomation
+
+								});
+
+							case 6:
 							case 'end':
 								return _context.stop();
 						}
@@ -109,7 +124,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 						switch (_context2.prev = _context2.next) {
 							case 0:
 								pageSize = parseInt(body.query.pageSize) || 10;
-								pageNumber = parseInt(body.query.pageNumber) || 0;
+								pageNumber = parseInt(body.query.pageNumber) || 1;
 								sortter = { "pubDate": -1 };
 								expect = body.query.expect || {};
 								_context2.next = 6;

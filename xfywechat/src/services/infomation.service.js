@@ -1,6 +1,7 @@
 
 import basService from "../common/bas.service";
 import schema from "../models/infomation.schema";
+const moment = require('moment');
 
 /**
  * 
