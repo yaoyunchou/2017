@@ -36,6 +36,7 @@ export default class InfomationController{
 		fetchInfomation(body.query.link,2,this.service)
 		//return backData;
 	}
+	@route('')
 }
 
 //fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());

@@ -8,6 +8,7 @@
     "babel-runtime": "^6.23.0",
     "bluebird": "^2.11.0",
     "cheerio": "^1.0.0-rc.2",
+    "dateformat": "^3.0.2",
     "ejs": "^2.5.2",
     "feedparser": "^2.2.1",
     "fs": "^0.0.1-security",

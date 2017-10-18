@@ -3,6 +3,10 @@
  */
 "use strict";
 
+var _regenerator = require("babel-runtime/regenerator");
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
 var _router = require("./router");
 
 var _koa = require("koa");
@@ -31,9 +35,9 @@ var _controllers = require("./controllers");
 
 var _controllers2 = _interopRequireDefault(_controllers);
 
-var _context = require("./common/context");
+var _context2 = require("./common/context");
 
-var _context2 = _interopRequireDefault(_context);
+var _context3 = _interopRequireDefault(_context2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,7 +47,26 @@ _controllers2.default.bindRouters();
 
 var log4js = require('koa-log4');
 koa.use(log4js.koaLogger(log4js.getLogger("http"), { level: 'auto' }));
+var one = _regenerator2.default.mark(function one(next) {
+  return _regenerator2.default.wrap(function one$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          console.log('>> one');
+          _context.next = 3;
+          return next;
 
+        case 3:
+          console.log(this);
+
+        case 4:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, one, this);
+});
+koa.use(one);
 koa.use((0, _koaStatic2.default)(__dirname + '/view'));
 
 koa.use((0, _g2.default)(_config2.default.wechat, _weixin2.default.reply));
