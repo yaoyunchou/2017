@@ -20,7 +20,7 @@ export default class InfomationController{
 	@route('list')
 	async getList(params,body) {
 		let pageSize = parseInt(body.query.pageSize) ||10;
-		let pageNumber = parseInt(body.query.pageNumber)||0;
+		let pageNumber = parseInt(body.query.pageNumber)||1;
 		let sortter = { "pubDate":-1};
 		let expect =  body.query.expect||{};
 		let list = await this.service.getList({},pageSize,pageNumber,expect,sortter);
@@ -33,10 +33,24 @@ export default class InfomationController{
 	}
 	@route('addRssByLink')
 	async addRssByLink(params,body){
-		fetchInfomation(body.query.link,2,this.service)
-		//return backData;
+		try {
+			fetchInfomation(body.query.link,2,this.service)
+			return {isSuccess:ture,data:'添加成功！'};
+		} catch (error) {
+			return {isSuccess:false,data:error};
+		}
+		
 	}
-	@route('')
+	@route('saveInfoMation','post')
+	async saveInfoMation(params,body){
+		try {
+			let infomation = await this.service.saveItem(body.request.body);
+			return {isSuccess:true,data:'添加成功！'};
+		} catch (error) {
+			return {isSuccess:false,data:error};
+		}
+		
+	}
 }
 
 //fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());

@@ -11,7 +11,7 @@ var _regenerator2 = _interopRequireDefault(_regenerator);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2;
 
 var _router = require('../router');
 
@@ -60,9 +60,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 	return desc;
 }
 
-var dateFormat = require('dateformat');
-
-var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('list'), _dec5 = (0, _router.route)('addRssByLink'), _dec(_class = _dec2(_class = (_class2 = function () {
+var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('list'), _dec5 = (0, _router.route)('addRssByLink'), _dec6 = (0, _router.route)('saveInfoMation', 'post'), _dec(_class = _dec2(_class = (_class2 = function () {
 	function InfomationController() {
 		_classCallCheck(this, InfomationController);
 	}
@@ -85,22 +83,9 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 								infomation = _context.sent;
 
 								fixhtml(infomation);
-								infomation.yao = 'yaoyunchou';
+								return _context.abrupt('return', infomation);
 
-								return _context.abrupt('return', {
-									title: infomation.title,
-									link: infomation.link,
-									description: infomation.description,
-									pubDate: infomation.pubDate,
-									created: dateFormat(infomation.created, "yyyy-mm-dd HH:mm:ss"),
-									source: infomation.source,
-									author: infomation.author,
-									typeId: infomation.typeId,
-									_slef: infomation
-
-								});
-
-							case 6:
+							case 5:
 							case 'end':
 								return _context.stop();
 						}
@@ -160,15 +145,22 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 					while (1) {
 						switch (_context3.prev = _context3.next) {
 							case 0:
-								(0, _util.fetchInfomation)(body.query.link, 2, this.service);
-								//return backData;
+								_context3.prev = 0;
 
-							case 1:
+								(0, _util.fetchInfomation)(body.query.link, 2, this.service);
+								return _context3.abrupt('return', { isSuccess: ture, data: '添加成功！' });
+
+							case 5:
+								_context3.prev = 5;
+								_context3.t0 = _context3['catch'](0);
+								return _context3.abrupt('return', { isSuccess: false, data: _context3.t0 });
+
+							case 8:
 							case 'end':
 								return _context3.stop();
 						}
 					}
-				}, _callee3, this);
+				}, _callee3, this, [[0, 5]]);
 			}));
 
 			function addRssByLink(_x4, _x5) {
@@ -177,10 +169,46 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 
 			return addRssByLink;
 		}()
+	}, {
+		key: 'saveInfoMation',
+		value: function () {
+			var _ref5 = _asyncToGenerator(_regenerator2.default.mark(function _callee4(params, body) {
+				var infomation;
+				return _regenerator2.default.wrap(function _callee4$(_context4) {
+					while (1) {
+						switch (_context4.prev = _context4.next) {
+							case 0:
+								_context4.prev = 0;
+								_context4.next = 3;
+								return this.service.saveItem(body.request.body);
+
+							case 3:
+								infomation = _context4.sent;
+								return _context4.abrupt('return', { isSuccess: true, data: '添加成功！' });
+
+							case 7:
+								_context4.prev = 7;
+								_context4.t0 = _context4['catch'](0);
+								return _context4.abrupt('return', { isSuccess: false, data: _context4.t0 });
+
+							case 10:
+							case 'end':
+								return _context4.stop();
+						}
+					}
+				}, _callee4, this, [[0, 7]]);
+			}));
+
+			function saveInfoMation(_x6, _x7) {
+				return _ref5.apply(this, arguments);
+			}
+
+			return saveInfoMation;
+		}()
 	}]);
 
 	return InfomationController;
-}(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'addRssByLink', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'addRssByLink'), _class2.prototype)), _class2)) || _class) || _class);
+}(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'addRssByLink', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'addRssByLink'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'saveInfoMation', [_dec6], Object.getOwnPropertyDescriptor(_class2.prototype, 'saveInfoMation'), _class2.prototype)), _class2)) || _class) || _class);
 
 //fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
 

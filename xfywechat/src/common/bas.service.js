@@ -28,6 +28,7 @@ export default class Service {
 	getList(filter,pageSize, pageNumber = 1,expect,  sortter) {
 		expect =expect ||{};
 		var skipItems = (pageNumber-1) * pageSize;
+		console.log(skipItems);
 		var query = this.DbModal.find(filter,expect);
 		if (pageSize) {
 			query.skip(skipItems).limit(pageSize);

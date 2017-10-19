@@ -2,6 +2,7 @@
  * Created by yao on 2017/6/12.
  */
 import koaRouter from "./koa-router";
+const koaBody = require('koa-body');
 /**
  * @param  {} route
  * @param  {} method
@@ -20,7 +21,7 @@ export function route(route, method, isAsync = true) {
 
 			console.log(fixed_route);
 			method = method || getDefaultHttpMethod(name, route) || 'get';
-			koaRouter[method](fixed_route, async function(next) {
+			koaRouter[method](fixed_route,koaBody(), async function(next) {
 				var result;
 				try {
 					if (method === 'get' || method === 'delete') {
@@ -31,7 +32,7 @@ export function route(route, method, isAsync = true) {
 						}
 					}else{
                         if (isAsync) {
-							result = await descriptor.value.call(target, this.body,this);
+							result = await descriptor.value.call(target,this.body,this);
 						} else {
 							result = descriptor.value.call(target, this.body,this);
 						}

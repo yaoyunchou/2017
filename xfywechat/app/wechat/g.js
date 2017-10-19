@@ -26,6 +26,7 @@ module.exports = function (opts, handler) {
                         that = this;
 
                         console.log(this.query);
+
                         token = opts.token;
                         signature = this.query.signature;
                         timestamp = this.query.timestamp;

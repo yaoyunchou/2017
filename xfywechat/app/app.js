@@ -52,20 +52,23 @@ var one = _regenerator2.default.mark(function one(next) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+
           console.log('>> one');
           _context.next = 3;
           return next;
 
         case 3:
+          console.log("----------one-------------");
           console.log(this);
 
-        case 4:
+        case 5:
         case "end":
           return _context.stop();
       }
     }
   }, one, this);
 });
+
 koa.use(one);
 koa.use((0, _koaStatic2.default)(__dirname + '/view'));
 
@@ -76,17 +79,17 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 var content = 'mongodb://localhost/yao';
-// var content = MONGODB_URI ||'mongodb://localhost/yao'
-// mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
-//   //mongoose.connect('mongodb://localhost/yao', {
-//     useMongoClient: true,
-//     /* other options */
-//   });	
-mongoose.connect(content, {
+
+mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
   //mongoose.connect('mongodb://localhost/yao', {
   useMongoClient: true
   /* other options */
 });
+// mongoose.connect(content, {
+//   //mongoose.connect('mongodb://localhost/yao', {
+//     useMongoClient: true,
+//     /* other options */
+//   });	
 
 //import "./test"
 //console.log(process.env);

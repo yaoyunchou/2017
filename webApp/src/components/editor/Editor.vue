@@ -1,6 +1,6 @@
 <template>
   <div class="eidt">
-    <script :id="id" type="text/plain" v-bind:style="{ width: width?width+'px':'600px', height: height?height+'px':'300px', }" ></script>
+    <script :id="id" type="text/plain" v-bind:style="{ width: width?width+'px':'600px', height: height?height+'px':'300px', }"></script>
   </div>
 </template>
 
@@ -9,8 +9,7 @@
 // import child from './child'
 
 
-
-
+var ue;
 export default {
   name: 'editor',
   props: {
@@ -24,18 +23,36 @@ export default {
       id: 'editor' + Math.random(100)
     }
   },
-  methods:{
-    updataValue:function(value){
+  methods: {
+    updataValue: function(value) {
       this.$emit('input', value)
+    }
+  },
+  watch: {
+    value: function(newValue) {
+      if (this.ue) {
+        ue.ready(() => {
+          self.ue.setContent(newValue, true);
+        })
+      }
+
     }
   },
   mounted: function() {
     var self = this;
-    let ue = UE.getEditor(self.id);
+    ue = UE.getEditor(self.id);
     ue.ready(() => {
       self.ue = ue;
-      self.ue.setContent(self.value,true);
+      self.ue.setContent(self.value, true);
+
+      self.ue.addListener('contentChange', function(editor) {
+        self.updataValue(self.ue.getContent())
+      });
     });
+
+  },
+  created: function() {
+
   }
 
 }

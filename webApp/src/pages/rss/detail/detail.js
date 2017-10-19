@@ -1,6 +1,5 @@
 import element from './detail.html';
 import http from '@/services/http';
-import axios from 'axios'
 import  Editor from "@/components/editor/Editor.vue";
 console.log(Editor);
 import './detail.scss'
@@ -48,11 +47,13 @@ export default {
     methods: {
       onSubmit() {
         console.log('submit!');
+        http.post('api/infomation/saveInfoMation',this.infomation).then(function(data){
+          console.log(data);
+        });
       }
     },
     created:function(){
         http.get('api/infomation/detail/'+this.$route.params.id).then((res) => {
-			axios.defaults.headers.projectId = "4535645";
       this.infomation = res.data;
       this.date = res.data.created;
 		})
