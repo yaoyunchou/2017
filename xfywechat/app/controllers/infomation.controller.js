@@ -103,7 +103,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 		key: 'getList',
 		value: function () {
 			var _ref3 = _asyncToGenerator(_regenerator2.default.mark(function _callee2(params, body) {
-				var pageSize, pageNumber, sortter, expect, list, backData;
+				var pageSize, pageNumber, sortter, expect, list, total, backData;
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {
 						switch (_context2.prev = _context2.next) {
@@ -117,13 +117,19 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 
 							case 6:
 								list = _context2.sent;
+								_context2.next = 9;
+								return this.service.count({});
+
+							case 9:
+								total = _context2.sent;
 								backData = {
 									isSuccess: true,
+									total: total,
 									data: list
 								};
 								return _context2.abrupt('return', backData);
 
-							case 9:
+							case 12:
 							case 'end':
 								return _context2.stop();
 						}

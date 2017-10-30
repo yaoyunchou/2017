@@ -58,7 +58,6 @@ var Service = function () {
 
 			expect = expect || {};
 			var skipItems = (pageNumber - 1) * pageSize;
-			console.log(skipItems);
 			var query = this.DbModal.find(filter, expect);
 			if (pageSize) {
 				query.skip(skipItems).limit(pageSize);
@@ -67,6 +66,13 @@ var Service = function () {
 				updated: -1
 			};
 			return query.sort(sortter);
+		}
+	}, {
+		key: "count",
+		value: function count(filter) {
+			var query = this.DbModal.find(filter);
+			var count = query.count();
+			return count;
 		}
 		/**
    * @param  {String} filter

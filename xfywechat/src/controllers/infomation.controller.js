@@ -24,8 +24,10 @@ export default class InfomationController{
 		let sortter = { "pubDate":-1};
 		let expect =  body.query.expect||{};
 		let list = await this.service.getList({},pageSize,pageNumber,expect,sortter);
+		let total = await this.service.count({});
 		let backData = {
 			isSuccess:true,
+			total:total,
 			data:list
 		};
 

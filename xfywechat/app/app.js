@@ -46,27 +46,25 @@ var koa = new _koa2.default();
 _controllers2.default.bindRouters();
 
 var log4js = require('koa-log4');
-koa.use(log4js.koaLogger(log4js.getLogger("http"), { level: 'auto' }));
+koa.use(log4js.koaLogger(log4js.getLogger("http"), {
+	level: 'auto'
+}));
 var one = _regenerator2.default.mark(function one(next) {
-  return _regenerator2.default.wrap(function one$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
+	return _regenerator2.default.wrap(function one$(_context) {
+		while (1) {
+			switch (_context.prev = _context.next) {
+				case 0:
 
-          console.log('>> one');
-          _context.next = 3;
-          return next;
+					console.log('>> one');
+					_context.next = 3;
+					return next;
 
-        case 3:
-          console.log("----------one-------------");
-          console.log(this);
-
-        case 5:
-        case "end":
-          return _context.stop();
-      }
-    }
-  }, one, this);
+				case 3:
+				case "end":
+					return _context.stop();
+			}
+		}
+	}, one, this);
 });
 
 koa.use(one);
@@ -81,9 +79,13 @@ mongoose.Promise = global.Promise;
 var content = 'mongodb://localhost/yao';
 
 mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
-  //mongoose.connect('mongodb://localhost/yao', {
-  useMongoClient: true
-  /* other options */
+	//mongoose.connect('mongodb://localhost/yao', {
+	useMongoClient: true,
+	/* other options */
+	server: {
+		auto_reconnect: true,
+		poolSize: 10
+	}
 });
 // mongoose.connect(content, {
 //   //mongoose.connect('mongodb://localhost/yao', {

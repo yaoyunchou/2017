@@ -29,8 +29,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8090',
-        //target: 'https://xfywechat.applinzi.com',
+        //target: 'http://localhost:8090',
+        target: 'https://xfywechat.applinzi.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'

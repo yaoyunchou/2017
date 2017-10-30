@@ -38,13 +38,13 @@
     <div id="sidebar">
       <ul>
         <li class="active">
-          <a href="#">
+          <a href="#/rss-list">
             <i class="icon icon-home"></i>
             <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="#/form">
+          <a href="#/demo">
             <i class="icon icon-signal"></i>
             <span>Charts &amp; graphs</span>
           </a>

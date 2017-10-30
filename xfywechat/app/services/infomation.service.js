@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.default = undefined;
 
@@ -34,40 +34,43 @@ var moment = require('moment');
  */
 
 var Service = function (_basService) {
-  _inherits(Service, _basService);
+	_inherits(Service, _basService);
 
-  function Service() {
-    _classCallCheck(this, Service);
+	function Service() {
+		_classCallCheck(this, Service);
 
-    return _possibleConstructorReturn(this, (Service.__proto__ || Object.getPrototypeOf(Service)).call(this, 'infomation', _infomation2.default));
-  }
+		return _possibleConstructorReturn(this, (Service.__proto__ || Object.getPrototypeOf(Service)).call(this, 'infomation', _infomation2.default));
+	}
 
-  _createClass(Service, [{
-    key: "saveInfo",
-    value: function saveInfo(data) {
-      var self = this;
-      data = data || [];
-      data.forEach(function (element) {
-        self.saveItem(element);
-      }, this);
-    }
-  }, {
-    key: "create",
-    value: function create() {
-      return {
-        title: '',
-        link: '',
-        description: '',
-        pubDate: '',
-        source: '',
-        author: '',
-        typeId: ''
+	_createClass(Service, [{
+		key: "saveInfo",
+		value: function saveInfo(data) {
+			var self = this;
+			data = data || [];
+			data.forEach(function (element) {
+				if (element.typeId == 1) {
+					element.description = element.description.replace(/src="/ig, 'src="http://www.w3cplus.com');
+				}
+				self.saveItem(element);
+			}, this);
+		}
+	}, {
+		key: "create",
+		value: function create() {
+			return {
+				title: '',
+				link: '',
+				description: '',
+				pubDate: '',
+				source: '',
+				author: '',
+				typeId: ''
 
-      };
-    }
-  }]);
+			};
+		}
+	}]);
 
-  return Service;
+	return Service;
 }(_bas2.default);
 
 exports.default = Service;

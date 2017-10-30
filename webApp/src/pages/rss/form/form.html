@@ -17,4 +17,15 @@
             </template>
 		</el-table-column>
 	</el-table>
+	<div class="clearfix" style="clear:both"></div>
+	<div class="block">
+		<span class="demonstration">显示总数</span>
+		<el-pagination style="float:right"
+		  @current-change="handleCurrentChange"
+		  :current-page.sync="searchOption.pageNumber"
+		  :page-size="searchOption.pageSize"
+		  layout="total, prev, pager, next"
+		  :total="searchOption.total">
+		</el-pagination>
+	  </div>
 </div>

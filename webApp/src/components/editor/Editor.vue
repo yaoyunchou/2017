@@ -9,7 +9,8 @@
 // import child from './child'
 
 
-var ue;
+
+
 export default {
   name: 'editor',
   props: {
@@ -20,7 +21,8 @@ export default {
   },
   data() {
     return {
-      id: 'editor' + Math.random(100)
+      id: 'editor' + Math.random(100),
+      isSet: false
     }
   },
   methods: {
@@ -29,29 +31,31 @@ export default {
     }
   },
   watch: {
-    value: function(newValue) {
-      if (this.ue) {
-        ue.ready(() => {
-          self.ue.setContent(newValue, true);
-        })
+    value: function(nv) {
+      if (nv && this.ue) {
+        this.ue.setContent(nv, false);
+        this.isSet = true;
       }
-
     }
   },
   mounted: function() {
     var self = this;
-    ue = UE.getEditor(self.id);
+    let ue = UE.getEditor(self.id);
     ue.ready(() => {
       self.ue = ue;
-      self.ue.setContent(self.value, true);
+      if (self.value) {
+        self.ue.setContent(self.value, false);
+        this.isSet = true;
+      }
+
 
       self.ue.addListener('contentChange', function(editor) {
-        self.updataValue(self.ue.getContent())
+        if (self.isSet && self.ue.getContent()) {
+          self.updataValue(self.ue.getContent());
+        }
+        self.isSet = false;
       });
     });
-
-  },
-  created: function() {
 
   }
 

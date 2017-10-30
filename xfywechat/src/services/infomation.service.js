@@ -18,6 +18,9 @@ export default class Service extends basService {
         var self = this;
         data = data||[];
         data.forEach(function(element) {
+			if (element.typeId ==1){
+				element.description = element.description.replace(/src="/ig, 'src="http://www.w3cplus.com');
+			  }
             self.saveItem(element);
         }, this);
     }
