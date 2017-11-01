@@ -6,16 +6,20 @@ import router from './router'
 import './style/platform/platform.scss'
 import 'element-ui/lib/theme-default/index.css'
 
+const store = require('./store')
 
 import ElementUI from 'element-ui'
 
 //resolve => require(['element-ui/lib/theme-default/index.css'], resolve)
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

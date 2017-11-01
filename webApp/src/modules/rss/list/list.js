@@ -41,6 +41,7 @@ export default {
 			console.log(id);
 			console.log(axios.defaults.headers);
 		}
+	
 	},
 	data() {
 		return {

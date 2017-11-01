@@ -83,7 +83,7 @@
           <a href="#">
             <i class="icon icon-file"></i>
             <span>Addons</span>
-            <span class="label label-important">5</span>
+            <span class="label label-important">{{timeCont}}</span>
           </a>
         </li>
         
@@ -104,9 +104,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'app'
-}
+  name: "app",
+  // computed: mapState([
+  //   // 映射 this.count 为 store.state.count
+  //   "timeCont"
+  // ])
+  computed: {
+    timeCont () {
+      return this.$store.state.timeCont
+    }
+  }
+};
 </script>
 
 <style lang="scss" scopeed>
@@ -114,18 +124,6 @@ export default {
   padding: 0;
   margin: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Header */
 
@@ -149,11 +147,6 @@ export default {
   }
 }
 
-
-
-
-
-
 /* Search input */
 
 #search {
@@ -161,7 +154,7 @@ export default {
   z-index: 25;
   top: 6px;
   right: 10px;
-  input[type=text] {
+  input[type="text"] {
     padding: 4px 10px 5px;
     border: 0;
     width: 100px;
@@ -184,11 +177,6 @@ export default {
   }
 }
 
-
-
-
-
-
 /* Top user navigation */
 
 #user-nav {
@@ -197,13 +185,13 @@ export default {
   top: 0px;
   z-index: 20;
   margin: 0;
-  >ul {
+  > ul {
     margin: 0;
     padding: 0;
     list-style: none;
     border-right: 1px solid #2e363f;
     border-left: 1px solid #000;
-    >li {
+    > li {
       float: left;
       list-style-type: none;
       margin: 0;
@@ -211,7 +199,7 @@ export default {
       padding: 0;
       border-left: 1px solid #2e363f;
       border-right: 1px solid #000;
-      >a {
+      > a {
         padding: 9px 10px;
         display: block;
         font-size: 11px;
@@ -220,37 +208,33 @@ export default {
   }
 }
 
-
-
-#user-nav>ul>li>#user-nav>ul>li>a:hover,
-#user-nav>ul>li.open>a {
+#user-nav > ul > li > #user-nav > ul > li > a:hover,
+#user-nav > ul > li.open > a {
   color: #ffffff;
   background: #000;
 }
 
-#user-nav>ul>li>a>i,
+#user-nav > ul > li > a > i,
 #sidebar li a i {
-  opacity: .5;
+  opacity: 0.5;
   margin-top: 2px;
 }
 
-#user-nav>ul>li>a:hover>i,
-#user-nav>ul>li.open>a>i {
+#user-nav > ul > li > a:hover > i,
+#user-nav > ul > li.open > a > i {
   opacity: 1;
 }
 
-#user-nav>ul>li>a>.label {
+#user-nav > ul > li > a > .label {
   vertical-align: middle;
   padding: 1px 4px 1px;
   margin: -2px 4px 0;
   display: inline-block;
 }
 
-#user-nav>ul ul>li>a {
+#user-nav > ul ul > li > a {
   text-align: left;
 }
-
-
 
 /* Sidebar Navigation */
 
@@ -260,20 +244,20 @@ export default {
   position: relative;
   width: 220px;
   z-index: 16;
-  >ul {
+  > ul {
     list-style: none;
     margin: 0px 0 0;
     padding: 0;
     position: absolute;
     width: 220px;
-    >li {
+    > li {
       display: block;
       position: relative;
-      >a {
+      > a {
         padding: 10px 0 10px 15px;
         display: block;
         color: #939da8;
-        >i {
+        > i {
           margin-right: 10px;
         }
       }
@@ -281,43 +265,40 @@ export default {
   }
 }
 
-
-
-#sidebar>ul>li>#sidebar>ul>li>a #sidebar>ul>li.active>a {
+#sidebar > ul > li > #sidebar > ul > li > a #sidebar > ul > li.active > a {
   //background: url("../img/menu-active.png") no-repeat scroll right center transparent !important;
   text-decoration: none;
 }
 
-#sidebar>ul>li>a>.label {
+#sidebar > ul > li > a > .label {
   margin: 0 20px 0 0;
   float: right;
   padding: 3px 5px 2px;
 }
 
-#sidebar>ul li ul {
+#sidebar > ul li ul {
   display: none;
   margin: 0;
   padding: 0;
 }
 
-#sidebar>ul li.open ul {
+#sidebar > ul li.open ul {
   display: block;
 }
 
-#sidebar>ul li ul li a {
+#sidebar > ul li ul li a {
   padding: 10px 0 10px 25px;
   display: block;
   color: #777777;
 }
 
-#sidebar>ul li ul li:first-child a {
+#sidebar > ul li ul li:first-child a {
   border-top: 0;
 }
 
-#sidebar>ul li ul li:last-child a {
+#sidebar > ul li ul li:last-child a {
   border-bottom: 0;
 }
-
 
 /* Content */
 
@@ -330,12 +311,12 @@ export default {
   min-height: 100%;
   width: auto;
 
-  .navbar .nav>li>a {
+  .navbar .nav > li > a {
     float: none;
     padding: 10px 15px 10px;
     color: #777;
     text-decoration: none;
-    text-shadow: 0 1px 0 #fff
+    text-shadow: 0 1px 0 #fff;
   }
   #content-header {
     position: abslute;
@@ -359,7 +340,7 @@ export default {
         color: #333333;
         i {
           margin-right: 5px;
-          opacity: .8;
+          opacity: 0.8;
         }
       }
       &.current {
@@ -368,7 +349,7 @@ export default {
       }
       i {
         margin-right: 5px;
-        opacity: .6;
+        opacity: 0.6;
       }
     }
   }

@@ -1,0 +1,1 @@
+const UER_INFO = 'UER_INFO';
