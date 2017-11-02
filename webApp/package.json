@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-inline": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-theme-lark": "^1.0.0-alpha.1",
     "axios": "^0.16.2",
     "balajs": "^1.0.6",
     "element-closest": "^2.0.2",

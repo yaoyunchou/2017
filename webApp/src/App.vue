@@ -3,7 +3,7 @@
     <!--Header-part-->
     <div id="header">
       <h1>
-        <a href="dashboard.html">Matrix Admin</a>
+        <a href="#">Matrix Admin</a>
       </h1>
     </div>
     <!--close-Header-part-->
@@ -14,13 +14,13 @@
         <li class="">
           <a title="" href="#">
             <i class="icon icon-cog"></i>
-            <span class="text">Settings</span>
+            <span class="text">设置</span>
           </a>
         </li>
         <li class="">
           <a title="" href="login.html">
             <i class="icon icon-share-alt"></i>
-            <span class="text">Logout</span>
+            <span class="text">登出</span>
           </a>
         </li>
       </ul>
@@ -40,49 +40,49 @@
         <li class="active">
           <a href="#/rss-list">
             <i class="icon icon-home"></i>
-            <span>Dashboard</span>
+            <span>文章详情</span>
           </a>
         </li>
         <li>
           <a href="#/demo">
             <i class="icon icon-signal"></i>
-            <span>Charts &amp; graphs</span>
+            <span>案例 &amp; </span>
           </a>
         </li>
         <li>
           <a href="#/form">
             <i class="icon icon-inbox"></i>
-            <span>Widgets</span>
+            <span>表单</span>
           </a>
         </li>
         <li>
           <a href="#/form">
             <i class="icon icon-th"></i>
-            <span>Tables</span>
+            <span>表单</span>
           </a>
         </li>
         <li>
           <a href="#/forml">
             <i class="icon icon-fullscreen"></i>
-            <span>Full width</span>
+            <span>表单</span>
           </a>
         </li>
         <li>
           <a href="#/form">
             <i class="icon icon-tint"></i>
-            <span>Buttons &amp; icons</span>
+            <span>表单 &amp; 表单</span>
           </a>
         </li>
         <li>
           <a href="#/form">
             <i class="icon icon-pencil"></i>
-            <span>Eelements</span>
+            <span>表单</span>
           </a>
         </li>
         <li class="submenu" v-on:click ="setTimeCont()">
           <a>
             <i class="icon icon-file"></i>
-            <span>Addons</span>
+            <span>表单</span>
             <span class="label label-important">{{timeCont}}</span>
           </a>
         </li>
@@ -123,7 +123,7 @@ export default {
     ...mapMutations(["setTimeCont"])
   },
   created: function() {
-    console.log(this.$store.state.timeCont);
+   
   }
 };
 </script>

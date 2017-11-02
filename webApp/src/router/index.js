@@ -6,7 +6,7 @@ const Demo = resolve => require(['@/modules/demo/demo.js'], resolve)
 //import Form from '@/modules/form/form.js'
 const Form = resolve => require(['@/modules/form/form.js'], resolve)
 import rss from '@/pages/rss/index.js'
-console.log(rss);
+
 
 Vue.use(Router)
 let router = [{

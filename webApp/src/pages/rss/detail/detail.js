@@ -3,7 +3,6 @@ import http from '@/services/http';
 import  Editor from "@/components/editor/Editor.vue";
 import  CkEditor from "@/components/ckEditor/ckEditor.js";
 
-console.log(Editor);
 import './detail.scss'
 export default {
     template: element,
@@ -40,7 +39,6 @@ export default {
         },
         set:function(newValue){
           var date = newValue.split(' ');
-          console.log(date);
           this.day = date[0];
           this.time = date[1];
         }

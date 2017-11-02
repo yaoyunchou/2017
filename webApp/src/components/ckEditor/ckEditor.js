@@ -20,17 +20,27 @@ export default{
             this.$emit('input',value);
         }
     },
-    mounted:()=>{
+    mounted:function(){
         var self = this;
-        InlineEditor
-        .create( document.querySelector( '#'+this.ckId ) )
-        .then( editor => {
-            console.log( editor );
-            //editor.setData('<p>Some text.</p>');
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
+        console.log(self.$el.querySelectorAll('p'));
+        // InlineEditor
+        // .create(self.$refs.mybox)
+        // .then( editor => {
+        //     console.log( editor );
+        //     //editor.setData('<p>Some text.</p>');
+        // } )
+        // .catch( error => {
+        //     console.error( error );
+        // } );
+        self.$el.querySelectorAll('p').forEach(function(element) {
+            InlineEditor
+            .create(element)
+            .then( editor => {
+                console.log( editor );
+                //editor.setData('<p>Some text.</p>');
+            } )
+        }, this);
+       
     }
 
 }

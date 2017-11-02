@@ -8,7 +8,6 @@ import mutations from './mutations'
 import car from './modules/car.js'
 
 //引入modules
-console.log(car);
 
 
 Vue.use(Vuex);
