@@ -15,6 +15,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-inline": "^1.0.0-alpha.1",
     "axios": "^0.16.2",
     "balajs": "^1.0.6",
     "element-closest": "^2.0.2",

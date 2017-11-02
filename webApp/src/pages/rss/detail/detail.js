@@ -1,11 +1,13 @@
 import element from './detail.html';
 import http from '@/services/http';
 import  Editor from "@/components/editor/Editor.vue";
+import  CkEditor from "@/components/ckEditor/ckEditor.js";
+
 console.log(Editor);
 import './detail.scss'
 export default {
     template: element,
-    components:{'editor':Editor},
+    components:{'editor':Editor,'ckEditor':CkEditor},
     data() {
       return {
         day:'',

@@ -5,8 +5,10 @@ import actions from './actions'
 import getters from './getter'
 import mutations from './mutations'
 
-//引入modules
+import car from './modules/car.js'
 
+//引入modules
+console.log(car);
 
 
 Vue.use(Vuex);
@@ -18,12 +20,14 @@ const state = {
     user:null
 };
 
+const debug = process.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
     state,
     actions,
     getters,
     mutations,
     modules:{
-
-    }
+        car
+    },
+    strict: debug
 })

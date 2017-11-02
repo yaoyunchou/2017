@@ -79,8 +79,8 @@
             <span>Eelements</span>
           </a>
         </li>
-        <li class="submenu">
-          <a href="#">
+        <li class="submenu" v-on:click ="setTimeCont()">
+          <a>
             <i class="icon icon-file"></i>
             <span>Addons</span>
             <span class="label label-important">{{timeCont}}</span>
@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   name: "app",
   // computed: mapState([
@@ -112,9 +112,18 @@ export default {
   //   "timeCont"
   // ])
   computed: {
-    timeCont () {
-      return this.$store.state.timeCont
-    }
+    // 使用对象展开运算符将 getter 混入 computed 对象中
+    ...mapGetters([
+      "timeCont",
+      "anotherGetter"
+      // ...
+    ])
+  },
+  methods: {
+    ...mapMutations(["setTimeCont"])
+  },
+  created: function() {
+    console.log(this.$store.state.timeCont);
   }
 };
 </script>

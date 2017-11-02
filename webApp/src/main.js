@@ -6,8 +6,8 @@ import router from './router'
 import './style/platform/platform.scss'
 import 'element-ui/lib/theme-default/index.css'
 
-const store = require('./store')
-
+import store from './store'
+// const store = require()
 import ElementUI from 'element-ui'
 
 //resolve => require(['element-ui/lib/theme-default/index.css'], resolve)
