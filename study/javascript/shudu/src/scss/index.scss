@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+@import 'common/reset';
+@import 'common/variables';
+
+@import 'common/mixin';
+
+
+
+// 开始页面的样式
+.title{
+    padding:1rem 5%;
+    background: $primary-color;
+    color:white;
+    box-shadow:$shadowBottom;
+    h2{
+        font-weight: 600;
+        text-align: center;
+    }
+}
+.hidden{display: none;}
+.container{
+    padding:30px 0;
+    div{
+       overflow:hidden;
+       text-align: center;
+       box-sizing: content-box;
+       width:90%;
+       margin:0 auto;
+       border-left:1px solid #7b7b7b;
+       border-right: 1px solid #7b7b7b;
+       &:first-of-type{
+           border-top:1px solid #7b7b7b;
+       }
+       &:last-of-type{
+           border-bottom: 1px solid #7b7b7b;
+       }
+       &:nth-child(3n){
+           span{
+               border-bottom:1px solid #7b7b7b;
+           }
+       }
+       &:nth-child(3n+1){
+        span{
+            border-top-color: #7b7b7b;
+        }
+    }
+        span{
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-bottom: none;
+            box-sizing: border-box;
+            &:nth-child(3n){
+                border-right: 1px solid #7b7b7b;
+            }
+            &:nth-child(3n+1){
+                border-left-color:  #7b7b7b;
+            }
+            &:first-of-type{
+                border-left:1px solid #7b7b7b;
+            }
+            &:last-of-type{
+                border-right: 1px solid #7b7b7b;
+            }
+        }
+    }
+}
+
+.tools{
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:1rem 0;
+    background: $primary-color;
+    .button-group{
+        display: flex;
+        button{
+            flex: 1;
+            border:1px solid $primary-color;
+            border-right:none;
+            &:last-child{
+                border-right:1px solid $primary-color;
+            }
+        }
+    }
+}
+
