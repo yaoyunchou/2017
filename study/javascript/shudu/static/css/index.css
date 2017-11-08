@@ -32,7 +32,7 @@ body {
   font-family: 'consolas','微软雅黑';
   max-width: 750px;
   overflow: hidden; }
-  body > * {
+  body * {
     max-width: 750px;
     box-sizing: border-box; }
 
@@ -140,6 +140,20 @@ input, select {
         border-left: 1px solid #7b7b7b; }
       .container div span:last-of-type {
         border-right: 1px solid #7b7b7b; }
+      .container div span.empty {
+        color: #fff;
+        cursor: pointer; }
+      .container div span.fixed {
+        background-color: #efecec;
+        cursor: not-allowed; }
+      .container div span.mark1 {
+        background-color: pink; }
+        .container div span.mark1.empty {
+          color: pink; }
+      .container div span.mark2 {
+        background-color: lightgreen; }
+        .container div span.mark2.empty {
+          color: lightgreen; }
 
 .tools {
   position: absolute;
@@ -156,5 +170,30 @@ input, select {
       border-right: none; }
       .tools .button-group button:last-child {
         border-right: 1px solid steelblue; }
+
+.popup-num {
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 12px;
+  width: 121px;
+  background: #fff;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc; }
+  .popup-num span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    float: left;
+    line-height: 40px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    cursor: pointer; }
+    .popup-num span.mark1 {
+      background-color: pink; }
+    .popup-num span.mark2 {
+      background-color: lightgreen; }
 
 /*# sourceMappingURL=maps/index.css.map */

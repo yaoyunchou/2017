@@ -1,4 +1,6 @@
 //检查数独的方案
+const Toolkit = require("./toolkit");
+const matrix = require("./generator");
 
 function checkArray(array){
     const length = array.length;
@@ -44,14 +46,48 @@ class Checker{
         this.checkCols();
         this.checkBoxes();
         
-        this._isSuccess = this.matrixMakes.every(row =>row.every(mark=>mark));
+        this._isSuccess = this._matrixMakes.every(row =>row.every(mark=>mark));
         return this._isSuccess;
-
     }
 
     checkRows(){
         for(let i=0;i<9;i++){
-            this._matrixMakes[i] =  checkArray(this._matrix[i])
+            this._matrixMakes[i] =  checkArray(this._matrix[i]).map(v =>v);
+        }
+    }
+    checkCols(){
+        for(let i =0;i++;i<9){
+            let colArr = [];
+            for(let j=0;j<9;j++){
+                colArr.push(this._matrix[j][i])
+            }
+            checkArray(colArr).forEach(function(value,key) {
+                this._matrixMakes[key][i] =  value;
+            }, this);;
+        }
+    }
+    checkBoxes(){
+        for(let boxIndex =0;boxIndex<9;boxIndex++){
+            let boxArr  = Toolkit.box.getBoxCells(boxIndex,this._matrix); 
+            checkArray(boxArr).forEach(function(value,key) {
+                let {rowIndex,colIndex} = Toolkit.box.convertFromboxIndex(boxIndex,key);
+                if(!value){
+                    this._matrixMakes[rowIndex][colIndex] = false;
+                }
+
+            }, this);
+            
         }
     }
 }
+
+// var checker = new Checker(matrix);
+// checker.check();
+
+// console.log(checker._matrixMakes);
+// matrix[0][5] = matrix[5][4] =4;
+// matrix[0][0] = 0;
+// var checker2 = new Checker(matrix);
+// checker2.check();
+// console.log(checker2._matrix);
+// console.log(checker2._matrixMakes);

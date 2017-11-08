@@ -180,10 +180,12 @@ var boxToolkit = {
 	convertBoxIndex: function convertBoxIndex(rowIndex, colIndex) {
 		return parseInt(rowIndex / 3) * 3 + parseInt(colIndex / 3);
 	},
-	convertFromboxIndex: function convertFromboxIndex(boxIndex) {
+	convertFromboxIndex: function convertFromboxIndex(boxIndex, cellIndex) {
+		var rowIndex = boxIndex % 3 * 3 + cellIndex % 3;
+		var colIndex = Math.floor(boxIndex / 3) * 3 + Math.floor(cellIndex / 3);
 		return {
-			//rowIndex:,
-			//colIndex:
+			rowIndex: rowIndex,
+			colIndex: colIndex
 		};
 	}
 };
@@ -225,6 +227,7 @@ module.exports = function () {
 // console.log(4 in su);
 
 // console.log(boxToolkit.getBoxCells(4,su));
+//console.log(boxToolkit.convertFromboxIndex(5,4));
 
 /***/ }),
 /* 1 */
@@ -235,7 +238,13 @@ module.exports = function () {
 
 var oolkit = __webpack_require__(0);
 var Grid = __webpack_require__(2);
-new Grid($('#container')).build();
+
+var PopupNumber = __webpack_require__(5);
+var grid = new Grid($('#container'));
+grid.build();
+var popup = new PopupNumber($("#popupNumbers"));
+
+grid.bindPopup(popup);
 
 /***/ }),
 /* 2 */
@@ -249,13 +258,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Toolkit = __webpack_require__(0);
-var matrix = __webpack_require__(3);
+var Sudoku = __webpack_require__(3);
 
 var Grid = function () {
     function Grid(container) {
         _classCallCheck(this, Grid);
 
         this._$container = container;
+        $(document).on('click', '.rebuild', this.build.bind(this));
     }
 
     _createClass(Grid, [{
@@ -264,18 +274,36 @@ var Grid = function () {
 
             var spanSize = $('body').width() * 0.1 + 'px';
             var spanFontSize = $('body').width() * 0.1 * 0.5 + 'px';
-            console.log(matrix);
-            var $cells = matrix.map(function (rowValues) {
+
+            var sudoku = new Sudoku();
+            sudoku.make();
+            console.log(sudoku.solutionMatrix);
+            var $cells = sudoku.solutionMatrix.map(function (rowValues) {
                 return rowValues.map(function (cellValue) {
-                    return $('<span>').css({ width: spanSize, height: spanSize, lineHeight: spanSize, fontSize: spanFontSize }).text(cellValue);
+                    if (cellValue) {
+                        return $('<span>').css({ width: spanSize, height: spanSize, lineHeight: spanSize, fontSize: spanFontSize }).addClass('fixed').text(cellValue);
+                    } else {
+                        return $('<span>').css({ width: spanSize, height: spanSize, lineHeight: spanSize, fontSize: spanFontSize }).addClass('empty').text(cellValue);
+                    }
                 });
             });
             console.log($cells);
             var $divArray = $cells.map(function ($spanArray) {
                 return $("<div>").append($spanArray);
             });
-
+            this._$container.empty();
             this._$container.append($divArray);
+        }
+    }, {
+        key: 'bindPopup',
+        value: function bindPopup(popupNumber) {
+            this._$container.on('click', 'span', function (e) {
+                var $cell = $(e.target);
+                if ($cell.hasClass('fixed')) {
+                    return;
+                }
+                popupNumber.popup($cell);
+            });
         }
     }]);
 
@@ -296,6 +324,54 @@ module.exports = Grid;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//生成数独游戏
+var matrix = __webpack_require__(4);
+
+//1.生成解决方案：Generator 
+
+
+//2随机去除部分的数据，按比例
+
+module.exports = function () {
+    function Sudoku() {
+        _classCallCheck(this, Sudoku);
+
+        this.solutionMatrix = matrix;
+    }
+
+    _createClass(Sudoku, [{
+        key: "make",
+        value: function make() {
+            var level = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+
+            //生成迷盘
+            this.solutionMatrix = this.solutionMatrix.map(function (row) {
+                return row.map(function (cell) {
+                    return Math.random() * 9 < level ? 0 : cell;
+                });
+            });
+        }
+    }]);
+
+    return Sudoku;
+}();
+
+// const sudoku = new Sudoku();
+// sudoku.make();
+
+// console.log(sudoku.solutionMatrix);
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -383,6 +459,80 @@ var Generator = function () {
 var generator = new Generator();
 generator.generator();
 module.exports = generator.matrix;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//用于弹框
+
+
+module.exports = function () {
+    function PopupNumbers($panel) {
+        var _this = this;
+
+        _classCallCheck(this, PopupNumbers);
+
+        this._$panel = $panel;
+        this._$panel.hide();
+        this._$panel.on('click', 'span', function (e) {
+            var $span = $(e.target);
+            _this._$panel.hide();
+            if ($span.hasClass('mark1')) {
+                if (_this._targetCell.hasClass('mark1')) {
+                    _this._targetCell.removeClass('mark1 mark2');
+                } else _this._targetCell.addClass('mark1');
+                return;
+            }
+            if ($span.hasClass('mark2')) {
+                if (_this._targetCell.hasClass('mark2')) {
+                    _this._targetCell.removeClass('mark1 mark2');
+                } else _this._targetCell.addClass('mark2');
+                return;
+            }
+            if ($span.hasClass('empty')) {
+                _this._targetCell.removeClass('mark1 mark2').addClass('empty').text("0");
+                return;
+            }
+            _this._targetCell.removeClass("empty").text($span.text());
+        });
+    }
+
+    _createClass(PopupNumbers, [{
+        key: 'popup',
+        value: function popup($cell) {
+            this._targetCell = $cell;
+
+            var _$cell$position = $cell.position(),
+                left = _$cell$position.left,
+                top = _$cell$position.top;
+
+            var width = $cell.width();
+            var height = $cell.height();
+            if ($('body').width() - left - width > 121) {
+                left = left + width;
+            } else {
+                left = left - 121;
+            }
+            if (top > 300) {
+                top = top - 161;
+            }
+            this._$panel.show();
+            this._$panel.css({
+                left: left, top: top
+            });
+        }
+    }]);
+
+    return PopupNumbers;
+}();
 
 /***/ })
 /******/ ]);
