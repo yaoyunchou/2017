@@ -99,7 +99,7 @@ input, select {
   padding: 1rem 5%;
   background: steelblue;
   color: white;
-  box-shadow: 0 0.2rem 0.3rem #303030; }
+  box-shadow: 0 0.2rem 0.3rem rgba(48, 48, 48, 0.66); }
   .title h2 {
     font-weight: 600;
     text-align: center; }
@@ -147,27 +147,34 @@ input, select {
         background-color: #efecec;
         cursor: not-allowed; }
       .container div span.mark1 {
-        background-color: pink; }
+        background-color: #ff9; }
         .container div span.mark1.empty {
-          color: pink; }
+          color: #ff9; }
       .container div span.mark2 {
         background-color: lightgreen; }
         .container div span.mark2.empty {
           color: lightgreen; }
+      .container div span.err {
+        background-color: pink; }
+        .container div span.err.empty {
+          color: pink; }
 
 .tools {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 0;
-  background: steelblue; }
+  background: steelblue;
+  box-shadow: 0 -0.2rem 0.3rem rgba(48, 48, 48, 0.66); }
   .tools .button-group {
     display: flex; }
     .tools .button-group button {
       flex: 1;
-      border: 1px solid steelblue;
-      border-right: none; }
+      color: #fff;
+      line-height: 49px;
+      border-right: none;
+      background: transparent;
+      border: none; }
       .tools .button-group button:last-child {
         border-right: 1px solid steelblue; }
 
@@ -192,7 +199,7 @@ input, select {
     border-left: 1px solid #ccc;
     cursor: pointer; }
     .popup-num span.mark1 {
-      background-color: pink; }
+      background-color: #ff9; }
     .popup-num span.mark2 {
       background-color: lightgreen; }
 

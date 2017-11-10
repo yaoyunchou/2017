@@ -90,8 +90,8 @@ const boxToolkit = {
 		return parseInt(rowIndex/3)*3+parseInt(colIndex/3);
 	},
 	convertFromboxIndex(boxIndex,cellIndex){
-		let rowIndex = boxIndex%3*3+cellIndex%3;
-		let colIndex = Math.floor(boxIndex/3)*3+Math.floor(cellIndex/3)
+		let colIndex = boxIndex%3*3+cellIndex%3;
+		let rowIndex = Math.floor(boxIndex/3)*3+Math.floor(cellIndex/3)
 		return {
 			rowIndex,
 			colIndex
@@ -124,4 +124,4 @@ module.exports = class Toolkit{
 // console.log(4 in su);
 
 // console.log(boxToolkit.getBoxCells(4,su));
-//console.log(boxToolkit.convertFromboxIndex(5,4));
+console.log(boxToolkit.convertFromboxIndex(5,4));

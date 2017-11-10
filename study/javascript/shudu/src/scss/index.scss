@@ -77,15 +77,21 @@
 				cursor: not-allowed;
 			}
 			&.mark1 {
-				background-color: pink;
+				background-color: #ff9;
 				&.empty {
-					color: pink;
+					color: #ff9;
 				}
 			}
 			&.mark2 {
 				background-color: lightgreen;
 				&.empty {
 					color: lightgreen;
+				}
+			}
+			&.err{
+				background-color: pink;
+				&.empty{
+					color:pink;
 				}
 			}
 		}
@@ -97,14 +103,18 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	padding: 1rem 0;
 	background: $primary-color;
+	box-shadow: $shadowTop;
 	.button-group {
 		display: flex;
 		button {
+		
 			flex: 1;
-			border: 1px solid $primary-color;
+			color:#fff;
+			line-height: 49px;
 			border-right: none;
+			background: transparent;
+			border:none;
 			&:last-child {
 				border-right: 1px solid $primary-color;
 			}
@@ -134,7 +144,7 @@
 		border-left: 1px solid #ccc;
 		cursor: pointer;
 		&.mark1 {
-			background-color: pink;
+			background-color: #ff9;
 		}
 		&.mark2 {
 			background-color: lightgreen;

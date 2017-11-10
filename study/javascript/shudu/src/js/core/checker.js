@@ -30,7 +30,7 @@ function checkArray(array){
  * 处理：对matrix 行列 宫进行检查  并填入makes
  * 输出：检查是否成功 makes
  */
-class Checker{
+module.exports = class Checker{
     constructor(matrix){
         this._matrix = matrix;
         this._matrixMakes = Toolkit.matrix.makeMatrix(true);
@@ -56,7 +56,7 @@ class Checker{
         }
     }
     checkCols(){
-        for(let i =0;i++;i<9){
+        for(let i =0;i<9;i++){
             let colArr = [];
             for(let j=0;j<9;j++){
                 colArr.push(this._matrix[j][i])

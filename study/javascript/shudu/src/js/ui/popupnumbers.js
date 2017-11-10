@@ -10,9 +10,9 @@ module.exports = class PopupNumbers{
             this._$panel.hide();
             if($span.hasClass('mark1')){
                 if(this._targetCell.hasClass('mark1')){
-                    this._targetCell.removeClass('mark1 mark2')
+                    this._targetCell.removeClass('mark1 mark2 err')
                 }else(
-                    this._targetCell.addClass('mark1')
+                    this._targetCell.removeClass('err').addClass('mark1')
                 )
                 return;
             }
@@ -20,15 +20,15 @@ module.exports = class PopupNumbers{
                 if(this._targetCell.hasClass('mark2')){
                     this._targetCell.removeClass('mark1 mark2')
                 }else(
-                    this._targetCell.addClass('mark2')
+                    this._targetCell.removeClass('err').addClass('mark2')
                 )
                 return;
             }
             if($span.hasClass('empty')){
-                this._targetCell.removeClass('mark1 mark2').addClass('empty').text("0");
+                this._targetCell.removeClass('mark1 mark2 err').addClass('empty').text("0");
                 return
             }
-            this._targetCell.removeClass("empty").text($span.text());
+            this._targetCell.removeClass("empty err").text($span.text());
         })
     }
     popup($cell){
