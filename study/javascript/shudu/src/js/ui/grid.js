@@ -91,6 +91,7 @@ class Grid {
 }
 
 
+
 // const a = Array.from({length:9},(v,k)=>k+1);
 // console.log(a);
 // console.log(toolkit.shuffle(a));
@@ -102,3 +103,6 @@ class Grid {
 //new Grid($('#container')).build();
 
 module.exports = Grid;
+
+
+

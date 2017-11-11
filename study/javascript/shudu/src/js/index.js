@@ -8,3 +8,4 @@ const popup = new PopupNumber($("#popupNumbers"))
 
 grid.bindPopup(popup);
 grid.getOrientation();
+var a =1000;

@@ -3,7 +3,7 @@ module.exports = {
         index:'./src/js/index'
     },
     output:{
-        filename:'[name].js'
+        filename:'[name][chunkhash].js'
     },
     devtool:'source-map',
     resolve:{
