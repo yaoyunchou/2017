@@ -2,7 +2,6 @@
 const Toolkit = require("./toolkit");
 
 
-
 class Generator{
 
     generator(){
