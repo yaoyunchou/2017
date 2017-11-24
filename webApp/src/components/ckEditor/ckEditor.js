@@ -23,21 +23,21 @@ export default{
     mounted:function(){
         var self = this;
         console.log(self.$el.querySelectorAll('p'));
-        // InlineEditor
-        // .create(self.$refs.mybox)
-        // .then( editor => {
-        //     console.log( editor );
-        //     //editor.setData('<p>Some text.</p>');
-        // } )
-        // .catch( error => {
-        //     console.error( error );
-        // } );
+        InlineEditor
+        .create(self.$refs.mybox)
+        .then( editor => {
+            console.log( editor );
+            editor.setData('');
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
         self.$el.querySelectorAll('p').forEach(function(element) {
             InlineEditor
             .create(element)
             .then( editor => {
                 console.log( editor );
-                //editor.setData('<p>Some text.</p>');
+                editor.setData('');
             } )
         }, this);
        

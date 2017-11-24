@@ -11,7 +11,7 @@ var _regenerator2 = _interopRequireDefault(_regenerator);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2;
 
 var _router = require('../router');
 
@@ -60,7 +60,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 	return desc;
 }
 
-var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('list'), _dec5 = (0, _router.route)('addRssByLink'), _dec6 = (0, _router.route)('saveInfoMation', 'post'), _dec(_class = _dec2(_class = (_class2 = function () {
+var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2 = (0, _service2.default)(_infomation2.default, 'infomations'), _dec3 = (0, _router.route)('detail/:id'), _dec4 = (0, _router.route)('create', 'get'), _dec5 = (0, _router.route)('list'), _dec6 = (0, _router.route)('addRssByLink'), _dec7 = (0, _router.route)('saveInfoMation', 'post'), _dec(_class = _dec2(_class = (_class2 = function () {
 	function InfomationController() {
 		_classCallCheck(this, InfomationController);
 	}
@@ -83,6 +83,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 								infomation = _context.sent;
 
 								fixhtml(infomation);
+
 								return _context.abrupt('return', infomation);
 
 							case 5:
@@ -100,9 +101,19 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 			return getInfomation;
 		}()
 	}, {
+		key: 'createInfomation',
+		// http://localhost:3000/user
+		value: function createInfomation(_ref3) {
+			var id = _ref3.id;
+
+			var infomation = this.service.create();
+			//fixhtml(infomation);
+			return infomation;
+		}
+	}, {
 		key: 'getList',
 		value: function () {
-			var _ref3 = _asyncToGenerator(_regenerator2.default.mark(function _callee2(params, body) {
+			var _ref4 = _asyncToGenerator(_regenerator2.default.mark(function _callee2(params, body) {
 				var pageSize, pageNumber, sortter, expect, list, total, backData;
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {
@@ -138,7 +149,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 			}));
 
 			function getList(_x2, _x3) {
-				return _ref3.apply(this, arguments);
+				return _ref4.apply(this, arguments);
 			}
 
 			return getList;
@@ -146,7 +157,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}, {
 		key: 'addRssByLink',
 		value: function () {
-			var _ref4 = _asyncToGenerator(_regenerator2.default.mark(function _callee3(params, body) {
+			var _ref5 = _asyncToGenerator(_regenerator2.default.mark(function _callee3(params, body) {
 				return _regenerator2.default.wrap(function _callee3$(_context3) {
 					while (1) {
 						switch (_context3.prev = _context3.next) {
@@ -170,7 +181,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 			}));
 
 			function addRssByLink(_x4, _x5) {
-				return _ref4.apply(this, arguments);
+				return _ref5.apply(this, arguments);
 			}
 
 			return addRssByLink;
@@ -178,7 +189,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}, {
 		key: 'saveInfoMation',
 		value: function () {
-			var _ref5 = _asyncToGenerator(_regenerator2.default.mark(function _callee4(params, body) {
+			var _ref6 = _asyncToGenerator(_regenerator2.default.mark(function _callee4(params, body) {
 				var infomation;
 				return _regenerator2.default.wrap(function _callee4$(_context4) {
 					while (1) {
@@ -206,7 +217,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 			}));
 
 			function saveInfoMation(_x6, _x7) {
-				return _ref5.apply(this, arguments);
+				return _ref6.apply(this, arguments);
 			}
 
 			return saveInfoMation;
@@ -214,7 +225,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}]);
 
 	return InfomationController;
-}(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'addRssByLink', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'addRssByLink'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'saveInfoMation', [_dec6], Object.getOwnPropertyDescriptor(_class2.prototype, 'saveInfoMation'), _class2.prototype)), _class2)) || _class) || _class);
+}(), (_applyDecoratedDescriptor(_class2.prototype, 'getInfomation', [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, 'getInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'createInfomation', [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'createInfomation'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getList', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'getList'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'addRssByLink', [_dec6], Object.getOwnPropertyDescriptor(_class2.prototype, 'addRssByLink'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'saveInfoMation', [_dec7], Object.getOwnPropertyDescriptor(_class2.prototype, 'saveInfoMation'), _class2.prototype)), _class2)) || _class) || _class);
 
 //fetchInfomation('http://www.w3cplus.com/rss.xml', 1,new InfomationSvc());
 
