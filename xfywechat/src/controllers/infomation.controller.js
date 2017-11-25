@@ -15,6 +15,13 @@ export default class InfomationController{
 	async getInfomation({id}) {
 		let infomation = await this.service.getItemById(id);
 		fixhtml(infomation);
+		
+		return infomation;
+	}
+	@route('create','get') // http://localhost:3000/user
+	 createInfomation({id}) {
+		let infomation = this.service.create();
+		//fixhtml(infomation);
 		return infomation;
 	}
 	@route('list')
