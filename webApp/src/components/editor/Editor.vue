@@ -34,6 +34,7 @@ export default {
     value: function(nv) {
       if (nv && this.ue) {
         this.ue.setContent(nv, false);
+        this.updataValue(nv);
         this.isSet = true;
       }
     }

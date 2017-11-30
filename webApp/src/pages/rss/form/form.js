@@ -14,6 +14,7 @@ export default {
 		},
 		create:function(){
 			this.$router.push({ name: 'RssDetail', params: { id: 0 }})
+			console.log('!!!');
 		},
 		  handleCurrentChange(val) {
 			console.log(`当前页: ${val}`);
