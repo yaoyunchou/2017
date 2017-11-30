@@ -5,8 +5,8 @@ const matrixToolkit = {
 	 * @param {number} [v=0] 
 	 * @returns 
 	 */
-	makeRow(v = 0) {
-		let array = new Array(9);
+	makeRow(v = 0,lenght=9) {
+		let array = new Array(lenght);
 		array.fill(v);
 		return array;
 	},
@@ -18,10 +18,10 @@ const matrixToolkit = {
 	 * @param {number} [v=0] 
 	 * @returns 
 	 */
-	makeMatrix(v = 0) {
+	makeMatrix(v = 0,rows=9,cols=9) {
 		return Array.from({
-			length: 9
-		}, () => this.makeRow(v));
+			length: rows
+		}, () => this.makeRow(v,cols));
 
 	},
 	/**
@@ -48,28 +48,17 @@ const matrixToolkit = {
 	 * 
 	 * @param {any} arr 
 	 */
-	shuffle(arr) {
-		const endIndex = arr.length - 2;
-		for (let i = 0; i <= endIndex; i++) {
-			let j = i + parseInt(Math.random() * (arr.length - i));
-			[arr[i], arr[j]] = [arr[j], arr[i]];
-		}
-		return arr;
+	coordinate(x,y) {
+		x = Math.floor(Math.random()*x);
+		y = Math.floor(Math.random()*y);
+		return {x,y};
 	},
-	checkFillable(matrix,n,rowIndex,colIndex){
-		const row = matrix[rowIndex];
-		const column = this.makeRow().map((value,key)=>matrix[key][colIndex]);
-		const box = boxToolkit.getBoxCells(boxToolkit.convertBoxIndex(rowIndex,colIndex),matrix);
-		// for(let i=0;i<9;i++){
-
-		// }
-		let checkFlog = true;
-		for(let i=0;i<9;i++){
-			if(row[i] === n||column[i]===n||box[i]===n){
-				checkFlog = false;
-			}
+	isEqual(arr,obj){
+		let result = false;
+		for(let i=0;i<arr.lenght;i++){
+			result = arr[i].x === obj.x&&arr[i].y === obj.y
 		}
-		return checkFlog;
+		return result;
 	}
 
 };
@@ -77,24 +66,28 @@ const matrixToolkit = {
 	 * 宫坐标系
 	 */
 const boxToolkit = {
-	getBoxCells(boxIndex,matrix){
-		const startRowIndex = parseInt(boxIndex/3)*3;
-		const startColIndex = (boxIndex%3)*3;
-		const result = [];
-		for(let i=0;i<9;i++){
-			result.push(matrix[startRowIndex+parseInt(i/3)][startColIndex+i%3])
+	getBoxNum(rowIndex,columnIndex,matrix){
+		var resultArr =[];
+		for(let i= 0;i<3;i++){
+			for(let j=0;j<3;j++){
+				if(rowIndex+i-1>=0&&rowIndex+i-1<matrix.length&&columnIndex+j-1>=0&&columnIndex+j-1<matrix[0].length&&matrix[rowIndex+i-1][columnIndex+j-1].text()==='false'){
+					resultArr.push(matrix[rowIndex+i-1][columnIndex+j-1]);
+				}
+
+			}
 		}
-		return result;
+		matrix[rowIndex][columnIndex].text(resultArr.length||0).css('textIndex','0em');
+		return resultArr.length||0;
 	},
-	convertBoxIndex(rowIndex,colIndex){
-		return parseInt(rowIndex/3)*3+parseInt(colIndex/3);
-	},
-	convertFromboxIndex(boxIndex,cellIndex){
-		let colIndex = boxIndex%3*3+cellIndex%3;
-		let rowIndex = Math.floor(boxIndex/3)*3+Math.floor(cellIndex/3)
-		return {
-			rowIndex,
-			colIndex
+	run(rowIndex,columnIndex,matrix){
+		if(!this.getBoxNum.apply(this,arguments)){
+			for(let i= 0;i<3;i++){
+				for(let j=0;j<3;j++){
+					if(rowIndex+i-1>=0&&rowIndex+i-1<matrix.length>=0&&columnIndex+j-1&&columnIndex+j-1<matrix[0].length&&!(i===1&&j===1)){
+						this.run(rowIndex+i-1,columnIndex+j-1,matrix);
+					}
+				}
+			}
 		}
 	}
 }; 
@@ -114,14 +107,4 @@ module.exports = class Toolkit{
 	}
 };
 
-
-//测试
-// console.log(boxToolkit.convertBoxIndex(5,3));
-// var su = matrixToolkit.makeMatrix().map(rows=>rows.map((vlaue,key)=>key+1));
-// var col =  matrixToolkit.makeRow().map((value,key)=>su[key][3]);
-// console.log(col);
-// console.log(su);
-// console.log(4 in su);
-
-// console.log(boxToolkit.getBoxCells(4,su));
-console.log(boxToolkit.convertFromboxIndex(5,4));
+// console.log(matrixToolkit.makeMatrix(0,16,9))

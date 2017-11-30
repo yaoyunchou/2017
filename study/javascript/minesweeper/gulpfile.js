@@ -1,13 +1,14 @@
 
 
 const gulp = require('gulp');
-const path = require('path');
+//const path = require('path');
 //const {transformScript}  = require('./gulp-app-config');
 const inject = require('gulp-inject');
 const DES_PATH = __dirname+'static/'
 
 function transformScript(path){
-    console.log("!!!!!!!!!!!!!!!!"+path);
+    path = path.replace('/static','.');
+    //console.log(path);
     return '<script type="text/javascript" charset="utf-8" src="'+path+'"></script>';
 }
 
@@ -53,4 +54,4 @@ gulp.task('watch',()=>{
  /**
   * 
   */
-gulp.task('default',["webpack","scss"]);
+gulp.task('default',["injectPrograms","scss"]);
