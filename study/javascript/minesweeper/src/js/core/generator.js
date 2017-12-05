@@ -6,6 +6,7 @@ class Generator {
 	constructor(rows=9, cols=9) {
 		this._rows = rows;
 		this._cols = cols;
+		this._bombs
 	}
 	//构建数组
 	makeMatrix() {
@@ -16,6 +17,7 @@ class Generator {
         })
         this.matrix =  matrix;
 	}
+	//炸弹，可以用于记录炸弹的位置
 	bombs() {
 		let bombs = [];
 		switch (this._cols) {
@@ -54,6 +56,7 @@ class Generator {
 				}
 				break;
 		}
+		this.bombs = bombs;
 		return bombs;
 	}
 }

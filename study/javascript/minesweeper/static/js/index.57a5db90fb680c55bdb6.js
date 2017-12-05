@@ -147,8 +147,8 @@ var matrixToolkit = {
 	},
 	isEqual: function isEqual(arr, obj) {
 		var result = false;
-		for (var i = 0; i < arr.lenght; i++) {
-			result = arr[i].x === obj.x && arr[i].y === obj.y;
+		for (var i = 0; i < arr.length; i++) {
+			result = result || arr[i].x === obj.x && arr[i].y === obj.y;
 		}
 		return result;
 	}
@@ -157,27 +157,38 @@ var matrixToolkit = {
 	 * 宫坐标系
 	 */
 var boxToolkit = {
-	getBoxNum: function getBoxNum(rowIndex, columnIndex, matrix) {
+	hasTurned: [],
+	getBoxNum: function getBoxNum(rowIndex, columnIndex, matrix, domMatrix) {
+
+		this.hasTurned.push({ x: rowIndex, y: columnIndex });
 		var resultArr = [];
 		for (var i = 0; i < 3; i++) {
 			for (var j = 0; j < 3; j++) {
-				if (rowIndex + i - 1 >= 0 && rowIndex + i - 1 < matrix.length && columnIndex + j - 1 >= 0 && columnIndex + j - 1 < matrix[0].length && matrix[rowIndex + i - 1][columnIndex + j - 1].text() === 'false') {
+				if (rowIndex + i - 1 >= 0 && rowIndex + i - 1 < matrix.length && columnIndex + j - 1 >= 0 && columnIndex + j - 1 < matrix[0].length && !matrix[rowIndex + i - 1][columnIndex + j - 1]) {
 					resultArr.push(matrix[rowIndex + i - 1][columnIndex + j - 1]);
 				}
 			}
 		}
-		matrix[rowIndex][columnIndex].text(resultArr.length || 0).css('textIndex', '0em');
+		domMatrix[rowIndex][columnIndex].text(resultArr.length || ' ').css('textIndex', '0em').removeClass('btn-primary');
 		return resultArr.length || 0;
 	},
-	run: function run(rowIndex, columnIndex, matrix) {
+	run: function run(rowIndex, columnIndex, matrix, domMatrix) {
+		if (matrixToolkit.isEqual(this.hasTurned, { x: rowIndex, y: columnIndex })) {
+			return;
+		}
 		if (!this.getBoxNum.apply(this, arguments)) {
 			for (var i = 0; i < 3; i++) {
 				for (var j = 0; j < 3; j++) {
-					if (rowIndex + i - 1 >= 0 && rowIndex + i - 1 < matrix.length >= 0 && columnIndex + j - 1 && columnIndex + j - 1 < matrix[0].length && !(i === 1 && j === 1)) {
-						this.run(rowIndex + i - 1, columnIndex + j - 1, matrix);
+					if (rowIndex + i - 1 >= 0 && rowIndex + i - 1 < matrix.length && columnIndex + j - 1 >= 0 && columnIndex + j - 1 < matrix[0].length && !(i === 1 && j === 1)) {
+						this.run(rowIndex + i - 1, columnIndex + j - 1, matrix, domMatrix);
 					}
 				}
 			}
+		}
+	},
+	berning: function berning(rowIndex, columnIndex, matrix) {
+		if (!matrix[rowIndex][columnIndex]) {
+			return true;
 		}
 	}
 };
@@ -221,6 +232,14 @@ module.exports = function () {
 
 var Grid = __webpack_require__(2);
 new Grid($('.container')).build();
+//整个document圈闭屏蔽默认右键
+$(document).bind("contextmenu", function (oEvent) {
+    if (!oEvent) oEvent = window.event;
+    if (oEvent.button == 2) {
+        if (document.all) window.event.returnValue = false; // for IE
+        else event.preventDefault();
+    }
+});
 
 /***/ }),
 /* 2 */
@@ -244,11 +263,11 @@ var Grid = function () {
 
 		this._$container = container;
 		this._onlyUI = false;
-		this._$container.on('click', 'button', function (e) {
-			var $cell = $(e.target);
-			console.log($cell.data('rowIndex') + '===' + $cell.data('columnIndex'));
-			Toolkit.box.run($cell.data('rowIndex'), $cell.data('columnIndex'), _this._$cells);
+		this._$container.on('touchstart', 'button', function (e) {
+			_this._start = new Date();
 		});
+		this._$container.on('touchend', 'button', this.run.bind(this));
+		this._$container.on('click', 'button', this.run.bind(this));
 		// $(document).on('click', '.rebuild', this.build.bind(this));
 		// $(document).on('click', '.checker', this.checker.bind(this));
 		// $(document).on('click', '.clear', () => {this._$container.find('span').removeClass('err mark1 mark2')});
@@ -265,6 +284,8 @@ var Grid = function () {
 			var spanFontSize = $('body').width() * 0.1 * 0.5 + 'px';
 			var generator = new Generator(rows, cols);
 			generator.makeMatrix();
+			this._bombs = generator.bombs;
+			console.log(this._bombs);
 			this._solutionMatrix = generator.matrix;
 			this._$cells = this._solutionMatrix.map(function (rowValues, rowIndex) {
 				return rowValues.map(function (cellValue, columnIndex) {
@@ -273,7 +294,7 @@ var Grid = function () {
 						height: spanSize,
 						lineHeight: spanSize,
 						fontSize: spanFontSize
-					}).addClass('btn btn-primary').text(cellValue);
+					}).addClass('btn btn-primary iconfont');
 				});
 			});
 
@@ -284,10 +305,48 @@ var Grid = function () {
 			this._$container.append($divArray);
 			this._onlyUI = false;
 		}
+	}, {
+		key: 'berning',
+		value: function berning(rowIndex, columnIndex, matrix) {
+			var _this2 = this;
+
+			if (Toolkit.box.berning.apply(this, arguments)) {
+				this._bombs.forEach(function (element) {
+					_this2._$cells[element.x][element.y].html('¤');
+				});
+				return false;
+			} else {
+				return true;
+			}
+		}
+	}, {
+		key: 'run',
+		value: function run(e) {
+			var $cell = $(e.target);
+			this._end = new Date();
+			if (e.button === 2 || this._end - this._start > 500) {
+				if ($cell.html().length) {
+					$cell.html('');
+				} else {
+					$cell.html('&#xe8b4;');
+				}
+			} else {
+				if ($cell.html().length) {
+					return;
+				}
+				console.log($cell.data('rowIndex') + '===' + $cell.data('columnIndex'));
+				if (this.berning($cell.data('rowIndex'), $cell.data('columnIndex'), this._solutionMatrix)) {
+					Toolkit.box.run($cell.data('rowIndex'), $cell.data('columnIndex'), this._solutionMatrix, this._$cells);
+				} else {
+					alert('您失败了！');
+				};
+			}
+		}
 	}]);
 
 	return Grid;
 }();
+// const test = new Grid();
 
 // const a = Array.from({length:9},(v,k)=>k+1);
 // console.log(a);
@@ -324,6 +383,7 @@ var Generator = function () {
 
 		this._rows = rows;
 		this._cols = cols;
+		this._bombs;
 	}
 	//构建数组
 
@@ -342,6 +402,8 @@ var Generator = function () {
 			});
 			this.matrix = matrix;
 		}
+		//炸弹，可以用于记录炸弹的位置
+
 	}, {
 		key: "bombs",
 		value: function bombs() {
@@ -382,6 +444,7 @@ var Generator = function () {
 					}
 					break;
 			}
+			this.bombs = bombs;
 			return bombs;
 		}
 	}]);
@@ -396,4 +459,4 @@ module.exports = Generator;
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=index.0a1b7a916ece009bebf2.js.map
+//# sourceMappingURL=index.57a5db90fb680c55bdb6.js.map
