@@ -28,6 +28,7 @@ export default {
 				author: '',
 				created: '',
 				description: '',
+				author:'',
 				link: '',
 				pubDate: '',
 				title: '',
@@ -68,7 +69,8 @@ export default {
 		}else{
       http.get('api/infomation/create').then((res) => {
         this.infomation = res.data;
-        this.date = new Date();
+		this.date = new Date().format('yyyy-MM-DD HH:mm:ss');
+		console.log(new Date().format('yyyy-MM-DD HH:mm:ss'));
       })
     }
 		
