@@ -55,8 +55,8 @@ const matrixToolkit = {
 	},
 	isEqual(arr,obj){
 		let result = false;
-		for(let i=0;i<arr.lenght;i++){
-			result = arr[i].x === obj.x&&arr[i].y === obj.y
+		for(let i=0;i<arr.length;i++){
+			result = result||arr[i].x === obj.x&&arr[i].y === obj.y
 		}
 		return result;
 	}
@@ -66,28 +66,39 @@ const matrixToolkit = {
 	 * 宫坐标系
 	 */
 const boxToolkit = {
-	getBoxNum(rowIndex,columnIndex,matrix){
+	hasTurned :[],
+	getBoxNum(rowIndex,columnIndex,matrix,domMatrix){
+		
+		this.hasTurned.push({x:rowIndex,y:columnIndex});
 		var resultArr =[];
 		for(let i= 0;i<3;i++){
 			for(let j=0;j<3;j++){
-				if(rowIndex+i-1>=0&&rowIndex+i-1<matrix.length&&columnIndex+j-1>=0&&columnIndex+j-1<matrix[0].length&&matrix[rowIndex+i-1][columnIndex+j-1].text()==='false'){
+				if(rowIndex+i-1>=0&&rowIndex+i-1<matrix.length&&columnIndex+j-1>=0&&columnIndex+j-1<matrix[0].length&&!matrix[rowIndex+i-1][columnIndex+j-1]){
 					resultArr.push(matrix[rowIndex+i-1][columnIndex+j-1]);
 				}
 
 			}
 		}
-		matrix[rowIndex][columnIndex].text(resultArr.length||0).css('textIndex','0em');
+		domMatrix[rowIndex][columnIndex].text(resultArr.length||' ').css('textIndex','0em').removeClass('btn-primary');
 		return resultArr.length||0;
 	},
-	run(rowIndex,columnIndex,matrix){
+	run(rowIndex,columnIndex,matrix,domMatrix){
+		if(matrixToolkit.isEqual(this.hasTurned,{x:rowIndex,y:columnIndex})){
+			return;
+		}
 		if(!this.getBoxNum.apply(this,arguments)){
 			for(let i= 0;i<3;i++){
 				for(let j=0;j<3;j++){
-					if(rowIndex+i-1>=0&&rowIndex+i-1<matrix.length>=0&&columnIndex+j-1&&columnIndex+j-1<matrix[0].length&&!(i===1&&j===1)){
-						this.run(rowIndex+i-1,columnIndex+j-1,matrix);
+					if(rowIndex+i-1>=0&&rowIndex+i-1<matrix.length&&columnIndex+j-1>=0&&columnIndex+j-1<matrix[0].length&&!(i===1&&j===1)){
+						this.run(rowIndex+i-1,columnIndex+j-1,matrix,domMatrix);
 					}
 				}
 			}
+		}
+	},
+	berning(rowIndex,columnIndex,matrix){
+		if(!matrix[rowIndex][columnIndex]){
+			return true;
 		}
 	}
 }; 
