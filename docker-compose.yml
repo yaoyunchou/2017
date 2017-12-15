@@ -1,0 +1,20 @@
+version: '2'
+networks:
+   yao-wechat:
+services:
+  node:
+    build: xfywechat
+    networks:
+     - yao-wechat
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8090:8090
+  web:
+    build: webApp
+    depends_on:
+     - node
+    networks:
+     - yao-wechat
+    ports:
+     - "6000:6000"

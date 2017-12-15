@@ -72,7 +72,7 @@ var UserController = (_dec = (0, _router.routePrefix)('user'), _dec2 = (0, _serv
 		key: 'getUser',
 		// http://localhost:3000/user
 		value: function () {
-			var _ref = _asyncToGenerator(_regenerator2.default.mark(function _callee(_ref2) {
+			var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2) {
 				var id = _ref2.id;
 				var user;
 				return _regenerator2.default.wrap(function _callee$(_context) {
@@ -114,7 +114,7 @@ var UserController = (_dec = (0, _router.routePrefix)('user'), _dec2 = (0, _serv
 	}, {
 		key: 'getList',
 		value: function () {
-			var _ref3 = _asyncToGenerator(_regenerator2.default.mark(function _callee2() {
+			var _ref3 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
 				var list;
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {

@@ -49,7 +49,7 @@ var log4js = require('koa-log4');
 koa.use(log4js.koaLogger(log4js.getLogger("http"), {
 	level: 'auto'
 }));
-var one = _regenerator2.default.mark(function one(next) {
+var one = /*#__PURE__*/_regenerator2.default.mark(function one(next) {
 	return _regenerator2.default.wrap(function one$(_context) {
 		while (1) {
 			switch (_context.prev = _context.next) {
@@ -78,17 +78,8 @@ mongoose.Promise = global.Promise;
 
 var content = 'mongodb://localhost/yao';
 
-// mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
-// 	//mongoose.connect('mongodb://localhost/yao', {
-// 	useMongoClient: true,
-// 	/* other options */
-// 	server: {
-// 		auto_reconnect: true,
-// 		poolSize: 10
-// 	}
-// });
-
-mongoose.connect('mongodb://localhost/yao', {
+mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
+	//mongoose.connect('mongodb://localhost/yao', {
 	useMongoClient: true,
 	/* other options */
 	server: {
@@ -96,6 +87,15 @@ mongoose.connect('mongodb://localhost/yao', {
 		poolSize: 10
 	}
 });
+
+// mongoose.connect('mongodb://localhost/yao', {
+//     useMongoClient: true,
+// 	/* other options */
+// 	server: {
+// 				auto_reconnect: true,
+// 				poolSize: 10
+// 			}
+// });	
 
 //import "./test"
 //console.log(process.env);

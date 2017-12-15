@@ -5,7 +5,7 @@ var _regenerator = require('babel-runtime/regenerator');
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
 var asyncPrint = function () {
-    var _ref = _asyncToGenerator(_regenerator2.default.mark(function _callee(value, ms) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee(value, ms) {
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -31,7 +31,7 @@ var asyncPrint = function () {
 }();
 
 var f = function () {
-    var _ref2 = _asyncToGenerator(_regenerator2.default.mark(function _callee2() {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
