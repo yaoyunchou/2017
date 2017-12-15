@@ -6,6 +6,6 @@ RUN  npm install -g cnpm --registry=https://registry.npm.taobao.org
 RUN cnpm install && mv node_modules ../
 
 COPY . .
-RUN npm run build
+RUN cnpm install -g babel babel-cli && npm run build
 EXPOSE 8090
 CMD npm start

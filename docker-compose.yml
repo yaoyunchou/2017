@@ -18,3 +18,11 @@ services:
      - yao-wechat
     ports:
      - "6000:6000"
+  nginx:
+    build: nginx
+    networks:
+       - yao-wechat
+    depends_on:
+       - web
+    ports:
+       - "80:80"

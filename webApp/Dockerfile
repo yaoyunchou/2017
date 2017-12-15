@@ -14,7 +14,7 @@ COPY . /usr/src/node
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-RUN npm npm install -g cnpm --registry=https://registry.npm.taobao.org
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 RUN cnpm install
 # If you are building your code for production
 # RUN npm install --only=production
