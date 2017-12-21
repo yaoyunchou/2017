@@ -16,7 +16,7 @@ var config = require('./config');
 var Wechat = require('./wechat/wechat');
 var wechatApi = new Wechat(config.wechat);
 exports.wechatApi = new Wechat(config.wechat);
-exports.reply = /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
+exports.reply = _regenerator2.default.mark(function _callee(next) {
     var message, content, replay, data, imgData, materail;
     return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
@@ -315,4 +315,3 @@ exports.reply = /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
         }
     }, _callee, this);
 });
-//# sourceMappingURL=weixin.js.map

@@ -17,4 +17,3 @@ koaRouter.add = function (Controller) {
 };
 
 exports.default = koaRouter;
-//# sourceMappingURL=koa-router.js.map

@@ -20,4 +20,3 @@ exports.route = _router.route;
 exports.koaRouter = _koaRouter2.default; /**
                                           * Created by yao on 2017/6/12.
                                           */
-//# sourceMappingURL=index.js.map

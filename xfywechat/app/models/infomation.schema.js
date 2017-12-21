@@ -31,4 +31,3 @@ exports.default = new _mongoose.Schema({
 }); /**
      * Created by yao on 2017/6/23.
      */
-//# sourceMappingURL=infomation.schema.js.map

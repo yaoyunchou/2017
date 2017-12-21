@@ -69,7 +69,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 		key: 'getInfomation',
 		// http://localhost:3000/user
 		value: function () {
-			var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2) {
+			var _ref = _asyncToGenerator(_regenerator2.default.mark(function _callee(_ref2) {
 				var id = _ref2.id;
 				var infomation;
 				return _regenerator2.default.wrap(function _callee$(_context) {
@@ -113,7 +113,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}, {
 		key: 'getList',
 		value: function () {
-			var _ref4 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee2(params, body) {
+			var _ref4 = _asyncToGenerator(_regenerator2.default.mark(function _callee2(params, body) {
 				var pageSize, pageNumber, sortter, expect, list, total, backData;
 				return _regenerator2.default.wrap(function _callee2$(_context2) {
 					while (1) {
@@ -157,7 +157,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}, {
 		key: 'addRssByLink',
 		value: function () {
-			var _ref5 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee3(params, body) {
+			var _ref5 = _asyncToGenerator(_regenerator2.default.mark(function _callee3(params, body) {
 				return _regenerator2.default.wrap(function _callee3$(_context3) {
 					while (1) {
 						switch (_context3.prev = _context3.next) {
@@ -189,7 +189,7 @@ var InfomationController = (_dec = (0, _router.routePrefix)('infomation'), _dec2
 	}, {
 		key: 'saveInfoMation',
 		value: function () {
-			var _ref6 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee4(params, body) {
+			var _ref6 = _asyncToGenerator(_regenerator2.default.mark(function _callee4(params, body) {
 				var infomation;
 				return _regenerator2.default.wrap(function _callee4$(_context4) {
 					while (1) {
@@ -247,4 +247,3 @@ function fixhtml(data) {
 	data.description.replace(/pre/g, "<div>");
 	console.log(data.description);
 }
-//# sourceMappingURL=infomation.controller.js.map

@@ -49,4 +49,3 @@ var compiled = ejs.compile(template);
 exports.template = module.exports = {
   compiled: compiled
 };
-//# sourceMappingURL=template.js.map

@@ -25,4 +25,3 @@ var api = {
 
 };
 module.exports = api;
-//# sourceMappingURL=api.js.map

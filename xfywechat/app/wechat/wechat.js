@@ -207,4 +207,3 @@ Wechat.prototype.reply = function () {
 };
 
 module.exports = Wechat;
-//# sourceMappingURL=wechat.js.map

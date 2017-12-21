@@ -14,9 +14,7 @@ export default class UserController{
         console.log(this);
     }
 	@route('detail/:id') // http://localhost:3000/user
-	async getUser({
-		id
-	}) {
+	async getUser({	id}) {
 		let user = await timeout({
 			id: "01",
 			name: 'bowen',

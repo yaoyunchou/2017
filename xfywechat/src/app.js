@@ -2,12 +2,7 @@
  * Created by yao on 2016/10/23.
  */
 "use strict";
-
-import {
-	routePrefix,
-	route,
-	koaRouter
-} from './router'
+import {routePrefix,route,koaRouter} from './router'
 import Koa from "koa";
 import wechat from "./wechat/g";
 import config from './config';

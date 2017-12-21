@@ -20,4 +20,3 @@ Object.defineProperties(person, {
 //person.age = 2;
 person.age = 10;
 console.log(person);
-//# sourceMappingURL=getAndSet.js.map

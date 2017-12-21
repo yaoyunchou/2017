@@ -40,4 +40,3 @@ fluffy.save(function (err, fluffy) {
     }
     fluffy.speak();
 });
-//# sourceMappingURL=modal.js.map

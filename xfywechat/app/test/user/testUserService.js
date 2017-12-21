@@ -28,4 +28,3 @@ userService.saveItem({
 var item = userService.getItem({ name: /123/ }).then(function (data) {
 	console.log(data);
 });
-//# sourceMappingURL=testUserService.js.map

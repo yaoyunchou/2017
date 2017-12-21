@@ -140,4 +140,3 @@ var Service = function () {
 }();
 
 exports.default = Service;
-//# sourceMappingURL=bas.service.js.map

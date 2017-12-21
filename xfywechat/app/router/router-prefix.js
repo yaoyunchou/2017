@@ -20,4 +20,3 @@ function routePrefix(route) {
 		}
 	};
 }
-//# sourceMappingURL=router-prefix.js.map

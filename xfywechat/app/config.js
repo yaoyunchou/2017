@@ -26,4 +26,3 @@ var config = {
 };
 
 module.exports = config;
-//# sourceMappingURL=config.js.map

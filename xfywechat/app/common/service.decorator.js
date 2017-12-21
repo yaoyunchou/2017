@@ -20,4 +20,3 @@ function Service(SerCtrl, name) {
         }
     };
 }
-//# sourceMappingURL=service.decorator.js.map

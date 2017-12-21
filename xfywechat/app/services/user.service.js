@@ -48,4 +48,3 @@ var Service = function (_basService) {
 }(_bas2.default);
 
 exports.default = Service;
-//# sourceMappingURL=user.service.js.map

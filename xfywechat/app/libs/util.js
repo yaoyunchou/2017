@@ -133,4 +133,3 @@ exports.fetchInfomation = function fetch(feed, typeId, service) {
 		console.log(arguments);
 	}
 };
-//# sourceMappingURL=util.js.map
