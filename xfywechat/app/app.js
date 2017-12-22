@@ -54,12 +54,12 @@ var one = _regenerator2.default.mark(function one(next) {
 		while (1) {
 			switch (_context.prev = _context.next) {
 				case 0:
-
+					consol.log(this);
 					console.log('>> one');
-					_context.next = 3;
+					_context.next = 4;
 					return next;
 
-				case 3:
+				case 4:
 				case "end":
 					return _context.stop();
 			}

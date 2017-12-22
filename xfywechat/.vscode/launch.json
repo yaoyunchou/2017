@@ -27,7 +27,7 @@
             "name": "Launch",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/src/app.js", //这个配置成要调试的文件
+            "program": "${workspaceRoot}/app/app.js", //这个配置成要调试的文件
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}/",

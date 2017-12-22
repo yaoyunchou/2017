@@ -19,7 +19,7 @@ koa.use(log4js.koaLogger(log4js.getLogger("http"), {
 	level: 'auto'
 }))
 const one = function*(next) {
-
+	consol.log(this);
 	console.log('>> one');
 	yield next;
 }
