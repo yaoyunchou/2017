@@ -7,10 +7,34 @@
     <script src="http://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>  
 </head>    
 <body>    
-    <form action="http://test.xcx.cxylt.cn:8081/api/image/imageUpload" method="post" enctype="multipart/form-data">  
+    <form action="http://localhost:8090/api/form" method="post">  
         <input type="file" name="file"/>  
         <input type="submit" value="ok"/>  
     </form>  
-  
+    <form enctype="multipart/form-data" id="uploadForm">
+        <input type="file" name="uploadFile" id="upload_file" style="margin-bottom:10px;">
+         <input type="button" id="uploadPicButton" value="上传" onclick="uploadPic()">
+ </form>
+<script>
+ function uploadPic(){
+         var pic = $('#upload_file')[0].files[0];
+         var fd = new FormData();
+         fd.append('uploadFile', pic);
+         $.ajax({
+             url:"http://localhost:8081/api/form",
+             type:"post",
+             // Form数据
+             data: fd,
+             cache: false,
+             contentType: false,
+             processData: false,
+             success:function(data){
+                 alert("成功");
+             }
+         });
+                         
+     }
+</script>
+
 </body>    
 </html>  
