@@ -4,7 +4,7 @@
   "description": "a collection of simple demos of Koa",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/main.js"
+    "start": "node main.js"
   },
   "keywords": [
     "Koa",
@@ -20,6 +20,11 @@
     "koa-multer": "^1.0.2",
     "koa-route": "^3.2.0",
     "koa-router": "^7.3.0",
-    "koa-static": "^4.0.1"
+    "koa-static": "^4.0.1",
+    "log4js": "^2.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-plugin-react": "^7.5.1"
   }
 }

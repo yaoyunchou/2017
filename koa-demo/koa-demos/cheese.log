@@ -1,0 +1,12 @@
+[2017-12-28T18:59:35.942] [ERROR] test - Cheese is too ripe!
+[2017-12-28T18:59:35.945] [FATAL] test - Cheese was breeding ground for listeria.
+[2017-12-28T19:00:47.691] [INFO] test - Cheese is Gouda.
+[2017-12-28T19:00:48.283] [WARN] test - Cheese is quite smelly.
+[2017-12-28T19:00:48.284] [ERROR] test - Cheese is too ripe!
+[2017-12-28T19:00:48.284] [FATAL] test - Cheese was breeding ground for listeria.
+[2017-12-28T19:01:09.178] [INFO] access - ::ffff:127.0.0.1 - - "POST /api/form HTTP/1.0" 200 12 "http://localhost:8081/form.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+[2017-12-28T19:01:30.242] [INFO] test - Cheese is Gouda.
+[2017-12-28T19:01:30.259] [WARN] test - Cheese is quite smelly.
+[2017-12-28T19:01:30.260] [ERROR] test - Cheese is too ripe!
+[2017-12-28T19:01:30.260] [FATAL] test - Cheese was breeding ground for listeria.
+[2017-12-28T19:01:39.429] [INFO] access - ::ffff:127.0.0.1 - - "POST /api/form HTTP/1.0" 200 12 "http://localhost:8081/form.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
