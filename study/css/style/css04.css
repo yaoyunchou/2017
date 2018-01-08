@@ -1,0 +1,8 @@
+.demo01 {
+	background: pink;
+	transform: skewX(-45deg);
+	width: 200px;
+	float: left;
+	margin-right: 1px;
+	text-align: center;
+}
