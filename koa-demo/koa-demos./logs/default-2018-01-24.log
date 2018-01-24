@@ -1,0 +1,8 @@
+[2018-01-24T16:31:27.232] [INFO] test - Time: 2018-01-24T08:31:27.232Z
+[2018-01-24T16:31:27.236] [INFO] test - Cheese is Gouda.
+[2018-01-24T16:31:27.237] [WARN] test - Cheese is quite smelly.
+[2018-01-24T16:31:27.237] [ERROR] test - Cheese is too ripe!
+[2018-01-24T16:31:27.237] [FATAL] test - Cheese was breeding ground for listeria.
+[2018-01-24T16:33:24.414] [INFO] access - ::1 - - "GET / HTTP/1.1" 404 9 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+[2018-01-24T16:33:24.435] [INFO] access - ::1 - - "GET /favicon.ico HTTP/1.1" 404 9 "http://localhost:8090/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+[2018-01-24T16:33:32.810] [INFO] access - ::1 - - "GET /api/form HTTP/1.1" 200 12 "" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"

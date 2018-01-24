@@ -40,11 +40,11 @@ const main = async function (ctx, next) {
 
 };
 
-// router.post('/api/form',(ctx,next)=>{
-//   var body = ctx.request.body;
-//   ctx.response.redirect('http://www.baidu.com');
-//   console.log(body);
-// });
+router.post('/api/form',(ctx,next)=>{
+  var body = ctx.request.body;
+  ctx.response.redirect('http://www.baidu.com');
+  console.log(body);
+});
 
 logger.trace('Entering cheese testing');
 logger.debug('Got cheese.');

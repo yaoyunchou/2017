@@ -4,7 +4,7 @@
   "description": "a collection of simple demos of Koa",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "pm2 start main.js"
   },
   "keywords": [
     "Koa",
