@@ -21,3 +21,34 @@
 [2018-01-25T19:02:15.701] [INFO] test - Time: 2018-01-25T11:02:15.700Z
 [2018-01-25T19:06:47.556] [INFO] test - Time: 2018-01-25T11:06:47.555Z
 [2018-01-25T19:07:34.280] [INFO] test - Time: 2018-01-25T11:07:34.279Z
+[2018-01-25T22:42:25.308] [INFO] test - Time: 2018-01-25T14:42:25.307Z
+[2018-01-25T22:45:16.224] [INFO] test - Time: 2018-01-25T14:45:16.223Z
+[2018-01-25T22:58:58.022] [INFO] test - Time: 2018-01-25T14:58:58.022Z
+[2018-01-25T22:58:58.052] [INFO] user - /list user/list
+[2018-01-25T23:00:10.342] [INFO] test - Time: 2018-01-25T15:00:10.341Z
+[2018-01-25T23:00:10.384] [INFO] user - /list user/list
+[2018-01-25T23:01:41.583] [INFO] test - Time: 2018-01-25T15:01:41.583Z
+[2018-01-25T23:01:41.635] [INFO] user - /list user/list
+[2018-01-25T23:02:17.202] [INFO] test - Time: 2018-01-25T15:02:17.202Z
+[2018-01-25T23:02:17.254] [INFO] user - /list user/list
+[2018-01-25T23:03:12.417] [INFO] test - Time: 2018-01-25T15:03:12.417Z
+[2018-01-25T23:03:12.470] [INFO] user - /list user/list
+[2018-01-25T23:03:47.593] [INFO] test - Time: 2018-01-25T15:03:47.593Z
+[2018-01-25T23:03:47.643] [INFO] user - /list user/list
+[2018-01-25T23:07:44.576] [INFO] test - Time: 2018-01-25T15:07:44.576Z
+[2018-01-25T23:07:44.629] [ERROR] user - user name
+[2018-01-25T23:07:44.630] [INFO] user - /list user/list
+[2018-01-25T23:08:37.670] [INFO] test - Time: 2018-01-25T15:08:37.670Z
+[2018-01-25T23:08:39.777] [ERROR] user - user name
+[2018-01-25T23:08:39.780] [INFO] user - /list user/list
+[2018-01-25T23:09:46.386] [INFO] test - Time: 2018-01-25T15:09:46.386Z
+[2018-01-25T23:09:49.034] [ERROR] user - user name
+[2018-01-25T23:09:49.037] [INFO] user - /list user/list
+[2018-01-25T23:09:54.133] [ERROR] user - user name
+[2018-01-25T23:10:01.357] [ERROR] user - user target is not defined
+[2018-01-25T23:10:56.769] [ERROR] user - user name
+[2018-01-25T23:10:56.772] [ERROR] user - user target is not defined
+[2018-01-25T23:11:03.172] [INFO] test - Time: 2018-01-25T15:11:03.172Z
+[2018-01-25T23:11:03.203] [INFO] user - /list user/list
+[2018-01-25T23:16:23.869] [INFO] test - Time: 2018-01-25T15:16:23.869Z
+[2018-01-25T23:16:49.513] [INFO] user - /list user/list

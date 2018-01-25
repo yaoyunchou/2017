@@ -13,6 +13,7 @@ const {
 
 const app = new Koa();
 const router = require('./controller');
+const wxRouter = require('./controller/wx.controller');
 
 const main = async function (ctx, next) {
     this.req = ctx.req, this.res = ctx.res;
@@ -45,7 +46,9 @@ app.use(koaBody({
     multipart: true
 }));
 //app.use(main);
+app.use(wxRouter.routes());
 app.use(router.routes());
+app.use(wxRouter.allowedMethods());
 app.use(router.allowedMethods());
 http.createServer(app.callback()).listen(8090);
 https.createServer(app.callback()).listen(8080);
