@@ -16,31 +16,40 @@ var log4js = require('log4js');
  *
  */
 log4js.configure({
-  appenders: {
-    cheese: {
-      type: 'dateFile',
-      filename: __dirname + '/logs/default',
-      pattern: "-yyyy-MM-dd.log",
-      alwaysIncludePattern: true,
-      category: 'dateFileLog',
-      backup: 3,
+    appenders: {
+        cheese: {
+            type: 'dateFile',
+            filename: __dirname + '/logs/default',
+            pattern: '-yyyy-MM-dd.log',
+            alwaysIncludePattern: true,
+            category: 'dateFileLog',
+            backup: 3,
+        },
+        out: {
+            type: 'console'
+        },
     },
-    out: {
-      type: 'console'
-    },
-  },
-  categories: {
-    default: {
-      appenders: ['out', 'cheese'],
-      level: 'info'
+    categories: {
+        default: {
+            appenders: ['out', 'cheese'],
+            level: 'info'
+        }
     }
-  }
 });
 var logger = log4js.getLogger('test');
 
-logger.info("Time:", new Date());
+logger.info('Time:', new Date());
 
 module.exports = {
-  log4js,
-  logger
+    log4js,
+    logger
 };
+
+/**
+ * logger.trace('Entering cheese testing');
+logger.debug('Got cheese.');
+logger.info('Cheese is Gouda.');
+logger.warn('Cheese is quite smelly.');
+logger.error('Cheese is too ripe!');
+logger.fatal('Cheese was breeding ground for listeria.');
+ */

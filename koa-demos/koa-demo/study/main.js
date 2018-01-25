@@ -14,27 +14,27 @@
  * d.在理解了这个就是个堆栈的时候我们很容易扩展到错误捕捉！
  */
 
-const Koa =  require('koa') ;
+const Koa = require('koa');
 
 
 const app = new Koa();
-const handler = async (ctx, next) => {
+const handler = async(ctx, next) => {
     try {
-      await next();
+        await next();
     } catch (err) {
-      ctx.response.status = err.statusCode || err.status || 500;
-      ctx.response.body = {
-        message: err.message
-      };
+        ctx.response.status = err.statusCode || err.status || 500;
+        ctx.response.body = {
+            message: err.message
+        };
     }
-  };
-  
-  const main = ctx => {
+};
+
+const main = ctx => {
     ctx.throw(500);
-  };
-  
-  app.use(handler);
-  app.use(main);
+};
+
+app.use(handler);
+app.use(main);
 app.listen(4000);
 console.info('http://localhost:4000');
-console.log('listening------'+(process.env.PORT||4000));
+console.log('listening------' + (process.env.PORT || 4000));
