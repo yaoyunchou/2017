@@ -21,7 +21,8 @@ module.exports = {
             "error",
             "always"
         ],
-        "no-console":1,
-        "no-unused-vars":1
+        "no-console":1,//用到了console的地方提示警告
+        "no-unused-vars":1,//定义了没有用的变量为警告
+        "arrow-parens": 0,//箭头函数用小括号括起来
     }
 };
