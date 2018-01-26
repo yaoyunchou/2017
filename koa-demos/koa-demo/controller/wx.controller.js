@@ -2,17 +2,17 @@ const Router = require('koa-router');
 const router = new Router();
 const log4js = require('log4js');
 const logger = log4js.getLogger('user');
-class User {
+class Wechat {
     constructor() {
-        this.name = 'user';
-        this.addRouter('get', '/list', this.getUsers.bind(this));
+        this.name = 'wechat';
+        this.addRouter('url', '/', this.wechat.bind(this));
         this.router = router;
     }
     addRouter(method, url, handler) {
         logger.info(url, this.name + url);
         router[method](url, handler);
     }
-    getUsers(cxt, next) {
+    wechat(cxt, next) {
         const self = this;
         try {
             cxt.response.body = {
@@ -28,4 +28,4 @@ class User {
     }
 }
 
-module.exports = new User().router;
+module.exports = new Wechat().router;

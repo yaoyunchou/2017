@@ -11,6 +11,6 @@ var router = new Router({
 
 const user = require('./user.controller');
 
-router.use('/user',user.routes(),user.allowedMethods());
+router.use('/user',user.routes());
 
 module.exports =  router;
