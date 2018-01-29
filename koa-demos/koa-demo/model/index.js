@@ -17,7 +17,7 @@ db.on('error', (error)=>{
 
 });
 
-db.once('open', function (callback) {
+db.once('open', function () {
     logger.info('connection ok:','连接数据库成功!');
     var kittySchema = mongoose.Schema({
         name: String

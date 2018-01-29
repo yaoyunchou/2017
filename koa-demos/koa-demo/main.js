@@ -16,7 +16,7 @@ const router = require('./controller');
 const wxRouter = require('./controller/wx.controller');
 
 //引入数据库
-const mongoes  = require('./model');
+require('./model');
 
 
 const upload = async function (ctx, next) {
@@ -39,8 +39,6 @@ const upload = async function (ctx, next) {
         }
 
         ctx.response.body = 'hello world!';
-    } else {
-        next();
     }
 
 };
@@ -55,7 +53,7 @@ app.use(koalog4js.koaLogger(koalog4js.getLogger('http'), { level: 'auto' }));
 
 app.use(wxRouter.routes());
 app.use(router.routes());
-app.use(wxRouter.allowedMethods());
+
 app.use(router.allowedMethods());
-http.createServer(app.callback()).listen(8090);
-https.createServer(app.callback()).listen(8080);
+http.createServer(app.callback()).listen(80);
+https.createServer(app.callback()).listen(443);

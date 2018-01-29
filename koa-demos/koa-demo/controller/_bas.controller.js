@@ -17,7 +17,7 @@ class BasController {
     }
     addRouter(method, url, handler) {
         try {
-            router[method](url, handler);
+            this.router[method](url, handler);
             this.logger.info(this.name,'api/'+this.name+url);
         } catch (error) {
             this.logger.error(this.name,error.message);
@@ -36,7 +36,7 @@ class BasController {
             }
 
             ctx.response.body = backData;
-            next();
+            //next();
         };
 
     }
