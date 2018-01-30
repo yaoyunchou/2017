@@ -1,9 +1,12 @@
 const config = require('../config/wechat.config');
 const api = require('./wechat.api');
 const request = require('request');
+const Service = require('./_bas.service');
+const accessTokenSchema = require('../model/schemas/access.tonken.schema');
 
-class AccessToken {
-    constructor() {
+class AccessTokenServic extends Service {
+    constructor(name,schema) {
+        super(name,schema);
         this.saveAccessToken();
         this.fetchAccessToken();
     }
@@ -17,18 +20,31 @@ class AccessToken {
 
     }
     saveAccessToken() {
+        let self = this;
         var url = api.accessToken + '&appid=' + config.account.appID + '&secret=' + config.account.appSecret;
         return new Promise(function (resolve, reject) {
-            request({
-                url: url,
-                json: true
-            }, function (error, response) {
-                if(error){
-                    reject(error);
-                }else{
-                    resolve(response);
-                }
-            });
+            try {
+                request({
+                    url: url,
+                    json: true
+                }, function (error, response) {
+                    if(error){
+                        reject(error);
+                    }else{
+                        let backData = {
+                            access_token:response.body.access_token,
+                            expires_in:Date.now()+response.body.expires_in-50
+                        };
+                        self.save(backData).then(function(data){
+                            console.log(data);
+                            resolve(response.body);
+                        });
+                    }
+                });
+            } catch (error) {
+                throw new Error(error);
+            }
+            
         });
     }
     isValidAccessToken() {
@@ -37,4 +53,5 @@ class AccessToken {
 
 }
 
-module.exports = new AccessToken();
+const accessTokenServic =new AccessTokenServic('AccessToken',accessTokenSchema);
+module.exports = accessTokenServic;

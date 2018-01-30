@@ -19,7 +19,7 @@ log4js.configure({
     appenders: {
         cheese: {
             type: 'dateFile',
-            filename: __dirname + '/logs/default',
+            filename: __dirname + '/logs/wechat',
             pattern: '-yyyy-MM-dd.log',
             alwaysIncludePattern: true,
             category: 'dateFileLog',

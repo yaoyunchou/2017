@@ -27,7 +27,7 @@ class BasController {
     handlerwarp(handler) {
         handler.bind(this);
         
-        return (ctx, next) => {
+        return (ctx) => {
             let backData;
             try {
                 backData = handler.apply(this, arguments);

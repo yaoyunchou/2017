@@ -1,8 +1,10 @@
 const Router = require('koa-router');
 const router = new Router();
 const log4js = require('log4js');
-const logger = log4js.getLogger('user');
-var sha1 = require('sha1');
+const logger = log4js.getLogger('wechat');
+const  sha1 = require('sha1');
+const accessTokenServic = require('../services/wechat.access.token.service');
+
 const {
     account
 } = require('../config/wechat.config');
