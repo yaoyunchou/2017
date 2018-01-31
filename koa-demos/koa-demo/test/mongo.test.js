@@ -50,7 +50,7 @@ var tom = new Account({
 function init() {
     return new Promise((resolve, reject) => {
         Account.findOne({appID:'wxaa1d387056944865'},function(err,account){
-            if(err){
+            if(err||!account){
                 new Account({
                     appID: 'wxaa1d387056944865',
                     appSecret: '5107ab8612431421a7fced36828c8c9f',
