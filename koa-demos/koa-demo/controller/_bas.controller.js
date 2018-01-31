@@ -18,15 +18,15 @@ class BasController {
     addRouter(method, url, handler) {
         try {
             this.router[method](url, handler);
-            this.logger.info(this.name,'api/'+this.name+url);
+            this.logger.info(method, this.name, 'api/' + this.name + url);
         } catch (error) {
-            this.logger.error(this.name,error.message);
+            this.logger.error(this.name, error.message);
         }
 
     }
     handlerwarp(handler) {
         handler.bind(this);
-        
+
         return (ctx) => {
             let backData;
             try {
@@ -34,13 +34,20 @@ class BasController {
             } catch (error) {
                 this.logger.error(self.name, error.message);
             }
-
-            ctx.response.body = backData;
-            //next();
+            this.reply(ctx,backData);
         };
 
     }
-    
+    reply(ctx, body,type = 'josn') {
+        body = body || {
+            data: '',
+            msg: '',
+            isSuccess: true
+        };
+        ctx.response.type = type;
+        ctx.response.body = body;
+    }
+
 
 }
 module.exports = BasController;

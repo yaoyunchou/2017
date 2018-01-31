@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const router = new Router();
 const log4js = require('log4js');
 const logger = log4js.getLogger('wechat');
-const  sha1 = require('sha1');
+const sha1 = require('sha1');
 const accessTokenServic = require('../services/wechat.access.token.service');
 
 const {
@@ -14,10 +14,11 @@ class Wechat {
         this.name = 'wechat';
         this.addRouter('get', '/', this.configure.bind(this));
         this.addRouter('post', '/', this.wxApis.bind(this));
+        this.addRouter('get', '/accessToken', this.getAccessToken.bind(this));
 
     }
     addRouter(method, url, handler) {
-        logger.info(url, this.name + url);
+        logger.info(method, url, this.name + url);
         this.router[method](url, handler);
     }
     /**
@@ -45,16 +46,36 @@ class Wechat {
         }
 
     }
-    wxApis(cxt) {
+    wxApis(ctx) {
         var token = account.token;
-        var signature = cxt.query.signature;
-        var timestamp = cxt.query.timestamp;
-        var nonce = cxt.query.nonce;
+        var signature = ctx.query.signature;
+        var timestamp = ctx.query.timestamp;
+        var nonce = ctx.query.nonce;
         var str = [token, timestamp, nonce].sort().join('');
         var sha = sha1(str);
         if (sha !== signature) {
-            cxt.response.body = 'wrong';
+            ctx.response.body = 'wrong';
         }
+        let buf = '';
+        ctx.req.setEncoding('utf8');
+        ctx.req.on('data', (chunk) => {
+            buf += chunk;
+        });
+        ctx.req.on('end', () => {
+            console.log(buf);
+        });
+        ctx.response.body = 'wrong';
+    }
+    async getAccessToken(ctx,next){
+        await accessTokenServic.getAccessToken().then(function(data){
+            if(data){
+                ctx.response.body = 'data';
+            }else{
+                ctx.response.body = 'wrong';
+            }
+        });
+       
+        next();
     }
 }
 

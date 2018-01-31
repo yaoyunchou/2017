@@ -6,6 +6,7 @@ module.exports = new Schema({
         unique: true,
         required: true
     },
+    userId:Schema.Types.ObjectId,
     expires_in:Number,
     date: {
         type: Date,
