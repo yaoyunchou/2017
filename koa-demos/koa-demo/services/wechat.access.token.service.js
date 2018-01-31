@@ -35,8 +35,7 @@ class AccessTokenServic extends Service {
                             access_token:response.body.access_token,
                             expires_in:Date.now()+response.body.expires_in-50
                         };
-                        self.save(backData).then(function(data){
-                            console.log(data);
+                        self.save(backData).then(function(){
                             resolve(response.body);
                         });
                     }
