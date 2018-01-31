@@ -17,13 +17,11 @@ const wxRouter = require('./controller/wx.controller');
 
 //引入数据库
 require('./model');
-
+const Router = require('koa-router');
+const testRouter = new Router();
 
 const upload = async function (ctx, next) {
     this.req = ctx.req, this.res = ctx.res;
-    log4js.connectLogger(log4js.getLogger('access'), {
-        level: log4js.levels.INFO
-    }).call(this, this.req, this.res, next);
     if (ctx.request.path === '/upload/file') {
         const tmpdir = __dirname+'\\uploads';
         const filePaths = [];
@@ -32,21 +30,27 @@ const upload = async function (ctx, next) {
         for (let key in files) {
             const file = files[key];
             const filePath = path.join(tmpdir, file.name);
-            const reader = fs.createReadStream(file.path);
-            const writer = fs.createWriteStream(filePath);
+            const reader = await fs.createReadStream(file.path);
+            const writer = await fs.createWriteStream(filePath);
             reader.pipe(writer);
             filePaths.push(filePath);
         }
 
         ctx.response.body = 'hello world!';
+       
     }
-
+    await next();
 };
 
 //用koabody 将post的结构解析出来
 app.use(koaBody({
     multipart: true
 }));
+/**
+ * TODO 这里是非常重要的一个地方，我自己在这里用了 async  但是却没有用  await next();
+ *  导致我后面数据库里面查出来的出现了不能异步的情况
+ * 
+ */
 app.use(upload);
 //TODO 引入http的监控  是否后面可以自己弄一个类似的,信息可以再完整一点
 app.use(koalog4js.koaLogger(koalog4js.getLogger('http'), { level: 'auto' }));
@@ -55,5 +59,6 @@ app.use(wxRouter.routes());
 app.use(router.routes());
 
 app.use(router.allowedMethods());
+app.use(wxRouter.allowedMethods());
 http.createServer(app.callback()).listen(80);
 https.createServer(app.callback()).listen(443);

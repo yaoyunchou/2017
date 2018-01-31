@@ -14,7 +14,7 @@ class Wechat {
         this.name = 'wechat';
         this.addRouter('get', '/', this.configure.bind(this));
         this.addRouter('post', '/', this.wxApis.bind(this));
-        this.addRouter('get', '/accessToken', this.getAccessToken.bind(this));
+        this.addRouter('get', '/accessToken', this.getAccessToken);
 
     }
     addRouter(method, url, handler) {
@@ -66,16 +66,14 @@ class Wechat {
         });
         ctx.response.body = 'wrong';
     }
-    async getAccessToken(ctx,next){
-        await accessTokenServic.getAccessToken().then(function(data){
-            if(data){
-                ctx.response.body = 'data';
-            }else{
-                ctx.response.body = 'wrong';
-            }
-        });
-       
-        next();
+    async getAccessToken(ctx,next) {
+        //ctx.response.body = 'wrong';
+        //ctx.response.status = 200;
+        ctx.response.type = 'html';
+        let start = Date.now();
+        let data =  await accessTokenServic.getAccessToken();
+        console.log(Date.now()-start);
+        ctx.response.body = data;
     }
 }
 
