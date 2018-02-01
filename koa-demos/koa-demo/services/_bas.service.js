@@ -34,13 +34,14 @@ module.exports = class basService {
         // let defaultOptions = {
         return new Promise((resolve, reject) => {
             searchOptions = {
+                select:{},
                 query: {},
                 pageSize: 10,
                 pageNum: 1,
             }.extends(searchOptions);
             let query = this.DbModal.find(searchOptions.query);
             var count = query.count();
-            query.skip((searchOptions.pageNum - 1) * searchOptions.pageSize).limit(searchOptions.pageSize).exec(function (err,listData) {
+            query.skip((searchOptions.pageNum - 1) * searchOptions.pageSize).limit(searchOptions.pageSize).select(searchOptions.select).exec(function (err,listData) {
                 let backData = {
                     list:listData,
                     count:count,

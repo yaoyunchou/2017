@@ -1,6 +1,8 @@
 var prefix = 'https://api.weixin.qq.com/cgi-bin/';
 module.exports = {
     accessToken: prefix + 'token?grant_type=client_credential',
+    //更新菜单
+    menu: prefix+'menu/create?',
     material: {
         //媒体
         temporary: {
@@ -17,5 +19,4 @@ module.exports = {
         count: prefix + 'material/get_materialcount?'
         // count:prefix+'material/get_materialcount?'
     }
-
 };

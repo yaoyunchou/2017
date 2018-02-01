@@ -18,7 +18,6 @@ const wxRouter = require('./controller/wx.controller');
 //引入数据库
 require('./model');
 const Router = require('koa-router');
-const testRouter = new Router();
 
 const upload = async function (ctx, next) {
     this.req = ctx.req, this.res = ctx.res;

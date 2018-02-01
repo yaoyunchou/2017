@@ -16,7 +16,7 @@ class AccessTokenServic extends Service {
      * 获取数据库的access token
      */
     async getAccessToken() {
-        return  await this.DbModal.findOne({userId: '5a70213e534d9d24f8821694'})
+        return  await this.DbModal.findOne({userId: '5a72f3a6910cf322ec71681a'})
             .select('access_token expires_in');
     }
     getAll() {
@@ -24,8 +24,8 @@ class AccessTokenServic extends Service {
     }
     async fetchAccessToken() {
         let self = this;
-        let data = self.getAccessToken();
-        if (data.expires_in < Date.now()) {
+        let data = await self.getAccessToken();
+        if (data&&data.expires_in < Date.now()||!data) {
             self.saveAccessToken();
         } else {
             return data;
@@ -45,7 +45,7 @@ class AccessTokenServic extends Service {
                     let backData = {
                         access_token: response.body.access_token,
                         expires_in: Date.now() + (response.body.expires_in - 50) * 100,
-                        userId: '5a70213e534d9d24f8821694'
+                        userId: '5a72f3a6910cf322ec71681a'
                     };
                     self.save(backData).then(function (err) {
                         if (err) {
