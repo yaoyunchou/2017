@@ -1,7 +1,4 @@
-const os = require('os');
-const path = require('path');
 const Koa = require('koa');
-const fs = require('fs');
 const koaBody = require('koa-body');
 const http = require('http');
 const https = require('https');
@@ -19,28 +16,10 @@ const wxRouter = require('./controller/wx.controller');
 require('./model');
 const Router = require('koa-router');
 
-const upload = async function (ctx, next) {
-    this.req = ctx.req, this.res = ctx.res;
-    if (ctx.request.path === '/upload/file') {
-        const tmpdir = __dirname+'\\uploads';
-        const filePaths = [];
-        const files = ctx.request.body.files || {};
-
-        for (let key in files) {
-            const file = files[key];
-            const filePath = path.join(tmpdir, file.name);
-            const reader = await fs.createReadStream(file.path);
-            const writer = await fs.createWriteStream(filePath);
-            reader.pipe(writer);
-            filePaths.push(filePath);
-        }
-
-        ctx.response.body = 'hello world!';
-       
-    }
-    await next();
-};
-
+const upload = require('./utils/upload.files');
+const staticServer = require('koa-static');
+//加载表态文件
+app.use(staticServer(__dirname + '/static'));
 //用koabody 将post的结构解析出来
 app.use(koaBody({
     multipart: true
@@ -59,5 +38,5 @@ app.use(router.routes());
 
 app.use(router.allowedMethods());
 app.use(wxRouter.allowedMethods());
-http.createServer(app.callback()).listen(80);
+http.createServer(app.callback()).listen(8090);
 https.createServer(app.callback()).listen(443);
