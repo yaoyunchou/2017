@@ -3,9 +3,16 @@
 
 @import 'font';
 @import 'reset';
+
+/*--common--*/
 .clearfix {
   clear: both;
 }
+.fr{ float: right;}
+.fl{ float: left;}
+/*--common--*/
+
+
 
 .aside_left {
   width: 200px;
@@ -22,3 +29,4 @@
   font-size: 24px;
 }
 .swith{ float:left; width:40px;}
+.el-header{ padding:0;}
