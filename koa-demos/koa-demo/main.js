@@ -4,7 +4,7 @@ const http = require('http');
 const https = require('https');
 const koalog4js = require('koa-log4');
 //统一日志,配置日志
-const {log4js,logger} = require('./logger');
+require('./logger');
 
 const app = new Koa();
 //引入api
@@ -14,7 +14,8 @@ const wxRouter = require('./controller/wx.controller');
 
 //引入数据库
 require('./model');
-const Router = require('koa-router');
+//TODO 为什么这里要引用
+//const Router = require('koa-router');
 
 const upload = require('./utils/upload.files');
 const staticServer = require('koa-static');
