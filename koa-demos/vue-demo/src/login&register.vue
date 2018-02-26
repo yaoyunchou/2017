@@ -4,31 +4,37 @@
       <div class="logo">小飞鱼设计</div>
       <router-link class="el-icon-arrow-left back_index" to="/admin">返回首页</router-link>
     </header>
-    <el-form :model="ruleForm1" status-icon :rules="rules1" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+    <el-form v-if="isLogin" :model="ruleForm1" status-icon :rules="rules1" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名" prop="name">
           <el-input v-model="ruleForm1.name"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="pass">
           <el-input type="password" v-model="ruleForm1.pass" auto-complete="off"></el-input>
       </el-form-item>
-      <el-form-item label="验证码" prop="code">
+      <!-- <el-form-item label="验证码" prop="code">
         <el-row>
           <el-col :span="14"> <el-input v-model="ruleForm1.code"></el-input></el-col>
           <el-col :span="10"> <el-button class="code">获取验证</el-button></el-col>
         </el-row>          
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm1')">登陆</el-button>
           <el-button @click="resetForm('ruleForm1')">重置</el-button>
-          <span class="register fr">注册</span>
+          <span class="register fr" @click="regist()">{{isLogin?"注册":"登陆"}}</span>
       </el-form-item>
     </el-form>
-    <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+    <el-form v-if="!isLogin" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名" prop="name">
           <el-input v-model="ruleForm2.name"></el-input>
       </el-form-item> 
       <el-form-item label="手机" prop="phone">
           <el-input v-model="ruleForm2.phone"></el-input>
+      </el-form-item>
+      <el-form-item label="验证码" prop="code">
+        <el-row>
+          <el-col :span="14"> <el-input v-model="ruleForm2.code"></el-input></el-col>
+          <el-col :span="10"> <el-button class="code">获取验证</el-button></el-col>
+        </el-row>          
       </el-form-item>
       <el-form-item label="密码" prop="pass">
           <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
@@ -36,16 +42,14 @@
       <el-form-item label="确认密码" prop="checkPass">
         <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
       </el-form-item>
-      <el-form-item label="验证码" prop="checkPass">
-        <el-row>
-          <el-col :span="14"> <el-input v-model="ruleForm2.code"></el-input></el-col>
-          <el-col :span="10"> <el-button class="code">获取验证</el-button></el-col>
-        </el-row>          
+      
+      <el-form-item label="年龄" prop="age">
+          <el-input v-model="ruleForm2.age"></el-input>
       </el-form-item>
       <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm2')">登陆</el-button>
           <el-button @click="resetForm('ruleForm2')">重置</el-button>
-          <span class="register fr">注册</span>
+          <span class="register fr" @click="regist()">{{isLogin?"注册":"登陆"}}</span>
       </el-form-item>
     </el-form>
   </div>
@@ -53,6 +57,7 @@
 
 
 <script>
+const $http = require('@/services/http.server');
 export default {
   data() {
     var validatePass = (rule, value, callback) => {
@@ -65,6 +70,9 @@ export default {
         callback();
       }
     };
+    var checkcode = (rule,value,callback) => {
+
+    }
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
@@ -90,16 +98,17 @@ export default {
       },
        rules1: {
         name:[ { required: true, message: '请输入用户名', trigger: 'blur' }],
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        code: [{ validator: checkAge, trigger: "blur" }]
+        pass: [{ required: true, message: '请输入密码', trigger: 'blur' },{ validator: validatePass, trigger: "blur" }],
+        // code: [{ required: true, message: '请输入验证码', trigger: 'blur' },{ validator: checkcode, trigger: "blur" }]
       },
       rules2: {
         name:[ { required: true, message: '请输入用户名', trigger: 'blur' }],
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        phone: [{ validator: checkAge, trigger: "blur" }]
-      }
+        pass: [{ required: true, message: '请输入密码', trigger: 'blur' },{ validator: validatePass, trigger: "blur" }],
+        checkPass: [{ required: true, message: '请再次输入密码', trigger: 'blur' },{ validator: validatePass2, trigger: "blur" }],
+        phone: [{ required: true, message: '请输入手机', trigger: 'blur' },{ validator: checkcode, trigger: "blur" }],
+        code: [{ required: true, message: '请输入验证码', trigger: 'blur' },{ validator: checkcode, trigger: "blur" }]        
+      },
+      isLogin:true
     };
   },
   methods: {
@@ -115,6 +124,9 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    regist(){
+      this.isLogin = !this.isLogin;
     }
   }
 };
