@@ -5,7 +5,7 @@ class UserController extends BasController {
         this.addRouter('get', '/list', this.handlerwarp(this.getUsers));
     }
 
-    getUsers() {
+    createUsers() {
         return {
             name: 'yao',
             gender: 'f',
@@ -13,6 +13,13 @@ class UserController extends BasController {
         };
 
     }
+    deletUser(){
+
+    }
+    changeUser(){
+
+    }
+    
 }
 
 module.exports = new UserController('user').router;

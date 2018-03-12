@@ -13,7 +13,9 @@ class BasController {
         this.name = name;
         this.router = router;
         this.logger = log4js.getLogger(this.name);
-        //默认几个方法
+        //默认几个方法crud
+        
+
     }
     addRouter(method, url, handler) {
         try {
@@ -46,6 +48,12 @@ class BasController {
         };
         ctx.response.type = type;
         ctx.response.body = body;
+    }
+    /**
+     * 默认的常用方法crud
+     */
+    getItem(options){
+        
     }
 
 
