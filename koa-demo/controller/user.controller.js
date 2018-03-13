@@ -1,8 +1,11 @@
 const BasController = require('./_bas.controller');
+const userService = require('../services/user.service');
+
 class UserController extends BasController {
-    constructor(name) {
-        super(name);
+    constructor(name, service) {
+        super(name, service);
         this.addRouter('get', '/list', this.handlerwarp(this.getUsers));
+        this.addRouter('get', '/user/:id', this.handlerwarp(this.getItem));
     }
 
     createUsers() {
@@ -13,13 +16,16 @@ class UserController extends BasController {
         };
 
     }
-    deletUser(){
+    getUsers(options) {
+        return this.service.getList(options);
+    }
+    deletUser() {
 
     }
-    changeUser(){
+    changeUser() {
 
     }
-    
+
 }
 
-module.exports = new UserController('user').router;
+module.exports = new UserController('user', userService).router;
