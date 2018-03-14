@@ -27,20 +27,30 @@ class BasController {
         }
 
     }
-
-    handlerwarp(handler, isAsync = true) {
+    /**
+     * 
+     * @param {Fun} handler 
+     * @param {String} msg 
+     * @param {Boolean} isAsync 
+     */
+    handlerwarp(handler, msg, isAsync = true) {
         handler.bind(this);
         let backData;
         try {
             if (isAsync) {
                 return async (ctx) => {
-                    let backData = await handler.apply(this, arguments);
-                    if(backData.isSuccess){
+                    let backData = await handler.call(this, ctx);
+                   
+                    if (backData.isSuccess) {
+                        backData.msg = msg || '获取数据成功!';
                         this.reply(ctx, backData);
-                    }else{
-                        this.reply(ctx, backData);
+                    } else {
+                        this.reply(ctx, {
+                            isSuccess: false,
+                            msg: backData.msg||'接口出错了!'
+                        });
                     }
-                    
+
                 };
             } else {
                 backData = handler.apply(this, arguments);
@@ -55,27 +65,36 @@ class BasController {
                 this.reply(ctx, {
                     msg: error,
                     isSuccess: false
-                });
+                }, 'html', 500);
             };
         }
     }
-    reply(ctx, body, type = 'json') {
+    reply(ctx, body, type = 'json', status = 200) {
 
         body = body || {
             data: '',
             msg: '',
             isSuccess: true
         };
-
+        ctx.response.status = status;
         ctx.response.type = type;
         ctx.response.body = body;
     }
     /**
      * 默认的常用方法crud
      */
-    getItem() {
-        //console.log(this);
-        return this.service.getItem('sdfs');
+    createItem(options) {
+        const data = options.request.body;
+        return this.service.save(data);
+    }
+    /**
+     * 默认的常用方法crud
+     */
+    getItem(options) {
+        return this.service.getItem(options.params.id, {
+            nikeName: 1,
+            phone: 1
+        });
     }
     /**
      * 获取列表

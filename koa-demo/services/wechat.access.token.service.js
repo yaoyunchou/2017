@@ -48,7 +48,7 @@ class AccessTokenServic extends Service {
                     let backData = {
                         access_token: response.body.access_token,
                         expires_in: Date.now() + (response.body.expires_in - 50) * 100,
-                        userId: '5a72f3a6910cf322ec71681a'
+                        userId: '5a72f3a6910cf322ec716813'
                     };
                     self.save(backData).then(function (err, data) {
                         if (err) {

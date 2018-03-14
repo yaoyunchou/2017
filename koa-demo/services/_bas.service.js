@@ -14,18 +14,28 @@ module.exports = class basService {
      * 保存数据
      * @param {object} data 
      */
-    save(data) {
-        return new Promise((resolve, reject) => {
+    async save(data) {
+        try {
+            let entiry = new this.DbModal(data);
+            let user = await entiry.save();
+            return {
+                isSuccess: true,
+                data: user
+            };
+        } catch (error) {
+            return this.thorwError(error);
+        }
+        // return new Promise((resolve, reject) => {
 
-            new this.DbModal(data).save(function (err, user) {
-                if (err) {
-                    reject(err);
-                    //throw new Error(err);
-                } else {
-                    resolve(user);
-                }
-            });
-        });
+        //     new this.DbModal(data).save(function (err, user) {
+        //         if (err) {
+        //             reject(err);
+        //             //throw new Error(err);
+        //         } else {
+        //             resolve(user);
+        //         }
+        //     });
+        // });
 
     }
     /**
@@ -45,7 +55,7 @@ module.exports = class basService {
             let count = await this.DbModal.find(searchOptions.query).count();
             let listData = await this.DbModal.find(searchOptions.query).skip((searchOptions.pageNum - 1) * searchOptions.pageSize).limit(searchOptions.pageSize)
             return {
-                isSuccess: false,
+                isSuccess: true,
                 data: {
                     'list': listData,
                     'count': count,
@@ -72,7 +82,7 @@ module.exports = class basService {
             };
         } catch (error) {
             return this.thorwError(error);
-           
+
         }
     }
     async updateItem(id) {
@@ -81,7 +91,7 @@ module.exports = class basService {
     async deleteItem(id) {
 
     }
-    thorwError(err){
+    thorwError(err) {
         this.logger.error(err);
         return {
             isSuccess: false,

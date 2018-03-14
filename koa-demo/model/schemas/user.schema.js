@@ -3,20 +3,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 module.exports = new Schema({
-    //昵称
-    nikeName:{
-        type:String,
-        required:true
+
+    nikeName: {
+        type: Schema.Types.String,
+        required: true
     },
-    phone:{
-        type:String,
-        unique:true,
-        require:true
+
+    phone: {
+        type: Schema.Types.String,
+        //unique: true,
+        require: true
     },
-    psw:String,
-    wx:String,
-    qq:String,
-    email:String,
+    id: {
+        type: Schema.Types.ObjectId
+    },
+    psw: String,
+    wx: String,
+    qq: String,
+    email: String,
     created: {
         type: Schema.Types.Date,
         default: Date.now
@@ -25,4 +29,6 @@ module.exports = new Schema({
         type: Schema.Types.Date,
         default: Date.now
     },
+    createdBy: Schema.Types.ObjectId,
+    updateBy: Schema.Types.ObjectId
 });

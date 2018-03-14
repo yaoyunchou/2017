@@ -14,5 +14,5 @@ class User extends Service {
 
 }
 
-const user = new User('user', userSchema);
+const user = new User('User', userSchema);
 module.exports = user;

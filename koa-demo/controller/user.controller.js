@@ -6,6 +6,8 @@ class UserController extends BasController {
         super(name, service);
         this.addRouter('get', '/list', this.handlerwarp(this.getUsers));
         this.addRouter('get', '/user/:id', this.handlerwarp(this.getItem));
+        this.addRouter('post', '/user', this.handlerwarp(this.createItem));
+        
     }
 
     createUsers() {
