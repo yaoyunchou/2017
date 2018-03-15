@@ -8,5 +8,17 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     modules:{
         user
+    },
+    state:{
+        access_token:''
+    },
+    getter:{
+
+    },
+    mutations : {
+
+    },
+    actions:{
+        
     }
 });

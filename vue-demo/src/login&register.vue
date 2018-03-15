@@ -4,7 +4,7 @@
       <div class="logo">小飞鱼设计</div>
       <router-link class="el-icon-arrow-left back_index" to="/admin">返回首页</router-link>
     </header>
-    <el-form v-if="isLogin" :model="ruleForm1" status-icon :rules="rules1" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+    <el-form v-show="isLogin" :model="ruleForm1" status-icon :rules="rules1" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名" prop="name">
           <el-input v-model="ruleForm1.name"></el-input>
       </el-form-item>
@@ -23,7 +23,7 @@
           <span class="register fr" @click="regist()">{{isLogin?"注册":"登陆"}}</span>
       </el-form-item>
     </el-form>
-    <el-form v-if="!isLogin" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+    <el-form v-show="!isLogin" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
       <el-form-item label="用户名" prop="name">
           <el-input v-model="ruleForm2.name"></el-input>
       </el-form-item> 
