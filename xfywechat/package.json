@@ -42,7 +42,8 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "scripts": {
-    "start": "node app",
+    "start": "pm2 start app",
+    "dev": "node app",
     "buildw": "babel src -d app -s --watch",
     "build": "babel src -d app ",
     "xbuild": "babel src -d ../../xfyshow/xfywechat/app --watch",

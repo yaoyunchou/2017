@@ -19,7 +19,6 @@ koa.use(log4js.koaLogger(log4js.getLogger("http"), {
 	level: 'auto'
 }))
 const one = function*(next) {
-	consol.log(this);
 	console.log('>> one');
 	yield next;
 }
@@ -33,9 +32,7 @@ koa.use(koaRouter.allowedMethods());
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var content = 'mongodb://localhost/yao'
-
-mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
+mongoose.connect('mongodb://yao:625514@xfysj.cn:27017/yao', {
 	//mongoose.connect('mongodb://localhost/yao', {
 	useMongoClient: true,
 	/* other options */
