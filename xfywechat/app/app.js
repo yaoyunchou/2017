@@ -49,17 +49,16 @@ var log4js = require('koa-log4');
 koa.use(log4js.koaLogger(log4js.getLogger("http"), {
 	level: 'auto'
 }));
-var one = _regenerator2.default.mark(function one(next) {
+var one = /*#__PURE__*/_regenerator2.default.mark(function one(next) {
 	return _regenerator2.default.wrap(function one$(_context) {
 		while (1) {
 			switch (_context.prev = _context.next) {
 				case 0:
-					consol.log(this);
 					console.log('>> one');
-					_context.next = 4;
+					_context.next = 3;
 					return next;
 
-				case 4:
+				case 3:
 				case "end":
 					return _context.stop();
 			}
@@ -76,9 +75,7 @@ koa.use(_router.koaRouter.allowedMethods());
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var content = 'mongodb://localhost/yao';
-
-mongoose.connect('mongodb://yao:YaoPwd127899YCC@crm.liangcanl.cn:59832/yao', {
+mongoose.connect('mongodb://yao:625514@localhost/yao', {
 	//mongoose.connect('mongodb://localhost/yao', {
 	useMongoClient: true,
 	/* other options */

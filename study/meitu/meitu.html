@@ -16,7 +16,7 @@ window.onload=function(){
 	console.log(window.location);
 	var imageUrl = getUrlParams('url')||'http://open.web.meitu.com/sources/images/1.jpg';
        /*第1个参数是加载编辑器div容器，第2个参数是编辑器类型，第3个参数是div容器宽，第4个参数是div容器高*/
-	xiuxiu.embedSWF("altContent",3,"100%","100%");
+	xiuxiu.embedSWF("altContent",3,"80%","60%");
        //修改为您自己的图片上传接口
 	xiuxiu.setUploadURL("http://localhost:8090/upload/file");
         xiuxiu.setUploadType(2);
@@ -34,9 +34,14 @@ window.onload=function(){
 <style type="text/css">
 	html, body { height:100%; overflow:hidden; }
 	body { margin:0; }
+	#altContent{width:80%; height: 600px;}
 </style>
 </head>
 <body>
+<div class="info">
+	我在用美图的功能
+</div>
+
 <div id="altContent">
 	<h1>美图秀秀</h1>
 </div>

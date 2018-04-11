@@ -15,7 +15,7 @@ var wechatApi = require('../../weixin').wechatApi;
 var _ = require('lodash');
 var Materal = function Materal() {};
 
-Materal.prototype.imgList = _regenerator2.default.mark(function _callee(next) {
+Materal.prototype.imgList = /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
     var query, options, data, backdata;
     return _regenerator2.default.wrap(function _callee$(_context) {
         while (1) {
@@ -52,7 +52,7 @@ Materal.prototype.imgList = _regenerator2.default.mark(function _callee(next) {
         }
     }, _callee, this);
 });
-Materal.prototype.newsList = _regenerator2.default.mark(function _callee2(next) {
+Materal.prototype.newsList = /*#__PURE__*/_regenerator2.default.mark(function _callee2(next) {
     var query, options, data, backdata;
     return _regenerator2.default.wrap(function _callee2$(_context2) {
         while (1) {

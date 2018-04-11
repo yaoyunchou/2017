@@ -30,7 +30,7 @@ module.exports = {
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
       '/api': {
-        target: 'https://xfywechat.applinzi.com',
+        target: 'localhost:8090',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

@@ -1,0 +1,46 @@
+<html><head>
+    <title>美图WEB开放平台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://open.web.meitu.com/sources/xiuxiu.js" type="text/javascript"></script>
+    <!-- 提示:: 如果你的网站使用https, 将xiuxiu.js地址的请求协议改成https即可 -->
+    <script type="text/javascript">
+    function getUrlParams(name) { 
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //定义正则表达式 
+        var r = window.location.search.substr(1).match(reg);  
+        if (r != null) return unescape(r[2]); 
+      return null; 
+    }
+    window.onload=function(){
+        console.log(window.location);
+        var imageUrl = getUrlParams('url')||'http://open.web.meitu.com/sources/images/1.jpg';
+           /*第1个参数是加载编辑器div容器，第2个参数是编辑器类型，第3个参数是div容器宽，第4个参数是div容器高*/
+        xiuxiu.embedSWF("altContent",3,"100%","100%");
+           //修改为您自己的图片上传接口
+        xiuxiu.setUploadURL("http://localhost:8090/upload/file");
+            xiuxiu.setUploadType(2);
+            xiuxiu.setUploadDataFieldName("file");
+        xiuxiu.onInit = function ()
+        {
+            xiuxiu.loadPhoto(imageUrl);
+        }	
+        xiuxiu.onUploadResponse = function (data)
+        {
+            alert("上传响应" + data);  可以开启调试
+        }
+    }
+    </script>
+    <style type="text/css">
+        html, body { height:100%; overflow:hidden; }
+        body { margin:0; }
+        .meitu{ width:600px; height: 600px;}
+    </style>
+    </head>
+    <body>
+        <div class="meitu">
+                <object type="application/x-shockwave-flash" id="xiuxiuEditor" name="xiuxiuEditor" data="http://xiuxiu.web.meitu.com/Main.swf?v=2.6.111" width="840" height="600"><param name="menu" value="false"><param name="scale" value="noScale"><param name="allowFullscreen" value="true"><param name="allowScriptAccess" value="always"><param name="bgcolor" value="#FFFFFF"><param name="wmode" value="window"><param name="base" value="http://xiuxiu.web.meitu.com/"><param name="flashvars" value="source=plugin&amp;initFun=xiuxiu._init&amp;changeFlashHeightFun=xiuxiu._setHeight&amp;mouseWheelFun=xiuxiu._mouseWheel&amp;imageLoadedFun=xiuxiu._imageLoaded&amp;uploadFun=xiuxiu._upload&amp;beforeUploadFun=xiuxiu._beforeUpload&amp;uploadResponseFun=xiuxiu._uploadResponse&amp;batchUploadResponseFun=xiuxiu._batchUploadResponseFun&amp;batchUploadCompleteFun=xiuxiu._batchUploadCompleteFun&amp;saveBase64ImageFun=xiuxiu._saveBase64Image&amp;browseFun=xiuxiu._browse&amp;browseCancelFun=xiuxiu._browseCancel&amp;closePhotoEditorFun=xiuxiu._close&amp;debugFun=xiuxiu._debug"></object>
+        </div>
+        <div class="test">
+                沙发沙发斯蒂芬
+        </div>
+    
+    </body></html>

@@ -6,7 +6,7 @@ var _regenerator2 = _interopRequireDefault(_regenerator);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _marked = [helloWorldGennerator].map(_regenerator2.default.mark);
+var _marked = /*#__PURE__*/_regenerator2.default.mark(helloWorldGennerator);
 
 /**
  * Created by yao on 2017/6/16.
@@ -43,7 +43,7 @@ function helloWorldGennerator() {
           return _context.stop();
       }
     }
-  }, _marked[0], this);
+  }, _marked, this);
 }
 
 var a = helloWorldGennerator();

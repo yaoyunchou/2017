@@ -44,7 +44,7 @@ function route(route, method) {
 			console.log(fixed_route);
 			method = method || getDefaultHttpMethod(name, route) || 'get';
 			_koaRouter2.default[method](fixed_route, koaBody(), function () {
-				var _ref = _asyncToGenerator(_regenerator2.default.mark(function _callee(next) {
+				var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee(next) {
 					var result;
 					return _regenerator2.default.wrap(function _callee$(_context) {
 						while (1) {

@@ -23,13 +23,13 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 6000,
+    port: 8091,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://node:8090',
+        target: 'http://localhost:8090',
         //target: 'https://xfywechat.applinzi.com',
         changeOrigin: true,
         pathRewrite: {

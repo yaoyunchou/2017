@@ -32,7 +32,7 @@ koa.use(koaRouter.allowedMethods());
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://yao:625514@xfysj.cn:27017/yao', {
+mongoose.connect('mongodb://yao:625514@localhost/yao', {
 	//mongoose.connect('mongodb://localhost/yao', {
 	useMongoClient: true,
 	/* other options */
