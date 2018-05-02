@@ -162,7 +162,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 		console.log(arr24);
 	}
 	{
-		var go = regeneratorRuntime.mark(function go() {
+		var go = /*#__PURE__*/regeneratorRuntime.mark(function go() {
 			return regeneratorRuntime.wrap(function go$(_context) {
 				while (1) {
 					switch (_context.prev = _context.next) {

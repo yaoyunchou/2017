@@ -63,7 +63,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 		};
 
 		var obj3 = {
-			m: regeneratorRuntime.mark(function m() {
+			m: /*#__PURE__*/regeneratorRuntime.mark(function m() {
 				return regeneratorRuntime.wrap(function m$(_context) {
 					while (1) {
 						switch (_context.prev = _context.next) {
